@@ -1,0 +1,27 @@
+<PageTitle>@PageTitle</PageTitle>
+
+<ContentMenu SectionLinks=@_sectionLinks />
+<MudGrid Spacing="16" Justify="Justify.Center" id="main">
+    @ChildContent
+</MudGrid>
+
+@code {
+    [Parameter]
+    public required string PageLink { get; set; }
+
+    [Parameter]
+    public required string PageTitle { get; set; }
+
+    [Parameter]
+    public required List<(string, string, string)>? Sections { get; set; }
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private Dictionary<string, string>? _sectionLinks;
+
+    protected override void OnParametersSet()
+    {
+        _sectionLinks = Sections?.ToDictionary(i => i.Item1, i => i.Item3);
+    }
+}

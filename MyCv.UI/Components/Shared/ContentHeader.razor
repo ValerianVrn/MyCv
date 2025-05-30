@@ -1,0 +1,12 @@
+<MudItem md="12">
+    <MudText Typo="Typo.h2" Align="Align.Left">@HeaderName</MudText>
+    @ChildContent
+</MudItem>
+
+@code {
+    [Parameter]
+    public required string HeaderName { get; set; }
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+}

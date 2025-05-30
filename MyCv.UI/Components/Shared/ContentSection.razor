@@ -1,0 +1,15 @@
+<MudItem md="12">
+    <MudText Typo="Typo.h4" Align="Align.Left" id="@SectionFragment">@SectionName</MudText>
+    @ChildContent
+</MudItem>
+
+@code {
+    [Parameter]
+    public required string SectionFragment { get; set; }
+
+    [Parameter]
+    public required string SectionName { get; set; }
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+}

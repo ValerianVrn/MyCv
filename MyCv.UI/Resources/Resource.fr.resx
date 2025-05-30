@@ -144,6 +144,9 @@
   <data name="HomeStart" xml:space="preserve">
     <value>Et maintenant, place à la pratique</value>
   </data>
+  <data name="JobTitle" xml:space="preserve">
+    <value>Leader technique C#/.NET</value>
+  </data>
   <data name="Languages" xml:space="preserve">
     <value>Langue</value>
   </data>

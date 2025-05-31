@@ -1,0 +1,10 @@
+<MudText Typo="Typo.h6" Align="Align.Left">@SubSectionName</MudText>
+@ChildContent
+
+@code {
+    [Parameter]
+    public required string SubSectionName { get; set; }
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+}

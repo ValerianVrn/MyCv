@@ -1,6 +1,9 @@
 <MudItem md="12">
-    <MudText Typo="Typo.h2" Align="Align.Left">@HeaderName</MudText>
-    @ChildContent
+    <MudText Typo="Typo.h2" Align="Align.Left">
+        @HeaderName
+        @MudChips
+    </MudText>
+    @Content
 </MudItem>
 
 @code {
@@ -8,5 +11,8 @@
     public required string HeaderName { get; set; }
 
     [Parameter]
-    public RenderFragment? ChildContent { get; set; }
+    public RenderFragment? MudChips { get; set; }
+
+    [Parameter]
+    public RenderFragment? Content { get; set; }
 }

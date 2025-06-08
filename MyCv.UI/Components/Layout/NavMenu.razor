@@ -2,11 +2,7 @@
 
 <MudNavMenu Rounded="true" Bordered="false">
     <MudNavLink Href="/" Match="NavLinkMatch.All">@Localizer["Home"]</MudNavLink>
-    <MudNavGroup Title="@Localizer["Architecture"]" Expanded="true">
-        <MudNavLink Href="/microservice" Match="NavLinkMatch.Prefix">@Localizer["Microservice"]</MudNavLink>
-        <MudNavLink Href="/cqrs" Match="NavLinkMatch.Prefix">CQRS</MudNavLink>
-        <MudNavLink Href="/es" Match="NavLinkMatch.Prefix">Event sourcing</MudNavLink>
-    </MudNavGroup>
+    <MudNavLink Href="/architecture" Match="NavLinkMatch.Prefix">@Localizer["Architecture"]</MudNavLink>
     <MudNavLink Href="/devops" Match="NavLinkMatch.Prefix">DevOps</MudNavLink>
     <MudNavGroup Title="Coding practices" Expanded="true">
         <MudNavLink Href="/test" Match="NavLinkMatch.Prefix">Best practices</MudNavLink>

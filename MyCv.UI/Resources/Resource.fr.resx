@@ -120,8 +120,80 @@
   <data name="Architecture" xml:space="preserve">
     <value>Architecture</value>
   </data>
+  <data name="ArchitectureIntroduction" xml:space="preserve">
+    <value>Je vous présente ici l'architecture du site sur lequel vous naviguez.</value>
+  </data>
+  <data name="ArchitectureMe1" xml:space="preserve">
+    <value>Ce que je peux vous apporter :</value>
+  </data>
+  <data name="ArchitectureMe2" xml:space="preserve">
+    <value>- une conception qui s'appuie sur des références reconnues et qui s'adapte aux exigences du projet</value>
+  </data>
+  <data name="ArchitectureMe3" xml:space="preserve">
+    <value>- une expertise sur CQRS/event sourcing</value>
+  </data>
+  <data name="ArchitectureMicroservice" xml:space="preserve">
+    <value>Il s'agit d'une application basée sur des microservices qui utilisent deux patterns d'architecture du domain-driven design (DDD) : Command and Query Responsibility Segregation (CQRS) et event sourcing.</value>
+  </data>
+  <data name="ArchitectureReference1" xml:space="preserve">
+    <value>Les développements s'appuient sur différentes références dont </value>
+  </data>
+  <data name="ArchitectureReference2" xml:space="preserve">
+    <value>(Microsoft) ou encore des articles tels que ceux de</value>
+  </data>
+  <data name="CommandCommandStep" xml:space="preserve">
+    <value>Création de la commande</value>
+  </data>
+  <data name="CommandCommandStepValidation" xml:space="preserve">
+    <value>Validation par des règles basiques : note comprise entre 0 et 5.</value>
+  </data>
+  <data name="CommandDomainStep" xml:space="preserve">
+    <value>Création de l'agrégat</value>
+  </data>
+  <data name="CommandDomainStepValidation" xml:space="preserve">
+    <value>Vérification de la conformité des règles métiers : recommandation incohérente avec la note (note supérieure à 3 mais profil non recommandé).</value>
+  </data>
+  <data name="Commands" xml:space="preserve">
+    <value>Commandes</value>
+  </data>
+  <data name="CommandSaveStep" xml:space="preserve">
+    <value>Sauvegarde de l'agrégat</value>
+  </data>
+  <data name="CommandSaveStepValidation" xml:space="preserve">
+    <value>On passe aux queries pour le résultat !</value>
+  </data>
+  <data name="CommandsDescription" xml:space="preserve">
+    <value>Ce diagramme de séquence présente de manière simplifiée le processus d'écriture.</value>
+  </data>
+  <data name="CommandSendStep" xml:space="preserve">
+    <value>Envoi de la requête POST</value>
+  </data>
+  <data name="CommandSendStepValidation" xml:space="preserve">
+    <value>Validation via le formulaire (front-end) : champ de recommandation requis.</value>
+  </data>
+  <data name="CommandsExample" xml:space="preserve">
+    <value>Mais quoi de mieux qu'une mise en pratique ? C'est parti !</value>
+  </data>
+  <data name="CommandsRecommendation" xml:space="preserve">
+    <value>Recommanderiez-vous mon profil ?</value>
+  </data>
+  <data name="CommandsSatisfaction" xml:space="preserve">
+    <value>Comment appréciez-vous ce site ?</value>
+  </data>
   <data name="Conclusion" xml:space="preserve">
     <value>Conclusion</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Contenu</value>
+  </data>
+  <data name="CQRSBenefits" xml:space="preserve">
+    <value>Ce concept simple a plusieurs avantages : maintenabilité (séparation des responsabilités), scalabilité des couches de lecture et d'écriture indépendante, performance des opérations de lecture, validation des commandes et respect des règles métier...</value>
+  </data>
+  <data name="CQRSDefinition" xml:space="preserve">
+    <value>CQRS est un pattern d'architecture qui sépare les "requêtes" (lecture) des "commandes" (écriture).</value>
+  </data>
+  <data name="CQRSService" xml:space="preserve">
+    <value>Ici, le service "Rating" applique CQRS pour gérer les notes des visiteurs de ce site web.</value>
   </data>
   <data name="Degrees" xml:space="preserve">
     <value>Diplômes</value>
@@ -153,10 +225,58 @@
   <data name="Microservice" xml:space="preserve">
     <value>Microservice</value>
   </data>
+  <data name="MicroserviceAPI" xml:space="preserve">
+    <value>Une gateway (YARP) pour éviter d'exposer directement les microservices et de les coupler à l'interface.</value>
+  </data>
+  <data name="MicroserviceAPIContent" xml:space="preserve">
+    <value>Cet intermédiaire permet notamment d'éviter un couplage avec les microservices ou encore de sécuriser l'application en n'exposant pas les microservices.</value>
+  </data>
+  <data name="MicroserviceBackend" xml:space="preserve">
+    <value>Deux microservices qui communiquent via RabbitMQ et utilisent différentes bases de données (EventStoreDB, MongoDB).</value>
+  </data>
+  <data name="MicroserviceBackendContent" xml:space="preserve">
+    <value>Deux microservices qui communiquent via RabbitMQ et utilisent différentes bases de données (EventStoreDB, MongoDB)</value>
+  </data>
+  <data name="MicroserviceDescription" xml:space="preserve">
+    <value>Voici une brève description de l'architecture microservice de ce projet:</value>
+  </data>
+  <data name="MicroserviceDocker" xml:space="preserve">
+    <value>Les applications sont conteneurisées avec Docker et lancées via Docker Compose.</value>
+  </data>
+  <data name="MicroserviceFrontend" xml:space="preserve">
+    <value>Une UI simple réalisée avec Blazor server et MudBlazor.</value>
+  </data>
+  <data name="MicroserviceFrontendContent" xml:space="preserve">
+    <value>Je suis également à l'aise avec Bootstrap et j'ai déjà réalisé un site en ReactJS.</value>
+  </data>
+  <data name="MicroserviceReference" xml:space="preserve">
+    <value>Mes développements sont largement inspirés de ce guide Microsoft qui m'a permis de comprendre et implémenter des applications microservices :</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Non</value>
+  </data>
   <data name="PersonalLife" xml:space="preserve">
     <value>Vie personnelle</value>
   </data>
+  <data name="Queries" xml:space="preserve">
+    <value>Requêtes</value>
+  </data>
+  <data name="QueriesDescription" xml:space="preserve">
+    <value>Le mécanisme des requêtes est plus direct :</value>
+  </data>
+  <data name="QueriesExample" xml:space="preserve">
+    <value>Voyons maintenant quelles sont les dernières notes :</value>
+  </data>
+  <data name="RequiredAnswer" xml:space="preserve">
+    <value>Réponse requise</value>
+  </data>
   <data name="Testing" xml:space="preserve">
     <value>Test</value>
+  </data>
+  <data name="Validate" xml:space="preserve">
+    <value>Valider</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Oui</value>
   </data>
 </root>

@@ -1,6 +1,3 @@
-// Copyright (c) Fives Syleps. All rights reserved.
-// See License.txt in the project root for license information.
-
 using MyCv.UI.Dtos;
 
 namespace MyCv.UI.Services

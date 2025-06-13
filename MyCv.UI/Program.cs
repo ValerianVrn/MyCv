@@ -12,6 +12,7 @@ builder.Services.AddRazorComponents()
 builder.Services.AddLocalization();
 builder.Services.AddMudServices();
 builder.Services.AddScoped<IRatingService, FakeRatingService>();
+builder.Services.AddScoped<IInsightService, FakeInsightService>();
 
 var app = builder.Build();
 

@@ -1,6 +1,3 @@
-// Copyright (c) Fives Syleps. All rights reserved.
-// See License.txt in the project root for license information.
-
 namespace MyCv.UI.Dtos
 {
     internal sealed class ResponseResult

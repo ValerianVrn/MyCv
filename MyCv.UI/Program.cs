@@ -13,6 +13,7 @@ builder.Services.AddLocalization();
 builder.Services.AddMudServices();
 builder.Services.AddScoped<IRatingService, FakeRatingService>();
 builder.Services.AddScoped<IInsightService, FakeInsightService>();
+builder.Services.AddScoped<IVisitorService, VisitorService>();
 
 var app = builder.Build();
 

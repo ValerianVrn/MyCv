@@ -223,10 +223,10 @@
     <value>Chaque évènement est stocké dans une base en append-only.</value>
   </data>
   <data name="EventSourcingWriteBenefits" xml:space="preserve">
-    <value>En quoi est-ce génial ? On connaît non seulement l'état final mais on esta aussi capable de rejouer tout l'historique ou encore déterminer l'état du système à un instant précis.</value>
+    <value>En quoi est-ce génial ? On connaît non seulement l'état final mais on est aussi capable de rejouer tout l'historique ou encore déterminer l'état du système à un instant précis.</value>
   </data>
   <data name="EventSourcingWriteExample" xml:space="preserve">
-    <value>Voyons ce que cela donne avec ce questionnaire :</value>
+    <value>Voyons comment cela se traduit avec cet exemple :</value>
   </data>
   <data name="EventSourcingWriteExampleInstructions" xml:space="preserve">
     <value>Faites glisser dans l'encadré le ou les raisons qui vous amènent et classer les par pertinence :</value>

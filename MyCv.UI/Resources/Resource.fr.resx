@@ -172,7 +172,7 @@
     <value>Validation via le formulaire (front-end) : champ de recommandation requis.</value>
   </data>
   <data name="CommandsExample" xml:space="preserve">
-    <value>Mais quoi de mieux qu'une mise en pratique ? C'est parti !</value>
+    <value>Commençons par créer une commande pour l'ajout d'un avis à propos de ce site :</value>
   </data>
   <data name="CommandsRecommendation" xml:space="preserve">
     <value>Recommanderiez-vous mon profil ?</value>
@@ -191,6 +191,12 @@
   </data>
   <data name="CQRSDefinition" xml:space="preserve">
     <value>CQRS est un pattern d'architecture qui sépare les "requêtes" (lecture) des "commandes" (écriture).</value>
+  </data>
+  <data name="CQRSDiagram" xml:space="preserve">
+    <value>Ce diagramme de séquence présente de manière simplifiée les processus d'écriture puis de lecture déclenchés par de classiques appels REST.</value>
+  </data>
+  <data name="CQRSExample" xml:space="preserve">
+    <value>Mais quoi de mieux qu'une mise en pratique ? C'est parti !</value>
   </data>
   <data name="CQRSService" xml:space="preserve">
     <value>Ici, le service "Rating" applique CQRS pour gérer les notes des visiteurs de ce site web.</value>
@@ -214,7 +220,7 @@
     <value>partie d'échecs</value>
   </data>
   <data name="EventSourcingReadResult" xml:space="preserve">
-    <value>Enfin, l'état final est mis à jour pour la lecture à chaque évènement. Cela permet notamment de sortir le top 3 des raisons qui vous font lire ceci :</value>
+    <value>La base de lecture est mise à jour sur chaque évènment pour sortir le top 3 des raisons qui vous font lire ceci :</value>
   </data>
   <data name="EventSourcingService" xml:space="preserve">
     <value>Ici, le service "Insight" applique CQRS + event sourcing pour gérer ce que vous attendez d'un profil et la raison de votre visite.</value>
@@ -392,6 +398,9 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>Type</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Mettre à jour</value>
   </data>
   <data name="Validate" xml:space="preserve">
     <value>Valider</value>

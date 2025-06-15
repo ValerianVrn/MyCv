@@ -8,6 +8,7 @@
 <ContentSection SectionFragment="es" SectionName="Event sourcing">
     <MudText Typo="Typo.body1">@Localizer["EventSourcingDefinition1"]<MudLink Href="https://medium.com/%40ocrnshn/event-sourcing-and-cqrs-9286e5578f93">@Localizer["EventSourcingDefinitionLink"]</MudLink>@Localizer["EventSourcingDefinition2"]</MudText>
     <MudText Typo="Typo.body1">@Localizer["EventSourcingBenefits"]</MudText>
+    <MudText Typo="Typo.body1">@Localizer["EventSourcingWriteIllustration"]</MudText>
     <MudText Typo="Typo.body1">@Localizer["EventSourcingService"]</MudText>
     <MudText Typo="Typo.body1">@Localizer["EventSourcingWrite"]</MudText>
     @* https://mermaid.live/edit#pako:eNp1ksGOmzAQhl_F8i0SSRMCBKwq0gqi0gPqSlQ5VFy8MEtQwU6NSZtGefeOYxJtk11f7Jn5ZvyPPSdaygoooz38GkCUkDS8VrwrBMG150o3ZbPnQpOn56-E95ftC9fwmx8fmdgQsRRaybYF9QhkBsigariW74TjrS3QdVxUn1_U-sDbpvqATe_YHe7vXpoYMJEdb8RjcJOb6OYAeO7xIihGCBudTmJGnr_l362Hl7o5YOsktnY8nWTsqsC6KriHbnZm7QyLbhnZ2saAlG_TTTBlJL108n_oTeXsXk466kmn63WCihSg-9OwNxeYl-F1raBG4y4xsXYypu2g_Elehr4R0PdEDS30VwAJI8w-IgHzWv2DruQmY7LJGcn5AT5C45Q6tAOF5SocvpMBCqp30EFBGR67sqCFOCPFBy3zoygp02oAhyo51DvKXnnbo2WbHIf25sWf_SFld03BecOfzeygX-b9glB2on8om3pROAsWkRu6YeT6c9936JGy5WIWur7n-eEq8t154K_ODv17qbqYLUP0evPA893FKowCh9bKdDJKBFGBiuUgNGWrYHn-B_gfFHE *@
@@ -15,53 +16,60 @@
     <MudText Typo="Typo.body1">@Localizer["EventSourcingWriteExample"]</MudText>
     @* Form *@
     <MudPaper Class="pa-4" Outlined="true" Elevation="1">
-        <MudText Typo="Typo.body1">@Localizer["EventSourcingWriteExampleInstructions"]</MudText>
-        <MudDropContainer T="DropItem" Items="_dropItems" ItemsSelector="@((item,dropzone) => item.Place == dropzone)" ItemDropped="ItemUpdated" Class="d-flex flex-column flex-grow-1" CanDropClass="mud-border-success" NoDropClass="mud-border-error" ApplyDropClassesOnDragStarted="true">
-            <ChildContent>
-                <MudDropZone T="DropItem" Identifier="@YouZone" Class="rounded-lg border-2 border-solid mud-border-lines-default mud-alert-text-warning pa-4 ma-4 flex-grow-1" AllowReorder CanDrop="@((item) => true)">
-                    <MudText Typo="Typo.h6" Class="ma-2">@Localizer["You"]</MudText>
-                </MudDropZone>
-                <MudDropZone T="DropItem" Identifier="@StreetZone" Class="rounded-lg mud-alert-text-normal pa-4 ma-4 flex-grow-1 d-flex flex-wrap" CanDrop="@((item) => true)">
-                </MudDropZone>
-            </ChildContent>
-            <ItemRenderer>
-                <MudPaper Elevation="25" Class="pa-4 ma-2">@context.Rank @context.Icon @context.Text</MudPaper>
-            </ItemRenderer>
-        </MudDropContainer>
-    </MudPaper>
-    <MudText Typo="Typo.body1">@Localizer["EventSourcingWriteExampleResult"]</MudText>
-    @* Domain events *@
-    <MudDataGrid Items="@_domainEvents" Filterable="false" SortMode="@SortMode.Single" Groupable="false">
-        <Columns>
-            <PropertyColumn Property="x => x.DateTime" Title="@Localizer["Date"]" />
-            <PropertyColumn Property="x => x.DomainEventType" Title="@Localizer["Type"]" />
-            <PropertyColumn Property="x => x.Intent" Title="@Localizer["Intent"]" />
-            <PropertyColumn Property="x => x.Priority" Title="@Localizer["Priority"]" />
-        </Columns>
-        <PagerContent>
-            <MudDataGridPager T="DomainEvent" />
-        </PagerContent>
-    </MudDataGrid>
-    <MudText Typo="Typo.body1">@Localizer["EventSourcingWriteBenefits"]</MudText>
-    <MudText Typo="Typo.body1">@Localizer["EventSourcingWriteIllustration"]</MudText>
-    <MudText Typo="Typo.body1">@Localizer["EventSourcingReadResult"]</MudText>
-    @* Podium *@
-    <MudGrid>
-        @foreach (var podiumItem in _podium)
-        {
-            <MudItem xs="12" sm="4">
-                <MudCard Class="pa-2 border-2 border-solid" Style="@podiumItem.Style">
-                    <MudCardHeader>
-                        <CardHeaderContent>
-                            <MudText Typo="Typo.h6">@podiumItem.Intent</MudText>
-                            <MudIcon Icon="@Icons.Material.Filled.EmojiEvents" Size="Size.Large" Class="mt-2" Style="@podiumItem.CupColorStyle" />
-                        </CardHeaderContent>
-                    </MudCardHeader>
-                </MudCard>
+        <MudGrid>
+            <MudItem md="12">
+                <MudText Typo="Typo.body1">@Localizer["EventSourcingWriteExampleInstructions"]</MudText>
             </MudItem>
-        }
-    </MudGrid>
-
+            <MudItem md="12">
+                <MudDropContainer T="DropItem" Items="_dropItems" ItemsSelector="@((item,dropzone) => item.Place == dropzone)" ItemDropped="ItemUpdated" Class="d-flex flex-column flex-grow-1" CanDropClass="mud-border-success" NoDropClass="mud-border-error" ApplyDropClassesOnDragStarted="true">
+                    <ChildContent>
+                        <MudDropZone T="DropItem" Identifier="@YouZone" Class="rounded-lg border-2 border-solid mud-border-lines-default mud-alert-text-warning pa-4 ma-4 flex-grow-1" AllowReorder CanDrop="@((item) => true)">
+                            <MudText Typo="Typo.h6" Class="ma-2">@Localizer["You"]</MudText>
+                        </MudDropZone>
+                        <MudDropZone T="DropItem" Identifier="@StreetZone" Class="rounded-lg mud-alert-text-normal pa-4 ma-4 flex-grow-1 d-flex flex-wrap" CanDrop="@((item) => true)">
+                        </MudDropZone>
+                    </ChildContent>
+                    <ItemRenderer>
+                        <MudPaper Elevation="25" Class="pa-4 ma-2">@context.Rank @context.Icon @context.Text</MudPaper>
+                    </ItemRenderer>
+                </MudDropContainer>
+            </MudItem>
+            <MudItem md="12">
+                <MudText Typo="Typo.body1">@Localizer["EventSourcingWriteExampleResult"]</MudText>
+            </MudItem>
+            <MudItem md="12">
+                @* Domain events *@
+                <MudDataGrid Items="@_domainEvents" Filterable="false" SortMode="@SortMode.Single" Groupable="false">
+                    <Columns>
+                        <PropertyColumn Property="x => x.DateTime" Title="@Localizer["Date"]" />
+                        <PropertyColumn Property="x => x.DomainEventType" Title="@Localizer["Type"]" />
+                        <PropertyColumn Property="x => x.Intent" Title="@Localizer["Intent"]" />
+                        <PropertyColumn Property="x => x.Priority" Title="@Localizer["Priority"]" />
+                    </Columns>
+                    <PagerContent>
+                        <MudDataGridPager T="DomainEvent" />
+                    </PagerContent>
+                </MudDataGrid>
+            </MudItem>
+            <MudItem md="12">
+                <MudText Typo="Typo.body1">@Localizer["EventSourcingReadResult"]</MudText>
+            </MudItem>
+            @* Podium *@
+            @foreach (var podiumItem in _podium)
+            {
+                <MudItem sm="12" md="4">
+                    <MudCard Class="pa-2 border-2 border-solid" Style="@podiumItem.Style">
+                        <MudCardHeader>
+                            <CardHeaderContent>
+                                <MudText Typo="Typo.h6">@podiumItem.Intent</MudText>
+                                <MudIcon Icon="@Icons.Material.Filled.EmojiEvents" Size="Size.Large" Class="mt-2" Style="@podiumItem.CupColorStyle" />
+                            </CardHeaderContent>
+                        </MudCardHeader>
+                    </MudCard>
+                </MudItem>
+            }
+        </MudGrid>
+    </MudPaper>
 </ContentSection>
 
 @code {

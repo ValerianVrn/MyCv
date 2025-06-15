@@ -8,7 +8,15 @@ namespace MyCv.UI.Services
     /// <inheritdoc/>
     internal class FakeInsightService : IInsightService
     {
+        /// <summary>
+        /// Per scope (visitor's page) in-memory intents.
+        /// </summary>
         private readonly Dictionary<string, int> _intents = [];
+
+
+        /// <summary>
+        /// Per scope (visitor's page) in-memory domain events.
+        /// </summary>
         private readonly List<DomainEvent> _domainEvents = [];
 
         /// <inheritdoc/>

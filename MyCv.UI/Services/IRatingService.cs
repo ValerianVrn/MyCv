@@ -10,16 +10,15 @@ namespace MyCv.UI.Services
         /// <summary>
         /// Post a rating.
         /// </summary>
+        /// <param name="visitorId"></param>
         /// <param name="rating"></param>
         /// <param name="recommend"></param>
         /// <returns></returns>
-        Task<ResponseResult> PostRating(int rating, bool recommend);
+        Task<ResponseResult> PostRating(string visitorId, int rating, bool recommend);
 
         /// <summary>
         /// Get the ratings.
         /// </summary>
-        /// <param name="rating"></param>
-        /// <param name="recommend"></param>
         /// <returns></returns>
         Task<IEnumerable<Rating>> GetRatings();
     }

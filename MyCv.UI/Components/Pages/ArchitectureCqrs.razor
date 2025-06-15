@@ -3,6 +3,7 @@
 @using MyCv.UI.Services
 @inject IStringLocalizer<Resource> Localizer
 @inject IRatingService RatingService
+@inject IVisitorService VisitorService
 
 @* CQRS *@
 <ContentSection SectionFragment="cqrs" SectionName="CQRS">
@@ -94,6 +95,7 @@
 </ContentSection>
 
 @code {
+    private string _visitorId;
     private MudForm? _form;
     private bool _isFormValid;
     private string[]? _formErrors;
@@ -111,6 +113,7 @@
     private bool _isStepDisabled;
     private List<Rating>? _ratings { get; set; }
 
+    /// <inheritdoc/>
     protected override void OnInitialized()
     {
         _isFormValid = false;
@@ -127,6 +130,15 @@
         _isDomainCompleted = false;
         _isSaveCompleted = false;
         _isStepDisabled = true;
+    }
+
+    /// <inheritdoc/>
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _visitorId = await VisitorService.GetVisitorId();
+        }
     }
 
     private async Task Submit()
@@ -162,7 +174,7 @@
         else
         {
             // Send the rating to the service.
-            var responseResult = await RatingService.PostRating(_score, _recommendValue == "Yes");
+            var responseResult = await RatingService.PostRating(_visitorId, _score, _recommendValue == "Yes");
 
             if (responseResult.Code.Equals(ResponseResult.InvalidCommandCode))
             {

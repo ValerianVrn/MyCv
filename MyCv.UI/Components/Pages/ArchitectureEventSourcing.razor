@@ -94,6 +94,7 @@
     private List<DomainEvent>? _domainEvents { get; set; }
     private List<PodiumItem>? _podium { get; set; }
 
+    /// <inheritdoc/>
     protected override void OnInitialized()
     {
         _intents = [
@@ -119,12 +120,14 @@
         };
     }
 
+    /// <inheritdoc/>
     protected override async Task OnInitializedAsync()
     {
         // _visitorId = await VisitorService.GetVisitorId();
         _domainEvents = (await InsightService.GetDomainEvents(_visitorId)).ToList();
     }
 
+    /// <inheritdoc/>
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)

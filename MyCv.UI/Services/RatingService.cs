@@ -16,7 +16,7 @@ namespace MyCv.UI.Services
         private readonly HttpClient _httpClient = clientFactory.CreateClient("APIGateway");
 
         /// <inheritdoc/>
-        public async Task<ResponseResult> PostRating(int rating, bool recommend)
+        public async Task<ResponseResult> PostRating(string visitorId, int rating, bool recommend)
         {
             await _httpClient.PostAsync("api/stopsystem", null);
 

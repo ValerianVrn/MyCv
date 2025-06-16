@@ -7,6 +7,9 @@
 </MudItem>
 
 @code {
+    [CascadingParameter]
+    public ContentPage ContentPage { get; set; }
+
     [Parameter]
     public required string HeaderName { get; set; }
 
@@ -15,4 +18,10 @@
 
     [Parameter]
     public RenderFragment? Content { get; set; }
+
+    /// <inheritdoc/>
+    protected override void OnParametersSet()
+    {
+        ContentPage.RegisterHeader(HeaderName);
+    }
 }

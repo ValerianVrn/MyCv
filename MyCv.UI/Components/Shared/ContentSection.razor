@@ -4,6 +4,9 @@
 </MudItem>
 
 @code {
+    [CascadingParameter]
+    public ContentPage ContentPage { get; set; }
+
     [Parameter]
     public required string SectionFragment { get; set; }
 
@@ -12,4 +15,10 @@
 
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
+
+    /// <inheritdoc/>
+    protected override void OnParametersSet()
+    {
+        ContentPage.RegisterSection(SectionName, SectionFragment);
+    }
 }

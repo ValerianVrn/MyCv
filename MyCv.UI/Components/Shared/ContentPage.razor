@@ -1,11 +1,15 @@
 <PageTitle>@PageTitle</PageTitle>
-
 <ContentMenu SectionLinks=@_sectionLinks />
 <MudGrid Spacing="10" Justify="Justify.Center" id="main">
-    @ChildContent
+    <CascadingValue Value="this">
+        @Header
+        @Sections
+    </CascadingValue>
 </MudGrid>
 
 @code {
+    private Dictionary<string, string> _sectionLinks { get; set; } = [];
+
     [Parameter]
     public required string PageLink { get; set; }
 
@@ -13,15 +17,25 @@
     public required string PageTitle { get; set; }
 
     [Parameter]
-    public required List<(string, string, string)>? Sections { get; set; }
+    public RenderFragment Header { get; set; }
 
     [Parameter]
-    public RenderFragment? ChildContent { get; set; }
+    public RenderFragment? Sections { get; set; }
 
-    private Dictionary<string, string>? _sectionLinks;
-
-    protected override void OnParametersSet()
+    /// <summary>
+    /// Register header name for creating the menu.
+    /// </summary>
+    /// <param name="headerName"></param>
+    public void RegisterHeader(string headerName)
     {
-        _sectionLinks = Sections?.ToDictionary(i => i.Item1, i => i.Item3);
+        _sectionLinks[headerName] = PageLink;
+    }
+
+    /// <summary>
+    /// Register sections for creating the menu.
+    /// </summary>
+    public void RegisterSection(string sectionName, string fragmentName)
+    {
+        _sectionLinks[sectionName] = $"{PageLink}#{fragmentName}";
     }
 }

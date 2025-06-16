@@ -6,7 +6,7 @@
         <MudDivider Class="my-2" />
         @foreach (var sectionLink in SectionLinks)
         {
-            <MudNavLink Href="@sectionLink.Key" Match="NavLinkMatch.All">@sectionLink.Value</MudNavLink>
+            <MudNavLink Href="@sectionLink.Value" Match="NavLinkMatch.All">@sectionLink.Key</MudNavLink>
         }
     </MudNavMenu>
 </MudDrawer>

@@ -1,15 +1,24 @@
 <MudItem md="12">
-    <MudText Typo="Typo.h4" Align="Align.Left" id="@SectionFragment">@SectionName</MudText>
+    <MudText Typo="Typo.h4" Align="Align.Left" id="@SectionId">@SectionName</MudText>
     @ChildContent
 </MudItem>
 
 @code {
+    [CascadingParameter]
+    public ContentPage ContentPage { get; set; }
+
     [Parameter]
-    public required string SectionFragment { get; set; }
+    public required string SectionId { get; set; }
 
     [Parameter]
     public required string SectionName { get; set; }
 
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
+
+    /// <inheritdoc/>
+    protected override void OnParametersSet()
+    {
+        ContentPage.RegisterSection(SectionId, SectionName);
+    }
 }

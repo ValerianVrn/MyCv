@@ -1,17 +1,31 @@
 @inject IStringLocalizer<Resource> Localizer
 
-<MudDrawer Fixed="true" ClipMode="DrawerClipMode.Always" Anchor="Anchor.End" Open="true" Variant="DrawerVariant.Responsive" Elevation="0" Class="my-6">
-    <MudNavMenu Bordered="true">
-        <MudText Typo="Typo.h6" Class="px-4">@Localizer["Content"]</MudText>
-        <MudDivider Class="my-2" />
-        @foreach (var sectionLink in SectionLinks)
-        {
-            <MudNavLink Href="@sectionLink.Key" Match="NavLinkMatch.All">@sectionLink.Value</MudNavLink>
-        }
-    </MudNavMenu>
-</MudDrawer>
+@if (Sections?.Count() > 1)
+{
+    <MudDrawer Fixed="true" ClipMode="DrawerClipMode.Always" Anchor="Anchor.End" Open="true" Variant="DrawerVariant.Responsive" Elevation="0" Class="my-6">
+        <MudNavMenu Bordered="true">
+            <MudText Typo="Typo.h6" Class="px-4">@Localizer["Content"]</MudText>
+            <MudDivider Class="my-2" />
+            @foreach (var sectionItem in Sections)
+            {
+                <MudNavLink Href="@sectionItem.Href"
+                            Match="NavLinkMatch.All"
+                            Icon="@(sectionItem.Href == CurrentSectionHref ? Icons.Material.Filled.Circle : Icons.Material.Outlined.Circle)"
+                            IconColor="@(sectionItem.Href == CurrentSectionHref ? Color.Primary : Color.Default)"
+                            Class="@(sectionItem.Href == CurrentSectionHref ? "mud-nav-link-active" : "")">
+                    @sectionItem.Name
+                </MudNavLink>
+            }
+        </MudNavMenu>
+    </MudDrawer>
+}
 
 @code {
+    public record Section(string Id, string Href, string Name);
+
     [Parameter]
-    public required Dictionary<string, string> SectionLinks { get; set; }
+    public List<Section>? Sections { get; set; }
+
+    [Parameter]
+    public required string CurrentSectionHref { get; set; }
 }

@@ -5,67 +5,56 @@
 @inject IStringLocalizer<Resource> Localizer
 @inject IRatingService RatingService
 
-<ContentPage PageLink="/architecture" PageTitle="@Localizer["Architecture"]" Sections="@_sections">
+<ContentPage PageLink="/architecture" PageTitle="@Localizer["Architecture"]">
     @* Introduction *@
-    <ContentHeader HeaderName="@Localizer["Introduction"]">
-        <MudChips>
-            <MudChip T="string" Color="Color.Default">DDD</MudChip>
-            <MudChip T="string" Color="Color.Default">CQRS</MudChip>
-            <MudChip T="string" Color="Color.Default">Event sourcing</MudChip>
-            <MudChip T="string" Color="Color.Default">Docker</MudChip>
-        </MudChips>
-        <Content>
-            <MudText Typo="Typo.body1">@Localizer["ArchitectureIntroduction"]</MudText>
-            <MudText Typo="Typo.body1">@Localizer["ArchitectureMicroservice"]</MudText>
-            <MudText Typo="Typo.body1">
-                @Localizer["ArchitectureReference1"]
-                <MudLink Href="https://learn.microsoft.com/en-us/dotnet/architecture/microservices/">.NET Microservices: Architecture for Containerized .NET Applications</MudLink>
-                @Localizer["ArchitectureReference2"]
-                <MudLink Href="https://martinfowler.com/tags/domain%20driven%20design.html">Martin Fowler</MudLink>.
-            </MudText>
-            <MudAlert Severity="Severity.Success" Class="my-3">
-                @Localizer["ArchitectureMe1"]<br />
-                @Localizer["ArchitectureMe2"]<br />
-                @Localizer["ArchitectureMe3"]
-            </MudAlert>
-            <MudText Typo="Typo.body1">@Localizer["MicroserviceDescription"]</MudText>
-            <MudGrid Spacing="6" Justify="Justify.Center" Class="pt-3">
-                <MudItem md="4">
-                    <MudText Typo="Typo.h6">Front-end</MudText>
-                    <MudText Typo="Typo.body2">@Localizer["MicroserviceFrontend"]</MudText>
-                </MudItem>
-                <MudItem md="4">
-                    <MudText Typo="Typo.h6">API Gateway</MudText>
-                    <MudText Typo="Typo.body2">@Localizer["MicroserviceAPI"]</MudText>
-                </MudItem>
-                <MudItem md="4">
-                    <MudText Typo="Typo.h6">Back-end</MudText>
-                    <MudText Typo="Typo.body2">@Localizer["MicroserviceBackend"]</MudText>
-                </MudItem>
-                <MudItem md="12" Class="d-flex justify-center">
-                    <MudImage Fluid="true" Src="images/mycv-microservice.drawio.png" Alt="Microservices" Class="rounded-lg" />
-                </MudItem>
-                <MudItem md="12">
-                    <MudText Typo="Typo.body1">@Localizer["MicroserviceDocker"]</MudText>
-                </MudItem>
-            </MudGrid>
-        </Content>
-    </ContentHeader>
-    <ArchitectureCqrs></ArchitectureCqrs>
-    <ArchitectureEventSourcing></ArchitectureEventSourcing>    
+    <Header>
+        <ContentHeader HeaderId="introduction" HeaderName="@Localizer["Introduction"]">
+            <MudChips>
+                <MudChip T="string" Color="Color.Default">DDD</MudChip>
+                <MudChip T="string" Color="Color.Default">CQRS</MudChip>
+                <MudChip T="string" Color="Color.Default">Event sourcing</MudChip>
+                <MudChip T="string" Color="Color.Default">Docker</MudChip>
+            </MudChips>
+            <Content>
+                <MudText Typo="Typo.body1">@Localizer["ArchitectureIntroduction"]</MudText>
+                <MudText Typo="Typo.body1">@Localizer["ArchitectureMicroservice"]</MudText>
+                <MudText Typo="Typo.body1">
+                    @Localizer["ArchitectureReference1"]
+                    <MudLink Href="https://learn.microsoft.com/en-us/dotnet/architecture/microservices/">.NET Microservices: Architecture for Containerized .NET Applications</MudLink>
+                    @Localizer["ArchitectureReference2"]
+                    <MudLink Href="https://martinfowler.com/tags/domain%20driven%20design.html">Martin Fowler</MudLink>.
+                </MudText>
+                <MudAlert Severity="Severity.Success" Class="my-3">
+                    @Localizer["ArchitectureMe1"]<br />
+                    @Localizer["ArchitectureMe2"]<br />
+                    @Localizer["ArchitectureMe3"]
+                </MudAlert>
+                <MudText Typo="Typo.body1">@Localizer["MicroserviceDescription"]</MudText>
+                <MudGrid Spacing="6" Justify="Justify.Center" Class="pt-3">
+                    <MudItem md="4">
+                        <MudText Typo="Typo.h6">Front-end</MudText>
+                        <MudText Typo="Typo.body2">@Localizer["MicroserviceFrontend"]</MudText>
+                    </MudItem>
+                    <MudItem md="4">
+                        <MudText Typo="Typo.h6">API Gateway</MudText>
+                        <MudText Typo="Typo.body2">@Localizer["MicroserviceAPI"]</MudText>
+                    </MudItem>
+                    <MudItem md="4">
+                        <MudText Typo="Typo.h6">Back-end</MudText>
+                        <MudText Typo="Typo.body2">@Localizer["MicroserviceBackend"]</MudText>
+                    </MudItem>
+                    <MudItem md="12" Class="d-flex justify-center">
+                        <MudImage Fluid="true" Src="images/mycv-microservice.drawio.png" Alt="Microservices" Class="rounded-lg" />
+                    </MudItem>
+                    <MudItem md="12">
+                        <MudText Typo="Typo.body1">@Localizer["MicroserviceDocker"]</MudText>
+                    </MudItem>
+                </MudGrid>
+            </Content>
+        </ContentHeader>
+    </Header>
+    <Sections>
+        <ArchitectureCqrs></ArchitectureCqrs>
+        <ArchitectureEventSourcing></ArchitectureEventSourcing>
+    </Sections>
 </ContentPage>
-
-@code {
-    private List<(string, string, string)>? _sections { get; set; }
-
-    protected override void OnInitialized()
-    {
-        _sections = new()
-        {
-            new ("/architecture", "", Localizer["Introduction"]),
-            new ("/architecture#cqrs", "cqrs", "CQRS"),
-            new ("/architecture#es", "es", "Event sourcing"),
-        };
-    }
-
-}

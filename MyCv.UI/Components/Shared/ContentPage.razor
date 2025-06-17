@@ -1,11 +1,23 @@
-<PageTitle>@PageTitle</PageTitle>
+@inject IJSRuntime JsRuntime
+@inject NavigationManager NavigationManager
 
-<ContentMenu SectionLinks=@_sectionLinks />
-<MudGrid Spacing="10" Justify="Justify.Center" id="main">
-    @ChildContent
-</MudGrid>
+<PageTitle>@PageTitle</PageTitle>
+<ContentMenu Sections=@_sections CurrentSectionHref="@CurrentSectionHref" />
+<div @ref="_scrollContainer" style="height: 100vh; overflow-y: auto;">
+    <MudGrid Spacing="10" Justify="Justify.Center" id="main">
+        <CascadingValue Value="this">
+            @Header
+            @Sections
+        </CascadingValue>
+    </MudGrid>
+</div>
 
 @code {
+    private List<ContentMenu.Section> _sections { get; set; } = [];
+    private ElementReference _scrollContainer;
+    private string CurrentSectionHref = "";
+    private DotNetObjectReference<ContentPage>? _dotNetRef;
+
     [Parameter]
     public required string PageLink { get; set; }
 
@@ -13,15 +25,65 @@
     public required string PageTitle { get; set; }
 
     [Parameter]
-    public required List<(string, string, string)>? Sections { get; set; }
+    public RenderFragment Header { get; set; }
 
     [Parameter]
-    public RenderFragment? ChildContent { get; set; }
+    public RenderFragment? Sections { get; set; }
 
-    private Dictionary<string, string>? _sectionLinks;
-
-    protected override void OnParametersSet()
+    /// <inheritdoc/>
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        _sectionLinks = Sections?.ToDictionary(i => i.Item1, i => i.Item3);
+        if (firstRender && _sections.Any())
+        {
+            // Activate scroll spy for content menu update.
+            _dotNetRef = DotNetObjectReference.Create(this);
+            await JsRuntime.InvokeVoidAsync("initScrollSpy", _scrollContainer, _sections.Select(s => s.Id).ToArray(), _dotNetRef, PageLink);
+
+            // Set initial section.
+            var uri = new Uri(NavigationManager.Uri);
+            if (!string.IsNullOrEmpty(uri.Fragment))
+            {
+                var sectionId = uri.Fragment.TrimStart('#');
+                UpdateCurrentSection(sectionId);
+            }
+            else if (_sections.Any())
+            {
+                UpdateCurrentSection(_sections.First().Id);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Register sections for creating the menu.
+    /// </summary>
+    /// <param name="sectionId"></param>
+    /// <param name="sectionName"></param>
+    public void RegisterSection(string sectionId, string sectionName)
+    {
+        if (!_sections.Any(s => s.Id == sectionId))
+        {
+            _sections.Add(new(sectionId, $"{PageLink}#{sectionId}", sectionName));
+        }
+    }
+
+    /// <summary>
+    /// Update the current section for the content menu.
+    /// </summary>
+    /// <param name="sectionId"></param>
+    [JSInvokable]
+    public void UpdateCurrentSection(string sectionId)
+    {
+        var section = _sections.FirstOrDefault(s => s.Id == sectionId);
+
+        if (section != null)
+        {
+            CurrentSectionHref = section.Href;
+            StateHasChanged();
+        }
+    }
+
+    public void Dispose()
+    {
+        _dotNetRef?.Dispose();
     }
 }

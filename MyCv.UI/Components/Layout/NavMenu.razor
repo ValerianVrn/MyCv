@@ -1,6 +1,6 @@
 @inject IStringLocalizer<Resource> Localizer
 
-<MudNavMenu>
+<MudNavMenu Rounded="true" Bordered="false">
     <MudNavLink Href="/" Match="NavLinkMatch.All">@Localizer["Home"]</MudNavLink>
     <MudNavGroup Title="@Localizer["Architecture"]" Expanded="true">
         <MudNavLink Href="/microservice" Match="NavLinkMatch.Prefix">@Localizer["Microservice"]</MudNavLink>

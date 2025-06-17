@@ -1,0 +1,30 @@
+<MudItem md="12">
+    <MudText Typo="Typo.h2" Align="Align.Left" id="@HeaderId">
+        @HeaderName
+        @MudChips
+    </MudText>
+    @Content
+</MudItem>
+
+@code {
+    [CascadingParameter]
+    public ContentPage ContentPage { get; set; }
+
+    [Parameter]
+    public required string HeaderId { get; set; }
+
+    [Parameter]
+    public required string HeaderName { get; set; }
+
+    [Parameter]
+    public RenderFragment? MudChips { get; set; }
+
+    [Parameter]
+    public RenderFragment? Content { get; set; }
+
+    /// <inheritdoc/>
+    protected override void OnParametersSet()
+    {
+        ContentPage.RegisterSection(HeaderId, HeaderName);
+    }
+}

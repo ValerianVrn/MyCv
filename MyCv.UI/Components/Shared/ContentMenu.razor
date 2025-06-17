@@ -1,11 +1,11 @@
 @inject IStringLocalizer<Resource> Localizer
 
-@if (Sections?.Count() > 1)
-{
-    <MudDrawer Fixed="true" ClipMode="DrawerClipMode.Always" Anchor="Anchor.End" Open="true" Variant="DrawerVariant.Responsive" Elevation="0" Class="my-6">
-        <MudNavMenu Bordered="true">
-            <MudText Typo="Typo.h6" Class="px-4">@Localizer["Content"]</MudText>
-            <MudDivider Class="my-2" />
+<MudDrawer Fixed="true" ClipMode="DrawerClipMode.Always" Anchor="Anchor.End" Open="true" Variant="DrawerVariant.Responsive" Elevation="0" Class="my-6">
+    <MudNavMenu Bordered="true">
+        <MudText Typo="Typo.h6" Class="px-4">@Localizer["Content"]</MudText>
+        <MudDivider Class="my-2" />
+        @if (Sections?.Count() > 0)
+        {
             @foreach (var sectionItem in Sections)
             {
                 <MudNavLink Href="@sectionItem.Href"
@@ -16,9 +16,9 @@
                     @sectionItem.Name
                 </MudNavLink>
             }
-        </MudNavMenu>
-    </MudDrawer>
-}
+        }
+    </MudNavMenu>
+</MudDrawer>
 
 @code {
     public record Section(string Id, string Href, string Name);

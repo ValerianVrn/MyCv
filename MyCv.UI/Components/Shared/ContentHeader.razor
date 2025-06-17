@@ -1,5 +1,5 @@
 <MudItem md="12">
-    <MudText Typo="Typo.h2" Align="Align.Left">
+    <MudText Typo="Typo.h2" Align="Align.Left" id="@HeaderId">
         @HeaderName
         @MudChips
     </MudText>
@@ -9,6 +9,9 @@
 @code {
     [CascadingParameter]
     public ContentPage ContentPage { get; set; }
+
+    [Parameter]
+    public required string HeaderId { get; set; }
 
     [Parameter]
     public required string HeaderName { get; set; }
@@ -22,6 +25,6 @@
     /// <inheritdoc/>
     protected override void OnParametersSet()
     {
-        ContentPage.RegisterHeader(HeaderName);
+        ContentPage.RegisterSection(HeaderId, HeaderName);
     }
 }

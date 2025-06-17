@@ -4,32 +4,33 @@
 
 <ContentPage PageLink="/fake" PageTitle="Fake">
     <Header>
-    <ContentHeader HeaderName="Lorem ipsum">
-        <MudChips>
-            <MudChip T="string" Color="Color.Default">Lorem ipsum.</MudChip>
-            <MudChip T="string" Color="Color.Default">Lorem ipsum.</MudChip>
-        </MudChips>
-        <Content>
+        <ContentHeader HeaderId="Lorem" HeaderName="Lorem ipsum">
+            <MudChips>
+                <MudChip T="string" Color="Color.Default">Lorem ipsum.</MudChip>
+                <MudChip T="string" Color="Color.Default">Lorem ipsum.</MudChip>
+            </MudChips>
+            <Content>
+                @for (var i = 0; i < 10; i++)
+                {
+                    <MudText>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</MudText>
+                }
+            </Content>
+        </ContentHeader>
+    </Header>
+    <Sections>
+        <ContentSection SectionId="fake1" SectionName="Fake1">
             @for (var i = 0; i < 10; i++)
             {
                 <MudText>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</MudText>
             }
-        </Content>
-        </ContentHeader>
-    </Header>
-    <Sections>
-    <ContentSection SectionFragment="fake1" SectionName="Fake1">
-        @for (var i = 0; i < 10; i++)
-        {
-            <MudText>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</MudText>
-        }
-    </ContentSection>
-    <ContentSection SectionFragment="fake2" SectionName="Fake2">
-        @for (var i = 0; i < 10; i++)
-        {
-            <MudText>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</MudText>
-        }
-    </ContentSection></Sections>
+        </ContentSection>
+        <ContentSection SectionId="fake2" SectionName="Fake2">
+            @for (var i = 0; i < 10; i++)
+            {
+                <MudText>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</MudText>
+            }
+        </ContentSection>
+    </Sections>
 </ContentPage>
 
 @code {

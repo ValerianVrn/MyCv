@@ -1,7 +1,13 @@
 <MudItem md="12">
     <MudText Typo="Typo.h2" Align="Align.Left" id="@HeaderId">
         @HeaderName
-        @MudChips
+        @if (Chips?.Any() ?? false)
+        {
+            foreach(var chip in Chips)
+            {
+                <MudChip T="string" Color="Color.Default">@chip</MudChip>
+            }
+        }
     </MudText>
     @Content
 </MudItem>
@@ -17,7 +23,7 @@
     public required string HeaderName { get; set; }
 
     [Parameter]
-    public RenderFragment? MudChips { get; set; }
+    public List<string>? Chips { get; set; }
 
     [Parameter]
     public RenderFragment? Content { get; set; }

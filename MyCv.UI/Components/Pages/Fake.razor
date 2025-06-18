@@ -4,11 +4,7 @@
 
 <ContentPage PageLink="/fake" PageTitle="Fake">
     <Header>
-        <ContentHeader HeaderId="Lorem" HeaderName="Lorem ipsum">
-            <MudChips>
-                <MudChip T="string" Color="Color.Default">Lorem ipsum.</MudChip>
-                <MudChip T="string" Color="Color.Default">Lorem ipsum.</MudChip>
-            </MudChips>
+        <ContentHeader HeaderId="Lorem" HeaderName="Lorem ipsum" Chips="@(["Lorem ipsum", "Lorem ipsum"])">
             <Content>
                 @for (var i = 0; i < 10; i++)
                 {

@@ -1,0 +1,74 @@
+@using MyCv.UI.Components.Shared
+@using static MyCv.UI.Components.Shared.CodeBlock
+
+<ContentSection SectionId="best" SectionName="Best practices">
+
+    <MudText>
+        En tant que leader technique, j'applique et propage les bonnes pratiques de code inspirées des standards Microsoft principalement.
+        Ces guides pouvant être lourds à absorber pour les développeurs, je peux rédiger un condensé des principaux cas de figures rencontrés ou des erreurs rencontrées lors des code reviews.
+    </MudText>
+    <MudText>
+        À ce sujet, les commentaires de PR sont bien souvent assortis de liens vers des documents officiels le cas échéant.
+    </MudText>
+    <MudText>
+        Voici un exemple de code extrait du service Rating (<MudLink Href="">SetRatingCommandHandler.cs</MudLink>) où sont présentés quelques principes de programmation.
+    </MudText>
+    <CodeBlock Language="@CodeBlock.CodeLanguage.CSharp" Code="@rawCode" Tooltips="@tooltipMap" IdentifiedCodeTokenTypes="@identifiedCodeTokenTypes" />
+</ContentSection>
+
+@code {
+    private string rawCode = @"
+using MediatR;
+
+namespace Api.Application.Commands
+{
+    /// <summary>
+    /// ... command handler.
+    /// </summary>
+    /// <param name=""repository""></param>
+    internal class SetRatingCommandHandler(IRepository repository) : IRequestHandler<SetRatingCommand, Result>
+    {
+        /// <summary>
+        /// Repository.
+        /// </summary>
+        private readonly IRepository _repository = repository ?? throw new ArgumentNullException(nameof(repository));
+
+        /// <inheritdoc/>
+        public async Task<Result> Handle(SetRatingCommand command, CanRatingationToken canRatingationToken)
+        {
+            // Get the .
+            var  = await Repository.GetAsync(command.Guid, canRatingationToken);
+
+            if ( is null)
+            {
+                return Result.Failure(ResultErrors.NotFound(command.Guid));
+            }
+
+            // Update the Rating.
+            .SetRatingGuid(command.RatingGuid);
+
+            // Save events.
+            await _repository.SaveAsync(, canRatingationToken);
+
+            return Result.Success();
+        }
+    }
+}";
+
+    private Dictionary<string, Tooltip> tooltipMap = new()
+        {
+            ["internal"] = new("Accessibilité", "Modificateur d'accès public", "Modificateur d'accès public", "Modificateur d'accès public", 1),
+            ["SetRatingCommandHandler"] = new("SRP", "Modificateur d'accès public", "Modificateur d'accès public", "Modificateur d'accès public", 1),
+            ["IRepository repository"] = new("DI", "Modificateur d'accès public", "Modificateur d'accès public", "Injection d'interface pour testabilité", 1),
+            ["IRepository _repository"] = new("DI", "Modificateur d'accès public", "Modificateur d'accès public", "Modificateur d'accès public", 1),
+            ["_repository"] = new("Naming convention", "Modificateur d'accès public", "Modificateur d'accès public", "Modificateur d'accès public", 1),
+            ["/// <summary>"] = new("Commentaires", "Modificateur d'accès public", "Modificateur d'accès public", "https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/", 1),
+            ["// Update the Rating"] = new("Commentaires", "Modificateur d'accès public", "Modificateur d'accès public", "https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/", 1),
+            ["async"] = new("Naming convention", "Modificateur d'accès public", "Modificateur d'accès public", "https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions", 1),
+        };
+
+    private List<IdentifiedCodeTokenType> identifiedCodeTokenTypes = new()
+        {
+            new("Customer", CodeTokenType.TypeName, 1)
+        };
+}

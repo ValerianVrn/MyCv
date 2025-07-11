@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCv.UI", "MyCv.UI\MyCv.UI.csproj", "{92767FD5-304B-4558-BE88-6905295D7EE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCv.UI", "MyCv.UI\MyCv.UI.csproj", "{92767FD5-304B-4558-BE88-6905295D7EE6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{45B847A5-13B8-42F1-9B48-6F55FD2EE6F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

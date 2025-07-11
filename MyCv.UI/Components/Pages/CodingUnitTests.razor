@@ -1,0 +1,77 @@
+@using MyCv.UI.Components.Shared
+@using static MyCv.UI.Components.Shared.CodeBlock
+
+<ContentSection SectionId="unit-tests" SectionName="Tests unitaires">
+
+    <MudText>
+        Les tests unitaires sont indispensables dans la majorité des développements. Ils permettent de s'assurer des non régressions (après l'ajout d'une fonctionnalité par exemple) et de tester les cas de figure.
+        Un objectif de couverture de 80% tout à fait envisageable si le SRP est appliqué (avantage CQRS).
+    </MudText>
+    <MudText>
+        Les tests unitaires sont facilités lorsqu'on applique le SRP.'.
+    </MudText>
+    <MudText>
+        Principe AAA (<MudLink Href="">SetRatingCommandHandler.cs</MudLink>)..
+    </MudText>
+    <CodeBlock Language="@CodeBlock.CodeLanguage.CSharp" Code="@rawCode" Tooltips="@tooltipMap" IdentifiedCodeTokenTypes="@identifiedCodeTokenTypes" />
+</ContentSection>
+
+@code {
+    private string rawCode = @"
+
+namespace pi.Application.UnitTests.Commands
+{
+    [TestClass]
+    public class SetIsChargingCommandHandlerTest
+    {
+        [TestMethod]
+        public async Task Handle_Exists_EventsOfEntityAreSaved()
+        {
+            // Arrange.
+            var command = new SetIsChargingCommand(
+                            Guid: new Guid(""27314045-9c32-4c3b-ad31-24ba6012841a""),
+                            IsCharging: false);
+            var Repository = new Mock<IRepository>();
+            _ = Repository.Setup(d => d.GetAsync(new Guid(""27314045-9c32-4c3b-ad31-24ba6012841a""), It.IsAny<CancellationToken>())).ReturnsAsync(Helper.CreateDomain(new Guid(""27314045-9c32-4c3b-ad31-24ba6012841a"")));
+            var handler = new SetIsChargingCommandHandler(Repository.Object);
+
+            // Act.
+            var result = await handler.Handle(command, CancellationToken.None);
+
+            // Assert.
+            Repository.Verify(x => x.SaveAsync(It.IsAny<>(), It.IsAny<CancellationToken>()), Times.Once);
+            Assert.IsTrue(result.IsSuccess);
+        }
+
+        [TestMethod]
+        public async Task Handle_DoesNotExist_ReturnsFailure()
+        {
+            // Arrange.
+            var command = new SetIsChargingCommand(
+                            Guid: new Guid(""27314045-9c32-4c3b-ad31-24ba6012841a""),
+                            IsCharging: false);
+            var Repository = new Mock<IRepository>();
+            var handler = new SetIsChargingCommandHandler(Repository.Object);
+
+            // Act.
+            var result = await handler.Handle(command, CancellationToken.None);
+
+            // Assert.
+            Assert.IsTrue(result.IsFailure);
+        }
+    }
+}";
+
+    private Dictionary<string, Tooltip> tooltipMap = new()
+        {
+            ["Handle_Exists_EventsOfEntityAreSaved"] = new("Naming convention", "Modificateur d'accès public", "Modificateur d'accès public", "Lourd mais clair : méthode testée, argument, résultat attendu", 1),
+            ["// Arrange."] = new("AAA", "Modificateur d'accès public", "Modificateur d'accès public", "https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/", 1),
+            ["Mock<IRepository>();"] = new("MOQ", "Modificateur d'accès public", "Modificateur d'accès public", "Modificateur d'accès public", 1),
+            ["Assert.IsTrue(result.IsSuccess)"] = new("Naming convention", "Modificateur d'accès public", "Modificateur d'accès public", "Modificateur d'accès public", 1),
+        };
+
+    private List<IdentifiedCodeTokenType> identifiedCodeTokenTypes = new()
+        {
+            new("Customer", CodeTokenType.TypeName, 1)
+        };
+}

@@ -1,7 +1,9 @@
-namespace MyCv.Rating.Domain.UnitTests.AggregateModels.RatingAggregate
+using MyCv.Rating.Domain.AggregateModels.AssessmentAggregate;
+
+namespace MyCv.Rating.Domain.UnitTests.AggregateModels.AssessmentAggregate
 {
     [TestClass]
-    public class RatingTest
+    public class AssessmentTest
     {
         [TestMethod]
         public void Constructor_ValidRating_RatingIsNotNull()
@@ -9,19 +11,19 @@ namespace MyCv.Rating.Domain.UnitTests.AggregateModels.RatingAggregate
             // Arrange.
             var entityGuid = Guid.NewGuid();
             var visitorId = "1";
-            var ratingValue = 1;
+            var score = 1;
             var recommend = true;
 
             // Act.
-            var rating = new Domain.AggregateModels.RatingAggregate.Rating(entityGuid, visitorId, ratingValue, recommend);
+            var assessment = new Assessment(entityGuid, visitorId, score, recommend);
 
             // Assert.
-            Assert.IsNotNull(rating);
-            Assert.AreEqual(entityGuid, rating.EntityGuid);
-            Assert.AreEqual(visitorId, rating.VisitorId);
-            Assert.AreEqual(ratingValue, rating.RatingValue);
-            Assert.AreEqual(recommend, rating.Recommend);
-            Assert.AreEqual(0, rating.DomainEvents.Count);
+            Assert.IsNotNull(assessment);
+            Assert.AreEqual(entityGuid, assessment.EntityGuid);
+            Assert.AreEqual(visitorId, assessment.VisitorId);
+            Assert.AreEqual(score, assessment.Score);
+            Assert.AreEqual(recommend, assessment.Recommend);
+            Assert.AreEqual(0, assessment.DomainEvents.Count);
         }
 
         [TestMethod]
@@ -30,17 +32,17 @@ namespace MyCv.Rating.Domain.UnitTests.AggregateModels.RatingAggregate
             // Arrange.
             var entityGuid = Guid.Empty;
             var visitorId = "1";
-            var ratingValue = 1;
+            var score = 1;
             var recommend = true;
 
             // Act.
-            Domain.AggregateModels.RatingAggregate.Rating act()
+            Assessment act()
             {
-                return new(entityGuid, visitorId, ratingValue, recommend);
+                return new(entityGuid, visitorId, score, recommend);
             }
 
             // Assert.
-            _ = Assert.ThrowsException<ArgumentNullException>((Func<Domain.AggregateModels.RatingAggregate.Rating>)act);
+            _ = Assert.ThrowsException<ArgumentNullException>((Func<Assessment>)act);
         }
 
         [TestMethod]
@@ -49,13 +51,13 @@ namespace MyCv.Rating.Domain.UnitTests.AggregateModels.RatingAggregate
             // Arrange.
             var entityGuid = Guid.NewGuid();
             var visitorId = string.Empty;
-            var ratingValue = 1;
+            var score = 1;
             var recommend = true;
 
             // Act.
-            Domain.AggregateModels.RatingAggregate.Rating act()
+            Assessment act()
             {
-                return new(entityGuid, visitorId, ratingValue, recommend);
+                return new(entityGuid, visitorId, score, recommend);
             }
 
             // Assert.
@@ -68,13 +70,13 @@ namespace MyCv.Rating.Domain.UnitTests.AggregateModels.RatingAggregate
             // Arrange.
             var entityGuid = Guid.NewGuid();
             var visitorId = "1";
-            var ratingValue = -1;
+            var score = -1;
             var recommend = true;
 
             // Act.
-            Domain.AggregateModels.RatingAggregate.Rating act()
+            Assessment act()
             {
-                return new(entityGuid, visitorId, ratingValue, recommend);
+                return new(entityGuid, visitorId, score, recommend);
             }
 
             // Assert.

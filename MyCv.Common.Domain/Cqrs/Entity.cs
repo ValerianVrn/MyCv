@@ -20,7 +20,7 @@ namespace MyCv.Common.Domain.Cqrs
         /// <summary>
         /// Domain events.
         /// </summary>
-        public IReadOnlyCollection<INotification>? DomainEvents
+        public IReadOnlyCollection<INotification> DomainEvents
         {
             get
             {

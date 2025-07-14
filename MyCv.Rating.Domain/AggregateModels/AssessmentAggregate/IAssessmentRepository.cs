@@ -14,6 +14,12 @@ namespace MyCv.Rating.Domain.AggregateModels.AssessmentAggregate
         Task<IEnumerable<Assessment>> GetAllAsync(CancellationToken cancellationToken);
 
         /// <summary>
+        /// Get the assessment of a visitor asynchronously.
+        /// </summary>
+        /// <returns></returns>
+        Task<Assessment?> GetAsync(string visitorId, CancellationToken cancellationToken);
+
+        /// <summary>
         /// Create an assessment.
         /// </summary>
         /// <param name="assessment"></param>

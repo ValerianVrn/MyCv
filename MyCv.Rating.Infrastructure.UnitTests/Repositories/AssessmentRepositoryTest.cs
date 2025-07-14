@@ -36,6 +36,26 @@ namespace MyCv.Rating.Infrastructure.UnitTests.Repositories
         }
 
         [TestMethod]
+        public async Task GetAsync_KnownVisitorId_ReturnsAssessment()
+        {
+            // Arrange.
+            var context = Helper.CreateRatingContext();
+            var assessmentRepository = new AssessmentRepository(context);
+            var savedAssessments = new List<Assessment>
+            {
+                new(Guid.NewGuid(), "1", 2, true)
+            };
+            await context.Assessments.AddRangeAsync(savedAssessments);
+            _ = await context.SaveChangesAsync();
+
+            // Act.
+            var assessment = await assessmentRepository.GetAsync("1", CancellationToken.None);
+
+            // Assert
+            Assert.IsNotNull(assessment);
+        }
+
+        [TestMethod]
         public async Task Create_Assessment_AssessmentIsSavedAndReturnEntity()
         {
             // Arrange.

@@ -37,6 +37,12 @@ namespace MyCv.Rating.Infrastructure.Repositories
         }
 
         /// <inheritdoc/>
+        public async Task<Assessment?> GetAsync(string visitorId, CancellationToken cancellationToken)
+        {
+            return await _context.Assessments.FirstOrDefaultAsync(a => a.VisitorId == visitorId, cancellationToken);
+        }
+
+        /// <inheritdoc/>
         public Assessment Create(Assessment assessment)
         {
             return _context.Assessments.Add(assessment).Entity;

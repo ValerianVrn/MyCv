@@ -7,16 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.10" />
+    <ProjectReference Include="..\MyCv.Rating.Infrastructure\MyCv.Rating.Infrastructure.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="12.0.0" />
+    <PackageReference Include="Polly" Version="8.5.2" />
+    <PackageReference Include="prometheus-net.AspNetCore" Version="8.2.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\MyCv.Rating.Domain\MyCv.Rating.Domain.csproj" />
-  </ItemGroup>
 
   <ItemGroup>
     <InternalsVisibleTo Include="$(MSBuildProjectName).UnitTests" />
+    <InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
   </ItemGroup>
-
+  
 </Project>

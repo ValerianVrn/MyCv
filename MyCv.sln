@@ -15,11 +15,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCv.Common.Domain", "MyCv.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCv.Common.Domain.UnitTests", "MyCv.Common.Domain.UnitTests\MyCv.Common.Domain.UnitTests.csproj", "{3905517D-C80D-4499-8B2D-59E6BE46B67E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCv.Rating.Domain.UnitTests", "MyCv.Rating.Domain.UnitTests\MyCv.Rating.Domain.UnitTests.csproj", "{3C1E3707-6E3B-4BBE-B667-16789EA33A11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCv.Rating.Domain.UnitTests", "MyCv.Rating.Domain.UnitTests\MyCv.Rating.Domain.UnitTests.csproj", "{3C1E3707-6E3B-4BBE-B667-16789EA33A11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCv.Rating.Infrastructure", "MyCv.Rating.Infrastructure\MyCv.Rating.Infrastructure.csproj", "{5B4D332C-E7B0-4284-BEBC-0BE03D488714}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCv.Rating.Infrastructure", "MyCv.Rating.Infrastructure\MyCv.Rating.Infrastructure.csproj", "{5B4D332C-E7B0-4284-BEBC-0BE03D488714}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCv.Rating.Infrastructure.UnitTests", "MyCv.Rating.Infrastructure.UnitTests\MyCv.Rating.Infrastructure.UnitTests.csproj", "{1DD65FB8-D0D0-4098-B71D-24908CB42F00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCv.Rating.Infrastructure.UnitTests", "MyCv.Rating.Infrastructure.UnitTests\MyCv.Rating.Infrastructure.UnitTests.csproj", "{1DD65FB8-D0D0-4098-B71D-24908CB42F00}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCv.Rating.Application", "MyCv.Rating.Application\MyCv.Rating.Application.csproj", "{4DFE6936-B255-4177-8C64-952E236E65B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCv.Rating.Application.UnitTests", "MyCv.Rating.Application.UnitTests\MyCv.Rating.Application.UnitTests.csproj", "{8C60E239-05E6-4E75-8E36-2E88B28EFB5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +59,14 @@ Global
 		{1DD65FB8-D0D0-4098-B71D-24908CB42F00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DD65FB8-D0D0-4098-B71D-24908CB42F00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DD65FB8-D0D0-4098-B71D-24908CB42F00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DFE6936-B255-4177-8C64-952E236E65B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DFE6936-B255-4177-8C64-952E236E65B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DFE6936-B255-4177-8C64-952E236E65B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DFE6936-B255-4177-8C64-952E236E65B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C60E239-05E6-4E75-8E36-2E88B28EFB5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C60E239-05E6-4E75-8E36-2E88B28EFB5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C60E239-05E6-4E75-8E36-2E88B28EFB5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C60E239-05E6-4E75-8E36-2E88B28EFB5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +78,8 @@ Global
 		{3C1E3707-6E3B-4BBE-B667-16789EA33A11} = {6B2F1267-30CA-478B-A768-05E5F93FD2EB}
 		{5B4D332C-E7B0-4284-BEBC-0BE03D488714} = {6B2F1267-30CA-478B-A768-05E5F93FD2EB}
 		{1DD65FB8-D0D0-4098-B71D-24908CB42F00} = {6B2F1267-30CA-478B-A768-05E5F93FD2EB}
+		{4DFE6936-B255-4177-8C64-952E236E65B2} = {6B2F1267-30CA-478B-A768-05E5F93FD2EB}
+		{8C60E239-05E6-4E75-8E36-2E88B28EFB5A} = {6B2F1267-30CA-478B-A768-05E5F93FD2EB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {562A1F09-2773-4CCC-9B82-E06FD02A17E2}

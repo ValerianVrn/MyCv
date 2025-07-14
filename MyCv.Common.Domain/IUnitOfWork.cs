@@ -6,13 +6,6 @@ namespace MyCv.Common.Domain
     public interface IUnitOfWork : IDisposable
     {
         /// <summary>
-        /// Save changes asynchronously.
-        /// </summary>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
-        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
-
-        /// <summary>
         /// Save entities asynchronously.
         /// </summary>
         /// <param name="cancellationToken"></param>

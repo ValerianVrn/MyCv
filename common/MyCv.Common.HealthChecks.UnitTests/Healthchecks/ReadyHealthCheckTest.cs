@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Moq;
+using MyCv.Common.HealthChecks.Healthchecks;
 
 namespace MyCv.Common.HealthChecks.UnitTests.Healthchecks
 {

@@ -56,6 +56,7 @@ builder.Services
     {
         _ = options.UseSqlServer(sqlServerConnectionString, x =>
         {
+            _ = x.MigrationsAssembly("MyCv.Rating.Api.Read");
             _ = x.EnableRetryOnFailure(maxRetryCount: 15, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
         });
     });
@@ -112,4 +113,12 @@ catch (Exception ex)
 finally
 {
     Log.CloseAndFlush();
+}
+
+namespace MyCv.Rating.Api.Read
+{
+    internal partial class Program
+    {
+
+    }
 }

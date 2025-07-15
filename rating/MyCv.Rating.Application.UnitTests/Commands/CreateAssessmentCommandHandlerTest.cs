@@ -13,7 +13,7 @@ namespace MyCv.Rating.Application.UnitTests.Commands
         {
             // Arrange.
             var unitOfWork = new Mock<IUnitOfWork>();
-            _ = unitOfWork.Setup(r => r.SaveEntitiesAsync( It.IsAny<CancellationToken>())).ReturnsAsync(true);
+            _ = unitOfWork.Setup(r => r.SaveEntitiesAsync(It.IsAny<CancellationToken>())).ReturnsAsync(true);
             var assessmentRepository = new Mock<IAssessmentRepository>();
             _ = assessmentRepository.Setup(r => r.UnitOfWork).Returns(unitOfWork.Object);
             var createAssessmentCommandHandler = new CreateAssessmentCommandHandler(assessmentRepository.Object);
@@ -31,7 +31,7 @@ namespace MyCv.Rating.Application.UnitTests.Commands
         {
             // Arrange.
             var unitOfWork = new Mock<IUnitOfWork>();
-            _ = unitOfWork.Setup(r => r.SaveEntitiesAsync( It.IsAny<CancellationToken>())).ReturnsAsync(false);
+            _ = unitOfWork.Setup(r => r.SaveEntitiesAsync(It.IsAny<CancellationToken>())).ReturnsAsync(false);
             var assessmentRepository = new Mock<IAssessmentRepository>();
             _ = assessmentRepository.Setup(r => r.UnitOfWork).Returns(unitOfWork.Object);
             var createAssessmentCommandHandler = new CreateAssessmentCommandHandler(assessmentRepository.Object);

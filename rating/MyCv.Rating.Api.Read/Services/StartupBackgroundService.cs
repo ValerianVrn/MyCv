@@ -51,6 +51,8 @@ namespace MyCv.Rating.Api.Read.Services
                 await ratingContext.Database.MigrateAsync(stoppingToken);
             }
 
+            logger.StartupEnded();
+
             _startupHealthCheck.StartupCompleted = true;
         }
     }

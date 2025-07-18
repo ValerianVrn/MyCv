@@ -13,7 +13,7 @@ namespace MyCv.Rating.Api.Read.Controllers
     /// <param name="assessmentQueries"></param>
     [Route("api/[controller]")]
     [ApiController]
-    public class AssessmentController(IAssessmentQueries assessmentQueries, ILogger<AssessmentController> logger) : Controller
+    public class AssessmentsController(IAssessmentQueries assessmentQueries, ILogger<AssessmentsController> logger) : Controller
     {
         /// <summary>
         /// Assessment queries.
@@ -30,12 +30,12 @@ namespace MyCv.Rating.Api.Read.Controllers
         /// </summary>
         /// <param name="visitorId"></param>
         /// <returns></returns>
-        [Route("{visitorId}")]
+        [Route("visitor/{visitorId}")]
         [HttpGet]
         [ProducesResponseType(typeof(AssessmentViewModel), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public async Task<ActionResult> GetAssessmentAsync(string visitorId)
+        public async Task<ActionResult> GetAssessmentOfVisitorAsync(string visitorId)
         {
             if (string.IsNullOrEmpty(visitorId))
             {

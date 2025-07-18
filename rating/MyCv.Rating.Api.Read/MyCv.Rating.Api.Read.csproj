@@ -22,5 +22,9 @@
     <ProjectReference Include="..\..\common\MyCv.Common.HealthChecks\MyCv.Common.HealthChecks.csproj" />
     <ProjectReference Include="..\MyCv.Rating.Application\MyCv.Rating.Application.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <InternalsVisibleTo Include="MyCv.Rating.FunctionalTests" />
+  </ItemGroup>
 
 </Project>

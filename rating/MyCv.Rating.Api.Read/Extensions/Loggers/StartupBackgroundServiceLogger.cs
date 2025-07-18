@@ -7,5 +7,8 @@ namespace MyCv.Rating.Api.Read.Extensions.Loggers
 
         [LoggerMessage(EventId = 2, Level = LogLevel.Information, Message = "Applying migrations")]
         internal static partial void ApplyingMigrations(this ILogger logger);
+
+        [LoggerMessage(EventId = 3, Level = LogLevel.Information, Message = "Startup ended")]
+        internal static partial void StartupEnded(this ILogger logger);
     }
 }

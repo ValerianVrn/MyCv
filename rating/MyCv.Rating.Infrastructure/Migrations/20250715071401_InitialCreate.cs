@@ -1,9 +1,8 @@
-﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace MyCv.Rating.Api.Read.Migrations
+namespace MyCv.Rating.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration

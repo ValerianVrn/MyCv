@@ -1,12 +1,12 @@
 using HealthChecks.UI.Client;
-using MediatR;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using MyCv.Common.HealthChecks.Healthchecks;
-using MyCv.Rating.Api.Read.Services;
+using MyCv.Rating.Api.Write.Services;
 using MyCv.Rating.Application.Extensions;
 using MyCv.Rating.Infrastructure;
+using MyCv.Rating.Infrastructure.Extensions;
 using Prometheus;
 using Serilog;
 using System.Globalization;
@@ -62,8 +62,8 @@ builder.Services
 
 // Core services.
 builder.Services
-    .AddScoped<IMediator, Mediator>()
-    .AddQueries()
+    .AddMediator()
+    .AddRepositories()
     .AddHostedService<StartupBackgroundService>();
 
 var app = builder.Build();
@@ -113,7 +113,7 @@ finally
     Log.CloseAndFlush();
 }
 
-namespace MyCv.Rating.Api.Read
+namespace MyCv.Rating.Api.Write
 {
     internal partial class Program
     {

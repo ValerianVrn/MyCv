@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\MyCv.Rating.Api.Write\MyCv.Rating.Api.Write.csproj" />
     <ProjectReference Include="..\MyCv.Rating.Api.Read\MyCv.Rating.Api.Read.csproj" />
   </ItemGroup>
 

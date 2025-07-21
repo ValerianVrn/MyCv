@@ -1,0 +1,43 @@
+version: '3.4'
+
+networks:
+  db:
+    name: db
+    driver: bridge
+    external: false
+
+x-common: &common
+  environment: &common-environment
+    TZ: Europe/Paris
+  logging:
+    driver: local
+  restart: unless-stopped
+
+services:
+  mycv.rating.api.read:
+    <<: *common
+    container_name: mycv.rating.api.read
+    image: ${DOCKER_REGISTRY-}mycvratingapiread
+    build:
+      context: .
+      dockerfile: rating/MyCv.Rating.Api.Read/Dockerfile
+    networks:
+      - db
+
+  mycv.rating.api.write:
+    <<: *common
+    container_name: mycv.rating.api.write
+    image: ${DOCKER_REGISTRY-}mycvratingapiwrite
+    build:
+      context: .
+      dockerfile: MyCv.Rating.Api.Write/Dockerfile
+    networks:
+      - db
+      
+  sqlserver:
+    <<: *common
+    container_name: sqlserver
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    networks:
+      - db
+

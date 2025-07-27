@@ -1,0 +1,6 @@
+@MyCv.Api.Read_HostAddress = http://localhost:5223
+
+GET {{MyCv.Api.Read_HostAddress}}/assessments/123456789
+Accept: application/json
+
+###

@@ -5,6 +5,7 @@ Cyber : keycloak
 OData
 Kubernees, swarm
 
+Utilisation de .NET 8 et mise à jour pour être sur nouveautés
 Speech
 
 Xcella

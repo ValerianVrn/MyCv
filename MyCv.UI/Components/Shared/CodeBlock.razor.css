@@ -3,7 +3,7 @@
   background-color: #2f2f2f;
   color: white;
   font-family: Consolas, monospace;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   white-space: pre-wrap;
   border: 1px solid #404040;
   border-radius: 6px;
@@ -44,9 +44,32 @@
 
 .token-comment {
   color: #57A64A;
-  font-style: italic;
 }
 
 .token-symbol {
   color: #D4D4D4;
+}
+
+.token-classname {
+  color: #4EC9B0;
+}
+
+.token-interfacename {
+  color: #B8D7A3;
+}
+
+.token-enumname {
+  color: #B8D7A3;
+}
+
+.token-methodname {
+  color: #DCDCAA;
+}
+
+.token-struct {
+  color: #4EC9B0;
+}
+
+.token-variable {
+  color: #9CDCFE;
 }

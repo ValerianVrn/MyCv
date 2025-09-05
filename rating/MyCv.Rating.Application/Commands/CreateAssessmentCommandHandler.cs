@@ -12,13 +12,13 @@ namespace MyCv.Rating.Application.Commands
         /// <summary>
         /// Assessment repository.
         /// </summary>
-        private readonly IAssessmentRepository _assessmentRespository = assessmentRepository ?? throw new ArgumentNullException(nameof(assessmentRepository));
+        private readonly IAssessmentRepository _assessmentRepository = assessmentRepository ?? throw new ArgumentNullException(nameof(assessmentRepository));
 
         /// <inheritdoc/>
         public async Task<Result> Handle(CreateAssessmentCommand command, CancellationToken cancellationToken)
         {
             // Check if the visitor has already an asessment.
-            if (await _assessmentRespository.GetAsync(command.VisitorId, cancellationToken) is not null)
+            if (await _assessmentRepository.GetAsync(command.VisitorId, cancellationToken) is not null)
             {
                 return Result.Failure(ResultErrors.AlreadyExists(command.VisitorId));
             }
@@ -31,9 +31,9 @@ namespace MyCv.Rating.Application.Commands
                 recommend: command.Recommend);
 
             // Save the entity.
-            _ = _assessmentRespository.Create(assessment);
+            _ = _assessmentRepository.Create(assessment);
 
-            if (!await _assessmentRespository.UnitOfWork.SaveEntitiesAsync(cancellationToken))
+            if (!await _assessmentRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken))
             {
                 return Result.Failure(ResultErrors.SaveEntitiesError(nameof(CreateAssessmentCommand)));
             }

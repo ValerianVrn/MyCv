@@ -28,7 +28,7 @@ jobs:
         env:
           HUGGINGFACE_API_KEY: ${{ secrets.HF_TOKEN }}   # IMPORTANT: litellm expects this name
         run: |
-          aider --model huggingface/mistralai/Mistral-7B-Instruct-v0.2 \
+          aider --model huggingface/bigcode/starcoder \
                 --message "${{ github.event.issue.body }}" \
                 --auto-commit
 

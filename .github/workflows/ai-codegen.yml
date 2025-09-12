@@ -26,14 +26,11 @@ jobs:
 
       - name: Run AI to generate code
         env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HUGGINGFACE_API_KEY: ${{ secrets.HF_TOKEN }}   # IMPORTANT: litellm expects this name
         run: |
-          echo "${{ github.event.issue.body }}" > prompt.txt
-
-          aider \
-            --model hf:mistralai/Mistral-7B-Instruct-v0.2 \
-            --message "$(cat prompt.txt)" \
-            --auto-commit
+          aider --model huggingface/mistralai/Mistral-7B-Instruct-v0.2 \
+                --message "${{ github.event.issue.body }}" \
+                --auto-commit
 
       - name: Push changes
         run: |

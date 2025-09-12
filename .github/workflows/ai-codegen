@@ -1,0 +1,42 @@
+name: AI Code Generator
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  generate-code:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # allow pushing code
+      issues: read
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install aider-chat
+
+      - name: Run AI to generate code
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}   # Hugging Face API key
+        run: |
+          echo "Issue body:" 
+          echo "${{ github.event.issue.body }}"
+
+          # Run aider with free model (Mistral, via Hugging Face Inference API)
+          aider --model huggingface/mistralai/Mistral-7B-Instruct-v0.2 \
+                --message "${{ github.event.issue.body }}" \
+                --auto-commit
+
+      - name: Push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git push

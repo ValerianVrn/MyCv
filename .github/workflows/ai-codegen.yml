@@ -25,15 +25,14 @@ jobs:
 
       - name: Run AI to generate code
         env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}   # Hugging Face API key
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          echo "Issue body:" 
-          echo "${{ github.event.issue.body }}"
+          echo "${{ github.event.issue.body }}" > prompt.txt
 
-          # Run aider with free model (Mistral, via Hugging Face Inference API)
-          aider --model huggingface/mistralai/Mistral-7B-Instruct-v0.2 \
-                --message "${{ github.event.issue.body }}" \
-                --auto-commit
+          aider \
+            --model hf:mistralai/Mistral-7B-Instruct-v0.2 \
+            --message "$(cat prompt.txt)" \
+            --auto-commit
 
       - name: Push changes
         run: |

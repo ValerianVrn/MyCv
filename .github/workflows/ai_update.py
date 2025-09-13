@@ -1,6 +1,6 @@
 import os
 import sys
-import openai
+from openai import OpenAI
 from pathlib import Path
 import subprocess
 from github import Github
@@ -33,7 +33,8 @@ Update the files accordingly. Return the full updated content for each file in t
 """
 
 # Call OpenAI
-response = openai.ChatCompletion.create(
+client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+response = client.chat.completions.create(
     model="gpt-4",
     messages=[{"role": "user", "content": prompt}],
     temperature=0.7

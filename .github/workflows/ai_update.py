@@ -8,8 +8,6 @@ from github import Github
 issue_number = sys.argv[1]
 command = sys.argv[2]
 
-openai.api_key = os.environ["OPENAI_API_KEY"]
-
 # Read repo files (keep it lightweight – avoid huge binaries)
 repo_files = {}
 for path in Path(".").rglob("*.*"):

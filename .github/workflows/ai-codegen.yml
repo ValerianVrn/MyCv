@@ -2,7 +2,7 @@ name: AI Update
 
 on:
   issues:
-    types: [opened]
+    types: [opened, edited]
 
 jobs:
   ai_update:

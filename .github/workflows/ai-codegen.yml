@@ -27,4 +27,4 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python .github/workflows/ai_update.py "${{ github.event.issue.number }}" "${{ github.event.issue.body }}"
+          python .github/workflows/ai_update_hf.py "${{ github.event.issue.number }}" "${{ github.event.issue.body }}"

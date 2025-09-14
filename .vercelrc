@@ -1,0 +1,5 @@
+{
+  "buildCommand": "dotnet publish MyCv.UI/MyCv.UI.csproj -c Release -o dist",
+  "outputDirectory": "dist/wwwroot",
+  "devCommand": "dotnet run --project MyCv.UI/MyCv.UI.csproj"
+}

@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "build": "dotnet publish MyCv.UI/MyCv.UI.csproj -c Release -o dist"
+  },
+  "devDependencies": {
+    "@vercel/static": "^2.0.0"
+  }
+}

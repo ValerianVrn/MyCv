@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "MyCv.UI/wwwroot/**/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/MyCv.UI/wwwroot/$1"
+    }
+  ],
+  "buildCommand": "dotnet publish MyCv.UI/MyCv.UI.csproj -c Release -o dist",
+  "outputDirectory": "dist/wwwroot"
+}

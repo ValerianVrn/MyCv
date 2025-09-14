@@ -1,26 +1,125 @@
 @page "/"
 @inject IStringLocalizer<Resource> Localizer
+@using MudBlazor
 
 <PageTitle>@Localizer["HomeHeader"]</PageTitle>
 
-<MudGrid Spacing="20" Justify="Justify.Center">
-    <MudItem md="12">
-        <MudText Typo="Typo.h2" Align="Align.Left">@Localizer["HomeHeader"]</MudText>
+<MudGrid Spacing="4" Justify="Justify.Center">
+    <!-- Hero Section -->
+    <MudItem xs="12" Class="text-center mb-6">
+        <MudAvatar Size="Size.Large" Class="mb-4" Style="width: 200px; height: 200px;">
+            <MudImage Src="images/portrait.jpg" Alt="Portrait" Class="rounded-circle" />
+        </MudAvatar>
+        <MudText Typo="Typo.h3" Class="d-block" Color="Color.Primary">@Localizer["HomeHeader"]</MudText>
+        <MudText Typo="Typo.h6" Class="mud-text-secondary">@Localizer["HomeIntroduction"]</MudText>
     </MudItem>
-    <MudItem md="3">
-        <MudImage Fluid="true" Src="images/portrait.jpg" Alt="Portrait" Class="rounded-lg" />
+
+    <!-- Skills Section -->
+    <MudItem xs="12" md="6" Class="mb-4">
+        <MudCard Elevation="25" Class="h-100">
+            <MudCardHeader>
+                <MudText Typo="Typo.h6">Technical Skills</MudText>
+            </MudCardHeader>
+            <MudCardContent>
+                <MudGrid Spacing="4">
+                    <MudItem xs="12">
+                        <MudText>ASP.NET Core</MudText>
+                        <MudLinearProgress Color="Color.Primary" Value="90" Variant="Variant.Outlined" />
+                    </MudItem>
+                    <MudItem xs="12">
+                        <MudText>C#</MudText>
+                        <MudLinearProgress Color="Color.Primary" Value="95" Variant="Variant.Outlined" />
+                    </MudItem>
+                    <MudItem xs="12">
+                        <MudText>Blazor</MudText>
+                        <MudLinearProgress Color="Color.Primary" Value="85" Variant="Variant.Outlined" />
+                    </MudItem>
+                    <MudItem xs="12">
+                        <MudText>SQL Server</MudText>
+                        <MudLinearProgress Color="Color.Primary" Value="80" Variant="Variant.Outlined" />
+                    </MudItem>
+                    <MudItem xs="12">
+                        <MudText>MudBlazor</MudText>
+                        <MudLinearProgress Color="Color.Primary" Value="88" Variant="Variant.Outlined" />
+                    </MudItem>
+                </MudGrid>
+            </MudCardContent>
+        </MudCard>
     </MudItem>
-    <MudItem md="9">
-        <MudGrid Spacing="6">
-            <MudItem md="12">
-                <MudText Typo="Typo.h6" Class="mud-text-secondary" GutterBottom="true">@Localizer["HomeIntroduction"]</MudText>
-            </MudItem>
-            <MudItem md="12">
-                <MudText Typo="Typo.body1" Align="Align.Justify" GutterBottom="true" Inline=@true>@Localizer["HomeSourceCode"]</MudText> <MudLink Href="https://github.com/ValerianVrn/MyCv.git">GitHub</MudLink>.  
-            </MudItem>
-            <MudItem md="12">
-                <MudButton Variant="Variant.Text" Color="Color.Primary">@Localizer["HomeStart"] <MudIcon Icon="@Icons.Material.Filled.ArrowRightAlt" Title="Favorite" /></MudButton>
-            </MudItem>
-        </MudGrid>
+
+    <!-- Experience Timeline -->
+    <MudItem xs="12" md="6" Class="mb-4">
+        <MudCard Elevation="25" Class="h-100">
+            <MudCardHeader>
+                <MudText Typo="Typo.h6">Experience Timeline</MudText>
+            </MudCardHeader>
+            <MudCardContent>
+                <MudTimeline Position="TimelinePosition.Alternate">
+                    <MudTimelineItem Color="Color.Primary">
+                        <MudTimelineItemOpposite>2022-Present</MudTimelineItemOpposite>
+                        <MudTimelineItemContent>
+                            <MudText Typo="Typo.h6">Senior Developer</MudText>
+                            <MudText Typo="Typo.body2">Company Name</MudText>
+                            <MudText Typo="Typo.body2">Developed cutting-edge web applications using Blazor and .NET technologies</MudText>
+                        </MudTimelineItemContent>
+                    </MudTimelineItem>
+                    <MudTimelineItem Color="Color.Secondary">
+                        <MudTimelineItemOpposite>2020-2022</MudTimelineItemOpposite>
+                        <MudTimelineItemContent>
+                            <MudText Typo="Typo.h6">Software Engineer</MudText>
+                            <MudText Typo="Typo.body2">Another Company</MudText>
+                            <MudText Typo="Typo.body2">Built scalable backend systems and responsive front-end interfaces</MudText>
+                        </MudTimelineItemContent>
+                    </MudTimelineItem>
+                </MudTimeline>
+            </MudCardContent>
+        </MudCard>
+    </MudItem>
+
+    <!-- GitHub Stats & Call to Action -->
+    <MudItem xs="12" Class="text-center mt-6">
+        <MudPaper Class="pa-4" Elevation="25">
+            <MudText Typo="Typo.body1" Class="mb-3">@Localizer["HomeSourceCode"]</MudText>
+            <MudButton Variant="Variant.Filled" 
+                       Color="Color.Primary" 
+                       EndIcon="@Icons.Material.Filled.ArrowForward"
+                       Href="https://github.com/ValerianVrn/MyCv.git"
+                       Target="_blank">
+                View on GitHub
+            </MudButton>
+        </MudPaper>
+    </MudItem>
+
+    <!-- Interactive Component Showcase -->
+    <MudItem xs="12" Class="mt-6">
+        <MudPaper Class="pa-4" Elevation="25">
+            <MudText Typo="Typo.h6" Class="text-center mb-4">Technologies I Work With</MudText>
+            <MudGrid Spacing="2" Justify="Justify.Center">
+                <MudItem xs="6" sm="4" md="2">
+                    <MudPaper Class="text-center pa-2" Elevation="5">
+                        <MudIcon Icon="@Icons.Custom.Brands.Microsoft" Size="Size.Large" Color="Color.Primary"/>
+                        <MudText Typo="Typo.caption">.NET</MudText>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="6" sm="4" md="2">
+                    <MudPaper Class="text-center pa-2" Elevation="5">
+                        <MudIcon Icon="@Icons.Custom.Brands.GitHub" Size="Size.Large" Color="Color.Secondary"/>
+                        <MudText Typo="Typo.caption">GitHub</MudText>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="6" sm="4" md="2">
+                    <MudPaper Class="text-center pa-2" Elevation="5">
+                        <MudIcon Icon="@Icons.Material.Filled.Storage" Size="Size.Large" Color="Color.Info"/>
+                        <MudText Typo="Typo.caption">SQL Server</MudText>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="6" sm="4" md="2">
+                    <MudPaper Class="text-center pa-2" Elevation="5">
+                        <MudIcon Icon="@Icons.Material.Filled.Cloud" Size="Size.Large" Color="Color.Warning"/>
+                        <MudText Typo="Typo.caption">Azure</MudText>
+                    </MudPaper>
+                </MudItem>
+            </MudGrid>
+        </MudPaper>
     </MudItem>
 </MudGrid>

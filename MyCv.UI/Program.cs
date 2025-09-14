@@ -38,4 +38,6 @@ var localizationOptions = new RequestLocalizationOptions()
 
 localizationOptions.RequestCultureProviders.Insert(0, new AcceptLanguageHeaderRequestCultureProvider());
 
+app.UseRequestLocalization(localizationOptions);
+
 app.Run();

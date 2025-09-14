@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="MudBlazor" Version="8.6.0" />
+    <PackageReference Include="MudBlazor.Icons" Version="8.6.0" />
   </ItemGroup>
 
   <ItemGroup>

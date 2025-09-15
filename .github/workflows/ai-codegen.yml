@@ -58,7 +58,7 @@ jobs:
 
       - name: Push branch
         run: |
-          git push --set-upstream origin ${{ steps.branch.outputs.branch }}
+          git push --set-upstream origin ${{ steps.create_branch.outputs.branch }}
 
       - name: Open Pull Request
         uses: peter-evans/create-pull-request@v6

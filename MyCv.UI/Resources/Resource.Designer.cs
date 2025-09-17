@@ -142,6 +142,222 @@ namespace MyCv.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Getting bored.
+        /// </summary>
+        public static string IntentBoredom {
+            get {
+                return ResourceManager.GetString("IntentBoredom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Killing time (no offense!).
+        /// </summary>
+        public static string IntentBoredomDescription {
+            get {
+                return ResourceManager.GetString("IntentBoredomDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Browsing.
+        /// </summary>
+        public static string IntentBrowsing {
+            get {
+                return ResourceManager.GetString("IntentBrowsing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Browsing tech portfolios.
+        /// </summary>
+        public static string IntentBrowsingDescription {
+            get {
+                return ResourceManager.GetString("IntentBrowsingDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Collaboration.
+        /// </summary>
+        public static string IntentCollaboration {
+            get {
+                return ResourceManager.GetString("IntentCollaboration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Looking for collaboration.
+        /// </summary>
+        public static string IntentCollaborationDescription {
+            get {
+                return ResourceManager.GetString("IntentCollaborationDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Curious.
+        /// </summary>
+        public static string IntentCurious {
+            get {
+                return ResourceManager.GetString("IntentCurious", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Curious about your work.
+        /// </summary>
+        public static string IntentCuriousDescription {
+            get {
+                return ResourceManager.GetString("IntentCuriousDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Freelance hunting.
+        /// </summary>
+        public static string IntentFreelance {
+            get {
+                return ResourceManager.GetString("IntentFreelance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Looking for contractors/freelancers.
+        /// </summary>
+        public static string IntentFreelanceDescription {
+            get {
+                return ResourceManager.GetString("IntentFreelanceDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Helping.
+        /// </summary>
+        public static string IntentHelping {
+            get {
+                return ResourceManager.GetString("IntentHelping", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Helping Valérian for free because I&apos;m nice.
+        /// </summary>
+        public static string IntentHelpingDescription {
+            get {
+                return ResourceManager.GetString("IntentHelpingDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Misclick.
+        /// </summary>
+        public static string IntentMisclick {
+            get {
+                return ResourceManager.GetString("IntentMisclick", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I misclicked!.
+        /// </summary>
+        public static string IntentMisclickDescription {
+            get {
+                return ResourceManager.GetString("IntentMisclickDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Networking.
+        /// </summary>
+        public static string IntentNetworking {
+            get {
+                return ResourceManager.GetString("IntentNetworking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Networking.
+        /// </summary>
+        public static string IntentNetworkingDescription {
+            get {
+                return ResourceManager.GetString("IntentNetworkingDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Following up.
+        /// </summary>
+        public static string IntentPost {
+            get {
+                return ResourceManager.GetString("IntentPost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Following up after a talk/post.
+        /// </summary>
+        public static string IntentPostDescription {
+            get {
+                return ResourceManager.GetString("IntentPostDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recruiting.
+        /// </summary>
+        public static string IntentRecruiting {
+            get {
+                return ResourceManager.GetString("IntentRecruiting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recruiting / Hiring.
+        /// </summary>
+        public static string IntentRecruitingDescription {
+            get {
+                return ResourceManager.GetString("IntentRecruitingDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reputation.
+        /// </summary>
+        public static string IntentReputation {
+            get {
+                return ResourceManager.GetString("IntentReputation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Heard about you.
+        /// </summary>
+        public static string IntentReputationDescription {
+            get {
+                return ResourceManager.GetString("IntentReputationDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reviewing.
+        /// </summary>
+        public static string IntentReviewing {
+            get {
+                return ResourceManager.GetString("IntentReviewing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reviewing your resume.
+        /// </summary>
+        public static string IntentReviewingDescription {
+            get {
+                return ResourceManager.GetString("IntentReviewingDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Languages.
         /// </summary>
         public static string Languages {

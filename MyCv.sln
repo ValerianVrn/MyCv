@@ -5,6 +5,11 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCv.UI", "MyCv.UI\MyCv.UI.csproj", "{92767FD5-304B-4558-BE88-6905295D7EE6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D2561D58-7EC8-4F3D-8E9F-4C1EE45E8F5A}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{45B847A5-13B8-42F1-9B48-6F55FD2EE6F8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "rating", "rating", "{6B2F1267-30CA-478B-A768-05E5F93FD2EB}"

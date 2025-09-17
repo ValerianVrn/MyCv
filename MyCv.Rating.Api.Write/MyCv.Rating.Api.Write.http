@@ -1,0 +1,6 @@
+@MyCv.Rating.Api.Write_HostAddress = http://localhost:5030
+
+GET {{MyCv.Rating.Api.Write_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

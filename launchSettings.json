@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "mycv.rating.api.read": "StartDebugging",
+        "mycv.rating.api.write": "StartDebugging"
+      }
+    }
+  }
+}

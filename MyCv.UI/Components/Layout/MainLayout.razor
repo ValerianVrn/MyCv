@@ -25,7 +25,12 @@
     <MudDrawer Open="true" Variant="DrawerVariant.Persistent" Elevation="8">
         <MudDrawerHeader Class="mud-theme-tertiary">
             <MudStack>
-                <MudText Typo="Typo.h6">Valérian Verona</MudText>
+                <MudStack Row="true">
+                    <MudAvatar Size="Size.Large">
+                        <MudImage Src="images/portrait.jpg" Alt="Avatar" />
+                    </MudAvatar>
+                    <MudText Typo="Typo.h6">Valérian Verona</MudText>
+                </MudStack>
                 <MudText Typo="Typo.subtitle1">@Localizer["JobTitle"]</MudText>
             </MudStack>
         </MudDrawerHeader>
@@ -36,8 +41,9 @@
     </MudDrawer>
     @* Page content *@
     <MudMainContent>
-        <MudContainer MaxWidth="MaxWidth.Medium">
+        <MudContainer MaxWidth="MaxWidth.Medium" Class="my-6">
             @Body
         </MudContainer>
     </MudMainContent>
 </MudLayout>
+

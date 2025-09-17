@@ -144,6 +144,78 @@
   <data name="HomeStart" xml:space="preserve">
     <value>Let's start</value>
   </data>
+  <data name="IntentBoredom" xml:space="preserve">
+    <value>Getting bored</value>
+  </data>
+  <data name="IntentBoredomDescription" xml:space="preserve">
+    <value>Killing time (no offense!)</value>
+  </data>
+  <data name="IntentBrowsing" xml:space="preserve">
+    <value>Browsing</value>
+  </data>
+  <data name="IntentBrowsingDescription" xml:space="preserve">
+    <value>Browsing tech portfolios</value>
+  </data>
+  <data name="IntentCollaboration" xml:space="preserve">
+    <value>Collaboration</value>
+  </data>
+  <data name="IntentCollaborationDescription" xml:space="preserve">
+    <value>Looking for collaboration</value>
+  </data>
+  <data name="IntentCurious" xml:space="preserve">
+    <value>Curious</value>
+  </data>
+  <data name="IntentCuriousDescription" xml:space="preserve">
+    <value>Curious about your work</value>
+  </data>
+  <data name="IntentFreelance" xml:space="preserve">
+    <value>Freelance hunting</value>
+  </data>
+  <data name="IntentFreelanceDescription" xml:space="preserve">
+    <value>Looking for contractors/freelancers</value>
+  </data>
+  <data name="IntentHelping" xml:space="preserve">
+    <value>Helping</value>
+  </data>
+  <data name="IntentHelpingDescription" xml:space="preserve">
+    <value>Helping Valérian for free because I'm nice</value>
+  </data>
+  <data name="IntentMisclick" xml:space="preserve">
+    <value>Misclick</value>
+  </data>
+  <data name="IntentMisclickDescription" xml:space="preserve">
+    <value>I misclicked!</value>
+  </data>
+  <data name="IntentNetworking" xml:space="preserve">
+    <value>Networking</value>
+  </data>
+  <data name="IntentNetworkingDescription" xml:space="preserve">
+    <value>Networking</value>
+  </data>
+  <data name="IntentPost" xml:space="preserve">
+    <value>Following up</value>
+  </data>
+  <data name="IntentPostDescription" xml:space="preserve">
+    <value>Following up after a talk/post</value>
+  </data>
+  <data name="IntentRecruiting" xml:space="preserve">
+    <value>Recruiting</value>
+  </data>
+  <data name="IntentRecruitingDescription" xml:space="preserve">
+    <value>Recruiting / Hiring</value>
+  </data>
+  <data name="IntentReputation" xml:space="preserve">
+    <value>Reputation</value>
+  </data>
+  <data name="IntentReputationDescription" xml:space="preserve">
+    <value>Heard about you</value>
+  </data>
+  <data name="IntentReviewing" xml:space="preserve">
+    <value>Reviewing</value>
+  </data>
+  <data name="IntentReviewingDescription" xml:space="preserve">
+    <value>Reviewing your resume</value>
+  </data>
   <data name="Languages" xml:space="preserve">
     <value>Languages</value>
   </data>

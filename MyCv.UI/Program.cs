@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Localization;
 using MudBlazor.Services;
 using MyCv.UI.Components;
+using MyCv.UI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,9 @@ builder.Services.AddRazorComponents()
 
 builder.Services.AddLocalization();
 builder.Services.AddMudServices();
+builder.Services.AddScoped<IRatingService, FakeRatingService>();
+builder.Services.AddScoped<IInsightService, FakeInsightService>();
+builder.Services.AddScoped<IVisitorService, VisitorService>();
 
 var app = builder.Build();
 

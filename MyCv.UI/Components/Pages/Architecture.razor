@@ -8,13 +8,7 @@
 <ContentPage PageLink="/architecture" PageTitle="@Localizer["Architecture"]">
     @* Introduction *@
     <Header>
-        <ContentHeader HeaderId="introduction" HeaderName="@Localizer["Introduction"]">
-            <MudChips>
-                <MudChip T="string" Color="Color.Default">DDD</MudChip>
-                <MudChip T="string" Color="Color.Default">CQRS</MudChip>
-                <MudChip T="string" Color="Color.Default">Event sourcing</MudChip>
-                <MudChip T="string" Color="Color.Default">Docker</MudChip>
-            </MudChips>
+        <ContentHeader HeaderId="introduction" HeaderName="@Localizer["Introduction"]" Chips="@(["DDD", "CQRS", "Event sourcing", "Docker"])">
             <Content>
                 <MudText Typo="Typo.body1">@Localizer["ArchitectureIntroduction"]</MudText>
                 <MudText Typo="Typo.body1">@Localizer["ArchitectureMicroservice"]</MudText>

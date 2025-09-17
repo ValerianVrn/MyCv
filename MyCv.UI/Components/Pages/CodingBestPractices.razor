@@ -1,0 +1,108 @@
+@using MyCv.UI.Components.Shared
+@using static MyCv.UI.Components.Shared.CodeBlock
+
+<ContentSection SectionId="best" SectionName="Best practices">
+
+    <MudText>
+        En tant que leader technique, j'applique et propage les bonnes pratiques de code inspirées des standards Microsoft principalement.        
+    </MudText>
+    <MudAlert Severity="Severity.Normal">
+        Ces guides pouvant être lourds à absorber pour les développeurs, j'ai pour habitude de rédiger un condensé des principaux cas de figures rencontrés ou des erreurs rencontrées lors des code reviews.
+    </MudAlert>
+    <MudText>
+        À ce sujet, les commentaires de PR sont bien souvent assortis de liens vers des documents officiels le cas échéant.
+    </MudText>
+    <MudText>
+        Voici un exemple de code extrait du service Rating (<MudLink Href="">SetRatingCommandHandler.cs</MudLink>) où sont présentés quelques principes de programmation.
+    </MudText>
+    <CodeBlock Language="@CodeBlock.CodeLanguage.CSharp" Code="@rawCode" Tooltips="@tooltipMap" IdentifiedCodeTokenTypes="@identifiedCodeTokenTypes" />
+</ContentSection>
+
+@code {
+    private string rawCode = @"using MediatR;
+using MyCv.Rating.Application.ResultHandling;
+using MyCv.Rating.Domain.AggregateModels.AssessmentAggregate;
+
+namespace MyCv.Rating.Application.Commands
+{
+    /// <summary>
+    /// Create assessment command handler.
+    /// </summary>
+    internal class CreateAssessmentCommandHandler(IAssessmentRepository assessmentRepository) : IRequestHandler<CreateAssessmentCommand, Result>
+    {
+        /// <summary>
+        /// Assessment repository.
+        /// </summary>
+        private readonly IAssessmentRepository _assessmentRepository = assessmentRepository ?? throw new ArgumentNullException(nameof(assessmentRepository));
+
+        /// <inheritdoc/>
+        public async Task<Result> Handle(CreateAssessmentCommand command, CancellationToken cancellationToken)
+        {
+            // Check if the visitor has already an asessment.
+            if (await _assessmentRepository.GetAsync(command.VisitorId, cancellationToken) is not null)
+            {
+                return Result.Failure(ResultErrors.AlreadyExists(command.VisitorId));
+            }
+
+            // Create the assessment.
+            var assessment = new Assessment(
+                entityGuid: Guid.NewGuid(),
+                visitorId: command.VisitorId,
+                score: command.Score,
+                recommend: command.Recommend);
+
+            // Save the entity.
+            _ = _assessmentRepository.Create(assessment);
+
+            if (!await _assessmentRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken))
+            {
+                return Result.Failure(ResultErrors.SaveEntitiesError(nameof(CreateAssessmentCommand)));
+            }
+
+            return Result.Success();
+        }
+    }
+}
+";
+
+    private Dictionary<string, Tooltip> tooltipMap = new()
+        {
+            [@"    /// <summary>
+                /// Create assessment command handler.
+                /// </summary>"] = new("Commentaires", "Modificateur d'accès public https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/", 1),
+            ["internal"] = new("Accessibilité", "Modificateur d'accès public", 1),
+            ["CreateAssessmentCommandHandler"] = new("SRP", "Modificateur d'accès public", 1),
+            ["IRepository repository"] = new("DI", "Modificateur d'accès publicInjection d'interface pour testabilité", 1),
+            ["IRepository _repository"] = new("DI", "Modificateur d'accès publicModificateur d'accès public", 1),
+            ["_repository"] = new("Naming convention", "Modificateur d'accès publicModificateur d'accès public", 1),
+            ["// Update the Rating"] = new("Commentaires", "Modificateur d'accès public https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/", 1),
+            ["async"] = new("Naming convention", "Modificateur d'accès public https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions", 1),
+        };
+
+    private List<IdentifiedCodeTokenType> identifiedCodeTokenTypes = new()
+        {
+            new("IAssessmentRepository", CodeTokenType.InterfaceName),
+            new("assessmentRepository", CodeTokenType.Variable),
+            new("IRequestHandler", CodeTokenType.InterfaceName),
+            new("CreateAssessmentCommand", CodeTokenType.ClassName),
+            new("Result", CodeTokenType.ClassName),
+            new("ArgumentNullException", CodeTokenType.ClassName),
+            new("Task", CodeTokenType.ClassName),
+            new("CancellationToken", CodeTokenType.Struct),
+            new("Handle", CodeTokenType.MethodName),
+            new("command", CodeTokenType.Variable),
+            new("cancellationToken", CodeTokenType.Variable),
+            new("GetAsync", CodeTokenType.MethodName),
+            new("Failure", CodeTokenType.MethodName),
+            new("ResultErrors", CodeTokenType.ClassName),
+            new("AlreadyExists", CodeTokenType.MethodName),
+            new("assessment", CodeTokenType.Variable),
+            new("Assessment", CodeTokenType.ClassName),
+            new("Guid", CodeTokenType.Struct),
+            new("NewGuid", CodeTokenType.MethodName),
+            new("Create", CodeTokenType.MethodName),
+            new("SaveEntitiesAsync", CodeTokenType.MethodName),
+            new("SaveEntitiesError", CodeTokenType.MethodName),
+            new("Success", CodeTokenType.MethodName),
+        };
+}

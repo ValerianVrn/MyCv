@@ -1,0 +1,33 @@
+@using MyCv.UI.Components.Shared
+@using static MyCv.UI.Components.Shared.CodeBlock
+
+<ContentSection SectionId="design-patterns" SectionName="Design patterns">
+
+    <MudText>
+        J'encourage et fait découvrir aux développeurs des <MudLink Href="https://refactoring.guru/design-patterns">design patterns</MudLink> qui rendent le code plus maintenable.
+        Je milite compte le code séquentiel d'un bloc de 1000 lignes.
+    </MudText>
+    <MudText>
+        Voici un pseudo-code adapté pour l'exemple d'une expérience passée pour laquelle j'ai proposé l'utilisation de Strategy :
+    </MudText>
+    <CodeBlock Language="@CodeBlock.CodeLanguage.CSharp" Code="@rawCode" Tooltips="@tooltipMap" IdentifiedCodeTokenTypes="@identifiedCodeTokenTypes" />
+</ContentSection>
+
+@code {
+    private string rawCode = @"
+if ()
+{
+else if ()...
+}
+}";
+
+    private Dictionary<string, Tooltip> tooltipMap = new()
+        {
+            ["internal"] = new("Accessibilité Modificateur d'accès public", "", 1),
+        };
+
+    private List<IdentifiedCodeTokenType> identifiedCodeTokenTypes = new()
+        {
+            new("Customer", CodeTokenType.TypeName, 1)
+        };
+}

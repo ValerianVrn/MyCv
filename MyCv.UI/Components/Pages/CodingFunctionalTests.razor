@@ -1,0 +1,51 @@
+@using MyCv.UI.Components.Shared
+@using static MyCv.UI.Components.Shared.CodeBlock
+
+<ContentSection SectionId="functional-tests" SectionName="Tests fonctionnels">
+
+    <MudText>
+        Un peu plus lourds que les tests unitaires, ces tests permettent un gain en productivité.
+        Approche avec Docker plutôt pragmatique avec test-containers (démarrage des dépendances SQL Server, RabbitMQ, etc.) et web application factory.
+    </MudText>
+    <CodeBlock Language="@CodeBlock.CodeLanguage.CSharp" Code="@rawCode" Tooltips="@tooltipMap" IdentifiedCodeTokenTypes="@identifiedCodeTokenTypes" />
+</ContentSection>
+
+@code {
+    private string rawCode = @"
+
+        [TestMethod]
+        [Timeout(60000)]
+        public async Task GetAllXiniusAsync_ExistingXinius_XiniusIsNotNull()
+        {
+            // Arrange.
+            var xiniusGuid = new Guid(""272059CE-FE30-4E9D-8DE5-A2BCC76F0D6B"");
+            await AddXiniusInReadOnlyDatabaseAsync(xiniusGuid);
+            var httpClient = s_webApplicationFactory.CreateClient();
+
+            // Act.
+            var httpResponseMessage = await httpClient.GetAsync($""/api/Xinius"");
+
+            // Assert.
+            _ = httpResponseMessage.EnsureSuccessStatusCode();
+            using var contentStream = await httpResponseMessage.Content.ReadAsStreamAsync();
+            var xinius = await JsonSerializer.DeserializeAsync<IEnumerable<XiniusViewModel>>(contentStream);
+
+            Assert.IsNotNull(xinius);
+            Assert.AreEqual(1, xinius.Count());
+            Assert.AreEqual(xinius.First().xiniusguid, xiniusGuid);
+        }
+}";
+
+    private Dictionary<string, Tooltip> tooltipMap = new()
+        {
+            ["Handle_Exists_EventsOfEntityAreSaved"] = new("Naming convention", "Modificateur d'accès public Lourd mais clair : méthode testée, argument, résultat attendu", 1),
+            ["// Arrange."] = new("AAA", "Modificateur d'accès publi odificateur d'accès public https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/", 1),
+            ["Mock<IRepository>();"] = new("MOQ", "Modificateur d'accès publ odificateur d'accès public", 1),
+            ["Assert.IsTrue(result.IsSuccess)"] = new("Naming conventio odificateur d'accès public", "Modificateur d'accès public", 1),
+        };
+
+    private List<IdentifiedCodeTokenType> identifiedCodeTokenTypes = new()
+        {
+            new("Customer", CodeTokenType.TypeName, 1)
+        };
+}

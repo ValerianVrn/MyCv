@@ -6,7 +6,7 @@ name: Build and deploy ASP.Net Core app to Azure Web App - valerianverona
 on:
   push:
     branches:
-      - build/ai
+      - main
   workflow_dispatch:
 
 jobs:
@@ -62,4 +62,5 @@ jobs:
           app-name: 'valerianverona'
           slot-name: 'Production'
           package: .
+
           

@@ -1,0 +1,272 @@
+@using MudBlazor
+@using System.Text.RegularExpressions
+<div>
+    <MudPaper Class="code-block">
+        @foreach (var line in TokenizedCode)
+        {
+            <div>
+                @foreach (var token in line)
+                {
+                    var css = $"token-{token.Type.ToString().ToLower()}";
+                    if (token.Tooltip != null)
+                    {
+                        <MudTooltip>
+                            <ChildContent>
+                                <span class="tooltip @token.Class @css">@token.Text</span>
+                            </ChildContent>
+                            <TooltipContent>
+                                <MudChip T="string" Label="true" Variant="Variant.Filled" Color="Color.Warning">@token.Tooltip.Category.ToUpper()</MudChip>
+                                <MudText Typo="Typo.body2">@token.Tooltip.Description</MudText>
+                            </TooltipContent>
+                        </MudTooltip>
+                    }
+                    else if (string.IsNullOrEmpty(token.Text))
+                    {
+                        <span class="@token.Class @css">&#8203;</span>
+                    }
+                    else
+                    {
+                        <span class="@token.Class @css">@token.Text</span>
+                    }
+                }
+            </div>
+        }
+    </MudPaper>
+</div>
+
+@code {
+
+    private class CodeToken
+    {
+        public string Text { get; set; } = "";
+        public string Class { get; set; } = "csharp-default";
+        public CodeTokenType Type { get; set; } = CodeTokenType.Other;
+        public Tooltip? Tooltip { get; set; }
+    }
+
+    /// <summary>
+    /// Content of the tooltip.
+    /// </summary>
+    /// <param name="Category"></param>
+    /// <param name="Description"></param>
+    /// <param name="Occurence">Apply the tooltip to this occurence only</param>
+    public record Tooltip(string Category, string Description, int Occurence);
+
+    /// <summary>
+    /// Apply custom code token type.
+    /// </summary>
+    /// <param name="Code"></param>
+    /// <param name="Type"></param>
+    /// <param name="Occurence"></param>
+    public record IdentifiedCodeTokenType(string Code, CodeTokenType Type, int Occurence = 0);
+
+    /// <summary>
+    /// Language of the code.
+    /// </summary>
+    public enum CodeLanguage
+    {
+        CSharp
+    }
+
+    /// <summary>
+    /// Identified code token.
+    /// </summary>
+    public enum CodeTokenType
+    {
+        StructuralKeyword,
+        FlowControlKeyword,
+        ClassName,
+        InterfaceName,
+        EnumName,
+        MethodName,
+        TypeName,
+        Identifier,
+        StringLiteral,
+        Number,
+        Comment,
+        Symbol,
+        Whitespace,
+        Other,
+        Struct,
+        Variable
+    }
+
+    /// <summary>
+    /// Language of the block.
+    /// </summary>
+    [Parameter] public CodeLanguage Language { get; set; } = CodeLanguage.CSharp;
+
+    /// <summary>
+    /// Code within the block.
+    /// </summary>
+    [Parameter] public string Code { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Tooltip on keywords.
+    /// </summary>
+    [Parameter] public Dictionary<string, Tooltip> Tooltips { get; set; } = new();
+
+    /// <summary>
+    /// Identified code token types.
+    /// </summary>
+    [Parameter] public List<IdentifiedCodeTokenType>? IdentifiedCodeTokenTypes { get; set; } = new();
+
+    /// <summary>
+    /// Tokenized code.
+    /// </summary>
+    private List<List<CodeToken>> TokenizedCode = new();
+
+    private static readonly List<string> StructuralKeywords = [
+        "async",
+        "await",
+        "is",
+        "namespace",
+        "not",
+    "using",
+    "class",
+    "interface",
+    "public",
+    "private",
+    "readonly",
+    "protected",
+    "internal",
+    "static",
+    "void",
+    "get",
+    "get",
+    "nameof",
+    "new",
+    "set",
+    "string",
+    "int",
+    "bool",
+    "var",
+    "true",
+    "false",
+    "null"];
+
+    private static readonly List<string> FlowControlKeywords = [
+    "return",
+    "if",
+    "else",
+    "foreach",
+    "for",
+    "while",
+    "do",
+    "switch",
+    "throw",
+    "case",
+    "break"
+    ];
+
+    protected override void OnParametersSet()
+    {
+        // Add tokens.
+        TokenizedCode = ParseCode(Code);
+    }
+
+    /// <summary>
+    /// Parse the code to apply styles.
+    /// </summary>
+    /// <param name="code"></param>
+    /// <returns></returns>
+    private List<List<CodeToken>> ParseCode(string code)
+    {
+        var lines = code.Replace("\r", "").Split('\n');
+        var result = new List<List<CodeToken>>();
+
+        // Tracks how many times a code part has appeared.
+        var occurrences = new Dictionary<string, int>();
+
+        foreach (var line in lines)
+        {
+            // Style on line or word.
+            if (string.IsNullOrWhiteSpace(line))
+            {
+                var token = new CodeToken
+                    {
+                        Text = line,
+                        Type = CodeTokenType.Whitespace,
+                        Tooltip = Tooltips.TryGetValue(line, out var tooltip) ? tooltip : null
+                    };
+                result.Add([token]);
+            }
+            else if (DetectTokenType(line.TrimStart()) == CodeTokenType.Comment)
+            {
+                var token = new CodeToken
+                    {
+                        Text = line,
+                        Type = CodeTokenType.Comment,
+                        Tooltip = Tooltips.TryGetValue(line, out var tooltip) ? tooltip : null
+                    };
+                result.Add([token]);
+            }
+            else
+            {
+                var tokens = new List<CodeToken>();
+                var words = System.Text.RegularExpressions.Regex.Matches(line, @"\w+|[^\w\s]+|\s+");
+                string lastWord = "";
+
+                foreach (System.Text.RegularExpressions.Match match in words)
+                {
+                    var word = match.Value;
+
+                    // Increment occurrence
+                    if (!occurrences.TryAdd(word, 1))
+                    {
+                        occurrences[word]++;
+                    }
+
+                    // Create token.
+                    var token = new CodeToken
+                        {
+                            Text = word
+                        };
+
+                    // Use custom code token orr auto-detect.
+                    var identifiedCodeTokenTypes = IdentifiedCodeTokenTypes?.FirstOrDefault(i => i.Code.Equals(word) && (i.Occurence == 0 || occurrences[word] == i.Occurence));
+                    if (identifiedCodeTokenTypes != null)
+                    {
+                        token.Type = identifiedCodeTokenTypes.Type;
+                    }
+                    else
+                    {
+                        token.Type = DetectTokenType(word, lastWord);
+                    }
+
+                    lastWord =
+                        token.Type == CodeTokenType.StructuralKeyword ? word :
+                        token.Type == CodeTokenType.ClassName || token.Type == CodeTokenType.EnumName || token.Type == CodeTokenType.InterfaceName ? "" : lastWord;
+
+                    // Add the tooltip if this is the targeted occurence.
+                    if (Tooltips.TryGetValue(word, out var tooltip) && occurrences[word] == tooltip.Occurence)
+                    {
+                        token.Tooltip = tooltip;
+                    }
+                    tokens.Add(token);
+                }
+
+                result.Add(tokens);
+            }
+        }
+
+        return result;
+    }
+
+    private CodeTokenType DetectTokenType(string text, string lastWord = "")
+    {
+        if (string.IsNullOrWhiteSpace(text)) return CodeTokenType.Whitespace;
+        if (StructuralKeywords.Contains(text)) return CodeTokenType.StructuralKeyword;
+        if (FlowControlKeywords.Contains(text)) return CodeTokenType.FlowControlKeyword;
+        if (lastWord is "class") return CodeTokenType.ClassName;
+        if (lastWord is "interface") return CodeTokenType.InterfaceName;
+        if (lastWord is "enum") return CodeTokenType.EnumName;
+        if (Regex.IsMatch(text, "^\".*\"$")) return CodeTokenType.StringLiteral;
+        if (Regex.IsMatch(text, @"^\d+$")) return CodeTokenType.Number;
+        if (text.StartsWith("//")) return CodeTokenType.Comment;
+
+        if (Regex.IsMatch(text, @"[{}();,.<>[\]=+-/*%&|^!?:]")) return CodeTokenType.Symbol;
+
+        return CodeTokenType.Identifier;
+    }
+}

@@ -1,0 +1,198 @@
+@using MyCv.UI.Components.Shared
+@using MyCv.UI.Dtos
+@using MyCv.UI.Services
+@inject IStringLocalizer<Resource> Localizer
+@inject IRatingService RatingService
+@inject IVisitorService VisitorService
+
+<ContentSection SectionId="cqrs" SectionName="CQRS">
+    <MudText Typo="Typo.body1">@Localizer["CQRSDefinition"]</MudText>
+    <MudText Typo="Typo.body1">@Localizer["CQRSBenefits"]</MudText>
+    <MudText Typo="Typo.body1">@Localizer["CQRSService"]</MudText>
+    <MudText Typo="Typo.body1">@Localizer["CQRSDiagram"]</MudText>
+    @* https://mermaid.live/edit#pako:eNp9U8GO2jAQ_RXLNyRAhCVArAqpm1SbHtJulopDxcUk0xA1sanjsKWIf99xTBAb2ObizLw3M2_GniNNZAqU0Qr-1CASCHKeKV6uBcFvx5XOk3zHhSafn78SXjXHE9fwyg-3HN8wfCm0kkUB6pYQGUIEac61vAP7K5ugLLlIP23UYs-LPP2AG3a4WzzvFg0MMZAlz8Ud8LFBueYbXsEtHhs4rkHlJrXFcQaDns_I8_flD-vhic73OBXiW9sf9CLWirOuFLqkix1ZO8KkK0ZWtmcgyXW4AUNGwqbJ99BV5qgrJzzrCQeLRYCKFBg3zzIFGf516IG1gzN5C8lvsqmrXEBVEVUXULUEZBg53-C1m-xKTXAp3gseGVnyPfyH3Wptp_v05ePhxgiDJgoqWauk20Zs7diWfQGNl4elcai8RZoKL-_Cr6TEt-Jon5ag8A2luCxHg6-p3kIJa8rwt0zWdC1OyOK1lsuDSCjTqoY-VbLOtpT94kWFVr0zV3tesosXX9pPKcs2BPcDn3xkF7PZz4ZC2ZH-pcx5GI68uffgTjxv4o7H4z49oHfsDJ3pyJk6rjefjWaed-rTf01SZ4hudzZzxhPXc6cTDMiU6eMsEEQKype10JTN56PTG17gSJc *@
+    <MudImage Fluid="true" Src="images/cqrs.png" Alt="Commands" Class="rounded-lg" />
+    <MudText Typo="Typo.body1">@Localizer["CQRSExample"]</MudText>
+    @* Form *@
+    <MudPaper Class="pa-4" Outlined="true" Elevation="1">
+        <MudGrid>
+            @* Commands *@
+            <MudItem md="12">
+                <MudText Typo="Typo.body1">@Localizer["CommandsExample"]</MudText>
+            </MudItem>
+            <MudItem md="6" sm="12" Class="d-flex justify-center">
+                <MudStack AlignItems="AlignItems.Center" Justify="Justify.Center">
+                    <MudForm @ref="_form" @bind-IsValid="@_isFormValid" @bind-Errors="@_formErrors" Spacing="3">
+                        <MudStack>
+                            <MudText Typo="Typo.subtitle2">@Localizer["CommandsSatisfaction"]</MudText>
+                            <MudRating @bind-SelectedValue="_score" />
+                        </MudStack>
+                        <MudStack>
+                            <MudText Typo="Typo.subtitle2">@Localizer["CommandsRecommendation"]</MudText>
+                            <MudRadioGroup T="string" @bind-Value="_recommendValue" Required="true" RequiredError="@Localizer["RequiredAnswer"]">
+                                <MudRadio Value="@("Yes")" Color="Color.Primary">@Localizer["Yes"]</MudRadio>
+                                <MudRadio Value="@("No")" Color="Color.Primary">@Localizer["No"]</MudRadio>
+                            </MudRadioGroup>
+                        </MudStack>
+                    </MudForm>
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(async () => await Submit())">@Localizer["Validate"]</MudButton>
+                </MudStack>
+            </MudItem>
+            <MudItem md="6">
+                <MudPaper Class="pa-4 mud-height-full">
+                    <MudStepper Vertical @bind-ActiveIndex="_stepperIndex">
+                        <ChildContent>
+                            <MudStep Title=@Localizer["CommandSendStep"] HasError="_hasSendFailed" @bind-Completed="_isSendCompleted" Disabled="_isStepDisabled">@Localizer["CommandSendStepValidation"]</MudStep>
+                            <MudStep Title=@Localizer["CommandCommandStep"] HasError="_hasCommandFailed" @bind-Completed="_isCommandCompleted" Disabled="_isStepDisabled">@Localizer["CommandCommandStepValidation"]</MudStep>
+                            <MudStep Title=@Localizer["CommandDomainStep"] HasError="_hasDomainFailed" @bind-Completed="_isDomainCompleted" Disabled="_isStepDisabled">@Localizer["CommandDomainStepValidation"]</MudStep>
+                            <MudStep Title=@Localizer["CommandSaveStep"] @bind-Completed="_isSaveCompleted" Disabled="_isStepDisabled" CompletedStepColor="Color.Success">@Localizer["CommandSaveStepValidation"]</MudStep>
+                        </ChildContent>
+                        <ActionContent Context="stepper" />
+                    </MudStepper>
+                </MudPaper>
+            </MudItem>
+            @* Queries *@
+            <MudItem md="12">
+                <MudText Typo="Typo.body1">@Localizer["QueriesExample"]</MudText>
+            </MudItem>
+            <MudItem md="12">
+                <MudDataGrid Items="@_ratings" Filterable="false" SortMode="@SortMode.Single" Groupable="false">
+                    <ToolBarContent>
+                        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(async () => await UpdateRatings())">@Localizer["Update"]</MudButton>
+                    </ToolBarContent>
+                    <Columns>
+                        <PropertyColumn Property="x => x.DateTime" Title="Date de la note" />
+                        <TemplateColumn Title="Note">
+                            <CellTemplate>
+                                <MudRating Size="@Size.Small" SelectedValue="@context.Item.RatingValue" ReadOnly="true" MaxValue="5" />
+                            </CellTemplate>
+                        </TemplateColumn>
+                        <TemplateColumn Title="Recommendation">
+                            <CellTemplate>
+                                @if (@context.Item.Recommend)
+                                {
+                                    <MudIcon Icon="@Icons.Material.Filled.ThumbUp" Color="Color.Success" />
+                                }
+                                else
+                                {
+                                    <MudIcon Icon="@Icons.Material.Filled.ThumbDown" Color="Color.Error" />
+                                }
+                            </CellTemplate>
+                        </TemplateColumn>
+                    </Columns>
+                    <PagerContent>
+                        <MudDataGridPager T="Rating" />
+                    </PagerContent>
+                </MudDataGrid>
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
+</ContentSection>
+
+@code {
+    private string _visitorId;
+    private MudForm? _form;
+    private bool _isFormValid;
+    private string[]? _formErrors;
+    private int _score;
+    private int _satisfaction;
+    private string _recommendValue = "";
+    private int _stepperIndex;
+    private bool _hasSendFailed;
+    private bool _hasCommandFailed;
+    private bool _hasDomainFailed;
+    private bool _isSendCompleted;
+    private bool _isCommandCompleted;
+    private bool _isDomainCompleted;
+    private bool _isSaveCompleted;
+    private bool _isStepDisabled;
+    private List<Rating> _ratings { get; set; }
+
+    /// <inheritdoc/>
+    protected override void OnInitialized()
+    {
+        _isFormValid = false;
+        _formErrors = [];
+        _score = 0;
+        _satisfaction = 0;
+        _recommendValue = "";
+        _stepperIndex = -1;
+        _hasSendFailed = false;
+        _hasCommandFailed = false;
+        _hasDomainFailed = false;
+        _isSendCompleted = false;
+        _isCommandCompleted = false;
+        _isDomainCompleted = false;
+        _isSaveCompleted = false;
+        _isStepDisabled = true;
+        _ratings = [];
+    }
+
+    /// <inheritdoc/>
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _visitorId = await VisitorService.GetVisitorId();
+        }
+    }
+
+    private async Task Submit()
+    {
+        void UpdateStepper(int failedStep)
+        {
+            _stepperIndex = failedStep;
+            _hasSendFailed = failedStep == 0;
+            _hasCommandFailed = failedStep == 1;
+            _hasDomainFailed = failedStep == 2;
+            _isSendCompleted = failedStep > 0;
+            _isCommandCompleted = failedStep > 1;
+            _isDomainCompleted = failedStep > 2;
+            _isSaveCompleted = failedStep == 3;
+        }
+
+        if (_form is null)
+        {
+            throw new InvalidOperationException();
+        }
+
+        // Enable the stepper as soon as the validate button is pushed.
+        _isStepDisabled = false;
+
+        // Validate the form.
+        await _form.Validate();
+
+        if (!_form.IsValid)
+        {
+            // The front-end validation failed.
+            UpdateStepper(0);
+        }
+        else
+        {
+            // Send the rating to the service.
+            var responseResult = await RatingService.PostRating(_visitorId, _score, _recommendValue == "Yes");
+
+            if (responseResult.Code.Equals(ResponseResult.InvalidCommandCode))
+            {
+                // The command failed.
+                UpdateStepper(1);
+            }
+            else if (responseResult.Code.Equals(ResponseResult.InvalidDomainCode))
+            {
+                // The domain refused the command.
+                UpdateStepper(2);
+            }
+            else
+            {
+                // The command has succeeded.
+                UpdateStepper(3);
+            }
+        }
+    }
+
+    private async Task UpdateRatings()
+    {
+        // Get the ratings from the service.
+        _ratings = (await RatingService.GetRatings()).ToList();
+    }
+}

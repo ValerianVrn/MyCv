@@ -1,0 +1,214 @@
+@using MyCv.UI.Components.Shared
+@using MyCv.UI.Dtos
+@using MyCv.UI.Services
+@inject IStringLocalizer<Resource> Localizer
+@inject IInsightService InsightService
+@inject IVisitorService VisitorService
+
+<ContentSection SectionId="es" SectionName="Event sourcing">
+    <MudText Typo="Typo.body1">@Localizer["EventSourcingDefinition1"]<MudLink Href="https://medium.com/%40ocrnshn/event-sourcing-and-cqrs-9286e5578f93">@Localizer["EventSourcingDefinitionLink"]</MudLink>@Localizer["EventSourcingDefinition2"]</MudText>
+    <MudText Typo="Typo.body1">@Localizer["EventSourcingBenefits"]</MudText>
+    <MudText Typo="Typo.body1">@Localizer["EventSourcingWriteIllustration"]</MudText>
+    <MudText Typo="Typo.body1">@Localizer["EventSourcingService"]</MudText>
+    <MudText Typo="Typo.body1">@Localizer["EventSourcingWrite"]</MudText>
+    @* https://mermaid.live/edit#pako:eNp1ksGOmzAQhl_F8i0SSRMCBKwq0gqi0gPqSlQ5VFy8MEtQwU6NSZtGefeOYxJtk11f7Jn5ZvyPPSdaygoooz38GkCUkDS8VrwrBMG150o3ZbPnQpOn56-E95ftC9fwmx8fmdgQsRRaybYF9QhkBsigariW74TjrS3QdVxUn1_U-sDbpvqATe_YHe7vXpoYMJEdb8RjcJOb6OYAeO7xIihGCBudTmJGnr_l362Hl7o5YOsktnY8nWTsqsC6KriHbnZm7QyLbhnZ2saAlG_TTTBlJL108n_oTeXsXk466kmn63WCihSg-9OwNxeYl-F1raBG4y4xsXYypu2g_Elehr4R0PdEDS30VwAJI8w-IgHzWv2DruQmY7LJGcn5AT5C45Q6tAOF5SocvpMBCqp30EFBGR67sqCFOCPFBy3zoygp02oAhyo51DvKXnnbo2WbHIf25sWf_SFld03BecOfzeygX-b9glB2on8om3pROAsWkRu6YeT6c9936JGy5WIWur7n-eEq8t154K_ODv17qbqYLUP0evPA893FKowCh9bKdDJKBFGBiuUgNGWrYHn-B_gfFHE *@
+    <MudImage Fluid="true" Src="images/es-writing.png" Alt="Event Sourcing" Class="rounded-lg" />
+    <MudText Typo="Typo.body1">@Localizer["EventSourcingWriteExample"]</MudText>
+    @* Form *@
+    <MudPaper Class="pa-4" Outlined="true" Elevation="1">
+        <MudGrid>
+            <MudItem md="12">
+                <MudText Typo="Typo.body1">@Localizer["EventSourcingWriteExampleInstructions"]</MudText>
+            </MudItem>
+            <MudItem md="12">
+                <MudDropContainer T="DropItem" Items="_dropItems" ItemsSelector="@((item,dropzone) => item.Place == dropzone)" ItemDropped="ItemUpdated" Class="d-flex flex-column flex-grow-1" CanDropClass="mud-border-success" NoDropClass="mud-border-error" ApplyDropClassesOnDragStarted="true">
+                    <ChildContent>
+                        <MudDropZone T="DropItem" Identifier="@YouZone" Class="rounded-lg border-2 border-solid mud-border-lines-default mud-alert-text-warning pa-4 ma-4 flex-grow-1" AllowReorder CanDrop="@((item) => true)">
+                            <MudText Typo="Typo.h6" Class="ma-2">@Localizer["You"]</MudText>
+                        </MudDropZone>
+                        <MudDropZone T="DropItem" Identifier="@StreetZone" Class="rounded-lg mud-alert-text-normal pa-4 ma-4 flex-grow-1 d-flex flex-wrap" CanDrop="@((item) => true)">
+                        </MudDropZone>
+                    </ChildContent>
+                    <ItemRenderer>
+                        <MudPaper Elevation="25" Class="pa-4 ma-2">@context.Rank @context.Icon @context.Text</MudPaper>
+                    </ItemRenderer>
+                </MudDropContainer>
+            </MudItem>
+            <MudItem md="12">
+                <MudText Typo="Typo.body1">@Localizer["EventSourcingWriteExampleResult"]</MudText>
+            </MudItem>
+            <MudItem md="12">
+                @* Domain events *@
+                <MudDataGrid Items="@_domainEvents" Filterable="false" SortMode="@SortMode.Single" Groupable="false">
+                    <Columns>
+                        <PropertyColumn Property="x => x.DateTime" Title="@Localizer["Date"]" />
+                        <PropertyColumn Property="x => x.DomainEventType" Title="@Localizer["Type"]" />
+                        <PropertyColumn Property="x => x.Intent" Title="@Localizer["Intent"]" />
+                        <PropertyColumn Property="x => x.Priority" Title="@Localizer["Priority"]" />
+                    </Columns>
+                    <PagerContent>
+                        <MudDataGridPager T="DomainEvent" />
+                    </PagerContent>
+                </MudDataGrid>
+            </MudItem>
+            <MudItem md="12">
+                <MudText Typo="Typo.body1">@Localizer["EventSourcingReadResult"]</MudText>
+            </MudItem>
+            @* Podium *@
+            @foreach (var podiumItem in _podium)
+            {
+                <MudItem sm="12" md="4">
+                    <MudCard Class="pa-2 border-2 border-solid" Style="@podiumItem.Style">
+                        <MudCardHeader>
+                            <CardHeaderContent>
+                                <MudText Typo="Typo.h6">@podiumItem.Intent</MudText>
+                                <MudIcon Icon="@Icons.Material.Filled.EmojiEvents" Size="Size.Large" Class="mt-2" Style="@podiumItem.CupColorStyle" />
+                            </CardHeaderContent>
+                        </MudCardHeader>
+                    </MudCard>
+                </MudItem>
+            }
+        </MudGrid>
+    </MudPaper>
+</ContentSection>
+
+@code {
+
+    public record Intent(string Id, string ShortName, string Icon, string Text);
+
+    public class DropItem(string id, string text, string icon, string shortName, string place)
+    {
+        public string Id { get; } = id;
+        public string Text { get; } = text;
+        public string Icon { get; } = icon;
+        public string ShortName { get; } = shortName;
+        public int? Priority { get; set; } = null;
+        public string Rank { get { return Place == YouZone ? $"{Priority + 1} - " : ""; } }
+        public string Place { get; set; } = place;
+    }
+
+    public class PodiumItem(string intent, string cupColorStyle, string borderColorStyle)
+    {
+        public string Intent { get; set; } = intent;
+        public string CupColorStyle { get; } = cupColorStyle;
+        public string Style { get; } = "text-align: center; " + borderColorStyle;
+    }
+
+    private const string StreetZone = "Street";
+    private const string YouZone = "You";
+    private string _visitorId;
+    private List<Intent>? _intents;
+    private List<DropItem>? _dropItems;
+    private List<DomainEvent>? _domainEvents { get; set; }
+    private List<PodiumItem>? _podium { get; set; }
+
+    /// <inheritdoc/>
+    protected override void OnInitialized()
+    {
+        _intents = [
+            new("CURIOUS", Localizer["IntentCurious"], "🧐", Localizer["IntentCuriousDescription"]),
+    new("REVIEWING", Localizer["IntentReviewing"], "📄", Localizer["IntentReviewingDescription"]),
+    new("COLLABORATION", Localizer["IntentCollaboration"], "🔗", Localizer["IntentCollaborationDescription"]),
+    new("REPUTATION", Localizer["IntentReputation"], "📢", Localizer["IntentReputationDescription"]),
+    new("RECRUITING", Localizer["IntentRecruiting"], "🙋", Localizer["IntentRecruitingDescription"]),
+    new("BROWSING", Localizer["IntentBrowsing"], "🔍", Localizer["IntentBrowsingDescription"]),
+    new("NETWORKING", Localizer["IntentNetworking"], "🌐", Localizer["IntentNetworkingDescription"]),
+    new("POST", Localizer["IntentPost"], "📬", Localizer["IntentPostDescription"]),
+    new("FREELANCE", Localizer["IntentFreelance"], "🤝", Localizer["IntentFreelanceDescription"]),
+    new("HELPING", Localizer["IntentHelping"], "😎", Localizer["IntentHelpingDescription"]),
+    new("MISCLICK", Localizer["IntentMisclick"], "🌀", Localizer["IntentMisclickDescription"]),
+    new("BOREDOM", Localizer["IntentBoredom"], "⌛", Localizer["IntentBoredomDescription"])
+        ];
+        _dropItems = _intents.Select(d => new DropItem(d.Id, d.Text, d.Icon, d.ShortName, StreetZone)).ToList();
+        _podium = new()
+        {
+            new("", "color: goldenrod;", "border-color: goldenrod;"),
+            new("", "color: silver;", "border-color: silver;"),
+            new("", "color: peru;", "border-color: peru;")
+        };
+    }
+
+    /// <inheritdoc/>
+    protected override async Task OnInitializedAsync()
+    {
+        // _visitorId = await VisitorService.GetVisitorId();
+        _domainEvents = (await InsightService.GetDomainEvents(_visitorId)).ToList();
+    }
+
+    /// <inheritdoc/>
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _visitorId = await VisitorService.GetVisitorId();
+        }
+    }
+
+    private async Task ItemUpdated(MudItemDropInfo<DropItem> dropItemInfo)
+    {
+        var currentZone = dropItemInfo.Item.Place;
+        var newZone = dropItemInfo.DropzoneIdentifier;
+        var currentIndex = dropItemInfo.Item.Priority;
+        var newIndex = dropItemInfo.IndexInZone;
+
+        if (currentZone == StreetZone && newZone == YouZone)
+        {
+            // Intent added.
+            // TODO: handle error.
+            _ = await InsightService.AddIntent(_visitorId, dropItemInfo.Item.Id, newIndex);
+
+            // Rank up other items in the same zone with fewer priority.
+            foreach (var dropItem in _dropItems.Where(d => d.Place == YouZone && d.Priority >= newIndex))
+            {
+                dropItem.Priority += 1;
+            }
+        }
+        else if (currentZone == YouZone && newZone == StreetZone)
+        {
+            // Intent removed.
+            _ = await InsightService.RemoveIntent(_visitorId, dropItemInfo.Item.Id);
+
+            // Rank down other items in the same zone with fewer priority.
+            foreach (var dropItem in _dropItems.Where(d => d.Place == YouZone && d.Priority >= currentIndex))
+            {
+                dropItem.Priority -= 1;
+            }
+        }
+        else if (currentZone == YouZone && newZone == YouZone && currentIndex != newIndex)
+        {
+            // Priority changed.
+            _ = await InsightService.ChangePriority(_visitorId, dropItemInfo.Item.Id, newIndex);
+
+            // Rank down/up other items in the same zone.
+            if (currentIndex > newIndex)
+            {
+                foreach (var dropItem in _dropItems.Where(d => d.Place == YouZone && d.Id != dropItemInfo.Item.Id && d.Priority < currentIndex && d.Priority >= newIndex))
+                {
+                    dropItem.Priority += 1;
+                }
+            }
+            else if (newIndex > currentIndex)
+            {
+                foreach (var dropItem in _dropItems.Where(d => d.Place == YouZone && d.Id != dropItemInfo.Item.Id && d.Priority > currentIndex && d.Priority <= newIndex))
+                {
+                    dropItem.Priority -= 1;
+                }
+            }
+        }
+
+        // Update the domain events table.
+        // TODO: push service for updates.
+        _domainEvents = (await InsightService.GetDomainEvents(_visitorId)).ToList();
+
+        // Update the podium.
+        // TODO: push service for updates.
+        var newPodium = (await InsightService.GetPodium(_visitorId)).ToDictionary();
+        _podium.ElementAt(0).Intent = newPodium.ContainsKey(0) ? _dropItems.First(d => d.Id.Equals(newPodium[0])).ShortName : "";
+        _podium.ElementAt(1).Intent = newPodium.ContainsKey(1) ? _dropItems.First(d => d.Id.Equals(newPodium[1])).ShortName : "";
+        _podium.ElementAt(2).Intent = newPodium.ContainsKey(2) ? _dropItems.First(d => d.Id.Equals(newPodium[2])).ShortName : "";
+
+        // Update the drop item.
+        dropItemInfo.Item.Priority = newIndex;
+        dropItemInfo.Item.Place = newZone;
+    }
+}

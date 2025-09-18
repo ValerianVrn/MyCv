@@ -1,0 +1,49 @@
+@inherits LayoutComponentBase
+@inject IStringLocalizer<Resource> Localizer
+
+@* Required *@
+<MudThemeProvider />
+<MudPopoverProvider />
+
+@* Needed for dialogs *@
+<MudDialogProvider />
+
+@* Needed for snackbars *@
+<MudSnackbarProvider />
+
+<MudLayout>
+    @* Top bar *@
+    <MudAppBar Color="Color.Primary" Fixed="true">
+        <MudSpacer />
+        <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Href="https://github.com/ValerianVrn/MyCv" />
+        <MudIconButton Icon="@Icons.Custom.Brands.LinkedIn" Color="Color.Inherit" Href="https://www.linkedin.com/in/val%C3%A9rian-verona-a46969a5/" />
+        <MudIconButton Href="https://www.malt.fr/profile/valerianverona/">
+            <MudImage Src="images/malt-logo-red.svg" Alt="Malt" />
+        </MudIconButton>
+    </MudAppBar>
+    @* Left pane *@
+    <MudDrawer Open="true" Variant="DrawerVariant.Persistent" Elevation="8">
+        <MudDrawerHeader Class="mud-theme-tertiary">
+            <MudStack>
+                <MudStack Row="true">
+                    <MudAvatar Size="Size.Large">
+                        <MudImage Src="images/portrait.jpg" Alt="Avatar" />
+                    </MudAvatar>
+                    <MudText Typo="Typo.h6">Valérian Verona</MudText>
+                </MudStack>
+                <MudText Typo="Typo.subtitle1">@Localizer["JobTitle"]</MudText>
+            </MudStack>
+        </MudDrawerHeader>
+        @* Required for not scrolling in drawer header *@
+        <MudContainer Class="py-2" Style="overflow-y:scroll; max-height:stretch;">
+            <NavMenu />
+        </MudContainer>
+    </MudDrawer>
+    @* Page content *@
+    <MudMainContent>
+        <MudContainer MaxWidth="MaxWidth.Medium" Class="my-6">
+            @Body
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
+

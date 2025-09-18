@@ -1,0 +1,75 @@
+::deep .code-block {
+  padding: 16px;
+  background-color: #2f2f2f;
+  color: white;
+  font-family: Consolas, monospace;
+  font-size: 0.8rem;
+  white-space: pre-wrap;
+  border: 1px solid #404040;
+  border-radius: 6px;
+  border: 1px solid #3c3c3c;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.tooltip {
+  background-color: rgba(85, 156, 214, 0.2);
+  border-bottom: 1px dotted #569CD6;
+}
+
+/*Code token*/
+
+.token-structuralkeyword {
+  color: #569CD6;
+}
+
+.token-flowcontrolkeyword {
+  color: #C586C0;
+}
+
+.token-typename {
+  color: #4EC9B0;
+}
+
+.token-identifier {
+  color: #D4D4D4;
+}
+
+.token-string {
+  color: #D69D85;
+}
+
+.token-number {
+  color: #B5CEA8;
+}
+
+.token-comment {
+  color: #57A64A;
+}
+
+.token-symbol {
+  color: #D4D4D4;
+}
+
+.token-classname {
+  color: #4EC9B0;
+}
+
+.token-interfacename {
+  color: #B8D7A3;
+}
+
+.token-enumname {
+  color: #B8D7A3;
+}
+
+.token-methodname {
+  color: #DCDCAA;
+}
+
+.token-struct {
+  color: #4EC9B0;
+}
+
+.token-variable {
+  color: #9CDCFE;
+}

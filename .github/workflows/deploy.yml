@@ -54,9 +54,12 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_23A04D24B4224724895068CC64EF1B48 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_A307F732A95F470C98B3194C6536BF78 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_00CD1132FB35471487D980E6F3663C56 }}
+          #client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_23A04D24B4224724895068CC64EF1B48 }}
+          #tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_A307F732A95F470C98B3194C6536BF78 }}
+          #subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_00CD1132FB35471487D980E6F3663C56 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_AFF467EF286D4DB38E4DD17C46E727D3 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_A48EDFAE81144F4790E624F2B551B108 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_6B03DE7FC98F48079B565A990EB4DE51 }}
 
       - name: Detect target environment
         id: detect

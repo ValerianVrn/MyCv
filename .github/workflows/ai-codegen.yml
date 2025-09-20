@@ -56,35 +56,11 @@ jobs:
             --api-key openrouter=$OPENROUTER_DEEPSEEK_API_KEY \
             --message "$instruction"
 
-      - name: Debug git state after Aider
-        run: |
-          echo "PWD: $(pwd)"
-          echo "Current branch:"
-          git branch --show-current || echo "no branch (detached)"
-          echo "HEAD ref:"
-          git rev-parse --verify HEAD
-          echo "Last 10 commits:"
-          git log --oneline -n 10
-          echo "Git status:"
-          git status --porcelain --branch
-          echo "List repo root:"
-          ls -la
-
-      - name: Ensure changes are committed (safe)
-        run: |
-          git add -A
-          # if there are changes, commit; otherwise print a note
-          if git diff --staged --quiet && git diff --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "feat: make nav drawer responsive with MudBlazor capabilities" || true
-          fi
-
       - name: Push branch
         run: |
           git push --set-upstream origin ${{ steps.create_branch.outputs.branch }}
         env:
-          GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Open Pull Request
         uses: peter-evans/create-pull-request@v6

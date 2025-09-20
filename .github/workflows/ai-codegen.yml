@@ -38,7 +38,7 @@ jobs:
         id: create_branch
         run: |
           ISSUE_NUMBER=${{ github.event.issue.number || 'manual' }}
-          BRANCH="aider-issue-${ISSUE_NUMBER}-$(date +%s)"
+          BRANCH="ai-issue-${ISSUE_NUMBER}-$(date +%s)"
           echo "branch=$BRANCH" >> $GITHUB_OUTPUT
           git checkout -b "$BRANCH"
 

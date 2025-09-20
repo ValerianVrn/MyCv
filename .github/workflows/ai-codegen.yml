@@ -1,4 +1,4 @@
-name: AI Update
+name: AI update
 
 on:
   issues:
@@ -58,10 +58,14 @@ jobs:
 
       - name: Push branch
         run: |
-          git push --set-upstream origin ${{ steps.create_branch.outputs.branch }}
+          git push --set-upstream origin HEAD:${{ steps.create_branch.outputs.branch }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+      - name: Verify pushed branch on remote
+        run: |
+          git fetch origin
+          git log origin/${{ steps.create_branch.outputs.branch }} -n 5 --oneline
+    
       - name: Open Pull Request
         uses: peter-evans/create-pull-request@v6
         with:

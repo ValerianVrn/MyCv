@@ -6,6 +6,9 @@ name: Deploy
 on:
   workflow_call:
     inputs:
+      checkout-ref:
+        required: false
+        default: ''
       environment:
         required: true
         type: string
@@ -28,6 +31,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.checkout-ref }}
 
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v4

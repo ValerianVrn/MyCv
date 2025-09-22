@@ -67,6 +67,8 @@ jobs:
   dotnet:
     uses: ./.github/workflows/dotnet.yml
     needs: aider
+    with:
+      checkout-ref: ${{ needs.aider.outputs.branch }}
 
   deploy:
     needs: [aider, dotnet]
@@ -75,6 +77,7 @@ jobs:
       id-token: write
     uses: ./.github/workflows/deploy.yml
     with:
+      checkout-ref: ${{ needs.aider.outputs.branch }}
       environment: development
       app-name: valerianverona-dev
     secrets:
@@ -86,6 +89,9 @@ jobs:
     needs: [aider, dotnet]
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.aider.outputs.branch }}
       - name: Create Pull Request
         run: |
           gh pr create \

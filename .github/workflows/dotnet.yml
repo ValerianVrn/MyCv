@@ -5,12 +5,18 @@ name: .NET
 
 on:
   workflow_call:
+    inputs:
+      checkout-ref:
+        required: false
+        default: ''
   
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+      with:
+        ref: ${{ inputs.checkout-ref }}
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:

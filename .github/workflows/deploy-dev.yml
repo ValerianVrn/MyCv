@@ -12,7 +12,7 @@ on:
 
 jobs:
   deploy:
-    uses: ./deploy.yml@main
+    uses: ./.github/workflows/deploy.yml
     with:
       environment: development
       app-name: valerianverona-dev

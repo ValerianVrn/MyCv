@@ -9,7 +9,7 @@ on:
 
 jobs:
   deploy:
-    uses: ./deploy.yml@main
+    uses: ./.github/workflows/deploy.yml
     with:
       environment: production
       app-name: valerianverona

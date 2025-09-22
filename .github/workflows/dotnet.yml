@@ -8,6 +8,7 @@ on:
     inputs:
       checkout-ref:
         required: false
+        type: string
         default: ''
   
 jobs:

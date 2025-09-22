@@ -84,6 +84,7 @@ jobs:
   
   pull-request:
     needs: [aider, dotnet]
+    runs-on: ubuntu-latest
     steps:
       - name: Create Pull Request
         run: |

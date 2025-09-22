@@ -8,55 +8,12 @@ on:
     types: [published]
 
 jobs:
-  build:
-    runs-on: windows-latest
-    permissions:
-      contents: read #This is required for actions/checkout
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up .NET Core
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '8.x'
-
-      - name: Build with dotnet
-        run: dotnet build .\MyCv.sln --configuration Release
-
-      - name: dotnet publish
-        run: dotnet publish .\ui\MyCv.UI\MyCv.UI.csproj -c Release -o "${{env.DOTNET_ROOT}}/myapp"
-
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v4
-        with:
-          name: .net-app
-          path: ${{env.DOTNET_ROOT}}/myapp
-
   deploy:
-    runs-on: windows-latest
-    needs: build
-    permissions:
-      id-token: write #This is required for requesting the JWT
-      contents: read #This is required for actions/checkout
-
-    steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v4
-        with:
-          name: .net-app
-
-      - name: Login to Azure
-        uses: azure/login@v2
-        with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_AFF467EF286D4DB38E4DD17C46E727D3 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_A48EDFAE81144F4790E624F2B551B108 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_6B03DE7FC98F48079B565A990EB4DE51 }}
-
-      - name: Deploy to Azure Web App
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v3
-        with:
-          app-name: valerianverona
-          slot-name: 'Production'
-          package: .
+    uses: ./deploy.yml@main
+    with:
+      environment: production
+      app-name: valerianverona
+    secrets:
+      client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_AFF467EF286D4DB38E4DD17C46E727D3 }}
+      tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_A48EDFAE81144F4790E624F2B551B108 }}
+      subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_6B03DE7FC98F48079B565A990EB4DE51 }}

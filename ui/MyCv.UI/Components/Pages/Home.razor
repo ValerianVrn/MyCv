@@ -1,5 +1,6 @@
 @page "/"
 @inject IStringLocalizer<Resource> Localizer
+@using System.Timers
 
 <PageTitle>@Localizer["HomeHeader"]</PageTitle>
 
@@ -17,6 +18,26 @@
             </MudItem>
             <MudItem md="12">
                 <MudText Typo="Typo.body1" Align="Align.Justify" GutterBottom="true" Inline=@true>@Localizer["HomeSourceCode"]</MudText> <MudLink Href="https://github.com/ValerianVrn/MyCv.git">GitHub</MudLink>.
+            </MudItem>
+            <MudItem md="12">
+                <!-- Terminal Section -->
+                <div class="bg-black rounded-lg p-4 font-mono text-sm border border-gray-700">
+                    <div class="flex items-center mb-2">
+                        <div class="flex space-x-2 mr-4">
+                            <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                        </div>
+                        <span class="text-gray-400">terminal</span>
+                    </div>
+                    <div class="text-green-400 whitespace-pre">
+                        @_terminalText
+                        @if (_isTyping)
+                        {
+                            <span class="animate-pulse">|</span>
+                        }
+                    </div>
+                </div>
             </MudItem>
             <MudItem md="12">
                 <MudButton Variant="Variant.Text" Color="Color.Primary">@Localizer["HomeStart"] <MudIcon Icon="@Icons.Material.Filled.ArrowRightAlt" Title="Favorite" /></MudButton>

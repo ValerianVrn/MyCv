@@ -1,0 +1,45 @@
+@inject IStringLocalizer<Resource> Localizer
+
+<MudAppBar Fixed="true">
+    <a Href="/">
+        <MudText Typo="Typo.h5" Color="Color.Primary">Valérian Verona</MudText>
+    </a>
+    <MudSpacer />
+    <MudStack Row="true" Spacing="5" AlignItems="AlignItems.Center">
+        <MudButton Href="#skills" Variant="Variant.Text" Color="Color.Transparent">
+            @Localizer["Skills"]
+        </MudButton>
+        <MudMenu Label="@Localizer["Explore"]" Variant="Variant.Text" Color="Color.Transparent" EndIcon="@Icons.Material.Filled.KeyboardArrowDown">
+            <MudMenuItem Label="@Localizer["Architecture"]" Href="/architecture" />
+            <MudMenuItem Label="@Localizer["DevOps"]" Href="/devops" />
+            <MudMenuItem Label="@Localizer["Leadership"]" Href="/leadership" />
+            <MudMenuItem Label="@Localizer["DotNetExpertise"]" Href="/dotnet" />
+            <MudMenuItem Label="@Localizer["EducationAndCareer"]" Href="/career" />
+            <MudMenuItem Label="@Localizer["PersonalLife"]" Href="/life" />
+        </MudMenu>
+        <MudButton Href="#contact" Variant="Variant.Text" Color="Color.Transparent">
+            @Localizer["Contact"]
+        </MudButton>
+        <MudDivider Vertical="true" FlexItem="true" />
+        <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Href="https://github.com/ValerianVrn/MyCv" Title="GitHub" />
+        <MudIconButton Icon="@Icons.Custom.Brands.LinkedIn" Href="https://www.linkedin.com/in/val%C3%A9rian-verona-a46969a5/" Title="LinkedIn" />
+        <MudIconButton Icon="@Icons.Custom.Brands.Gmail" Href="mailto:valerian.verona@gmail.com" Title="Mail" />
+        <MudIconButton Href="https://www.malt.fr/profile/valerianverona/" Title="Malt">
+            <MudImage Src="images/malt-logo-red.svg" Alt="Malt" Style="width: 24px;height: 24px;object-fit: contain;" />
+        </MudIconButton>
+        <MudIconButton Icon="@(Layout?.IsDarkMode == true ? Icons.Material.Filled.LightMode : Icons.Material.Filled.DarkMode)" Color="Color.Inherit" OnClick="ToggleDarkMode" Title="Toggle Dark Mode" />
+        <MudButton Variant="Variant.Filled" Color="Color.Success">
+            @Localizer["DownloadCV"]
+        </MudButton>
+    </MudStack>
+</MudAppBar>
+
+@code {
+
+    [CascadingParameter] public EmptyLayout? Layout { get; set; }
+
+    private void ToggleDarkMode()
+    {
+        Layout?.ToggleDarkMode();
+    }
+}

@@ -183,6 +183,9 @@
   <data name="Conclusion" xml:space="preserve">
     <value>Conclusion</value>
   </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
   <data name="Content" xml:space="preserve">
     <value>Contenu</value>
   </data>
@@ -206,6 +209,18 @@
   </data>
   <data name="Degrees" xml:space="preserve">
     <value>Diplômes</value>
+  </data>
+  <data name="DevOps" xml:space="preserve">
+    <value>DevOps</value>
+  </data>
+  <data name="DotNetExpertise" xml:space="preserve">
+    <value>Expertise .NET</value>
+  </data>
+  <data name="DownloadCV" xml:space="preserve">
+    <value>Télécharger le CV</value>
+  </data>
+  <data name="EducationAndCareer" xml:space="preserve">
+    <value>Études et carrière</value>
   </data>
   <data name="EventSourcingBenefits" xml:space="preserve">
     <value>Il offre un historique complet, facilite le débogage et les requêtes temporelles, et permet de reconstruire l’état ou créer plusieurs vues.</value>
@@ -245,6 +260,9 @@
   </data>
   <data name="Experiences" xml:space="preserve">
     <value>Expériences</value>
+  </data>
+  <data name="Explore" xml:space="preserve">
+    <value>Explorer</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Accueil</value>
@@ -342,6 +360,9 @@
   <data name="Languages" xml:space="preserve">
     <value>Langue</value>
   </data>
+  <data name="Leadership" xml:space="preserve">
+    <value>Leadership</value>
+  </data>
   <data name="Microservice" xml:space="preserve">
     <value>Microservice</value>
   </data>
@@ -392,6 +413,9 @@
   </data>
   <data name="RequiredAnswer" xml:space="preserve">
     <value>Réponse requise</value>
+  </data>
+  <data name="Skills" xml:space="preserve">
+    <value>Compétences</value>
   </data>
   <data name="Testing" xml:space="preserve">
     <value>Test</value>

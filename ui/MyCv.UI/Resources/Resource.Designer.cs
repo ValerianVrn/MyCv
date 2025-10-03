@@ -79,6 +79,15 @@ namespace MyCv.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contact.
+        /// </summary>
+        public static string Contact {
+            get {
+                return ResourceManager.GetString("Contact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Degrees.
         /// </summary>
         public static string Degrees {
@@ -88,11 +97,56 @@ namespace MyCv.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DevOps.
+        /// </summary>
+        public static string DevOps {
+            get {
+                return ResourceManager.GetString("DevOps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .NET Expertise.
+        /// </summary>
+        public static string DotNetExpertise {
+            get {
+                return ResourceManager.GetString("DotNetExpertise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Download CV.
+        /// </summary>
+        public static string DownloadCV {
+            get {
+                return ResourceManager.GetString("DownloadCV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Education and career.
+        /// </summary>
+        public static string EducationAndCareer {
+            get {
+                return ResourceManager.GetString("EducationAndCareer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Experiences.
         /// </summary>
         public static string Experiences {
             get {
                 return ResourceManager.GetString("Experiences", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Explore.
+        /// </summary>
+        public static string Explore {
+            get {
+                return ResourceManager.GetString("Explore", resourceCulture);
             }
         }
         
@@ -367,6 +421,15 @@ namespace MyCv.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Leadership.
+        /// </summary>
+        public static string Leadership {
+            get {
+                return ResourceManager.GetString("Leadership", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Microservice.
         /// </summary>
         public static string Microservice {
@@ -381,6 +444,15 @@ namespace MyCv.UI.Resources {
         public static string PersonalLife {
             get {
                 return ResourceManager.GetString("PersonalLife", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skills.
+        /// </summary>
+        public static string Skills {
+            get {
+                return ResourceManager.GetString("Skills", resourceCulture);
             }
         }
         

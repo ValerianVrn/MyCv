@@ -123,11 +123,29 @@
   <data name="Conclusion" xml:space="preserve">
     <value>Conclusion</value>
   </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
   <data name="Degrees" xml:space="preserve">
     <value>Degrees</value>
   </data>
+  <data name="DevOps" xml:space="preserve">
+    <value>DevOps</value>
+  </data>
+  <data name="DotNetExpertise" xml:space="preserve">
+    <value>.NET Expertise</value>
+  </data>
+  <data name="DownloadCV" xml:space="preserve">
+    <value>Download CV</value>
+  </data>
+  <data name="EducationAndCareer" xml:space="preserve">
+    <value>Education and career</value>
+  </data>
   <data name="Experiences" xml:space="preserve">
     <value>Experiences</value>
+  </data>
+  <data name="Explore" xml:space="preserve">
+    <value>Explore</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
@@ -219,11 +237,17 @@
   <data name="Languages" xml:space="preserve">
     <value>Languages</value>
   </data>
+  <data name="Leadership" xml:space="preserve">
+    <value>Leadership</value>
+  </data>
   <data name="Microservice" xml:space="preserve">
     <value>Microservice</value>
   </data>
   <data name="PersonalLife" xml:space="preserve">
     <value>Personal life</value>
+  </data>
+  <data name="Skills" xml:space="preserve">
+    <value>Skills</value>
   </data>
   <data name="Testing" xml:space="preserve">
     <value>Testing</value>

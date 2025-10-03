@@ -1,0 +1,68 @@
+@inherits LayoutComponentBase
+@inject IJSRuntime JSRuntime
+
+@* Required *@
+<MudThemeProvider @ref="_mudThemeProvider" @bind-IsDarkMode="@_isDarkMode" Theme="_theme" />
+<MudPopoverProvider />
+
+@* Needed for dialogs *@
+<MudDialogProvider />
+
+@* Needed for snackbars *@
+<MudSnackbarProvider />
+
+<CascadingValue Value="this">
+    <MudLayout>
+        @Body
+    </MudLayout>
+</CascadingValue>
+
+@code {
+    private bool _isDarkMode;
+    private MudThemeProvider _mudThemeProvider;
+    private MudTheme _theme = MainTheme;
+
+    public bool IsDarkMode { get { return _isDarkMode; } }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Get whether the system is using dark mode.
+            _isDarkMode = await _mudThemeProvider.GetSystemPreference();
+            StateHasChanged();
+        }
+    }
+
+    public void ToggleDarkMode()
+    {
+        _isDarkMode = !_isDarkMode;
+        StateHasChanged();
+    }
+
+    public static MudTheme MainTheme = new MudTheme()
+    {
+        PaletteLight = new PaletteLight()
+        {
+            Primary = "#3B82F6",   // Tailwind blue-500
+            Secondary = "#8B5CF6", // Tailwind purple-500
+            Background = "#F9FAFB", // gray-50
+            Surface = "rgba(255, 255, 255, 0.85)", // card-like transparency
+            DrawerBackground = "rgba(243, 244, 246, 0.85)", // gray-100 w/ transparency
+            AppbarBackground = "rgba(59, 130, 246, 0.15)",  // subtle blue tint
+            TextPrimary = "#111827",   // gray-900
+            TextSecondary = "#4B5563"  // gray-600
+        },
+        PaletteDark = new PaletteDark()
+        {
+            Primary = "#60A5FA",   // Tailwind blue-400
+            Secondary = "#A78BFA", // Tailwind purple-400
+            Background = "#111827", // gray-900
+            Surface = "rgba(31, 41, 55, 0.85)", // gray-800 w/ transparency
+            DrawerBackground = "rgba(17, 24, 39, 0.85)", // darker base
+            AppbarBackground = "rgba(59, 130, 246, 0.1)", // faint blue overlay
+            TextPrimary = "#F9FAFB",   // gray-50
+            TextSecondary = "#D1D5DB"  // gray-300
+        }
+    };    
+}

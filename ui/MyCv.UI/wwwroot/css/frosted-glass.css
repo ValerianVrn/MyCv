@@ -1,0 +1,6 @@
+.mud-appbar,
+.mud-dialog,
+.mud-drawer {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}

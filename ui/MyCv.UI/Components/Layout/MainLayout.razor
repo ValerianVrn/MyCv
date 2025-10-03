@@ -1,26 +1,9 @@
 @inherits LayoutComponentBase
-@inject IStringLocalizer<Resource> Localizer
-
-@* Required *@
-<MudThemeProvider />
-<MudPopoverProvider />
-
-@* Needed for dialogs *@
-<MudDialogProvider />
-
-@* Needed for snackbars *@
-<MudSnackbarProvider />
+@layout EmptyLayout
 
 <MudLayout>
     @* Top bar *@
-    <MudAppBar Color="Color.Primary" Fixed="true">
-        <MudSpacer />
-        <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Href="https://github.com/ValerianVrn/MyCv" />
-        <MudIconButton Icon="@Icons.Custom.Brands.LinkedIn" Color="Color.Inherit" Href="https://www.linkedin.com/in/val%C3%A9rian-verona-a46969a5/" />
-        <MudIconButton Href="https://www.malt.fr/profile/valerianverona/">
-            <MudImage Src="images/malt-logo-red.svg" Alt="Malt" />
-        </MudIconButton>
-    </MudAppBar>
+    <AppBar/>
     @* Page content *@
     <MudMainContent>
         <MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Class="my-6">

@@ -1,0 +1,53 @@
+/* Terminal */
+.terminal {
+  background: #1a1a1a;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 24px 0;
+  font-family: 'Courier New', monospace;
+  color: #00ff00;
+  position: relative;
+}
+
+.terminal-header {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.terminal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+  .terminal-dot:nth-child(1) {
+    background: #ff5f57;
+  }
+
+  .terminal-dot:nth-child(2) {
+    background: #ffbd2e;
+  }
+
+  .terminal-dot:nth-child(3) {
+    background: #28ca42;
+  }
+
+.terminal-content {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+
+  51%, 100% {
+    opacity: 0;
+  }
+}

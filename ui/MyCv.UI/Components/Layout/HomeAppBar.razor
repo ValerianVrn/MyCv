@@ -1,0 +1,148 @@
+@inject IStringLocalizer<Resource> Localizer
+
+<!-- Drawer (sidebar for mobile) -->
+<MudDrawer @bind-Open="_drawerOpen" Variant="DrawerVariant.Temporary" Elevation="1">
+    @* Tool bar *@
+    <MudToolBar Dense="true">
+        <MudIconButton Icon="@Icons.Material.Rounded.Close" OnClick="() => _drawerOpen = !_drawerOpen" />
+        <MudSpacer />
+        <MudIconButton Icon="@Icons.Material.Rounded.FileDownload" OnClick="DownloadCv" />
+    </MudToolBar>
+    @* Navigation menu *@
+    <MudNavMenu>
+        <MudDivider />
+        @foreach (var navItem in _navItems)
+        {
+            if (navItem.Children is null)
+            {
+                <MudNavLink Href="@navItem.Href">@navItem.Label</MudNavLink>
+            }
+            else
+            {
+                <MudNavGroup Title="@navItem.Label" Expanded="true">
+                    @foreach (var child in navItem.Children)
+                    {
+                        <MudNavLink Href="@child.Href">@child.Label</MudNavLink>
+                    }
+                </MudNavGroup>
+            }
+        }
+    </MudNavMenu>
+    <MudSpacer />
+    @* Icon items *@
+    <MudStack Row="true" AlignItems="AlignItems.Center">
+        @foreach (var iconItem in _iconItems)
+        {
+            if (iconItem.Icon is not null)
+            {
+                <MudIconButton Icon="@iconItem.Icon" Href="@iconItem.Href" Title="@iconItem.Title" />
+            }
+            else
+            {
+                <MudIconButton Href="@iconItem.Href" Title="@iconItem.Title">
+                    <MudImage Src="@iconItem.Image" Alt="@iconItem.Title" Style="width: 24px;height: 24px;object-fit: contain;" />
+                </MudIconButton>
+            }
+        }
+    </MudStack>
+</MudDrawer>
+<MudAppBar Fixed="true">
+    <!-- Mobile -->
+    <MudHidden Breakpoint="Breakpoint.Lg">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="() => _drawerOpen = !_drawerOpen" />
+        <MudSpacer />
+        <Brand />
+        <MudSpacer />
+        <ThemeToggle IsDarkMode="@Layout.IsDarkMode" OnToggle="ToggleDarkMode" />
+    </MudHidden>
+    <!-- Desktop -->
+    <MudHidden Breakpoint="Breakpoint.Lg" Invert="true">
+        <Brand />
+        <MudSpacer />
+        <MudStack Row="true" Spacing="5" AlignItems="AlignItems.Center">
+            @* Navigation items *@
+            @foreach (var navItem in _navItems)
+            {
+                if (navItem.Children is null)
+                {
+                    <MudButton Href="@navItem.Href" Variant="Variant.Text" Color="Color.Transparent">
+                        @navItem.Label
+                    </MudButton>
+                }
+                else
+                {
+                    <MudMenu Label="@navItem.Label" Variant="Variant.Text" Color="Color.Transparent" EndIcon="@Icons.Material.Filled.KeyboardArrowDown">
+                        @foreach (var child in navItem.Children)
+                        {
+                            <MudMenuItem Href="@child.Href" Label="@child.Label" />
+                        }
+                    </MudMenu>
+                }
+            }
+            <MudDivider Vertical="true" FlexItem="true" />
+            @* Icon items *@
+            @foreach (var iconItem in _iconItems)
+            {
+                if (iconItem.Icon is not null)
+                {
+                    <MudIconButton Icon="@iconItem.Icon" Href="@iconItem.Href" Title="@iconItem.Title" />
+                }
+                else
+                {
+                    <MudIconButton Href="@iconItem.Href" Title="@iconItem.Title">
+                        <MudImage Src="@iconItem.Image" Alt="@iconItem.Title" Style="width: 24px;height: 24px;object-fit: contain;" />
+                    </MudIconButton>
+                }
+            }
+            <ThemeToggle IsDarkMode="@Layout.IsDarkMode" OnToggle="ToggleDarkMode" />
+            <MudButton Variant="Variant.Filled" Color="Color.Success">
+                @Localizer["DownloadCV"]
+            </MudButton>
+        </MudStack>
+    </MudHidden>
+</MudAppBar>
+
+@code {
+    public record NavItem(string? Href, string Label, List<NavItem>? Children = null);
+    public record IconItem(string? Icon, string Href, string Title, string? Image = null);
+
+    [CascadingParameter] public EmptyLayout Layout { get; set; }
+    private bool _drawerOpen = false;
+    private List<NavItem> _navItems = new();
+    private List<IconItem> _iconItems = new();
+
+    protected override void OnInitialized()
+    {
+        _navItems = new()
+        {
+            new("#skills", Localizer["Skills"]),
+            new(null, Localizer["Explore"], new()
+            {
+                new("/architecture", Localizer["Architecture"]),
+                new("/devops", Localizer["DevOps"]),
+                new("/leadership", Localizer["Leadership"]),
+                new("/dotnet", Localizer["DotNetExpertise"]),
+                new("/career", Localizer["EducationAndCareer"]),
+                new("/life", Localizer["PersonalLife"]),
+            }),
+            new("#contact", Localizer["Contact"])
+        };
+
+        _iconItems = new()
+        {
+            new(Icons.Custom.Brands.GitHub, "https://github.com/ValerianVrn/MyCv", "GitHub"),
+            new(Icons.Custom.Brands.LinkedIn, "https://www.linkedin.com/in/val%C3%A9rian-verona-a46969a5/", "LinkedIn"),
+            new(Icons.Custom.Brands.Gmail, "mailto:valerian.verona@gmail.com", "Mail"),
+            new(null, "https://www.malt.fr/profile/valerianverona/", "Malt", "images/malt-logo-red.svg")
+        };
+    }
+
+    private void ToggleDarkMode()
+    {
+        Layout?.ToggleDarkMode();
+    }
+
+    private void DownloadCv()
+    {
+    }
+}

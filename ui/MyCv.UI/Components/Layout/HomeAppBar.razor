@@ -43,7 +43,7 @@
 <MudAppBar Fixed="true">
     <!-- Mobile -->
     <MudHidden Breakpoint="Breakpoint.Lg">
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Dark" Edge="Edge.Start" OnClick="() => _drawerOpen = !_drawerOpen" />
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="@(Layout.IsDarkMode ? Color.Inherit : Color.Dark)" Edge="Edge.Start" OnClick="() => _drawerOpen = !_drawerOpen" />
         <MudSpacer />
         <Brand />
         <MudSpacer />

@@ -147,6 +147,9 @@
   <data name="Explore" xml:space="preserve">
     <value>Explore</value>
   </data>
+  <data name="FooterAbout" xml:space="preserve">
+    <value>Built with MudBlazor &amp; taste for elegant solutions.</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
@@ -251,5 +254,8 @@
   </data>
   <data name="Testing" xml:space="preserve">
     <value>Testing</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>.NET tech lead and architect.</value>
   </data>
 </root>

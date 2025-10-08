@@ -37,19 +37,7 @@
     <MudSpacer />
     @* Icon items *@
     <MudStack Row="true" AlignItems="AlignItems.Center" Justify="Justify.Center">
-        @foreach (var iconItem in _iconItems)
-        {
-            if (iconItem.Icon is not null)
-            {
-                <MudIconButton Icon="@iconItem.Icon" Href="@iconItem.Href" Title="@iconItem.Title" />
-            }
-            else
-            {
-                <MudIconButton Href="@iconItem.Href" Title="@iconItem.Title">
-                    <MudImage Src="@iconItem.Image" Alt="@iconItem.Title" Style="width: 24px;height: 24px;object-fit: contain;" />
-                </MudIconButton>
-            }
-        }
+        <SocialItems />
     </MudStack>
 </MudDrawer>
 <MudAppBar Fixed="true">
@@ -87,20 +75,7 @@
             }
             <MudDivider Vertical="true" FlexItem="true" />
             <MudStack Row="true" Spacing="2" AlignItems="AlignItems.Center">
-                @* Icon items *@
-                @foreach (var iconItem in _iconItems)
-                {
-                    if (iconItem.Icon is not null)
-                    {
-                        <MudIconButton Icon="@iconItem.Icon" Href="@iconItem.Href" Title="@iconItem.Title" />
-                    }
-                    else
-                    {
-                        <MudIconButton Href="@iconItem.Href" Title="@iconItem.Title">
-                            <MudImage Src="@iconItem.Image" Alt="@iconItem.Title" Style="width: 24px;height: 24px;object-fit: contain;" />
-                        </MudIconButton>
-                    }
-                }
+                <SocialItems/>
                 <ThemeToggle IsDarkMode="@Layout.IsDarkMode" OnToggle="ToggleDarkMode" />
                 <LanguageMenu />
             </MudStack>
@@ -113,12 +88,10 @@
 
 @code {
     public record NavItem(string? Href, string Label, List<NavItem>? Children = null);
-    public record IconItem(string? Icon, string Href, string Title, string? Image = null);
 
     [CascadingParameter] public EmptyLayout Layout { get; set; }
     private bool _drawerOpen = false;
     private List<NavItem> _navItems = new();
-    private List<IconItem> _iconItems = new();
 
     protected override void OnInitialized()
     {
@@ -135,14 +108,6 @@
                 new("/life", Localizer["PersonalLife"]),
             }),
             new("#contact", Localizer["Contact"])
-        };
-
-        _iconItems = new()
-        {
-            new(Icons.Custom.Brands.GitHub, "https://github.com/ValerianVrn/MyCv", "GitHub"),
-            new(Icons.Custom.Brands.LinkedIn, "https://www.linkedin.com/in/val%C3%A9rian-verona-a46969a5/", "LinkedIn"),
-            new(Icons.Custom.Brands.Gmail, "mailto:valerian.verona@gmail.com", "Mail"),
-            // new(null, "https://www.malt.fr/profile/valerianverona/", "Malt", "images/malt-logo-red.svg")
         };
     }
 

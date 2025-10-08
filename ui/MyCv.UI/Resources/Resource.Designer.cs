@@ -151,6 +151,15 @@ namespace MyCv.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Built with MudBlazor &amp; taste for elegant solutions..
+        /// </summary>
+        public static string FooterAbout {
+            get {
+                return ResourceManager.GetString("FooterAbout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Home.
         /// </summary>
         public static string Home {
@@ -462,6 +471,15 @@ namespace MyCv.UI.Resources {
         public static string Testing {
             get {
                 return ResourceManager.GetString("Testing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .NET tech lead and architect..
+        /// </summary>
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
     }

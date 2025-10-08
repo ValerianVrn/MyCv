@@ -1,0 +1,17 @@
+<MudMenu Icon="@Icons.Material.Filled.Language">
+    <MudMenuItem OnClick="@(()=>SetLanguage("en"))">
+        <span class="fi fi-gb"></span> English
+    </MudMenuItem>
+    <MudMenuItem OnClick="@(()=>SetLanguage("fr"))">
+        <span class="fi fi-fr"></span> Français
+    </MudMenuItem>
+</MudMenu>
+
+@code {
+    void SetLanguage(string culture)
+    {
+        CultureInfo.CurrentUICulture = new CultureInfo(culture);
+        CultureInfo.CurrentCulture = new CultureInfo(culture);
+        StateHasChanged();
+    }
+}

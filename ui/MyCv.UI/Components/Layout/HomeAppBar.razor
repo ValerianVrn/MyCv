@@ -6,6 +6,7 @@
     <MudToolBar Dense="true">
         <MudIconButton Icon="@Icons.Material.Rounded.Close" OnClick="() => _drawerOpen = !_drawerOpen" />
         <MudSpacer />
+        <LanguageMenu />
     </MudToolBar>
     @* Navigation menu *@
     <MudNavMenu>
@@ -101,6 +102,7 @@
                     }
                 }
                 <ThemeToggle IsDarkMode="@Layout.IsDarkMode" OnToggle="ToggleDarkMode" />
+                <LanguageMenu />
             </MudStack>
             <MudButton StartIcon="@Icons.Material.Rounded.FileDownload" Variant="Variant.Filled" Color="Color.Success">
                 @Localizer["DownloadCV"]

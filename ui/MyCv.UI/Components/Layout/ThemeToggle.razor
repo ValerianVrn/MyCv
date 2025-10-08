@@ -1,5 +1,5 @@
 <MudIconButton Icon="@(IsDarkMode ? Icons.Material.Filled.LightMode : Icons.Material.Filled.DarkMode)"
-               Color="Color.Inherit"
+               Color="@(IsDarkMode ? Color.Inherit : Color.Dark)"
                OnClick="OnToggle" />
 
 @code {

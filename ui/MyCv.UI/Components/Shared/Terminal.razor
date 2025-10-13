@@ -1,0 +1,53 @@
+@using MyCv.UI.Components.Layout
+
+<div class="terminal @(Layout.IsDarkMode ? "terminal-dark" : "terminal-light")">
+    <div class="terminal-header">
+        <div class="terminal-buttons">
+            <div class="terminal-button red"></div>
+            <div class="terminal-button yellow"></div>
+            <div class="terminal-button green"></div>
+        </div>
+        <div class="terminal-title">@Path</div>
+    </div>
+    <div class="terminal-body">
+        @foreach (var terminalCommand in TerminalCommands)
+        {
+            <div class="terminal-line">
+                <div class="terminal-command">
+                    <span class="terminal-dollar">$</span>
+                    <span class="terminal-cmd">@terminalCommand.Command</span>
+                </div>
+                <div class="terminal-output">@terminalCommand.Output</div>
+            </div>
+        }
+        <div class="terminal-line">
+            <div class="terminal-command">
+                <span class="terminal-dollar">$</span>
+                <span class="terminal-cursor"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    public record TerminalCommand(string Command, string Output);
+
+    [CascadingParameter]
+    public EmptyLayout Layout { get; set; }
+
+    [Parameter]
+    public string Path { get; set; } = "~/dev/career";
+
+    [Parameter]
+    public List<TerminalCommand> TerminalCommands { get; set; } = new()
+    {
+        new("whoami", ".NET tech lead & architect"),
+        new("stack --list", "[C#/.NET; CQRS/ES; Azure; Azure DevOps; Docker]"),
+        new("status --current", "Available for new opportunities & collaborations")
+    };
+
+    private string GetTerminalThemeClass()
+    {
+        return Layout.IsDarkMode ? "terminal-dark" : "terminal-light";
+    }
+}

@@ -89,7 +89,8 @@
 @code {
     public record NavItem(string? Href, string Label, List<NavItem>? Children = null);
 
-    [CascadingParameter] public EmptyLayout Layout { get; set; }
+    [CascadingParameter]
+    public EmptyLayout Layout { get; set; }
     private bool _drawerOpen = false;
     private List<NavItem> _navItems = new();
 

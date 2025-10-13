@@ -1,5 +1,6 @@
 @page "/"
 @using MyCv.UI.Components.Layout
+@using MyCv.UI.Components.Shared
 @using System.Timers;
 @inject IStringLocalizer<Resource> Localizer
 @layout MainLayout
@@ -11,20 +12,7 @@
         <MudText Typo="Typo.h2" Align="Align.Left">@Localizer["HomeHeader"]</MudText>
     </MudItem>
     <MudItem md="6">
-        <!-- Terminal -->
-        <div class="terminal">
-            <div class="terminal-header">
-                <div class="terminal-dot"></div>
-                <div class="terminal-dot"></div>
-                <div class="terminal-dot"></div>
-            </div>
-            <div class="terminal-content" id="terminal-text">
-                @* $ whoami<br>
-                > Full Stack .NET Developer<br>
-                $ ls skills/<br>
-                > C# Blazor JavaScript SQL Azure<span class="cursor">|</span> *@
-            </div>
-        </div>
+        <Terminal/>
     </MudItem>
     <MudItem md="3">
         <MudImage Fluid="true" Src="images/portrait.jpg" Alt="Portrait" Class="rounded-lg" />

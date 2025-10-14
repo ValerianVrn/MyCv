@@ -70,6 +70,15 @@ namespace MyCv.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CI/CD &amp; monitoring.
+        /// </summary>
+        public static string CICDAndMonitoring {
+            get {
+                return ResourceManager.GetString("CICDAndMonitoring", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Conclusion.
         /// </summary>
         public static string Conclusion {
@@ -88,11 +97,29 @@ namespace MyCv.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Core technology expertise.
+        /// </summary>
+        public static string CoreTechnologyExpertise {
+            get {
+                return ResourceManager.GetString("CoreTechnologyExpertise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Degrees.
         /// </summary>
         public static string Degrees {
             get {
                 return ResourceManager.GetString("Degrees", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Development &amp; Testing.
+        /// </summary>
+        public static string DevelopmentAndTesting {
+            get {
+                return ResourceManager.GetString("DevelopmentAndTesting", resourceCulture);
             }
         }
         
@@ -457,11 +484,29 @@ namespace MyCv.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Scalable system design.
+        /// </summary>
+        public static string ScalableSystemDesign {
+            get {
+                return ResourceManager.GetString("ScalableSystemDesign", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Skills.
         /// </summary>
         public static string Skills {
             get {
                 return ResourceManager.GetString("Skills", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Team management.
+        /// </summary>
+        public static string TeamManagement {
+            get {
+                return ResourceManager.GetString("TeamManagement", resourceCulture);
             }
         }
         

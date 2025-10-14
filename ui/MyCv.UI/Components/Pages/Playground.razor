@@ -5,7 +5,55 @@
 @using MyCv.UI.Services
 @layout MainLayout
 
-<Terminal/>
+<MudPaper Class="pa-16 ma-2" Square="true" Elevation="0">
+    <MudText Typo="Typo.h4" Align="Align.Center">Skills & Expertise</MudText>
+    <MudText Typo="Typo.body1" Align="Align.Center" Class="mb-6">Comprehensive technical skills and leadership experience in modern software development</MudText>
+    <MudGrid>
+        @foreach (var mainSkill in _mainSkills)
+        {
+            <MudItem xs="12" md="6">
+                <MudCard Elevation="2" Style="height: 100%">
+                    <MudCardHeader>
+                        <CardHeaderContent>
+                            <MudStack Row="true" Spacing="6" AlignItems="AlignItems.Center">
+                                <MudPaper Class="@mainSkill.Icon.BackgroundClass" Elevation="0">
+                                    <MudIcon Icon="@mainSkill.Icon.Name" Style="@mainSkill.Icon.Style" />
+                                </MudPaper>
+                                <MudStack Spacing="0">
+                                    <MudText Typo="Typo.h6">@mainSkill.Name</MudText>
+                                    <MudText Typo="Typo.subtitle1">@mainSkill.Description</MudText>
+                                </MudStack>
+                            </MudStack>
+                        </CardHeaderContent>
+                        <CardHeaderActions>
+                            <MudIconButton Icon="@Icons.Material.Filled.ArrowForward" Color="Color.Default" Href="@mainSkill.Href" />
+                        </CardHeaderActions>
+                    </MudCardHeader>
+                    <MudCardContent>
+                        @foreach (var skill in mainSkill.Skills)
+                        {
+                            if (skill.Core)
+                            {
+
+                                <MudChip T="string" Icon="@Icons.Material.Filled.Star" IconColor="Color.Warning" Color="Color.Dark">@skill.Name</MudChip>
+                            }
+                            else
+                            {
+                                <MudChip T="string" Color="Color.Surface">@skill.Name</MudChip>
+
+                            }
+                        }
+                    </MudCardContent>
+                    <MudCardActions>
+                        <MudButton Variant="Variant.Text" Color="Color.Primary" Href="@mainSkill.Href">Explore</MudButton>
+                    </MudCardActions>
+                </MudCard>
+            </MudItem>
+        }
+    </MudGrid>
+</MudPaper>
+
+
 @for (var i = 0; i < 30; i++)
 {
     <MudText>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</MudText>
@@ -15,3 +63,48 @@
     - Lorem ipsum dolor sit amet consectetur adipiscing elit.<br />
     - Lorem ipsum dolor sit amet consectetur adipiscing elit.
 </MudAlert>
+
+@code {
+    private record MainSkill(Icon Icon, string Name, string Description, string Href, List<Skill> Skills);
+    private record Skill(string Name, bool Core);
+    private class Icon(string name, string color)
+    {
+        public string Name { get { return name; } }
+        public string Style { get { return "color: " + color; } }
+        public string BackgroundClass { get { return color + " pa-4 lighten-5"; } }
+    }
+
+    private readonly List<MainSkill> _mainSkills = new()
+    {
+        new(new(Icons.Material.Outlined.Code, "blue"), ".NET development", "Core technology expertise", Urls.Skills, new()
+        {
+            new("C#/.NET", true),
+            new("Entity Framework", true),
+            new("Blazor", false),
+            new("ASP .NET core", true)
+        }),
+        new(new(Icons.Material.Outlined.Cloud, "green"), "Architecture", "Scalable system design", Urls.Architecture, new()
+        {
+            new("Azure", false),
+            new("Microsevices", true),
+            new("CQRS", true),
+            new("Event sourcing", true),
+            new("RabbitMq", false),
+            new("API Gateway", false)
+        }),
+        new(new(Icons.Material.Outlined.People, "red"), "Leadership", "Team management", Urls.Leadership, new()
+        {
+            new("Agile/Scrum", false),
+            new("Code reviews", true),
+            new("Mentoring", true)
+        }),
+        new(new(Icons.Material.Outlined.Commit, "purple"), "DevOps", "CI/CD & monitoring", Urls.DevOps, new()
+        {
+            new("Git flow", true),
+            new("Azure DevOps", true),
+            new("Docker", true),
+            new("Grafana", true),
+            new("Prometheus", true)
+        })
+    };
+}

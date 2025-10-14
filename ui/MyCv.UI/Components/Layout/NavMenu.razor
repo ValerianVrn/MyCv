@@ -1,15 +1,16 @@
 @inject IStringLocalizer<Resource> Localizer
+@using MyCv.UI.Services
 
 <MudNavMenu Rounded="true" Bordered="false">
     <MudNavLink Href="/" Match="NavLinkMatch.All">@Localizer["Home"]</MudNavLink>
-    <MudNavLink Href="/architecture" Match="NavLinkMatch.Prefix">@Localizer["Architecture"]</MudNavLink>
-    <MudNavLink Href="/devops" Match="NavLinkMatch.Prefix">DevOps</MudNavLink>
+    <MudNavLink Href=@Urls.Architecture Match="NavLinkMatch.Prefix">@Localizer["Architecture"]</MudNavLink>
+    <MudNavLink Href=@Urls.DevOps Match="NavLinkMatch.Prefix">DevOps</MudNavLink>
     <MudNavLink Href="/coding" Match="NavLinkMatch.Prefix">Coding practices</MudNavLink>
     <MudNavLink Href="/ui" Match="NavLinkMatch.Prefix">UI</MudNavLink>
     <MudNavLink Href="/cloud" Match="NavLinkMatch.Prefix">Cloud</MudNavLink>
     <MudNavLink Href="/languages" Match="NavLinkMatch.Prefix">@Localizer["Languages"]</MudNavLink>
     <MudNavLink Href="/degrees" Match="NavLinkMatch.Prefix">@Localizer["Degrees"]</MudNavLink>
     <MudNavLink Href="/xp" Match="NavLinkMatch.Prefix">@Localizer["Experiences"]</MudNavLink>
-    <MudNavLink Href="/life" Match="NavLinkMatch.Prefix">@Localizer["PersonalLife"]</MudNavLink>
+    <MudNavLink Href=@Urls.PersonalLife Match="NavLinkMatch.Prefix">@Localizer["PersonalLife"]</MudNavLink>
     <MudNavLink Href="/conclusion" Match="NavLinkMatch.Prefix">@Localizer["Conclusion"]</MudNavLink>
 </MudNavMenu>

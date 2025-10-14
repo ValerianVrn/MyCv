@@ -120,14 +120,23 @@
   <data name="Architecture" xml:space="preserve">
     <value>Architecture</value>
   </data>
+  <data name="CICDAndMonitoring" xml:space="preserve">
+    <value>CI/CD &amp; monitoring</value>
+  </data>
   <data name="Conclusion" xml:space="preserve">
     <value>Conclusion</value>
   </data>
   <data name="Contact" xml:space="preserve">
     <value>Contact</value>
   </data>
+  <data name="CoreTechnologyExpertise" xml:space="preserve">
+    <value>Core technology expertise</value>
+  </data>
   <data name="Degrees" xml:space="preserve">
     <value>Degrees</value>
+  </data>
+  <data name="DevelopmentAndTesting" xml:space="preserve">
+    <value>Development &amp; Testing</value>
   </data>
   <data name="DevOps" xml:space="preserve">
     <value>DevOps</value>
@@ -249,8 +258,14 @@
   <data name="PersonalLife" xml:space="preserve">
     <value>Personal life</value>
   </data>
+  <data name="ScalableSystemDesign" xml:space="preserve">
+    <value>Scalable system design</value>
+  </data>
   <data name="Skills" xml:space="preserve">
     <value>Skills</value>
+  </data>
+  <data name="TeamManagement" xml:space="preserve">
+    <value>Team management</value>
   </data>
   <data name="Testing" xml:space="preserve">
     <value>Testing</value>

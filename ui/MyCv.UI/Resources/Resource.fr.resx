@@ -141,6 +141,9 @@
   <data name="ArchitectureReference2" xml:space="preserve">
     <value>(Microsoft) ou encore des articles tels que ceux de</value>
   </data>
+  <data name="CICDAndMonitoring" xml:space="preserve">
+    <value>CI/CD &amp; monitoring</value>
+  </data>
   <data name="CommandCommandStep" xml:space="preserve">
     <value>Création de la commande</value>
   </data>
@@ -189,6 +192,9 @@
   <data name="Content" xml:space="preserve">
     <value>Contenu</value>
   </data>
+  <data name="CoreTechnologyExpertise" xml:space="preserve">
+    <value>Expertise en technologies</value>
+  </data>
   <data name="CQRSBenefits" xml:space="preserve">
     <value>Ce concept simple a plusieurs avantages : maintenabilité (séparation des responsabilités), scalabilité des couches de lecture et d'écriture indépendante, performance des opérations de lecture, validation des commandes et respect des règles métier...</value>
   </data>
@@ -209,6 +215,9 @@
   </data>
   <data name="Degrees" xml:space="preserve">
     <value>Diplômes</value>
+  </data>
+  <data name="DevelopmentAndTesting" xml:space="preserve">
+    <value>Développement &amp; Tests</value>
   </data>
   <data name="DevOps" xml:space="preserve">
     <value>DevOps</value>
@@ -417,8 +426,14 @@
   <data name="RequiredAnswer" xml:space="preserve">
     <value>Réponse requise</value>
   </data>
+  <data name="ScalableSystemDesign" xml:space="preserve">
+    <value>Conception de systèmes scalables</value>
+  </data>
   <data name="Skills" xml:space="preserve">
     <value>Compétences</value>
+  </data>
+  <data name="TeamManagement" xml:space="preserve">
+    <value>Gestion d'équipe</value>
   </data>
   <data name="Testing" xml:space="preserve">
     <value>Test</value>

@@ -14,6 +14,7 @@ builder.Services.AddMudServices();
 builder.Services.AddScoped<IRatingService, FakeRatingService>();
 builder.Services.AddScoped<IInsightService, FakeInsightService>();
 builder.Services.AddScoped<IVisitorService, VisitorService>();
+builder.Services.AddScoped<IThemeService, ThemeService>();
 
 var app = builder.Build();
 

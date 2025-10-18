@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AdditionalTechnologies" xml:space="preserve">
+    <value>Additional technologies</value>
+  </data>
   <data name="Architecture" xml:space="preserve">
     <value>Architecture</value>
   </data>
@@ -128,6 +131,9 @@
   </data>
   <data name="Contact" xml:space="preserve">
     <value>Contact</value>
+  </data>
+  <data name="CoreExpertise" xml:space="preserve">
+    <value>Core expertise</value>
   </data>
   <data name="CoreTechnologyExpertise" xml:space="preserve">
     <value>Core technology expertise</value>
@@ -163,7 +169,7 @@
     <value>Home</value>
   </data>
   <data name="HomeHeader" xml:space="preserve">
-    <value>Hi. I'm Valérian.</value>
+    <value>Hi. I'm </value>
   </data>
   <data name="HomeIntroduction" xml:space="preserve">
     <value>Welcome on this minimal and interactive resume which applies DDD with CQRS and event sourcing in C#/.NET.</value>
@@ -263,6 +269,12 @@
   </data>
   <data name="Skills" xml:space="preserve">
     <value>Skills</value>
+  </data>
+  <data name="SkillsAndExpertise" xml:space="preserve">
+    <value>Skills &amp; Expertise</value>
+  </data>
+  <data name="SkillsCaption" xml:space="preserve">
+    <value>Comprehensive technical skills and leadership experience in modern software development</value>
   </data>
   <data name="TeamManagement" xml:space="preserve">
     <value>Team management</value>

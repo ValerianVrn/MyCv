@@ -1,4 +1,5 @@
 @inject IStringLocalizer<Resource> Localizer
+@inject IThemeService ThemeService
 @using MyCv.UI.Services
 
 <!-- Drawer (sidebar for mobile) -->
@@ -44,11 +45,11 @@
 <MudAppBar Fixed="true">
     <!-- Mobile -->
     <MudHidden Breakpoint="Breakpoint.Lg">
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="@(Layout.IsDarkMode ? Color.Inherit : Color.Dark)" Edge="Edge.Start" OnClick="() => _drawerOpen = !_drawerOpen" />
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="@(ThemeService.IsDarkMode ? Color.Inherit : Color.Dark)" Edge="Edge.Start" OnClick="() => _drawerOpen = !_drawerOpen" />
         <MudSpacer />
         <Brand />
         <MudSpacer />
-        <ThemeToggle IsDarkMode="@Layout.IsDarkMode" OnToggle="ToggleDarkMode" />
+        <ThemeToggle IsDarkMode="@ThemeService.IsDarkMode" OnToggle="ThemeService.ToggleMode" />
     </MudHidden>
     <!-- Desktop -->
     <MudHidden Breakpoint="Breakpoint.Lg" Invert="true">
@@ -77,7 +78,7 @@
             <MudDivider Vertical="true" FlexItem="true" />
             <MudStack Row="true" Spacing="2" AlignItems="AlignItems.Center">
                 <SocialItems/>
-                <ThemeToggle IsDarkMode="@Layout.IsDarkMode" OnToggle="ToggleDarkMode" />
+                <ThemeToggle IsDarkMode="@ThemeService.IsDarkMode" OnToggle="ThemeService.ToggleMode" />
                 <LanguageMenu />
             </MudStack>
             <MudButton StartIcon="@Icons.Material.Rounded.FileDownload" Variant="Variant.Filled" Color="Color.Success">
@@ -90,8 +91,6 @@
 @code {
     public record NavItem(string? Href, string Label, List<NavItem>? Children = null);
 
-    [CascadingParameter]
-    public EmptyLayout Layout { get; set; }
     private bool _drawerOpen = false;
     private List<NavItem> _navItems = new();
 
@@ -111,11 +110,6 @@
             }),
             new("#contact", Localizer["Contact"])
         };
-    }
-
-    private void ToggleDarkMode()
-    {
-        Layout?.ToggleDarkMode();
     }
 
     private void DownloadCv()

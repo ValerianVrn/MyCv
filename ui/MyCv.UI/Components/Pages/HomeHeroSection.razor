@@ -1,0 +1,18 @@
+@using MyCv.UI.Components.Shared
+@using MyCv.UI.Services
+@inject IStringLocalizer<Resource> Localizer
+
+<MudContainer Class="px-2 px-lg-20">
+    <MudText Typo="Typo.h2" Align="Align.Left" Class="@Style.LargeBottomMargin">
+        @Localizer["HomeHeader"]
+        <MudText Color="Color.Primary" Typo="Typo.h2" Inline="true">Valérian</MudText>.
+    </MudText>
+    <MudGrid Justify="Justify.Center" Class="@Style.LargeBottomMargin">
+        <MudItem xs="12" lg="9">
+            <Terminal />
+        </MudItem>
+        <MudItem xs="8" lg="3" Class="d-flex align-center">
+            <MudImage Fluid="true" Src="images/portrait.jpg" Alt="Portrait" Class="rounded-lg" />
+        </MudItem>
+    </MudGrid>
+</MudContainer>

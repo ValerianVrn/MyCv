@@ -61,6 +61,15 @@ namespace MyCv.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Additional technologies.
+        /// </summary>
+        public static string AdditionalTechnologies {
+            get {
+                return ResourceManager.GetString("AdditionalTechnologies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Architecture.
         /// </summary>
         public static string Architecture {
@@ -93,6 +102,15 @@ namespace MyCv.UI.Resources {
         public static string Contact {
             get {
                 return ResourceManager.GetString("Contact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Core expertise.
+        /// </summary>
+        public static string CoreExpertise {
+            get {
+                return ResourceManager.GetString("CoreExpertise", resourceCulture);
             }
         }
         
@@ -196,7 +214,7 @@ namespace MyCv.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hi. I&apos;m Valérian..
+        ///   Looks up a localized string similar to Hi. I&apos;m .
         /// </summary>
         public static string HomeHeader {
             get {
@@ -498,6 +516,24 @@ namespace MyCv.UI.Resources {
         public static string Skills {
             get {
                 return ResourceManager.GetString("Skills", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skills &amp; Expertise.
+        /// </summary>
+        public static string SkillsAndExpertise {
+            get {
+                return ResourceManager.GetString("SkillsAndExpertise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comprehensive technical skills and leadership experience in modern software development.
+        /// </summary>
+        public static string SkillsCaption {
+            get {
+                return ResourceManager.GetString("SkillsCaption", resourceCulture);
             }
         }
         

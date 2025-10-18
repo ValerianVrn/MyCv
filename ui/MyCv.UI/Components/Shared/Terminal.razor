@@ -1,6 +1,7 @@
-@using MyCv.UI.Components.Layout
+@using MyCv.UI.Services
+@inject IThemeService ThemeService
 
-<div class="terminal @(Layout.IsDarkMode ? "terminal-dark" : "terminal-light")">
+<div class="terminal @(ThemeService.IsDarkMode ? "terminal-dark" : "terminal-light")">
     <div class="terminal-header">
         <div class="terminal-buttons">
             <div class="terminal-button red"></div>
@@ -32,9 +33,6 @@
 @code {
     public record TerminalCommand(string Command, string Output);
 
-    [CascadingParameter]
-    public EmptyLayout Layout { get; set; }
-
     [Parameter]
     public string Path { get; set; } = "~/dev/career";
 
@@ -46,8 +44,18 @@
         new("status --current", "Available for new opportunities & collaborations")
     };
 
-    private string GetTerminalThemeClass()
+    protected override void OnInitialized()
     {
-        return Layout.IsDarkMode ? "terminal-dark" : "terminal-light";
+        ThemeService.OnThemeChanged += HandleThemeChanged;
+    }
+
+    private void HandleThemeChanged()
+    {
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        ThemeService.OnThemeChanged -= HandleThemeChanged;
     }
 }

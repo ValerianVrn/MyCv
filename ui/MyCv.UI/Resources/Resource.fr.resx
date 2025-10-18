@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AdditionalTechnologies" xml:space="preserve">
+    <value>Technologies additionnelles</value>
+  </data>
   <data name="Architecture" xml:space="preserve">
     <value>Architecture</value>
   </data>
@@ -191,6 +194,9 @@
   </data>
   <data name="Content" xml:space="preserve">
     <value>Contenu</value>
+  </data>
+  <data name="CoreExpertise" xml:space="preserve">
+    <value>Expertise principale</value>
   </data>
   <data name="CoreTechnologyExpertise" xml:space="preserve">
     <value>Expertise en technologies</value>
@@ -280,7 +286,7 @@
     <value>Accueil</value>
   </data>
   <data name="HomeHeader" xml:space="preserve">
-    <value>Bonjour. Moi c'est Valérian.</value>
+    <value>Bonjour. Moi c'est </value>
   </data>
   <data name="HomeIntroduction" xml:space="preserve">
     <value>Bienvenue sur mon CV interactif et minimaliste qui applique le DDD avec CQRS et event sourcing en C#/.NET.</value>
@@ -431,6 +437,12 @@
   </data>
   <data name="Skills" xml:space="preserve">
     <value>Compétences</value>
+  </data>
+  <data name="SkillsAndExpertise" xml:space="preserve">
+    <value>Compétences et Expertise</value>
+  </data>
+  <data name="SkillsCaption" xml:space="preserve">
+    <value>Compétences techniques complètes et expérience en leadership dans le développement de logiciels modernes</value>
   </data>
   <data name="TeamManagement" xml:space="preserve">
     <value>Gestion d'équipe</value>

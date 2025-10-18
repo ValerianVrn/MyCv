@@ -1,0 +1,53 @@
+@using MyCv.UI.Services
+@inject IThemeService ThemeService
+
+<MudThemeProvider @ref="_mudThemeProvider" @bind-IsDarkMode="@IsDarkMode" Theme="_theme" />
+
+@code {
+    private MudThemeProvider _mudThemeProvider;
+    private MudTheme _theme = MyCv.UI.Services.ThemeService.Theme;
+
+    public bool IsDarkMode
+    {
+        get
+        {
+            return ThemeService.IsDarkMode;
+        }
+        set
+        {
+            if (value)
+            {
+                ThemeService.SetDarkMode();
+            }
+            else
+            {
+                ThemeService.SetLightMode();
+            }
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        // Subscribe to theme changes
+        ThemeService.OnThemeChanged += HandleThemeChanged;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Get whether the system is using dark mode.
+            IsDarkMode = await _mudThemeProvider.GetSystemPreference();
+        }
+    }
+
+    private void HandleThemeChanged()
+    {
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        ThemeService.OnThemeChanged -= HandleThemeChanged;
+    }
+}

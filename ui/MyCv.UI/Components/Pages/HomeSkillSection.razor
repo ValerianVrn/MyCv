@@ -1,0 +1,150 @@
+@using MyCv.UI.Services
+@inject IStringLocalizer<Resource> Localizer
+
+<MudPaper Class="pa-0 pa-lg-4 ma-0 ma-lg-2" Square="true" Elevation="0">
+    <MudContainer Class="@Style.LargeBottomMargin">
+        <MudText Typo="Typo.h4" Align="Align.Center">@Localizer["SkillsAndExpertise"]</MudText>
+        <MudText Typo="Typo.body1" Align="Align.Center">@Localizer["SkillsCaption"]</MudText>
+    </MudContainer>
+    <MudContainer Class="@Style.LargeBottomMargin">
+        <MudText Typo="Typo.h6" Align="Align.Center">@Localizer["CoreExpertise"]</MudText>
+        <MudStack AlignItems="AlignItems.Center" Justify="Justify.Center" Row="true">
+            @foreach (var coreSkill in _coreSkills)
+            {
+                <MudChip T="string" Icon="@Icons.Material.Filled.Stars" IconColor="Color.Warning" Color="Color.Dark">@coreSkill</MudChip>
+            }
+        </MudStack>
+    </MudContainer>
+    <MudContainer Class="@Style.LargeBottomMargin">
+        <MudGrid>
+            @foreach (var mainSkill in MainSkills)
+            {
+                <MudItem xs="12" md="6">
+                    <MudCard Elevation="2" Style="height: 100%">
+                        <MudCardHeader>
+                            <CardHeaderContent>
+                                <MudStack Row="true" Spacing="6" AlignItems="AlignItems.Center">
+                                    <MudPaper Class="@mainSkill.Icon.BackgroundClass" Elevation="0">
+                                        <MudIcon Icon="@mainSkill.Icon.Name" Style="@mainSkill.Icon.Style" />
+                                    </MudPaper>
+                                    <MudStack Spacing="0">
+                                        <MudText Typo="Typo.h6">@mainSkill.Name</MudText>
+                                        <MudText Typo="Typo.subtitle1">@mainSkill.Description</MudText>
+                                    </MudStack>
+                                </MudStack>
+                            </CardHeaderContent>
+                            <CardHeaderActions>
+                                <MudIconButton Icon="@Icons.Material.Filled.ArrowForward" Color="Color.Default" Href="@mainSkill.Href" />
+                            </CardHeaderActions>
+                        </MudCardHeader>
+                        <MudCardContent>
+                            @foreach (var skill in mainSkill.Skills)
+                            {
+                                if (skill.Core)
+                                {
+
+                                    <MudChip T="string" Icon="@Icons.Material.Filled.Star" IconColor="Color.Warning" Color="Color.Dark">@skill.Name</MudChip>
+                                }
+                                else
+                                {
+                                    <MudChip T="string" Color="Color.Surface">@skill.Name</MudChip>
+
+                                }
+                            }
+                        </MudCardContent>
+                        <MudCardActions>
+                            <MudButton Variant="Variant.Text" Color="Color.Primary" Href="@mainSkill.Href">@Localizer["Explore"]</MudButton>
+                        </MudCardActions>
+                    </MudCard>
+                </MudItem>
+            }
+        </MudGrid>
+    </MudContainer>
+    <MudContainer Class="@Style.LargeBottomMargin">
+        <MudText Typo="Typo.h6" Align="Align.Center">@Localizer["AdditionalTechnologies"]</MudText>
+        <MudStack AlignItems="AlignItems.Center" Justify="Justify.Center" Row="true" Class="flex-wrap gap-2 justify-center items-center rounded-full p-6 bg-surface">
+            @foreach (var additionalTechnology in _additionalTechnologies)
+            {
+                <MudChip T="string" Color="Color.Surface">@additionalTechnology</MudChip>
+            }
+        </MudStack>
+    </MudContainer>
+</MudPaper>
+
+
+@code {
+    public record MainSkill(Icon Icon, string Name, string Description, string Href, List<Skill> Skills);
+    public record Skill(string Name, bool Core = false);
+    public class Icon(string name, string color)
+    {
+        public string Name { get { return name; } }
+        public string Style { get { return "color: " + color; } }
+        public string BackgroundClass { get { return color + " pa-4 lighten-5"; } }
+    }
+
+    private static readonly List<string> _coreSkills = new()
+    {
+        "C#/.NET",
+        "Tech Lead",
+        "CQRS/ES",
+        "Microservices",
+        "System design"
+    };
+
+    public List<MainSkill> MainSkills
+    {
+        get
+        {
+            return new()
+            {
+                new(new(Icons.Material.Outlined.Code, "blue"), Localizer["DevelopmentAndTesting"], Localizer["CoreTechnologyExpertise"], Urls.Skills, new()
+                {
+                    new("ASP .NET core"),
+                    new("Entity Framework"),
+                    new("Blazor"),
+                    new("SQL Server"),
+                    new("MSTest")
+                }),
+                new(new(Icons.Material.Outlined.Cloud, "green"), Localizer["Architecture"], Localizer["ScalableSystemDesign"], Urls.Architecture, new()
+                {
+                    new("Azure"),
+                    new("Microservices"),
+                    new("CQRS"),
+                    new("Event sourcing"),
+                }),
+                new(new(Icons.Material.Outlined.People, "red"), Localizer["Leadership"], Localizer["TeamManagement"], Urls.Leadership, new()
+                {
+                    new("Agile/Scrum"),
+                    new("Code reviews"),
+                    new("Mentoring")
+                }),
+                new(new(Icons.Material.Outlined.Commit, "purple"), Localizer["DevOps"], Localizer["CICDAndMonitoring"], Urls.DevOps, new()
+                {
+                    new("Git flow"),
+                    new("Azure DevOps"),
+                    new("Docker"),
+                    new("Grafana"),
+                    new("Loki"),
+                    new("Prometheus")
+                })
+            };
+        }
+    }
+
+    private static readonly List<string> _additionalTechnologies = new()
+    {
+        "React",
+        "SignalR",
+        "OData",
+        "Bootstrap",
+        "RabbitMQ",
+        "OpenID",
+        "Redis",
+        "C++",
+        "Qt",
+        "Git",
+        "API Gateway",
+        "REST",
+        "PL/SQL",
+    };
+}

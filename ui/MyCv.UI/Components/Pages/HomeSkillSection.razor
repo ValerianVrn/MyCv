@@ -8,7 +8,7 @@
     </MudContainer>
     <MudContainer Class="@Style.LargeBottomMargin">
         <MudText Typo="Typo.h6" Align="Align.Center">@Localizer["CoreExpertise"]</MudText>
-        <MudStack AlignItems="AlignItems.Center" Justify="Justify.Center" Row="true">
+        <MudStack AlignItems="AlignItems.Center" Justify="Justify.Center" Row="true" Wrap="Wrap.Wrap">
             @foreach (var coreSkill in _coreSkills)
             {
                 <MudChip T="string" Icon="@Icons.Material.Filled.Stars" IconColor="Color.Warning" Color="Color.Dark">@coreSkill</MudChip>
@@ -62,7 +62,7 @@
     </MudContainer>
     <MudContainer Class="@Style.LargeBottomMargin">
         <MudText Typo="Typo.h6" Align="Align.Center">@Localizer["AdditionalTechnologies"]</MudText>
-        <MudStack AlignItems="AlignItems.Center" Justify="Justify.Center" Row="true" Class="flex-wrap gap-2 justify-center items-center rounded-full p-6 bg-surface">
+        <MudStack AlignItems="AlignItems.Center" Justify="Justify.Center" Row="true" Wrap="Wrap.Wrap" >
             @foreach (var additionalTechnology in _additionalTechnologies)
             {
                 <MudChip T="string" Color="Color.Surface">@additionalTechnology</MudChip>

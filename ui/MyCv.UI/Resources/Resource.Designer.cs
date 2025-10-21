@@ -178,6 +178,18 @@ namespace MyCv.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to • Engineering degree,{0}
+        ///• Master&apos;s degree in surgical robotics,
+        ///• Master&apos;s degree in business administration... 
+        ///Come and discover my training..
+        /// </summary>
+        public static string EducationAndCareerCaption {
+            get {
+                return ResourceManager.GetString("EducationAndCareerCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Experiences.
         /// </summary>
         public static string Experiences {
@@ -223,7 +235,7 @@ namespace MyCv.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Welcome on this minimal and interactive resume which applies DDD with CQRS and event sourcing in C#/.NET..
+        ///   Looks up a localized string similar to Welcome on this resume website which is also a live demo of my skills (DDD with CQRS and event sourcing in C#/.NET, Azure deployment, etc.)..
         /// </summary>
         public static string HomeIntroduction {
             get {
@@ -484,6 +496,15 @@ namespace MyCv.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Learn more.
+        /// </summary>
+        public static string LearnMore {
+            get {
+                return ResourceManager.GetString("LearnMore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Microservice.
         /// </summary>
         public static string Microservice {
@@ -493,11 +514,38 @@ namespace MyCv.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to More about me.
+        /// </summary>
+        public static string MoreAboutMe {
+            get {
+                return ResourceManager.GetString("MoreAboutMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beyond technical skills—explore my career journey, academic background, and personal interests.
+        /// </summary>
+        public static string MoreAboutMeCaption {
+            get {
+                return ResourceManager.GetString("MoreAboutMeCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Personal life.
         /// </summary>
         public static string PersonalLife {
             get {
                 return ResourceManager.GetString("PersonalLife", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beyond the code.
+        /// </summary>
+        public static string PersonalLifeCaption {
+            get {
+                return ResourceManager.GetString("PersonalLifeCaption", resourceCulture);
             }
         }
         

@@ -1,7 +1,7 @@
 @using MyCv.UI.Services
 @inject IStringLocalizer<Resource> Localizer
 
-<MudPaper Class="pa-0 pa-lg-4 ma-0 ma-lg-2" Square="true" Elevation="0">
+<MudPaper Class="py-8" Square="true" Elevation="0">
     <MudContainer Class="@Style.LargeBottomMargin">
         <MudText Typo="Typo.h4" Align="Align.Center">@Localizer["SkillsAndExpertise"]</MudText>
         <MudText Typo="Typo.body1" Align="Align.Center">@Localizer["SkillsCaption"]</MudText>
@@ -11,7 +11,7 @@
         <MudStack AlignItems="AlignItems.Center" Justify="Justify.Center" Row="true" Wrap="Wrap.Wrap">
             @foreach (var coreSkill in _coreSkills)
             {
-                <MudChip T="string" Icon="@Icons.Material.Filled.Stars" IconColor="Color.Warning" Color="Color.Dark">@coreSkill</MudChip>
+                <MudChip T="string" Icon="@Icons.Material.Outlined.StarBorder" IconColor="Color.Warning" Color="Color.Primary">@coreSkill</MudChip>
             }
         </MudStack>
     </MudContainer>
@@ -60,8 +60,8 @@
             }
         </MudGrid>
     </MudContainer>
-    <MudContainer Class="@Style.LargeBottomMargin">
-        <MudText Typo="Typo.h6" Align="Align.Center">@Localizer["AdditionalTechnologies"]</MudText>
+    <MudContainer>
+        <MudText Typo="Typo.h6" Align="Align.Center" GutterBottom="true">@Localizer["AdditionalTechnologies"]</MudText>
         <MudStack AlignItems="AlignItems.Center" Justify="Justify.Center" Row="true" Wrap="Wrap.Wrap" >
             @foreach (var additionalTechnology in _additionalTechnologies)
             {
@@ -137,6 +137,7 @@
         "SignalR",
         "OData",
         "Bootstrap",
+        "Tailwind CSS",
         "RabbitMQ",
         "OpenID",
         "Redis",

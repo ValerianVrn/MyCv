@@ -156,6 +156,12 @@
   <data name="EducationAndCareer" xml:space="preserve">
     <value>Education and career</value>
   </data>
+  <data name="EducationAndCareerCaption" xml:space="preserve">
+    <value>• Engineering degree,{0}
+• Master's degree in surgical robotics,
+• Master's degree in business administration... 
+Come and discover my training.</value>
+  </data>
   <data name="Experiences" xml:space="preserve">
     <value>Experiences</value>
   </data>
@@ -172,7 +178,7 @@
     <value>Hi. I'm </value>
   </data>
   <data name="HomeIntroduction" xml:space="preserve">
-    <value>Welcome on this minimal and interactive resume which applies DDD with CQRS and event sourcing in C#/.NET.</value>
+    <value>Welcome on this resume website which is also a live demo of my skills (DDD with CQRS and event sourcing in C#/.NET, Azure deployment, etc.).</value>
   </data>
   <data name="HomeSourceCode" xml:space="preserve">
     <value>Feel free to consult the source code on</value>
@@ -258,11 +264,23 @@
   <data name="Leadership" xml:space="preserve">
     <value>Leadership</value>
   </data>
+  <data name="LearnMore" xml:space="preserve">
+    <value>Learn more</value>
+  </data>
   <data name="Microservice" xml:space="preserve">
     <value>Microservice</value>
   </data>
+  <data name="MoreAboutMe" xml:space="preserve">
+    <value>More about me</value>
+  </data>
+  <data name="MoreAboutMeCaption" xml:space="preserve">
+    <value>Beyond technical skills—explore my career journey, academic background, and personal interests</value>
+  </data>
   <data name="PersonalLife" xml:space="preserve">
     <value>Personal life</value>
+  </data>
+  <data name="PersonalLifeCaption" xml:space="preserve">
+    <value>Beyond the code</value>
   </data>
   <data name="ScalableSystemDesign" xml:space="preserve">
     <value>Scalable system design</value>

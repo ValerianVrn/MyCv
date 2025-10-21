@@ -98,17 +98,18 @@
     {
         _navItems = new()
         {
-            new("#skills", Localizer["Skills"]),
-            new(null, Localizer["Explore"], new()
+            new(null, Localizer["Skills"], new()
             {
                 new(Urls.Architecture, Localizer["Architecture"]),
                 new(Urls.DevOps, Localizer["DevOps"]),
                 new(Urls.Leadership, Localizer["Leadership"]),
-                new(Urls.DotNetExpertise, Localizer["DotNetExpertise"]),
-                new(Urls.EducationAndCareer, Localizer["EducationAndCareer"]),
-                new(Urls.PersonalLife, Localizer["PersonalLife"]),
+                new(Urls.DotNetExpertise, Localizer["DotNetExpertise"])
             }),
-            new("#contact", Localizer["Contact"])
+            new(null, Localizer["Explore"], new()
+            {
+                new(Urls.EducationAndCareer, Localizer["EducationAndCareer"]),
+                new(Urls.PersonalLife, Localizer["PersonalLife"])
+            })
         };
     }
 

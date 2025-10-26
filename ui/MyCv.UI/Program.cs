@@ -35,12 +35,13 @@ app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
 // Localization
-var supportedCultures = new[] { "en", "fr" };
+var supportedCultures = new[] { "en-US", "fr-FR" };
 var localizationOptions = new RequestLocalizationOptions()
     .SetDefaultCulture(supportedCultures[1])
     .AddSupportedCultures(supportedCultures)
     .AddSupportedUICultures(supportedCultures);
 
 localizationOptions.RequestCultureProviders.Insert(0, new AcceptLanguageHeaderRequestCultureProvider());
+app.UseRequestLocalization(localizationOptions);
 
 app.Run();

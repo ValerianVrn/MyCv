@@ -2,25 +2,28 @@
 @inject IStringLocalizer<Resource> Localizer
 
 <MudPaper Class="py-8" Square="true" Elevation="0">
+    @* Header *@
     <MudContainer Class="@Style.LargeBottomMargin">
         <MudText Typo="Typo.h4" Align="Align.Center">@Localizer["SkillsAndExpertise"]</MudText>
         <MudText Typo="Typo.body1" Align="Align.Center">@Localizer["SkillsCaption"]</MudText>
     </MudContainer>
+    @* Core skills *@
     <MudContainer Class="@Style.LargeBottomMargin">
         <MudText Typo="Typo.h6" Align="Align.Center">@Localizer["CoreExpertise"]</MudText>
         <MudStack AlignItems="AlignItems.Center" Justify="Justify.Center" Row="true" Wrap="Wrap.Wrap">
             @foreach (var coreSkill in _coreSkills)
             {
-                <MudChip T="string" Icon="@Icons.Material.Outlined.StarBorder" IconColor="Color.Warning" Color="Color.Primary">@coreSkill</MudChip>
+                <MudChip T="string" Icon="@Icons.Material.Filled.Star" IconColor="Color.Warning" Color="Color.Primary">@coreSkill</MudChip>
             }
         </MudStack>
     </MudContainer>
+    @* Skills *@
     <MudContainer Class="@Style.LargeBottomMargin">
         <MudGrid>
             @foreach (var mainSkill in MainSkills)
             {
                 <MudItem xs="12" md="6">
-                    <MudCard Elevation="2" Style="height: 100%">
+                    <MudCard Elevation="16" Style="height: 100%">
                         <MudCardHeader>
                             <CardHeaderContent>
                                 <MudStack Row="true" Spacing="6" AlignItems="AlignItems.Center">
@@ -60,6 +63,7 @@
             }
         </MudGrid>
     </MudContainer>
+    @* Additional technologies *@
     <MudContainer>
         <MudText Typo="Typo.h6" Align="Align.Center" GutterBottom="true">@Localizer["AdditionalTechnologies"]</MudText>
         <MudStack AlignItems="AlignItems.Center" Justify="Justify.Center" Row="true" Wrap="Wrap.Wrap" >

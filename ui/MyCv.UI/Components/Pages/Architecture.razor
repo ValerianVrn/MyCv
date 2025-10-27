@@ -1,11 +1,13 @@
 @page "/architecture"
+@using MyCv.UI.Components.Layout
 @using MyCv.UI.Components.Shared
 @using MyCv.UI.Dtos
 @using MyCv.UI.Services
 @inject IStringLocalizer<Resource> Localizer
 @inject IRatingService RatingService
+@layout PageLayout
 
-<ContentPage PageLink="/architecture" PageTitle="@Localizer["Architecture"]">
+<ContentPage>
     @* Introduction *@
     <Header>
         <ContentHeader HeaderId="introduction" HeaderName="@Localizer["Introduction"]" Chips="@(["DDD", "CQRS", "Event sourcing", "Docker"])">

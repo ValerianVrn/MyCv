@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Components\Shared\Terminal.razor.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Components\Shared\Terminal.razor.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MudBlazor" Version="8.6.0" />
   </ItemGroup>
 
@@ -19,6 +27,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Components\Layout\AppBar.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+    <Content Update="Components\Layout\PageLayout.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
     <Content Update="wwwroot\css\site.css">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>

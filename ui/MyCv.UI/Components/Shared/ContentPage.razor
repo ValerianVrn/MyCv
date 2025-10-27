@@ -1,7 +1,6 @@
 @inject IJSRuntime JsRuntime
 @inject NavigationManager NavigationManager
 
-<PageTitle>@PageTitle</PageTitle>
 <ContentMenu Sections=@_sections CurrentSectionHref="@CurrentSectionHref" />
 <div @ref="_scrollContainer" style="height: 100vh; overflow-y: auto;">
     <MudGrid Spacing="10" Justify="Justify.Center" id="main">
@@ -19,12 +18,6 @@
     private DotNetObjectReference<ContentPage>? _dotNetRef;
 
     [Parameter]
-    public required string PageLink { get; set; }
-
-    [Parameter]
-    public required string PageTitle { get; set; }
-
-    [Parameter]
     public RenderFragment Header { get; set; }
 
     [Parameter]
@@ -37,7 +30,7 @@
         {
             // Activate scroll spy for content menu update.
             _dotNetRef = DotNetObjectReference.Create(this);
-            await JsRuntime.InvokeVoidAsync("initScrollSpy", _scrollContainer, _sections.Select(s => s.Id).ToArray(), _dotNetRef, PageLink);
+            await JsRuntime.InvokeVoidAsync("initScrollSpy", _scrollContainer, _sections.Select(s => s.Id).ToArray(), _dotNetRef, NavigationManager.Uri);
 
             // Set initial section.
             var uri = new Uri(NavigationManager.Uri);
@@ -62,7 +55,7 @@
     {
         if (!_sections.Any(s => s.Id == sectionId))
         {
-            _sections.Add(new(sectionId, $"{PageLink}#{sectionId}", sectionName));
+            _sections.Add(new(sectionId, $"{NavigationManager.Uri}#{sectionId}", sectionName));
         }
     }
 

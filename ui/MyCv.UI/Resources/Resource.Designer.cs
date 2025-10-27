@@ -61,11 +61,29 @@ namespace MyCv.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Additional technologies.
+        /// </summary>
+        public static string AdditionalTechnologies {
+            get {
+                return ResourceManager.GetString("AdditionalTechnologies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Architecture.
         /// </summary>
         public static string Architecture {
             get {
                 return ResourceManager.GetString("Architecture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CI/CD &amp; monitoring.
+        /// </summary>
+        public static string CICDAndMonitoring {
+            get {
+                return ResourceManager.GetString("CICDAndMonitoring", resourceCulture);
             }
         }
         
@@ -79,11 +97,95 @@ namespace MyCv.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contact.
+        /// </summary>
+        public static string Contact {
+            get {
+                return ResourceManager.GetString("Contact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Core expertise.
+        /// </summary>
+        public static string CoreExpertise {
+            get {
+                return ResourceManager.GetString("CoreExpertise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Core technology expertise.
+        /// </summary>
+        public static string CoreTechnologyExpertise {
+            get {
+                return ResourceManager.GetString("CoreTechnologyExpertise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Degrees.
         /// </summary>
         public static string Degrees {
             get {
                 return ResourceManager.GetString("Degrees", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Development &amp; Testing.
+        /// </summary>
+        public static string DevelopmentAndTesting {
+            get {
+                return ResourceManager.GetString("DevelopmentAndTesting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DevOps.
+        /// </summary>
+        public static string DevOps {
+            get {
+                return ResourceManager.GetString("DevOps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .NET Expertise.
+        /// </summary>
+        public static string DotNetExpertise {
+            get {
+                return ResourceManager.GetString("DotNetExpertise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Download CV.
+        /// </summary>
+        public static string DownloadCV {
+            get {
+                return ResourceManager.GetString("DownloadCV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Education and career.
+        /// </summary>
+        public static string EducationAndCareer {
+            get {
+                return ResourceManager.GetString("EducationAndCareer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to • Engineering degree,{0}
+        ///• Master&apos;s degree in surgical robotics,
+        ///• Master&apos;s degree in business administration... 
+        ///Come and discover my training..
+        /// </summary>
+        public static string EducationAndCareerCaption {
+            get {
+                return ResourceManager.GetString("EducationAndCareerCaption", resourceCulture);
             }
         }
         
@@ -97,6 +199,24 @@ namespace MyCv.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Explore.
+        /// </summary>
+        public static string Explore {
+            get {
+                return ResourceManager.GetString("Explore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Built with MudBlazor &amp; taste for elegant solutions..
+        /// </summary>
+        public static string FooterAbout {
+            get {
+                return ResourceManager.GetString("FooterAbout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Home.
         /// </summary>
         public static string Home {
@@ -106,7 +226,7 @@ namespace MyCv.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hi. I&apos;m Valérian..
+        ///   Looks up a localized string similar to Hi. I&apos;m .
         /// </summary>
         public static string HomeHeader {
             get {
@@ -115,7 +235,7 @@ namespace MyCv.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Welcome on this minimal and interactive resume which applies DDD with CQRS and event sourcing in C#/.NET..
+        ///   Looks up a localized string similar to Welcome on this resume website which is also a live demo of my skills (DDD with CQRS and event sourcing in C#/.NET, Azure deployment, etc.)..
         /// </summary>
         public static string HomeIntroduction {
             get {
@@ -367,11 +487,47 @@ namespace MyCv.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Leadership.
+        /// </summary>
+        public static string Leadership {
+            get {
+                return ResourceManager.GetString("Leadership", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Learn more.
+        /// </summary>
+        public static string LearnMore {
+            get {
+                return ResourceManager.GetString("LearnMore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Microservice.
         /// </summary>
         public static string Microservice {
             get {
                 return ResourceManager.GetString("Microservice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More about me.
+        /// </summary>
+        public static string MoreAboutMe {
+            get {
+                return ResourceManager.GetString("MoreAboutMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beyond technical skills—explore my career journey, academic background, and personal interests.
+        /// </summary>
+        public static string MoreAboutMeCaption {
+            get {
+                return ResourceManager.GetString("MoreAboutMeCaption", resourceCulture);
             }
         }
         
@@ -385,11 +541,74 @@ namespace MyCv.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Beyond the code.
+        /// </summary>
+        public static string PersonalLifeCaption {
+            get {
+                return ResourceManager.GetString("PersonalLifeCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scalable system design.
+        /// </summary>
+        public static string ScalableSystemDesign {
+            get {
+                return ResourceManager.GetString("ScalableSystemDesign", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skills.
+        /// </summary>
+        public static string Skills {
+            get {
+                return ResourceManager.GetString("Skills", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skills &amp; Expertise.
+        /// </summary>
+        public static string SkillsAndExpertise {
+            get {
+                return ResourceManager.GetString("SkillsAndExpertise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comprehensive technical skills and leadership experience in modern software development.
+        /// </summary>
+        public static string SkillsCaption {
+            get {
+                return ResourceManager.GetString("SkillsCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Team management.
+        /// </summary>
+        public static string TeamManagement {
+            get {
+                return ResourceManager.GetString("TeamManagement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Testing.
         /// </summary>
         public static string Testing {
             get {
                 return ResourceManager.GetString("Testing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .NET tech lead and architect..
+        /// </summary>
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
     }

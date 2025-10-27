@@ -3,14 +3,15 @@
 @using MyCv.UI.Components.Shared
 @using MyCv.UI.Dtos
 @using MyCv.UI.Services
-@inject IStringLocalizer<Resource> Localizer
+@inject IStringLocalizer<MyCv.UI.Resources.Components.Pages.Architecture> Localizer
+@inject IStringLocalizer<MyCv.UI.Resources.Shared> SharedLocalizer
 @inject IRatingService RatingService
 @layout PageLayout
 
 <ContentPage>
     @* Introduction *@
     <Header>
-        <ContentHeader HeaderId="introduction" HeaderName="@Localizer["Introduction"]" Chips="@(["DDD", "CQRS", "Event sourcing", "Docker"])">
+        <ContentHeader HeaderId="introduction" HeaderName="@SharedLocalizer["Architecture"]" Chips="@(["DDD", "CQRS", "Event sourcing", "Docker"])">
             <Content>
                 <MudText Typo="Typo.body1">@Localizer["ArchitectureIntroduction"]</MudText>
                 <MudText Typo="Typo.body1">@Localizer["ArchitectureMicroservice"]</MudText>

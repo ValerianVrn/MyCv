@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ArchitectureIntroduction" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ArchitectureMe1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ArchitectureMe2" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ArchitectureMe3" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ArchitectureMicroservice" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ArchitectureReference1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ArchitectureReference2" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CommandCommandStep" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CommandCommandStepValidation" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CommandDomainStep" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CommandDomainStepValidation" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Commands" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CommandSaveStep" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CommandSaveStepValidation" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CommandsDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CommandSendStep" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CommandSendStepValidation" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CommandsExample" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CommandsRecommendation" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CommandsSatisfaction" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CQRSBenefits" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CQRSDefinition" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CQRSDiagram" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CQRSExample" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CQRSService" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EventSourcingBenefits" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EventSourcingDefinition1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EventSourcingDefinition2" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EventSourcingDefinitionLink" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EventSourcingReadResult" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EventSourcingService" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EventSourcingWrite" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EventSourcingWriteBenefits" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EventSourcingWriteExample" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EventSourcingWriteExampleInstructions" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EventSourcingWriteExampleResult" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EventSourcingWriteIllustration" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Intent" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IntentBoredom" xml:space="preserve">
+    <value>Getting bored</value>
+  </data>
+  <data name="IntentBoredomDescription" xml:space="preserve">
+    <value>Killing time (no offense!)</value>
+  </data>
+  <data name="IntentBrowsing" xml:space="preserve">
+    <value>Browsing</value>
+  </data>
+  <data name="IntentBrowsingDescription" xml:space="preserve">
+    <value>Browsing tech portfolios</value>
+  </data>
+  <data name="IntentCollaboration" xml:space="preserve">
+    <value>Collaboration</value>
+  </data>
+  <data name="IntentCollaborationDescription" xml:space="preserve">
+    <value>Looking for collaboration</value>
+  </data>
+  <data name="IntentCurious" xml:space="preserve">
+    <value>Curious</value>
+  </data>
+  <data name="IntentCuriousDescription" xml:space="preserve">
+    <value>Curious about your work</value>
+  </data>
+  <data name="IntentFreelance" xml:space="preserve">
+    <value>Freelance hunting</value>
+  </data>
+  <data name="IntentFreelanceDescription" xml:space="preserve">
+    <value>Looking for contractors/freelancers</value>
+  </data>
+  <data name="IntentHelping" xml:space="preserve">
+    <value>Helping</value>
+  </data>
+  <data name="IntentHelpingDescription" xml:space="preserve">
+    <value>Helping Valérian for free because I'm nice</value>
+  </data>
+  <data name="IntentMisclick" xml:space="preserve">
+    <value>Misclick</value>
+  </data>
+  <data name="IntentMisclickDescription" xml:space="preserve">
+    <value>I misclicked!</value>
+  </data>
+  <data name="IntentNetworking" xml:space="preserve">
+    <value>Networking</value>
+  </data>
+  <data name="IntentNetworkingDescription" xml:space="preserve">
+    <value>Networking</value>
+  </data>
+  <data name="IntentPost" xml:space="preserve">
+    <value>Following up</value>
+  </data>
+  <data name="IntentPostDescription" xml:space="preserve">
+    <value>Following up after a talk/post</value>
+  </data>
+  <data name="IntentRecruiting" xml:space="preserve">
+    <value>Recruiting</value>
+  </data>
+  <data name="IntentRecruitingDescription" xml:space="preserve">
+    <value>Recruiting / Hiring</value>
+  </data>
+  <data name="IntentReputation" xml:space="preserve">
+    <value>Reputation</value>
+  </data>
+  <data name="IntentReputationDescription" xml:space="preserve">
+    <value>Heard about you</value>
+  </data>
+  <data name="IntentReviewing" xml:space="preserve">
+    <value>Reviewing</value>
+  </data>
+  <data name="IntentReviewingDescription" xml:space="preserve">
+    <value>Reviewing your resume</value>
+  </data>
+  <data name="Microservice" xml:space="preserve">
+    <value>Microservice</value>
+  </data>
+  <data name="MicroserviceAPI" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MicroserviceAPIContent" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MicroserviceBackend" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MicroserviceBackendContent" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MicroserviceDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MicroserviceDocker" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MicroserviceFrontend" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MicroserviceFrontendContent" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MicroserviceReference" xml:space="preserve">
+    <value />
+  </data>
+  <data name="QueriesExample" xml:space="preserve">
+    <value />
+  </data>
+</root>

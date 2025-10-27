@@ -1,6 +1,7 @@
-@inject IStringLocalizer<Resource> Localizer
-@inject IThemeService ThemeService
 @using MyCv.UI.Services
+@inject IStringLocalizer<Resources.Components.Layout.AppBar> Localizer
+@inject IStringLocalizer<Resources.Shared> SharedLocalizer
+@inject IThemeService ThemeService
 
 <!-- Drawer (sidebar for mobile) -->
 <MudDrawer @bind-Open="_drawerOpen" Variant="DrawerVariant.Temporary" Elevation="1">
@@ -98,17 +99,17 @@
     {
         _navItems = new()
         {
-            new(null, Localizer["Skills"], new()
+            new(null, SharedLocalizer["Skills"], new()
             {
-                new(Urls.Architecture, Localizer["Architecture"]),
-                new(Urls.Coding, Localizer["DotNetExpertise"]),
-                new(Urls.DevOps, Localizer["DevOps"]),
-                new(Urls.Leadership, Localizer["Leadership"])
+                new(Urls.Architecture, SharedLocalizer["Architecture"]),
+                new(Urls.Coding, SharedLocalizer["DotNetExpertise"]),
+                new(Urls.DevOps, SharedLocalizer["DevOps"]),
+                new(Urls.Leadership, SharedLocalizer["Leadership"])
             }),
-            new(null, Localizer["Explore"], new()
+            new(null, SharedLocalizer["Explore"], new()
             {
-                new(Urls.EducationAndCareer, Localizer["EducationAndCareer"]),
-                new(Urls.PersonalLife, Localizer["PersonalLife"])
+                new(Urls.EducationAndCareer, SharedLocalizer["EducationAndCareer"]),
+                new(Urls.PersonalLife, SharedLocalizer["PersonalLife"])
             })
         };
     }

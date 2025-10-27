@@ -1,7 +1,8 @@
 @using MyCv.UI.Components.Shared
 @using MyCv.UI.Dtos
 @using MyCv.UI.Services
-@inject IStringLocalizer<Resource> Localizer
+@inject IStringLocalizer<MyCv.UI.Resources.Components.Pages.Architecture> Localizer
+@inject IStringLocalizer<MyCv.UI.Resources.Shared> SharedLocalizer
 @inject IRatingService RatingService
 @inject IVisitorService VisitorService
 
@@ -30,12 +31,12 @@
                         <MudStack>
                             <MudText Typo="Typo.subtitle2">@Localizer["CommandsRecommendation"]</MudText>
                             <MudRadioGroup T="string" @bind-Value="_recommendValue" Required="true" RequiredError="@Localizer["RequiredAnswer"]">
-                                <MudRadio Value="@("Yes")" Color="Color.Primary">@Localizer["Yes"]</MudRadio>
-                                <MudRadio Value="@("No")" Color="Color.Primary">@Localizer["No"]</MudRadio>
+                                <MudRadio Value="@("Yes")" Color="Color.Primary">@SharedLocalizer["Yes"]</MudRadio>
+                                <MudRadio Value="@("No")" Color="Color.Primary">@SharedLocalizer["No"]</MudRadio>
                             </MudRadioGroup>
                         </MudStack>
                     </MudForm>
-                    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(async () => await Submit())">@Localizer["Validate"]</MudButton>
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(async () => await Submit())">@SharedLocalizer["Validate"]</MudButton>
                 </MudStack>
             </MudItem>
             <MudItem md="6">
@@ -58,7 +59,7 @@
             <MudItem md="12">
                 <MudDataGrid Items="@_ratings" Filterable="false" SortMode="@SortMode.Single" Groupable="false">
                     <ToolBarContent>
-                        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(async () => await UpdateRatings())">@Localizer["Update"]</MudButton>
+                        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(async () => await UpdateRatings())">@SharedLocalizer["Update"]</MudButton>
                     </ToolBarContent>
                     <Columns>
                         <PropertyColumn Property="x => x.DateTime" Title="Date de la note" />

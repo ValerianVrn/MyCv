@@ -1,4 +1,6 @@
+@using MyCv.UI.Components.Layout
 @using MyCv.UI.Services
+@inject IDialogService DialogService
 @inject ILocalizationService LocalizationService
 
 <MudMenu Icon="@Icons.Material.Filled.Language">
@@ -17,13 +19,23 @@
     private List<Language> _languages = new()
     {
         new(MyCv.UI.Services.LocalizationService.English, "fi fi-gb", "English"),
-        new(MyCv.UI.Services.LocalizationService.French, "fi fi-fr", "Français")
+        new(MyCv.UI.Services.LocalizationService.French, "fi fi-fr", "Français"),
+        new(MyCv.UI.Services.LocalizationService.Japanese, "fi fi-jp", "日本語")
     };
 
-    void SetLanguage(CultureInfo cultureInfo)
+    private void SetLanguage(CultureInfo cultureInfo)
     {
-        LocalizationService.SetCulture(cultureInfo);
-        LocalizationService.ApplySelectedCulture();
+        if (cultureInfo == MyCv.UI.Services.LocalizationService.Japanese)
+        {
+            var options = new DialogOptions { CloseOnEscapeKey = true };
+
+            DialogService.ShowAsync<JapaneseDialog>(null, options);
+        }
+        else
+        {
+            LocalizationService.SetCulture(cultureInfo);
+            LocalizationService.ApplySelectedCulture();
+        }
     }
 
     protected override void OnInitialized()

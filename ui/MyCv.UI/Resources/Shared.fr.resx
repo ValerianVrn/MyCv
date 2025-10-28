@@ -138,6 +138,9 @@
   <data name="Explore" xml:space="preserve">
     <value>Explorer</value>
   </data>
+  <data name="Fine" xml:space="preserve">
+    <value>Pas de souci</value>
+  </data>
   <data name="Leadership" xml:space="preserve">
     <value>Leadership</value>
   </data>

@@ -8,6 +8,7 @@ namespace MyCv.UI.Services
     {
         public static readonly CultureInfo English = new("en-US");
         public static readonly CultureInfo French = new("fr-FR");
+        public static readonly CultureInfo Japanese = new("ja");
 
         /// <summary>
         /// Navigation manager.

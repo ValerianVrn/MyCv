@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,58 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Architecture" xml:space="preserve">
-    <value>Architecture</value>
+  <data name="Content1" xml:space="preserve">
+    <value>Désolé, mon </value>
   </data>
-  <data name="Date" xml:space="preserve">
-    <value>Date</value>
+  <data name="Content2" xml:space="preserve">
+    <value>niveau de japonais</value>
   </data>
-  <data name="DevelopmentAndTesting" xml:space="preserve">
-    <value>Development &amp; Testing</value>
+  <data name="Content3" xml:space="preserve">
+    <value> n'est pas suffisant. Essayez peut-être quand j'aurai passé le test JLPT N4 ? 🤷‍</value>
   </data>
-  <data name="DevOps" xml:space="preserve">
-    <value>DevOps</value>
-  </data>
-  <data name="DotNetExpertise" xml:space="preserve">
-    <value>.NET Expertise</value>
-  </data>
-  <data name="EducationAndCareer" xml:space="preserve">
-    <value>Education and career</value>
-  </data>
-  <data name="Explore" xml:space="preserve">
-    <value>Explore</value>
-  </data>
-  <data name="Fine" xml:space="preserve">
-    <value>Fine</value>
-  </data>
-  <data name="Leadership" xml:space="preserve">
-    <value>Leadership</value>
-  </data>
-  <data name="No" xml:space="preserve">
-    <value>No</value>
-  </data>
-  <data name="PersonalLife" xml:space="preserve">
-    <value>Personal life</value>
-  </data>
-  <data name="Priority" xml:space="preserve">
-    <value>Priority</value>
-  </data>
-  <data name="Skills" xml:space="preserve">
-    <value>Skills</value>
-  </data>
-  <data name="Type" xml:space="preserve">
-    <value>Type</value>
-  </data>
-  <data name="Update" xml:space="preserve">
-    <value>Update</value>
-  </data>
-  <data name="Validate" xml:space="preserve">
-    <value>Validate</value>
-  </data>
-  <data name="Yes" xml:space="preserve">
-    <value>Yes</value>
-  </data>
-  <data name="You" xml:space="preserve">
-    <value>You</value>
+  <data name="Title" xml:space="preserve">
+    <value>Vous vous attendiez vraiment à une traduction japonaise ?</value>
   </data>
 </root>

@@ -124,6 +124,15 @@ namespace MyCv.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fine.
+        /// </summary>
+        public static string Fine {
+            get {
+                return ResourceManager.GetString("Fine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Leadership.
         /// </summary>
         public static string Leadership {

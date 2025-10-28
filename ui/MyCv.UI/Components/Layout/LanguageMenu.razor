@@ -1,17 +1,45 @@
+@using MyCv.UI.Components.Layout
+@using MyCv.UI.Services
+@inject IDialogService DialogService
+@inject ILocalizationService LocalizationService
+
 <MudMenu Icon="@Icons.Material.Filled.Language">
-    <MudMenuItem OnClick="@(()=>SetLanguage("en"))">
-        <span class="fi fi-gb"></span> English
-    </MudMenuItem>
-    <MudMenuItem OnClick="@(()=>SetLanguage("fr"))">
-        <span class="fi fi-fr"></span> Français
-    </MudMenuItem>
+    @foreach (var language in _languages)
+    {
+        <MudMenuItem OnClick="@(()=>SetLanguage(language.CultureInfo))">
+            <span class=@language.IconClass></span> @language.Name
+        </MudMenuItem>
+    }
 </MudMenu>
 
 @code {
-    void SetLanguage(string culture)
+
+    private record Language(CultureInfo CultureInfo, string IconClass, string Name);
+
+    private List<Language> _languages = new()
     {
-        CultureInfo.CurrentUICulture = new CultureInfo(culture);
-        CultureInfo.CurrentCulture = new CultureInfo(culture);
-        StateHasChanged();
+        new(MyCv.UI.Services.LocalizationService.English, "fi fi-gb", "English"),
+        new(MyCv.UI.Services.LocalizationService.French, "fi fi-fr", "Français"),
+        new(MyCv.UI.Services.LocalizationService.Japanese, "fi fi-jp", "日本語")
+    };
+
+    private void SetLanguage(CultureInfo cultureInfo)
+    {
+        if (cultureInfo == MyCv.UI.Services.LocalizationService.Japanese)
+        {
+            var options = new DialogOptions { CloseOnEscapeKey = true };
+
+            DialogService.ShowAsync<JapaneseDialog>(null, options);
+        }
+        else
+        {
+            LocalizationService.SetCulture(cultureInfo);
+            LocalizationService.ApplySelectedCulture();
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        LocalizationService.SetCulture(CultureInfo.CurrentCulture);
     }
 }

@@ -1,5 +1,6 @@
 @using MyCv.UI.Services
-@inject IStringLocalizer<Resource> Localizer
+@inject IStringLocalizer<MyCv.UI.Resources.Components.Pages.Home> Localizer
+@inject IStringLocalizer<MyCv.UI.Resources.Shared> SharedLocalizer
 
 <MudPaper Class="py-8" Square="true" Elevation="0">
     @* Header *@
@@ -56,7 +57,7 @@
                             }
                         </MudCardContent>
                         <MudCardActions>
-                            <MudButton Variant="Variant.Text" Color="Color.Primary" Href="@mainSkill.Href">@Localizer["Explore"]</MudButton>
+                            <MudButton Variant="Variant.Text" Color="Color.Primary" Href="@mainSkill.Href">@SharedLocalizer["Explore"]</MudButton>
                         </MudCardActions>
                     </MudCard>
                 </MudItem>
@@ -101,7 +102,7 @@
         {
             return new()
             {
-                new(new(Icons.Material.Outlined.Code, "blue"), Localizer["DevelopmentAndTesting"], Localizer["CoreTechnologyExpertise"], Urls.Coding, new()
+                new(new(Icons.Material.Outlined.Code, "blue"), SharedLocalizer["DevelopmentAndTesting"], Localizer["CoreTechnologyExpertise"], Urls.Coding, new()
                 {
                     new("ASP .NET core"),
                     new("Entity Framework"),
@@ -109,20 +110,20 @@
                     new("SQL Server"),
                     new("MSTest")
                 }),
-                new(new(Icons.Material.Outlined.Cloud, "green"), Localizer["Architecture"], Localizer["ScalableSystemDesign"], Urls.Architecture, new()
+                new(new(Icons.Material.Outlined.Cloud, "green"), SharedLocalizer["Architecture"], Localizer["ScalableSystemDesign"], Urls.Architecture, new()
                 {
                     new("Azure"),
                     new("Microservices"),
                     new("CQRS"),
                     new("Event sourcing"),
                 }),
-                new(new(Icons.Material.Outlined.People, "red"), Localizer["Leadership"], Localizer["TeamManagement"], Urls.Leadership, new()
+                new(new(Icons.Material.Outlined.People, "red"), SharedLocalizer["Leadership"], Localizer["TeamManagement"], Urls.Leadership, new()
                 {
                     new("Agile/Scrum"),
                     new("Code reviews"),
                     new("Mentoring")
                 }),
-                new(new(Icons.Material.Outlined.Commit, "purple"), Localizer["DevOps"], Localizer["CICDAndMonitoring"], Urls.DevOps, new()
+                new(new(Icons.Material.Outlined.Commit, "purple"), SharedLocalizer["DevOps"], Localizer["CICDAndMonitoring"], Urls.DevOps, new()
                 {
                     new("Git flow"),
                     new("Azure DevOps"),

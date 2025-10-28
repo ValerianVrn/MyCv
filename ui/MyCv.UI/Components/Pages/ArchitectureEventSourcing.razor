@@ -1,7 +1,8 @@
 @using MyCv.UI.Components.Shared
 @using MyCv.UI.Dtos
 @using MyCv.UI.Services
-@inject IStringLocalizer<Resource> Localizer
+@inject IStringLocalizer<MyCv.UI.Resources.Components.Pages.Architecture> Localizer
+@inject IStringLocalizer<MyCv.UI.Resources.Shared> SharedLocalizer
 @inject IInsightService InsightService
 @inject IVisitorService VisitorService
 
@@ -24,7 +25,7 @@
                 <MudDropContainer T="DropItem" Items="_dropItems" ItemsSelector="@((item,dropzone) => item.Place == dropzone)" ItemDropped="ItemUpdated" Class="d-flex flex-column flex-grow-1" CanDropClass="mud-border-success" NoDropClass="mud-border-error" ApplyDropClassesOnDragStarted="true">
                     <ChildContent>
                         <MudDropZone T="DropItem" Identifier="@YouZone" Class="rounded-lg border-2 border-solid mud-border-lines-default mud-alert-text-warning pa-4 ma-4 flex-grow-1" AllowReorder CanDrop="@((item) => true)">
-                            <MudText Typo="Typo.h6" Class="ma-2">@Localizer["You"]</MudText>
+                            <MudText Typo="Typo.h6" Class="ma-2">@SharedLocalizer["You"]</MudText>
                         </MudDropZone>
                         <MudDropZone T="DropItem" Identifier="@StreetZone" Class="rounded-lg mud-alert-text-normal pa-4 ma-4 flex-grow-1 d-flex flex-wrap" CanDrop="@((item) => true)">
                         </MudDropZone>
@@ -41,10 +42,10 @@
                 @* Domain events *@
                 <MudDataGrid Items="@_domainEvents" Filterable="false" SortMode="@SortMode.Single" Groupable="false">
                     <Columns>
-                        <PropertyColumn Property="x => x.DateTime" Title="@Localizer["Date"]" />
-                        <PropertyColumn Property="x => x.DomainEventType" Title="@Localizer["Type"]" />
+                        <PropertyColumn Property="x => x.DateTime" Title="@SharedLocalizer["Date"]" />
+                        <PropertyColumn Property="x => x.DomainEventType" Title="@SharedLocalizer["Type"]" />
                         <PropertyColumn Property="x => x.Intent" Title="@Localizer["Intent"]" />
-                        <PropertyColumn Property="x => x.Priority" Title="@Localizer["Priority"]" />
+                        <PropertyColumn Property="x => x.Priority" Title="@SharedLocalizer["Priority"]" />
                     </Columns>
                     <PagerContent>
                         <MudDataGridPager T="DomainEvent" />

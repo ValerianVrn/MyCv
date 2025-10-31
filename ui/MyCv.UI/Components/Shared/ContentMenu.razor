@@ -1,7 +1,7 @@
 @inject IStringLocalizer<Resource> Localizer
 
 <!-- Desktop -->
-<MudHidden Breakpoint="Breakpoint.Lg" Invert="true">
+<MudHidden Breakpoint="Breakpoint.LgAndUp" Invert="true">
     <MudDrawer Fixed="true" ClipMode="DrawerClipMode.Always" Anchor="Anchor.Left" Open="true" Variant="DrawerVariant.Persistent" Elevation="0" Class="py-6">
         <MudNavMenu Bordered="true">
             <MudText Typo="Typo.h6" Class="px-4">@Localizer["Content"]</MudText>

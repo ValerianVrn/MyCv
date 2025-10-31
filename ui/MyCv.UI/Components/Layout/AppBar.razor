@@ -45,7 +45,7 @@
 </MudDrawer>
 <MudAppBar Fixed="true">
     <!-- Mobile -->
-    <MudHidden Breakpoint="Breakpoint.Lg">
+    <MudHidden Breakpoint="Breakpoint.LgAndUp">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="@(ThemeService.IsDarkMode ? Color.Inherit : Color.Dark)" Edge="Edge.Start" OnClick="() => _drawerOpen = !_drawerOpen" />
         <MudSpacer />
         <Brand />
@@ -53,7 +53,7 @@
         <ThemeToggle IsDarkMode="@ThemeService.IsDarkMode" OnToggle="ThemeService.ToggleMode" />
     </MudHidden>
     <!-- Desktop -->
-    <MudHidden Breakpoint="Breakpoint.Lg" Invert="true">
+    <MudHidden Breakpoint="Breakpoint.LgAndUp" Invert="true">
         <Brand />
         <MudSpacer />
         <MudStack Row="true" Spacing="5" AlignItems="AlignItems.Center">

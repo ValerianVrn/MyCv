@@ -60,9 +60,6 @@
     <Content Update="Components\Layout\AppBar.razor">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
     </Content>
-    <Content Update="Components\Layout\PageLayout.razor">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-    </Content>
     <Content Update="wwwroot\css\site.css">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>

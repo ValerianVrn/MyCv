@@ -1,16 +1,27 @@
+@using MyCv.UI.Components.Shared
 @inherits LayoutComponentBase
-@layout EmptyLayout
 
-<MudLayout>
-    @* Top bar *@
-    <AppBar />
-    @* Page content *@
-    <MudMainContent>
-        <MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Class="my-6">
-            @Body
-        </MudContainer>
-    </MudMainContent>
-    <MudDivider />
-    <Footer />
-</MudLayout>
+@* Required *@
+<ThemeProvider />
+<MudPopoverProvider />
 
+@* Needed for dialogs *@
+<MudDialogProvider />
+
+@* Needed for snackbars *@
+<MudSnackbarProvider />
+
+<CascadingValue Value="this">
+    <MudLayout>
+        @* Top bar *@
+        <AppBar />
+        @* Page content *@
+        <MudMainContent>
+            <MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Class="my-6">
+                @Body
+            </MudContainer>
+        </MudMainContent>
+        <MudDivider />
+        <Footer />
+    </MudLayout>
+</CascadingValue>

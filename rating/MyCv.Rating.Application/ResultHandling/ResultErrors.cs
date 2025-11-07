@@ -6,7 +6,7 @@ namespace MyCv.Rating.Application.ResultHandling
     public static class ResultErrors
     {
         /// <summary>
-        /// Conflict when Xinius already exists.
+        /// Conflict when entity already exists.
         /// </summary>
         /// <param name="visitorId"></param>
         /// <returns></returns>

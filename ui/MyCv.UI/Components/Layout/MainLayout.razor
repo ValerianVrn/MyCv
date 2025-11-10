@@ -15,23 +15,25 @@
 <MudLayout>
     @* Top bar *@
     <AppBar />
+    @* Lateral menu of the page content *@
+    <ContentMenu @ref="contentMenu" />
     @* Page content *@
-    <MudMainContent Style="height: 100vh; overflow-y: scroll;" data-bs-spy="scroll" data-bs-target="#content-menu">
-        <MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Class="my-6">
+    <MudMainContent Class="my-6" data-bs-spy="scroll" data-bs-target="#content-menu">
+        @* So that header and sections can call methods of this component *@
+        <CascadingValue Value="contentMenu">
             @Body
-        </MudContainer>
+        </CascadingValue>
     </MudMainContent>
     <MudDivider />
     <Footer />
 </MudLayout>
 
 @code {
+    private ContentMenu? contentMenu;
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (firstRender)
-        {
-            await JS.InvokeVoidAsync("eval",
-                "new bootstrap.ScrollSpy(document.querySelector('[data-bs-spy=\"scroll\"]'))");
-        }
+        // Use scroll spy for activating menu items when scrolling.
+        await JS.InvokeVoidAsync("eval", "new bootstrap.ScrollSpy(document.querySelector('[data-bs-spy=\"scroll\"]'))");
     }
 }

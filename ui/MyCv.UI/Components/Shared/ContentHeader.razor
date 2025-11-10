@@ -13,9 +13,6 @@
 </MudItem>
 
 @code {
-    [CascadingParameter]
-    public ContentPage ContentPage { get; set; }
-
     [Parameter]
     public required string HeaderId { get; set; }
 
@@ -26,11 +23,5 @@
     public List<string>? Chips { get; set; }
 
     [Parameter]
-    public RenderFragment? Content { get; set; }
-
-    /// <inheritdoc/>
-    protected override void OnParametersSet()
-    {
-        ContentPage.RegisterSection(HeaderId, HeaderName);
-    }
+    public required RenderFragment Content { get; set; }
 }

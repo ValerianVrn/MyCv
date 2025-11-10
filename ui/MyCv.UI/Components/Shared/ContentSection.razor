@@ -5,7 +5,7 @@
 
 @code {
     [CascadingParameter]
-    public ContentPage ContentPage { get; set; }
+    public required ContentMenu ContentMenu { get; set; }
 
     [Parameter]
     public required string SectionId { get; set; }
@@ -19,6 +19,6 @@
     /// <inheritdoc/>
     protected override void OnParametersSet()
     {
-        ContentPage.RegisterSection(SectionId, SectionName);
+        ContentMenu.RegisterSection(SectionId, SectionName);
     }
 }

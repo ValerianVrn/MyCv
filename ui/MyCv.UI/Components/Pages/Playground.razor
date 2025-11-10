@@ -5,14 +5,42 @@
 @using MyCv.UI.Services
 @layout MainLayout
 
-<Architecture></Architecture>
+<ContentMenu Sections=@_sectionMenuItems />
 
-@for (var i = 0; i < 30; i++)
-{
-    <MudText>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</MudText>
+<MudContainer>
+    <h4 id="introduction">introduction</h4>
+    @for (var i = 0; i < 30; i++)
+    {
+        <MudText>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</MudText>
+    }
+    <h4 id="cqrs">cqrs</h4>
+    @for (var i = 0; i < 30; i++)
+    {
+        <MudText>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</MudText>
+    }
+    <h4 id="es">es</h4>
+    @for (var i = 0; i < 30; i++)
+    {
+        <MudText>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</MudText>
+    }
+</MudContainer>
+
+
+@code {
+    private List<ContentMenu.Section> _sectionMenuItems { get; set; } = [];
+
+    private List<string> _sectionNames { get; set; } = [
+        "CQRS",
+        "Event sourcing",
+    ];
+
+    /// <inheritdoc/>
+    protected override void OnInitialized()
+    {
+        // if (firstRender)
+        {
+            _sectionMenuItems = _sectionNames.Select(s => new ContentMenu.Section(s, $"#{s.Replace(" ", "-").ToLower()}")).ToList();
+        
+        }
+    }
 }
-<MudAlert Severity="Severity.Success">
-    Lorem ipsum dolor sit amet consectetur adipiscing elit.<br />
-    - Lorem ipsum dolor sit amet consectetur adipiscing elit.<br />
-    - Lorem ipsum dolor sit amet consectetur adipiscing elit.
-</MudAlert>

@@ -1,5 +1,6 @@
 @using MyCv.UI.Components.Shared
 @inherits LayoutComponentBase
+@inject IJSRuntime JS
 
 @* Required *@
 <ThemeProvider />
@@ -11,17 +12,26 @@
 @* Needed for snackbars *@
 <MudSnackbarProvider />
 
-<CascadingValue Value="this">
-    <MudLayout>
-        @* Top bar *@
-        <AppBar />
-        @* Page content *@
-        <MudMainContent>
-            <MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Class="my-6">
-                @Body
-            </MudContainer>
-        </MudMainContent>
-        <MudDivider />
-        <Footer />
-    </MudLayout>
-</CascadingValue>
+<MudLayout>
+    @* Top bar *@
+    <AppBar />
+    @* Page content *@
+    <MudMainContent Style="height: 100vh; overflow-y: scroll;" data-bs-spy="scroll" data-bs-target="#content-menu">
+        <MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Class="my-6">
+            @Body
+        </MudContainer>
+    </MudMainContent>
+    <MudDivider />
+    <Footer />
+</MudLayout>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("eval",
+                "new bootstrap.ScrollSpy(document.querySelector('[data-bs-spy=\"scroll\"]'))");
+        }
+    }
+}

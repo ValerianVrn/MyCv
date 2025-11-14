@@ -1,4 +1,4 @@
-<MudItem md="12">
+<MudContainer Gutters="false">
     <MudText Typo="Typo.h2" Align="Align.Left" id="@HeaderId">
         @HeaderName
         @if (Chips?.Any() ?? false)
@@ -9,8 +9,8 @@
             }
         }
     </MudText>
-    @Content
-</MudItem>
+    @ChildContent
+</MudContainer>
 
 @code {
     [Parameter]
@@ -23,5 +23,5 @@
     public List<string>? Chips { get; set; }
 
     [Parameter]
-    public required RenderFragment Content { get; set; }
+    public required RenderFragment ChildContent { get; set; }
 }

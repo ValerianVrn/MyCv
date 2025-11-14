@@ -1,11 +1,10 @@
 @* Main content of the page *@
 <MudContainer MaxWidth="MaxWidth.ExtraExtraLarge">
-    <MudGrid Spacing="10" Justify="Justify.Center">
+    <MudStack Spacing="10" Justify="Justify.Center">
         <CascadingValue Value="Menu">
-            @Header
-            @Sections
+            @ChildContent
         </CascadingValue>
-    </MudGrid>
+    </MudStack>
 </MudContainer>
 
 @code {
@@ -13,10 +12,7 @@
     public required Menu Menu { get; set; }
 
     [Parameter]
-    public required RenderFragment Header { get; set; }
-
-    [Parameter]
-    public required RenderFragment Sections { get; set; }
+    public required RenderFragment ChildContent { get; set; }
 
     protected override void OnParametersSet()
     {

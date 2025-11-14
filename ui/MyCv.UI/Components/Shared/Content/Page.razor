@@ -1,0 +1,25 @@
+@* Main content of the page *@
+<MudContainer MaxWidth="MaxWidth.ExtraExtraLarge">
+    <MudGrid Spacing="10" Justify="Justify.Center">
+        <CascadingValue Value="Menu">
+            @Header
+            @Sections
+        </CascadingValue>
+    </MudGrid>
+</MudContainer>
+
+@code {
+    [CascadingParameter]
+    public required Menu Menu { get; set; }
+
+    [Parameter]
+    public required RenderFragment Header { get; set; }
+
+    [Parameter]
+    public required RenderFragment Sections { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        Menu.ClearSections();
+    }
+}

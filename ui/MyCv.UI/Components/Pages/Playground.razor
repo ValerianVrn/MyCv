@@ -1,6 +1,8 @@
 @page "/playground"
 @using MyCv.UI.Components.Layout
+@using MyCv.UI.Components.Pages.Architecture
 @using MyCv.UI.Components.Shared
+@using MyCv.UI.Components.Shared.Content
 @using MyCv.UI.Dtos
 @using MyCv.UI.Services
 @* @layout MainLayout *@
@@ -18,7 +20,7 @@ else
 
 
 @code {
-    private List<ContentMenu.Section> _sectionMenuItems { get; set; } = [];
+    private List<Menu.Section> _sectionMenuItems { get; set; } = [];
 
     private List<string> _sectionNames { get; set; } = [
         "CQRS",
@@ -30,7 +32,7 @@ else
     {
         // if (firstRender)
         {
-            _sectionMenuItems = _sectionNames.Select(s => new ContentMenu.Section(s, $"#{s.Replace(" ", "-").ToLower()}")).ToList();
+            _sectionMenuItems = _sectionNames.Select(s => new Menu.Section(s, $"#{s.Replace(" ", "-").ToLower()}")).ToList();
 
         }
     }

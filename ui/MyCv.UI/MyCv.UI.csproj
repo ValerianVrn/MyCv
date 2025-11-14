@@ -61,7 +61,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Components\Layout\AppBar.razor">
+    <Content Update="Components\Shared\AppBar\AppBar.razor">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
     </Content>
     <Content Update="wwwroot\css\site.css">

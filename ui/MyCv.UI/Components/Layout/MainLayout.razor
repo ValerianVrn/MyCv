@@ -1,4 +1,6 @@
 @using MyCv.UI.Components.Shared
+@using MyCv.UI.Components.Shared.AppBar
+@using MyCv.UI.Components.Shared.Content
 @inherits LayoutComponentBase
 @inject IJSRuntime JS
 
@@ -16,11 +18,11 @@
     @* Top bar *@
     <AppBar />
     @* Lateral menu of the page content *@
-    <ContentMenu @ref="contentMenu" />
+    <Menu @ref="_menu" />
     @* Page content *@
     <MudMainContent Class="my-6" data-bs-spy="scroll" data-bs-target="#content-menu">
         @* So that header and sections can call methods of this component *@
-        <CascadingValue Value="contentMenu">
+        <CascadingValue Value="_menu">
             @Body
         </CascadingValue>
     </MudMainContent>
@@ -29,7 +31,7 @@
 </MudLayout>
 
 @code {
-    private ContentMenu? contentMenu;
+    private Menu? _menu;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {

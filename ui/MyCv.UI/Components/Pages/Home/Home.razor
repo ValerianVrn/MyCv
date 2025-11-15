@@ -1,0 +1,18 @@
+@page "/"
+@using MyCv.UI.Components.Shared
+@using MyCv.UI.Components.Shared.Content
+
+<HeroSection />
+<SkillSection />
+<DiveSection />
+
+@code {
+
+    [CascadingParameter]
+    public required Menu Menu { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Menu.Close();
+    }
+}

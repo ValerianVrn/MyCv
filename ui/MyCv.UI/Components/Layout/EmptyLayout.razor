@@ -1,6 +1,5 @@
 @using MyCv.UI.Components.Shared
 @inherits LayoutComponentBase
-@inject IJSRuntime JSRuntime
 
 @* Required *@
 <ThemeProvider />
@@ -12,8 +11,6 @@
 @* Needed for snackbars *@
 <MudSnackbarProvider />
 
-<CascadingValue Value="this">
-    <MudLayout>
-        @Body
-    </MudLayout>
-</CascadingValue>
+<MudLayout>
+    @Body
+</MudLayout>

@@ -1,0 +1,27 @@
+@using MyCv.UI.Services
+@inject IStringLocalizer<Resources.Components.Layout.JapaneseDialog> Localizer
+@inject IStringLocalizer<Resources.Shared> SharedLocalizer
+
+<MudDialog>
+    <TitleContent>
+        <MudText Typo="Typo.h6">😮 @Localizer["Title"]</MudText>
+    </TitleContent>
+    <DialogContent>
+        <MudText Inline="true">
+            @Localizer["Content1"]
+            <MudLink Href="@Urls.EducationAndCareer">@Localizer["Content2"]</MudLink>
+            @Localizer["Content3"]
+        </MudText>
+    </DialogContent>
+    <DialogActions>
+        <MudButton Color="Color.Primary" OnClick="Cancel">@SharedLocalizer["Fine"]</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+
+    [CascadingParameter]
+    private IMudDialogInstance MudDialog { get; set; }
+
+    private void Cancel() => MudDialog.Cancel();
+}

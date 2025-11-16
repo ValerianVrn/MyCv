@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,118 +118,118 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ArchitectureIntroduction" xml:space="preserve">
-    <value />
+    <value>Here is the architecture of the website you're browsing on.</value>
   </data>
   <data name="ArchitectureMe1" xml:space="preserve">
-    <value />
+    <value>What I can offer:</value>
   </data>
   <data name="ArchitectureMe2" xml:space="preserve">
-    <value />
+    <value>- a design based on popular sources in accordance with the project's constraints</value>
   </data>
   <data name="ArchitectureMe3" xml:space="preserve">
-    <value />
+    <value>- a CQRS &amp; event sourcing expertise</value>
   </data>
   <data name="ArchitectureMicroservice" xml:space="preserve">
-    <value />
+    <value>This is an app based on microservices where two domain-driven design (DDD) patterns are implemented: Command and Query Responsibility Segregation (CQRS) et event sourcing.</value>
   </data>
   <data name="ArchitectureReference1" xml:space="preserve">
-    <value />
+    <value>The code is inspired from many references like</value>
   </data>
   <data name="ArchitectureReference2" xml:space="preserve">
-    <value />
+    <value>(Microsoft) or blogs like those from</value>
   </data>
   <data name="CommandCommandStep" xml:space="preserve">
-    <value />
+    <value>Creation of the command</value>
   </data>
   <data name="CommandCommandStepValidation" xml:space="preserve">
-    <value />
+    <value>Simple rules validation: mark value between 0 and 5.</value>
   </data>
   <data name="CommandDomainStep" xml:space="preserve">
-    <value />
+    <value>Creation of the aggregate</value>
   </data>
   <data name="CommandDomainStepValidation" xml:space="preserve">
-    <value />
+    <value>Business rules validation: the profile is recommended but the mark is below 3.</value>
   </data>
   <data name="Commands" xml:space="preserve">
-    <value />
+    <value>Commands</value>
   </data>
   <data name="CommandSaveStep" xml:space="preserve">
-    <value />
+    <value>Aggregate saving</value>
   </data>
   <data name="CommandSaveStepValidation" xml:space="preserve">
-    <value />
+    <value>Let's see the queries now!</value>
   </data>
   <data name="CommandsDescription" xml:space="preserve">
-    <value />
+    <value>This sequence diagram is a simplification of the writing process.</value>
   </data>
   <data name="CommandSendStep" xml:space="preserve">
-    <value />
+    <value>POST request sending</value>
   </data>
   <data name="CommandSendStepValidation" xml:space="preserve">
-    <value />
+    <value>Front-end validation of the form: required recommendation's field.</value>
   </data>
   <data name="CommandsExample" xml:space="preserve">
-    <value />
+    <value>Let's start by creating a command to add a rate about the website:</value>
   </data>
   <data name="CommandsRecommendation" xml:space="preserve">
-    <value />
+    <value>Would you recommend my profile?</value>
   </data>
   <data name="CommandsSatisfaction" xml:space="preserve">
-    <value />
+    <value>How much are you satisfied?</value>
   </data>
   <data name="CQRSBenefits" xml:space="preserve">
-    <value />
+    <value>This concept has many advantages: maintenance (responsibility segregation), scalability of read and write, performance of read operations, command validation and business rules respect...</value>
   </data>
   <data name="CQRSDefinition" xml:space="preserve">
-    <value />
+    <value>CQRS is an architecture pattern where queries ("read") and commands ("write") are separated.</value>
   </data>
   <data name="CQRSDiagram" xml:space="preserve">
-    <value />
+    <value>This sequence diagram is a simplification of the write process then the read process triggered by REST queries.</value>
   </data>
   <data name="CQRSExample" xml:space="preserve">
-    <value />
+    <value>What's better than a practical example? Here we go!</value>
   </data>
   <data name="CQRSService" xml:space="preserve">
-    <value />
+    <value>Here, the "Rating" service applies CQRS to handle the scores of the visitors of this website.</value>
   </data>
   <data name="EventSourcingBenefits" xml:space="preserve">
-    <value />
+    <value>It gives a complete history, ease the debugging and temporal requests, and can rebuild the state of the system.</value>
   </data>
   <data name="EventSourcingDefinition1" xml:space="preserve">
-    <value />
+    <value>Event sourcing is a pattern where state changes are saved like a sequence of immutable events rather than changing the current state directly. A very concrete example is a </value>
   </data>
   <data name="EventSourcingDefinition2" xml:space="preserve">
-    <value />
+    <value> where the current state would be the result of all the moves of the players (events).</value>
   </data>
   <data name="EventSourcingDefinitionLink" xml:space="preserve">
-    <value />
+    <value>chess game</value>
   </data>
   <data name="EventSourcingReadResult" xml:space="preserve">
-    <value />
+    <value>The read database is updated on each event to compute the 3 top reasons which make you read this:</value>
   </data>
   <data name="EventSourcingService" xml:space="preserve">
-    <value />
+    <value>Here, the "Insight" service applies CQRS + event sourcing to handle what you expect from my profile and why you are on this website.</value>
   </data>
   <data name="EventSourcingWrite" xml:space="preserve">
-    <value />
+    <value>Every event is store in an append-only database.</value>
   </data>
   <data name="EventSourcingWriteBenefits" xml:space="preserve">
-    <value />
+    <value>Why it's great? Because the current state is known but you can also replay all the events or get the state at a specific moment.</value>
   </data>
   <data name="EventSourcingWriteExample" xml:space="preserve">
-    <value />
+    <value>Let's see what it means with this example:</value>
   </data>
   <data name="EventSourcingWriteExampleInstructions" xml:space="preserve">
-    <value />
+    <value>Please choose one or more reasons that lead you here, drop them in the zone and order them by pertinence:</value>
   </data>
   <data name="EventSourcingWriteExampleResult" xml:space="preserve">
-    <value />
+    <value>This is the result in the event store:</value>
   </data>
   <data name="EventSourcingWriteIllustration" xml:space="preserve">
-    <value />
+    <value>This is useful whatever the field is: what were the treatments of a patient? How where the state of the drones before they crashed? What did the player when the bug happened?...</value>
   </data>
   <data name="Intent" xml:space="preserve">
-    <value />
+    <value>Intent</value>
   </data>
   <data name="IntentBoredom" xml:space="preserve">
     <value>Getting bored</value>
@@ -307,33 +307,33 @@
     <value>Microservice</value>
   </data>
   <data name="MicroserviceAPI" xml:space="preserve">
-    <value />
+    <value>A gateway (YARP) to avoid a direct access and coupling the services with the interface.</value>
   </data>
   <data name="MicroserviceAPIContent" xml:space="preserve">
-    <value />
+    <value>This avoids coupling the services with the interface and also secure the app with a single entrypoint.</value>
   </data>
   <data name="MicroserviceBackend" xml:space="preserve">
-    <value />
+    <value>Two microservices which communicate with RabbitMQ and use their own databases (EventStoreDB, MongoDB).</value>
   </data>
   <data name="MicroserviceBackendContent" xml:space="preserve">
-    <value />
+    <value>Two microservices which communicate with RabbitMQ and use their own databases (EventStoreDB, MongoDB).</value>
   </data>
   <data name="MicroserviceDescription" xml:space="preserve">
-    <value />
+    <value>Here is a short description of the architecture of this project:</value>
   </data>
   <data name="MicroserviceDocker" xml:space="preserve">
-    <value />
+    <value>The apps are containerized with Docker and launched through Docker Compose.</value>
   </data>
   <data name="MicroserviceFrontend" xml:space="preserve">
-    <value />
+    <value>A user interface developed with Blazor Server and MudBlazor.</value>
   </data>
   <data name="MicroserviceFrontendContent" xml:space="preserve">
-    <value />
+    <value>I'm also comfortable with Bootstrap and I've done a ReactJS website.</value>
   </data>
   <data name="MicroserviceReference" xml:space="preserve">
-    <value />
+    <value>My developments are widely inspired from this Microsoft guide which helped me to understand and implement microservices apps:</value>
   </data>
   <data name="QueriesExample" xml:space="preserve">
-    <value />
+    <value>Let's see now the last scores:</value>
   </data>
 </root>

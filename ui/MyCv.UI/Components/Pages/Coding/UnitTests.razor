@@ -1,19 +1,12 @@
 @using MyCv.UI.Components.Shared
 @using MyCv.UI.Components.Shared.Content
 @using static MyCv.UI.Components.Shared.CodeBlock
+@inject IStringLocalizer<MyCv.UI.Resources.Shared> SharedLocalizer;
+@inject IStringLocalizer<MyCv.UI.Resources.Components.Pages.Coding> Localizer;
 
-<Section SectionId="unit-tests" SectionName="Tests unitaires">
-
-    <MudText>
-        Les tests unitaires sont indispensables dans la majorité des développements. Ils permettent de s'assurer des non régressions (après l'ajout d'une fonctionnalité par exemple) et de tester les cas de figure.
-        Un objectif de couverture de 80% tout à fait envisageable si le SRP est appliqué (avantage CQRS).
-    </MudText>
-    <MudText>
-        Les tests unitaires sont facilités lorsqu'on applique le SRP.'.
-    </MudText>
-    <MudText>
-        Principe AAA (<MudLink Href="">SetRatingCommandHandler.cs</MudLink>)..
-    </MudText>
+<Section SectionId="unit-tests" SectionName="@SharedLocalizer["UnitTests"]">
+    <MudText>@Localizer["SectionUnitTestsIntroduction"]</MudText>
+    <MudText>@Localizer["SectionUnitTestsAAA"]</MudText>
     <CodeBlock Language="@CodeBlock.CodeLanguage.CSharp" Code="@rawCode" Tooltips="@tooltipMap" IdentifiedCodeTokenTypes="@identifiedCodeTokenTypes" />
 </Section>
 

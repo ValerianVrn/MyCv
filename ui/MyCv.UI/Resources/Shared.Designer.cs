@@ -70,11 +70,29 @@ namespace MyCv.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Best practices.
+        /// </summary>
+        public static string BestPractices {
+            get {
+                return ResourceManager.GetString("BestPractices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date.
         /// </summary>
         public static string Date {
             get {
                 return ResourceManager.GetString("Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Design patterns.
+        /// </summary>
+        public static string DesignPatterns {
+            get {
+                return ResourceManager.GetString("DesignPatterns", resourceCulture);
             }
         }
         
@@ -133,6 +151,33 @@ namespace MyCv.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Functional tests.
+        /// </summary>
+        public static string FunctionalTests {
+            get {
+                return ResourceManager.GetString("FunctionalTests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Git flow.
+        /// </summary>
+        public static string GitFlow {
+            get {
+                return ResourceManager.GetString("GitFlow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Introduction.
+        /// </summary>
+        public static string Introduction {
+            get {
+                return ResourceManager.GetString("Introduction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Leadership.
         /// </summary>
         public static string Leadership {
@@ -183,6 +228,15 @@ namespace MyCv.UI.Resources {
         public static string Type {
             get {
                 return ResourceManager.GetString("Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unit tests.
+        /// </summary>
+        public static string UnitTests {
+            get {
+                return ResourceManager.GetString("UnitTests", resourceCulture);
             }
         }
         

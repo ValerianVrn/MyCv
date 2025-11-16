@@ -1,15 +1,13 @@
 @page "/coding"
 @using MyCv.UI.Components.Shared
 @using MyCv.UI.Components.Shared.Content
+@inject IStringLocalizer<MyCv.UI.Resources.Shared> SharedLocalizer;
+@inject IStringLocalizer<MyCv.UI.Resources.Components.Pages.Coding> Localizer;
 
 <Page>
-    <Header HeaderId="introduction" HeaderName="Introduction" Chips="@(["Clean code", "Best practices", "Git flow", "Testing"])">
-        <MudText Typo="Typo.body1">Appliquer les bonnes pratiques permet d'assurer la maintenabilité du code, l'homogénéisation des développements...</MudText>
-        <MudAlert Severity="Severity.Success">
-            En tant que tech lead :<br />
-            - je m'assure que les meilleures pratiques sont appliquées (documentation, code review, transmission orale...)<br />
-            - je garantis une couverture de code élevée avec des tests unitaires systématiques<br />
-        </MudAlert>
+    <Header HeaderId="introduction" HeaderName="@SharedLocalizer["DotNetExpertise"]" Chips="@(["Clean code", "Best practices", "Git flow", "Testing"])">
+        <MudText Typo="Typo.body1">@Localizer["HeaderIntroduction"]</MudText>
+        <MudAlert Severity="Severity.Success">@((MarkupString)(string)Localizer["HeaderTechLead"])</MudAlert>
     </Header>
     <BestPractices></BestPractices>
     <Git></Git>

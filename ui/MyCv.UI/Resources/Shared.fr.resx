@@ -120,8 +120,14 @@
   <data name="Architecture" xml:space="preserve">
     <value>Architecture</value>
   </data>
+  <data name="BestPractices" xml:space="preserve">
+    <value>Bonnes pratiques</value>
+  </data>
   <data name="Date" xml:space="preserve">
     <value>Date</value>
+  </data>
+  <data name="DesignPatterns" xml:space="preserve">
+    <value>Design patterns</value>
   </data>
   <data name="DevelopmentAndTesting" xml:space="preserve">
     <value>Développement &amp; Tests</value>
@@ -141,6 +147,15 @@
   <data name="Fine" xml:space="preserve">
     <value>Pas de souci</value>
   </data>
+  <data name="FunctionalTests" xml:space="preserve">
+    <value>Tests fonctionnels</value>
+  </data>
+  <data name="GitFlow" xml:space="preserve">
+    <value>Git flow</value>
+  </data>
+  <data name="Introduction" xml:space="preserve">
+    <value>Introduction</value>
+  </data>
   <data name="Leadership" xml:space="preserve">
     <value>Leadership</value>
   </data>
@@ -158,6 +173,9 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>Type</value>
+  </data>
+  <data name="UnitTests" xml:space="preserve">
+    <value>Tests unitaires</value>
   </data>
   <data name="Update" xml:space="preserve">
     <value>Mettre à jour</value>

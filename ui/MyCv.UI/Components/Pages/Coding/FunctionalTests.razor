@@ -1,13 +1,11 @@
 @using MyCv.UI.Components.Shared
 @using MyCv.UI.Components.Shared.Content
 @using static MyCv.UI.Components.Shared.CodeBlock
+@inject IStringLocalizer<MyCv.UI.Resources.Shared> SharedLocalizer;
+@inject IStringLocalizer<MyCv.UI.Resources.Components.Pages.Coding> Localizer;
 
-<Section SectionId="functional-tests" SectionName="Tests fonctionnels">
-
-    <MudText>
-        Un peu plus lourds que les tests unitaires, ces tests permettent un gain en productivité.
-        Approche avec Docker plutôt pragmatique avec test-containers (démarrage des dépendances SQL Server, RabbitMQ, etc.) et web application factory.
-    </MudText>
+<Section SectionId="functional-tests" SectionName="@SharedLocalizer["FunctionalTests"]">
+    <MudText>@Localizer["SectionFunctionalTests"]</MudText>
     <CodeBlock Language="@CodeBlock.CodeLanguage.CSharp" Code="@rawCode" Tooltips="@tooltipMap" IdentifiedCodeTokenTypes="@identifiedCodeTokenTypes" />
 </Section>
 

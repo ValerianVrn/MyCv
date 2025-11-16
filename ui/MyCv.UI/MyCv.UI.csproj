@@ -43,6 +43,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Update="Resources\Components\Pages\Coding.Designer.cs">
+      <DependentUpon>Coding.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Update="Resources\Components\Pages\Home.Designer.cs">
       <DependentUpon>Home.resx</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -96,6 +101,11 @@
       <LastGenOutput>AppBar.Designer.cs</LastGenOutput>
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Components\Pages\Coding.fr.resx">
+      <SubType>Designer</SubType>
+      <LastGenOutput>Architecture.fr.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Components\Pages\Architecture.fr.resx">
       <SubType>Designer</SubType>
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -103,6 +113,10 @@
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Components\Pages\Architecture.resx">
       <LastGenOutput>Architecture.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Components\Pages\Coding.resx">
+      <LastGenOutput>Coding.Designer.cs</LastGenOutput>
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Components\Pages\Home.fr.resx">

@@ -1,21 +1,14 @@
 @using MyCv.UI.Components.Shared
 @using MyCv.UI.Components.Shared.Content
 @using static MyCv.UI.Components.Shared.CodeBlock
+@inject IStringLocalizer<MyCv.UI.Resources.Shared> SharedLocalizer;
+@inject IStringLocalizer<MyCv.UI.Resources.Components.Pages.Coding> Localizer;
 
-<Section SectionId="best" SectionName="Best practices">
-
-    <MudText>
-        En tant que leader technique, j'applique et propage les bonnes pratiques de code inspirées des standards Microsoft principalement.        
-    </MudText>
-    <MudAlert Severity="Severity.Normal">
-        Ces guides pouvant être lourds à absorber pour les développeurs, j'ai pour habitude de rédiger un condensé des principaux cas de figures rencontrés ou des erreurs rencontrées lors des code reviews.
-    </MudAlert>
-    <MudText>
-        À ce sujet, les commentaires de PR sont bien souvent assortis de liens vers des documents officiels le cas échéant.
-    </MudText>
-    <MudText>
-        Voici un exemple de code extrait du service Rating (<MudLink Href="">SetRatingCommandHandler.cs</MudLink>) où sont présentés quelques principes de programmation.
-    </MudText>
+<Section SectionId="best" SectionName="@SharedLocalizer["BestPractices"]">
+    <MudText>@Localizer["SectionBestPracticesIntroduction"]</MudText>
+    <MudAlert Severity="Severity.Normal">@Localizer["SectionBestPracticesGuide"]</MudAlert>
+    <MudText>@Localizer["SectionBestPracticesPR"]</MudText>
+    <MudText>@((MarkupString)(string)Localizer["SectionBestPracticesExample", "<MudLink Href=\"\">SetRatingCommandHandler.cs</MudLink>"])</MudText>
     <CodeBlock Language="@CodeBlock.CodeLanguage.CSharp" Code="@rawCode" Tooltips="@tooltipMap" IdentifiedCodeTokenTypes="@identifiedCodeTokenTypes" />
 </Section>
 

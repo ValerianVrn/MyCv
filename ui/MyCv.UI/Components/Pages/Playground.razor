@@ -10,7 +10,54 @@
 
 @if (Env.IsDevelopment())
 {
-    <Architecture></Architecture>
+    <MudTimeline>
+        <MudTimelineItem Color="Color.Secondary" Elevation="25">
+            <ItemOpposite>
+                <MudText Color="Color.Secondary" Typo="Typo.h6">2013</MudText>
+            </ItemOpposite>
+            <ItemContent>
+                <MudText Color="Color.Secondary" Typo="Typo.h6" GutterBottom="true">Test of English for International Communication (TOEIC)</MudText>
+                <MudText Typo="Typo.body2">880/990</MudText>
+            </ItemContent>
+        </MudTimelineItem>
+        <MudTimelineItem Color="Color.Primary" Elevation="25" TimelineAlign="TimelineAlign.End">
+            <ItemOpposite>
+                <MudText Color="Color.Primary" Typo="Typo.h6">2014</MudText>
+            </ItemOpposite>
+            <ItemContent>
+                <MudText Color="Color.Primary" Typo="Typo.h6" GutterBottom="true">Diplôme d'ingénieur, Ingénierie des Systèmes, Automatique et Vision</MudText>
+                <MudText Typo="Typo.body2">Télécom Physique Strasbourg</MudText>
+                <MudText Color="Color.Primary" Typo="Typo.h6" GutterBottom="true">Master, Imagerie, Robotique Médicale et Chirurgicale</MudText>
+                <MudText Typo="Typo.body2">Université de Strasbourg</MudText>
+            </ItemContent>
+        </MudTimelineItem>
+        <MudTimelineItem Color="Color.Primary" Elevation="25" TimelineAlign="TimelineAlign.End">
+            <ItemOpposite>
+                <MudText Color="Color.Primary" Typo="Typo.h6">2015</MudText>
+            </ItemOpposite>
+            <ItemContent>
+                <MudText Color="Color.Primary" Typo="Typo.h6" GutterBottom="true">Master, Administration des entreprises</MudText>
+                <MudText Typo="Typo.body2">EM Strasbourg Business School</MudText>
+            </ItemContent>
+        </MudTimelineItem>
+        <MudTimelineItem Color="Color.Secondary" Elevation="25" TimelineAlign="TimelineAlign.End">
+            <ItemOpposite>
+                <MudText Color="Color.Secondary" Typo="Typo.h6">2025</MudText>
+            </ItemOpposite>
+            <ItemContent>
+                <MudText Color="Color.Secondary" Typo="Typo.h6" GutterBottom="true">Japanese-Language Proficiency Test (JLPT) - N5</MudText>
+                <MudText Typo="Typo.body2">Score: 107</MudText>
+            </ItemContent>
+        </MudTimelineItem>
+        <MudTimelineItem Color="Color.Secondary" Elevation="25" TimelineAlign="TimelineAlign.End">
+            <ItemOpposite>
+                <MudText Color="Color.Secondary" Typo="Typo.h6">2026</MudText>
+            </ItemOpposite>
+            <ItemContent>
+                <MudText Color="Color.Secondary" Typo="Typo.h6" GutterBottom="true">Microsoft Certified: Azure Fundamentals (AZ-900)</MudText>
+            </ItemContent>
+        </MudTimelineItem>
+    </MudTimeline>
 }
 else
 {
@@ -20,6 +67,11 @@ else
 
 
 @code {
+    private record Degree(string Name, string Institution, int Year);
+
+    private const int _minYear = 2014;
+
+    private record Item(int year);
     private List<Menu.Section> _sectionMenuItems { get; set; } = [];
 
     private List<string> _sectionNames { get; set; } = [

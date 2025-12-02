@@ -132,6 +132,9 @@
   <data name="DotNetExpertise" xml:space="preserve">
     <value>Expertise .NET</value>
   </data>
+  <data name="Education" xml:space="preserve">
+    <value>Études, diplômes et certifications</value>
+  </data>
   <data name="EducationAndCareer" xml:space="preserve">
     <value>Études et carrière</value>
   </data>

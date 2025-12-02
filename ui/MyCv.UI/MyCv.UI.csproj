@@ -43,6 +43,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Update="Resources\Components\Pages\Career.Designer.cs">
+      <DependentUpon>Career.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Update="Resources\Components\Pages\Home.Designer.cs">
       <DependentUpon>Home.resx</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -103,6 +108,14 @@
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Components\Pages\Architecture.resx">
       <LastGenOutput>Architecture.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Components\Pages\Career.resx">
+      <LastGenOutput>Career.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Components\Pages\Career.fr.resx">
+      <SubType>Designer</SubType>
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Components\Pages\Home.fr.resx">

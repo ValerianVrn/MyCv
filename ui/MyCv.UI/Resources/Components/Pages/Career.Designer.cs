@@ -179,5 +179,248 @@ namespace MyCv.UI.Resources.Components.Pages {
                 return ResourceManager.GetString("Introduction", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Software engineer.
+        /// </summary>
+        public static string SectionExperienceCeaJobTitle {
+            get {
+                return ResourceManager.GetString("SectionExperienceCeaJobTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Saclay (Paris), Île-de-France, France.
+        /// </summary>
+        public static string SectionExperienceCeaPlace {
+            get {
+                return ResourceManager.GetString("SectionExperienceCeaPlace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Development of a viewing and post-processing tool for radioactivity analysis..
+        /// </summary>
+        public static string SectionExperienceCeaProjectTitle {
+            get {
+                return ResourceManager.GetString("SectionExperienceCeaProjectTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Software engineer .NET.
+        /// </summary>
+        public static string SectionExperienceEiJobTitle {
+            get {
+                return ResourceManager.GetString("SectionExperienceEiJobTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Strasbourg, Bas-Rhin, France.
+        /// </summary>
+        public static string SectionExperienceEiPlace {
+            get {
+                return ResourceManager.GetString("SectionExperienceEiPlace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Telecom applications development and support for Crédit Mutuel, CIC, Cofidis....
+        /// </summary>
+        public static string SectionExperienceEiProjectTitle {
+            get {
+                return ResourceManager.GetString("SectionExperienceEiProjectTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Strategic marketing (internship).
+        /// </summary>
+        public static string SectionExperienceGeJobTitle {
+            get {
+                return ResourceManager.GetString("SectionExperienceGeJobTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vélizy-Villacoublay (Paris), Île-de-France, France.
+        /// </summary>
+        public static string SectionExperienceGePlace {
+            get {
+                return ResourceManager.GetString("SectionExperienceGePlace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Growth plan for an imaging device dedicated to cardiac scintigraphy..
+        /// </summary>
+        public static string SectionExperienceGeProjectTitle {
+            get {
+                return ResourceManager.GetString("SectionExperienceGeProjectTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Software engineer R&amp;D (internship).
+        /// </summary>
+        public static string SectionExperienceInriaJobTitle {
+            get {
+                return ResourceManager.GetString("SectionExperienceInriaJobTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Villeneuve-d’Ascq, Nord, France.
+        /// </summary>
+        public static string SectionExperienceInriaPlace {
+            get {
+                return ResourceManager.GetString("SectionExperienceInriaPlace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Development of surgery simulation..
+        /// </summary>
+        public static string SectionExperienceInriaProjectTitle {
+            get {
+                return ResourceManager.GetString("SectionExperienceInriaProjectTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Software engineer C++ (internship).
+        /// </summary>
+        public static string SectionExperienceSiemensJobTitle {
+            get {
+                return ResourceManager.GetString("SectionExperienceSiemensJobTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nuremberg, Allemagne.
+        /// </summary>
+        public static string SectionExperienceSiemensPlace {
+            get {
+                return ResourceManager.GetString("SectionExperienceSiemensPlace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Integration of Simulink models in PLCs..
+        /// </summary>
+        public static string SectionExperienceSiemensProjectTitle {
+            get {
+                return ResourceManager.GetString("SectionExperienceSiemensProjectTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .NET developer in R&amp;D.
+        /// </summary>
+        public static string SectionExperienceSylepsJobTitle {
+            get {
+                return ResourceManager.GetString("SectionExperienceSylepsJobTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lorient, Brittany, France.
+        /// </summary>
+        public static string SectionExperienceSylepsPlace {
+            get {
+                return ResourceManager.GetString("SectionExperienceSylepsPlace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Software design and development of a solution of supervision of a fleet of robots..
+        /// </summary>
+        public static string SectionExperienceSylepsProject1Title {
+            get {
+                return ResourceManager.GetString("SectionExperienceSylepsProject1Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Development of a tool pour handling and compiling PL/SQL code..
+        /// </summary>
+        public static string SectionExperienceSylepsProject2Title {
+            get {
+                return ResourceManager.GetString("SectionExperienceSylepsProject2Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Development of a generic REST API for customer data purge..
+        /// </summary>
+        public static string SectionExperienceSylepsProject3Title {
+            get {
+                return ResourceManager.GetString("SectionExperienceSylepsProject3Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .NET tech lead and architect.
+        /// </summary>
+        public static string SectionExperienceXcellaJobTitle {
+            get {
+                return ResourceManager.GetString("SectionExperienceXcellaJobTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Larmor-Plage, Brittany, France.
+        /// </summary>
+        public static string SectionExperienceXcellaPlace {
+            get {
+                return ResourceManager.GetString("SectionExperienceXcellaPlace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supervision of a fleet of robots for the management of logistic flows (AS/RS).
+        /// </summary>
+        public static string SectionExperienceXcellaProjectTitle {
+            get {
+                return ResourceManager.GetString("SectionExperienceXcellaProjectTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Design and development of the .NET ecosystem with a microservices architecture, with CQRS/event sourcing patterns, monitoring tools integration (Grafana, Loki, Prometheus...).
+        /// </summary>
+        public static string SectionExperienceXcellaTask1 {
+            get {
+                return ResourceManager.GetString("SectionExperienceXcellaTask1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product and technical decisions (collision avoidance, battery charging, path computation...).
+        /// </summary>
+        public static string SectionExperienceXcellaTask2 {
+            get {
+                return ResourceManager.GetString("SectionExperienceXcellaTask2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Azure DevOps administration, pipelines creation, environments setup.
+        /// </summary>
+        public static string SectionExperienceXcellaTask3 {
+            get {
+                return ResourceManager.GetString("SectionExperienceXcellaTask3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enhancement of developing process and spread of best practices in software teams.
+        /// </summary>
+        public static string SectionExperienceXcellaTask4 {
+            get {
+                return ResourceManager.GetString("SectionExperienceXcellaTask4", resourceCulture);
+            }
+        }
     }
 }

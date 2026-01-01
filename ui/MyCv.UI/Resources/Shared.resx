@@ -138,14 +138,26 @@
   <data name="EducationAndCareer" xml:space="preserve">
     <value>Education and career</value>
   </data>
+  <data name="Experiences" xml:space="preserve">
+    <value>Experiences</value>
+  </data>
   <data name="Explore" xml:space="preserve">
     <value>Explore</value>
   </data>
   <data name="Fine" xml:space="preserve">
     <value>Fine</value>
   </data>
+  <data name="JobTitle" xml:space="preserve">
+    <value>.NET tech lead and architect</value>
+  </data>
   <data name="Leadership" xml:space="preserve">
     <value>Leadership</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>month</value>
+  </data>
+  <data name="Months" xml:space="preserve">
+    <value>months</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>No</value>
@@ -167,6 +179,12 @@
   </data>
   <data name="Validate" xml:space="preserve">
     <value>Validate</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>year</value>
+  </data>
+  <data name="Years" xml:space="preserve">
+    <value>years</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Yes</value>

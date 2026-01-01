@@ -159,4 +159,85 @@
   <data name="EducationPartnerOf" xml:space="preserve">
     <value>Partenaire de l’{0}</value>
   </data>
+  <data name="SectionExperienceXcellaJobTitle" xml:space="preserve">
+    <value>Leader technique .NET et architecte</value>
+  </data>
+  <data name="SectionExperienceXcellaPlace" xml:space="preserve">
+    <value>Larmor-Plage, Bretagne, France</value>
+  </data>
+  <data name="SectionExperienceXcellaProjectTitle" xml:space="preserve">
+    <value>Supervision d'une flotte de robots pour la gestion des flux logistiques (AS/RS)</value>
+  </data>
+  <data name="SectionExperienceXcellaTask1" xml:space="preserve">
+    <value>Conception et développement de la solution logicielle (.NET) avec architecture microservices, mise en œuvre de CQRS, intégration d'outils de monitoring (Grafana, Loki, Prometheus...)</value>
+  </data>
+  <data name="SectionExperienceXcellaTask2" xml:space="preserve">
+    <value>Choix stratégiques produits et techniques (gestion des mouvements, anticollision, gestion de l’énergie des robots, maintenance…)</value>
+  </data>
+  <data name="SectionExperienceXcellaTask3" xml:space="preserve">
+    <value>Administration Azure DevOps, mise en place des pipelines, gestion des environnements</value>
+  </data>
+  <data name="SectionExperienceXcellaTask4" xml:space="preserve">
+    <value>Amélioration et application des pratiques de développement dans les équipes de dévs</value>
+  </data>
+  <data name="SectionExperienceSylepsJobTitle" xml:space="preserve">
+    <value>Développeur .NET en recherche et développement logiciels</value>
+  </data>
+  <data name="SectionExperienceSylepsPlace" xml:space="preserve">
+    <value>Lorient, Bretagne, France</value>
+  </data>
+  <data name="SectionExperienceSylepsProject1Title" xml:space="preserve">
+    <value>Architecture logicielle et développement d'une solution de supervision de flotte de robots.</value>
+  </data>
+  <data name="SectionExperienceSylepsProject2Title" xml:space="preserve">
+    <value>Développement d'un outil pour la gestion et la compilation de code PL/SQL.</value>
+  </data>
+  <data name="SectionExperienceSylepsProject3Title" xml:space="preserve">
+    <value>Développement d'une API REST générique pour la purge de données client.</value>
+  </data>
+  <data name="SectionExperienceCeaJobTitle" xml:space="preserve">
+    <value>Ingénieur développement logiciels</value>
+  </data>
+  <data name="SectionExperienceCeaPlace" xml:space="preserve">
+    <value>Saclay (Paris), Île-de-France, France</value>
+  </data>
+  <data name="SectionExperienceCeaProjectTitle" xml:space="preserve">
+    <value>Développement d’un outil de consultation et de post-traitements de grandeurs physiques liées à la radioactivité.</value>
+  </data>
+  <data name="SectionExperienceEiJobTitle" xml:space="preserve">
+    <value>Ingénieur développement logiciels .NET</value>
+  </data>
+  <data name="SectionExperienceEiPlace" xml:space="preserve">
+    <value>Strasbourg, Bas-Rhin, France</value>
+  </data>
+  <data name="SectionExperienceEiProjectTitle" xml:space="preserve">
+    <value>Développement et support d'applications télécoms pour Crédit Mutuel, CIC, Cofidis...</value>
+  </data>
+  <data name="SectionExperienceGeJobTitle" xml:space="preserve">
+    <value>Marketing stratégique (stage)</value>
+  </data>
+  <data name="SectionExperienceGePlace" xml:space="preserve">
+    <value>Vélizy-Villacoublay (Paris), Île-de-France, France</value>
+  </data>
+  <data name="SectionExperienceGeProjectTitle" xml:space="preserve">
+    <value>Plan de croissance pour un dispositif d'imagerie dédié à la scintigraphie cardiaque. </value>
+  </data>
+  <data name="SectionExperienceInriaJobTitle" xml:space="preserve">
+    <value>Ingénieur logiciel R&amp;D (stage)</value>
+  </data>
+  <data name="SectionExperienceInriaPlace" xml:space="preserve">
+    <value>Villeneuve-d’Ascq, Nord, France</value>
+  </data>
+  <data name="SectionExperienceInriaProjectTitle" xml:space="preserve">
+    <value>Développement d’une simulation pour la chirurgie.</value>
+  </data>
+  <data name="SectionExperienceSiemensJobTitle" xml:space="preserve">
+    <value>Ingénieur logiciel C++ (stage)</value>
+  </data>
+  <data name="SectionExperienceSiemensPlace" xml:space="preserve">
+    <value>Nuremberg, Germany</value>
+  </data>
+  <data name="SectionExperienceSiemensProjectTitle" xml:space="preserve">
+    <value>Intégration de modèles Simulink dans un automate programmable industriel.</value>
+  </data>
 </root>

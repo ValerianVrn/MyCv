@@ -1,0 +1,82 @@
+@using MyCv.UI.Components.Shared
+@using MyCv.UI.Components.Shared.Content
+@inject IStringLocalizer<MyCv.UI.Resources.Shared> SharedLocalizer;
+@inject IStringLocalizer<MyCv.UI.Resources.Components.Pages.Career> Localizer;
+
+<Section SectionId="education" SectionName="@SharedLocalizer["Education"]">
+    <MudTimeline TimelinePosition="TimelinePosition.Start">
+        @foreach (var year in _degrees.Keys)
+        {
+            <MudTimelineItem Elevation="25">
+                <ItemContent>
+                    <MudStack>
+                        <MudText Typo="Typo.h6">@year</MudText>
+                        <MudStack>
+                            @foreach (var degree in _degrees[year])
+                            {
+                                <MudStack Row Spacing="6" AlignItems="AlignItems.Center">
+                                    @if (degree.Image != null)
+                                    {
+                                        <MudImage Src="@degree.Image" Alt="@degree.Institution" Width="48" Height="48" ObjectFit="ObjectFit.Contain" Class="rounded-lg border bg-white" />
+                                    }
+                                    <MudStack Spacing="0" Class="pa-0">
+                                        @if (!string.IsNullOrEmpty(degree.Institution) || !string.IsNullOrEmpty(degree.Score))
+                                        {
+                                            <MudExpansionPanel Class="bg-transparent" Gutters="false" HeaderClass="p-0">
+                                                <TitleContent>
+                                                    <MudText Color="@(degree.Primary? Color.Primary: Color.Secondary)" GutterBottom="false">@degree.Name</MudText>
+                                                    @if (!string.IsNullOrEmpty(degree.SubTitle))
+                                                    {
+                                                        <MudText Typo="Typo.subtitle1">@degree.SubTitle</MudText>
+                                                    }
+                                                </TitleContent>
+                                                <ChildContent>
+                                                    @if (!string.IsNullOrEmpty(degree.Institution))
+                                                    {
+                                                        <MudText Typo="Typo.body1">@degree.Institution</MudText>
+                                                    }
+                                                    @if (!string.IsNullOrEmpty(degree.Score))
+                                                    {
+                                                        <MudText Typo="Typo.caption">@degree.Score</MudText>
+                                                    }
+                                                </ChildContent>
+                                            </MudExpansionPanel>
+                                        }
+                                        else
+                                        {
+                                            <MudText Color="@(degree.Primary? Color.Primary: Color.Secondary)" GutterBottom="false">@degree.Name</MudText>
+                                            @if (!string.IsNullOrEmpty(degree.SubTitle))
+                                            {
+                                                <MudText Typo="Typo.subtitle1">@degree.SubTitle</MudText>
+                                            }
+                                        }
+                                    </MudStack>
+                                </MudStack>
+                            }
+                        </MudStack>
+                        <MudDivider />
+                    </MudStack>
+                </ItemContent>
+            </MudTimelineItem>
+        }
+    </MudTimeline>
+</Section>
+
+@code {
+    private record Degree(bool Primary, string? Image, string Name, string? SubTitle, string? Institution, string? Score);
+    private Dictionary<int, List<Degree>> _degrees = new();
+
+    protected override void OnInitialized()
+    {
+        _degrees = new() {
+            { 2009, [ new(false, "images/bac.jpg", Localizer["EducationBaccalaureate"], null, null, null) ] },
+            { 2013, [ new(false, "images/toeic.png", "TOEIC", "Test of English for International Communication",  null, Localizer["EducationScore", "880/990"]) ] },
+            { 2014, [
+                new(true, "images/tlcom_physique_strasbourg_logo.jpg", Localizer["EducationEngineeringDegree"], Localizer["EducationEngineeringDegreeTitle"],  "Télécom Physique Strasbourg - " + Localizer["EducationPartnerOf", "Institut Mines-Télécom (IMT)"], Localizer["EducationRanked", "3e/79"]),
+                new(true, "images/universite_de_strasbourg_logo.jpg", Localizer["EducationMaster"], Localizer["EducationMasterScienceTitle"],  "Université de Strasbourg", Localizer["EducationWithHighHonours"])] },
+            { 2015, [ new(true, "images/em_strasbourg_logo.jpg", Localizer["EducationMaster"], Localizer["EducationMasterBusinessTitle"],  "EM Strasbourg Business School", Localizer["EducationWithHighHonours"]) ] },
+            { 2025, [ new(false, "images/jlptsquare.png", "JLPT - N5", "Japanese-Language Proficiency Test",  null, Localizer["EducationScore", "107"]) ] },
+            { 2026, [ new(false, "images/microsoft_certified_fundamentals.png", "Microsoft Certified", "Azure Fundamentals (AZ-900)",  null, null) ] }
+        };
+    }
+}

@@ -132,8 +132,14 @@
   <data name="DotNetExpertise" xml:space="preserve">
     <value>Expertise .NET</value>
   </data>
+  <data name="Education" xml:space="preserve">
+    <value>Études, diplômes et certifications</value>
+  </data>
   <data name="EducationAndCareer" xml:space="preserve">
     <value>Études et carrière</value>
+  </data>
+  <data name="Experiences" xml:space="preserve">
+    <value>Expériences</value>
   </data>
   <data name="Explore" xml:space="preserve">
     <value>Explorer</value>
@@ -141,8 +147,17 @@
   <data name="Fine" xml:space="preserve">
     <value>Pas de souci</value>
   </data>
+  <data name="JobTitle" xml:space="preserve">
+    <value>Leader technique .NET et architecte</value>
+  </data>
   <data name="Leadership" xml:space="preserve">
     <value>Leadership</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>mois</value>
+  </data>
+  <data name="Months" xml:space="preserve">
+    <value>mois</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>Non</value>
@@ -164,6 +179,12 @@
   </data>
   <data name="Validate" xml:space="preserve">
     <value>Valider</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>an</value>
+  </data>
+  <data name="Years" xml:space="preserve">
+    <value>ans</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Oui</value>

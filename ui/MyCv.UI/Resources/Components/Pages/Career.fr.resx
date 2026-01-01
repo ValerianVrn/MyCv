@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="EducationBaccalaureate" xml:space="preserve">
+    <value>Bac Scientifique</value>
+  </data>
+  <data name="EngineeringSchool" xml:space="preserve">
+    <value>École d'ingénieurs</value>
+  </data>
+  <data name="Highlights" xml:space="preserve">
+    <value>Les points forts de mon parcours professionnel :&lt;br /&gt;
+- une approche multidisciplinaire qui permet une collaboration entre les équipes&lt;br /&gt;
+- une capacité à comprendre et résoudre les problèmes variés en phase avec les différents contextes&lt;br /&gt;
+- un apprentissage continu pour garantir un travail de qualité avec des outils modernes</value>
+  </data>
+  <data name="Introduction" xml:space="preserve">
+    <value>Mon parcours combine différentes disciplines (ingénierie, robotique chirurgicale, gestion d'entreprise...) et une expérience aussi bien dans un écosystème rigoureux de grande entreprise que dans un environnement dynamique d'une startup.</value>
+  </data>
+  <data name="EducationScore" xml:space="preserve">
+    <value>Score : {0}</value>
+  </data>
+  <data name="EducationEngineeringDegree" xml:space="preserve">
+    <value>Diplôme d'ingénieur</value>
+  </data>
+  <data name="EducationEngineeringDegreeTitle" xml:space="preserve">
+    <value>Ingénierie des Systèmes, Automatique et Vision</value>
+  </data>
+  <data name="EducationMaster" xml:space="preserve">
+    <value>Master</value>
+  </data>
+  <data name="EducationMasterScienceTitle" xml:space="preserve">
+    <value>Imagerie, Robotique Médicale et Chirurgicale</value>
+  </data>
+  <data name="EducationMasterBusinessTitle" xml:space="preserve">
+    <value>Administration des entreprises</value>
+  </data>
+  <data name="EducationWithHighHonours" xml:space="preserve">
+    <value>Mention bien</value>
+  </data>
+  <data name="EducationRanked" xml:space="preserve">
+    <value>Classé {0}</value>
+  </data>
+  <data name="EducationPartnerOf" xml:space="preserve">
+    <value>Partenaire de l’{0}</value>
+  </data>
+  <data name="SectionExperienceXcellaJobTitle" xml:space="preserve">
+    <value>Leader technique .NET et architecte</value>
+  </data>
+  <data name="SectionExperienceXcellaPlace" xml:space="preserve">
+    <value>Larmor-Plage, Bretagne, France</value>
+  </data>
+  <data name="SectionExperienceXcellaProjectTitle" xml:space="preserve">
+    <value>Supervision d'une flotte de robots pour la gestion des flux logistiques (AS/RS)</value>
+  </data>
+  <data name="SectionExperienceXcellaTask1" xml:space="preserve">
+    <value>Conception et développement de la solution logicielle (.NET) avec architecture microservices, mise en œuvre de CQRS, intégration d'outils de monitoring (Grafana, Loki, Prometheus...)</value>
+  </data>
+  <data name="SectionExperienceXcellaTask2" xml:space="preserve">
+    <value>Choix stratégiques produits et techniques (gestion des mouvements, anticollision, gestion de l’énergie des robots, maintenance…)</value>
+  </data>
+  <data name="SectionExperienceXcellaTask3" xml:space="preserve">
+    <value>Administration Azure DevOps, mise en place des pipelines, gestion des environnements</value>
+  </data>
+  <data name="SectionExperienceXcellaTask4" xml:space="preserve">
+    <value>Amélioration et application des pratiques de développement dans les équipes de dévs</value>
+  </data>
+  <data name="SectionExperienceSylepsJobTitle" xml:space="preserve">
+    <value>Développeur .NET en recherche et développement logiciels</value>
+  </data>
+  <data name="SectionExperienceSylepsPlace" xml:space="preserve">
+    <value>Lorient, Bretagne, France</value>
+  </data>
+  <data name="SectionExperienceSylepsProject1Title" xml:space="preserve">
+    <value>Architecture logicielle et développement d'une solution de supervision de flotte de robots.</value>
+  </data>
+  <data name="SectionExperienceSylepsProject2Title" xml:space="preserve">
+    <value>Développement d'un outil pour la gestion et la compilation de code PL/SQL.</value>
+  </data>
+  <data name="SectionExperienceSylepsProject3Title" xml:space="preserve">
+    <value>Développement d'une API REST générique pour la purge de données client.</value>
+  </data>
+  <data name="SectionExperienceCeaJobTitle" xml:space="preserve">
+    <value>Ingénieur développement logiciels</value>
+  </data>
+  <data name="SectionExperienceCeaPlace" xml:space="preserve">
+    <value>Saclay (Paris), Île-de-France, France</value>
+  </data>
+  <data name="SectionExperienceCeaProjectTitle" xml:space="preserve">
+    <value>Développement d’un outil de consultation et de post-traitements de grandeurs physiques liées à la radioactivité.</value>
+  </data>
+  <data name="SectionExperienceEiJobTitle" xml:space="preserve">
+    <value>Ingénieur développement logiciels .NET</value>
+  </data>
+  <data name="SectionExperienceEiPlace" xml:space="preserve">
+    <value>Strasbourg, Bas-Rhin, France</value>
+  </data>
+  <data name="SectionExperienceEiProjectTitle" xml:space="preserve">
+    <value>Développement et support d'applications télécoms pour Crédit Mutuel, CIC, Cofidis...</value>
+  </data>
+  <data name="SectionExperienceGeJobTitle" xml:space="preserve">
+    <value>Marketing stratégique (stage)</value>
+  </data>
+  <data name="SectionExperienceGePlace" xml:space="preserve">
+    <value>Vélizy-Villacoublay (Paris), Île-de-France, France</value>
+  </data>
+  <data name="SectionExperienceGeProjectTitle" xml:space="preserve">
+    <value>Plan de croissance pour un dispositif d'imagerie dédié à la scintigraphie cardiaque. </value>
+  </data>
+  <data name="SectionExperienceInriaJobTitle" xml:space="preserve">
+    <value>Ingénieur logiciel R&amp;D (stage)</value>
+  </data>
+  <data name="SectionExperienceInriaPlace" xml:space="preserve">
+    <value>Villeneuve-d’Ascq, Nord, France</value>
+  </data>
+  <data name="SectionExperienceInriaProjectTitle" xml:space="preserve">
+    <value>Développement d’une simulation pour la chirurgie.</value>
+  </data>
+  <data name="SectionExperienceSiemensJobTitle" xml:space="preserve">
+    <value>Ingénieur logiciel C++ (stage)</value>
+  </data>
+  <data name="SectionExperienceSiemensPlace" xml:space="preserve">
+    <value>Nuremberg, Germany</value>
+  </data>
+  <data name="SectionExperienceSiemensProjectTitle" xml:space="preserve">
+    <value>Intégration de modèles Simulink dans un automate programmable industriel.</value>
+  </data>
+</root>

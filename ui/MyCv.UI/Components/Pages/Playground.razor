@@ -1,6 +1,7 @@
 @page "/playground"
 @using MyCv.UI.Components.Layout
 @using MyCv.UI.Components.Pages.Architecture
+@using MyCv.UI.Components.Pages.Career
 @using MyCv.UI.Components.Shared
 @using MyCv.UI.Components.Shared.Content
 @using MyCv.UI.Dtos
@@ -10,7 +11,7 @@
 
 @if (Env.IsDevelopment())
 {
-    <Architecture></Architecture>
+    <Experience/>
 }
 else
 {
@@ -20,6 +21,11 @@ else
 
 
 @code {
+    private record Degree(string Name, string Institution, int Year);
+
+    private const int _minYear = 2014;
+
+    private record Item(int year);
     private List<Menu.Section> _sectionMenuItems { get; set; } = [];
 
     private List<string> _sectionNames { get; set; } = [

@@ -61,7 +61,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Here is the architecture of the website you&apos;re browsing on..
         /// </summary>
         public static string ArchitectureIntroduction {
             get {
@@ -70,7 +70,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to What I can offer:.
         /// </summary>
         public static string ArchitectureMe1 {
             get {
@@ -79,7 +79,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to - a design based on popular sources in accordance with the project&apos;s constraints.
         /// </summary>
         public static string ArchitectureMe2 {
             get {
@@ -88,7 +88,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to - a CQRS &amp; event sourcing expertise.
         /// </summary>
         public static string ArchitectureMe3 {
             get {
@@ -97,7 +97,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to This is an app based on microservices where two domain-driven design (DDD) patterns are implemented: Command and Query Responsibility Segregation (CQRS) et event sourcing..
         /// </summary>
         public static string ArchitectureMicroservice {
             get {
@@ -106,7 +106,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to The code is inspired from many references like.
         /// </summary>
         public static string ArchitectureReference1 {
             get {
@@ -115,7 +115,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to (Microsoft) or blogs like those from.
         /// </summary>
         public static string ArchitectureReference2 {
             get {
@@ -124,7 +124,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Creation of the command.
         /// </summary>
         public static string CommandCommandStep {
             get {
@@ -133,7 +133,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Simple rules validation: mark value between 0 and 5..
         /// </summary>
         public static string CommandCommandStepValidation {
             get {
@@ -142,7 +142,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Creation of the aggregate.
         /// </summary>
         public static string CommandDomainStep {
             get {
@@ -151,7 +151,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Business rules validation: the profile is recommended but the mark is below 3..
         /// </summary>
         public static string CommandDomainStepValidation {
             get {
@@ -160,7 +160,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Commands.
         /// </summary>
         public static string Commands {
             get {
@@ -169,7 +169,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Aggregate saving.
         /// </summary>
         public static string CommandSaveStep {
             get {
@@ -178,7 +178,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Let&apos;s see the queries now!.
         /// </summary>
         public static string CommandSaveStepValidation {
             get {
@@ -187,7 +187,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to This sequence diagram is a simplification of the writing process..
         /// </summary>
         public static string CommandsDescription {
             get {
@@ -196,7 +196,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to POST request sending.
         /// </summary>
         public static string CommandSendStep {
             get {
@@ -205,7 +205,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Front-end validation of the form: required recommendation&apos;s field..
         /// </summary>
         public static string CommandSendStepValidation {
             get {
@@ -214,7 +214,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Let&apos;s start by creating a command to add a rate about the website:.
         /// </summary>
         public static string CommandsExample {
             get {
@@ -223,7 +223,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Would you recommend my profile?.
         /// </summary>
         public static string CommandsRecommendation {
             get {
@@ -232,7 +232,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to How much are you satisfied?.
         /// </summary>
         public static string CommandsSatisfaction {
             get {
@@ -241,7 +241,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to This concept has many advantages: maintenance (responsibility segregation), scalability of read and write, performance of read operations, command validation and business rules respect....
         /// </summary>
         public static string CQRSBenefits {
             get {
@@ -250,7 +250,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to CQRS is an architecture pattern where queries (&quot;read&quot;) and commands (&quot;write&quot;) are separated..
         /// </summary>
         public static string CQRSDefinition {
             get {
@@ -259,7 +259,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to This sequence diagram is a simplification of the write process then the read process triggered by REST queries..
         /// </summary>
         public static string CQRSDiagram {
             get {
@@ -268,7 +268,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to What&apos;s better than a practical example? Here we go!.
         /// </summary>
         public static string CQRSExample {
             get {
@@ -277,7 +277,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Here, the &quot;Rating&quot; service applies CQRS to handle the scores of the visitors of this website..
         /// </summary>
         public static string CQRSService {
             get {
@@ -286,7 +286,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to It gives a complete history, ease the debugging and temporal requests, and can rebuild the state of the system..
         /// </summary>
         public static string EventSourcingBenefits {
             get {
@@ -295,7 +295,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Event sourcing is a pattern where state changes are saved like a sequence of immutable events rather than changing the current state directly. A very concrete example is a .
         /// </summary>
         public static string EventSourcingDefinition1 {
             get {
@@ -304,7 +304,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to  where the current state would be the result of all the moves of the players (events)..
         /// </summary>
         public static string EventSourcingDefinition2 {
             get {
@@ -313,7 +313,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to chess game.
         /// </summary>
         public static string EventSourcingDefinitionLink {
             get {
@@ -322,7 +322,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to The read database is updated on each event to compute the 3 top reasons which make you read this:.
         /// </summary>
         public static string EventSourcingReadResult {
             get {
@@ -331,7 +331,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Here, the &quot;Insight&quot; service applies CQRS + event sourcing to handle what you expect from my profile and why you are on this website..
         /// </summary>
         public static string EventSourcingService {
             get {
@@ -340,7 +340,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Every event is store in an append-only database..
         /// </summary>
         public static string EventSourcingWrite {
             get {
@@ -349,7 +349,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Why it&apos;s great? Because the current state is known but you can also replay all the events or get the state at a specific moment..
         /// </summary>
         public static string EventSourcingWriteBenefits {
             get {
@@ -358,7 +358,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Let&apos;s see what it means with this example:.
         /// </summary>
         public static string EventSourcingWriteExample {
             get {
@@ -367,7 +367,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Please choose one or more reasons that lead you here, drop them in the zone and order them by pertinence:.
         /// </summary>
         public static string EventSourcingWriteExampleInstructions {
             get {
@@ -376,7 +376,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to This is the result in the event store:.
         /// </summary>
         public static string EventSourcingWriteExampleResult {
             get {
@@ -385,7 +385,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to This is useful whatever the field is: what were the treatments of a patient? How where the state of the drones before they crashed? What did the player when the bug happened?....
         /// </summary>
         public static string EventSourcingWriteIllustration {
             get {
@@ -394,7 +394,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Intent.
         /// </summary>
         public static string Intent {
             get {
@@ -628,7 +628,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to A gateway (YARP) to avoid a direct access and coupling the services with the interface..
         /// </summary>
         public static string MicroserviceAPI {
             get {
@@ -637,7 +637,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to This avoids coupling the services with the interface and also secure the app with a single entrypoint..
         /// </summary>
         public static string MicroserviceAPIContent {
             get {
@@ -646,7 +646,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Two microservices which communicate with RabbitMQ and use their own databases (EventStoreDB, MongoDB)..
         /// </summary>
         public static string MicroserviceBackend {
             get {
@@ -655,7 +655,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Two microservices which communicate with RabbitMQ and use their own databases (EventStoreDB, MongoDB)..
         /// </summary>
         public static string MicroserviceBackendContent {
             get {
@@ -664,7 +664,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Here is a short description of the architecture of this project:.
         /// </summary>
         public static string MicroserviceDescription {
             get {
@@ -673,7 +673,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to The apps are containerized with Docker and launched through Docker Compose..
         /// </summary>
         public static string MicroserviceDocker {
             get {
@@ -682,7 +682,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to A user interface developed with Blazor Server and MudBlazor..
         /// </summary>
         public static string MicroserviceFrontend {
             get {
@@ -691,7 +691,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to I&apos;m also comfortable with Bootstrap and I&apos;ve done a ReactJS website..
         /// </summary>
         public static string MicroserviceFrontendContent {
             get {
@@ -700,7 +700,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to My developments are widely inspired from this Microsoft guide which helped me to understand and implement microservices apps:.
         /// </summary>
         public static string MicroserviceReference {
             get {
@@ -709,7 +709,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Let&apos;s see now the last scores:.
         /// </summary>
         public static string QueriesExample {
             get {

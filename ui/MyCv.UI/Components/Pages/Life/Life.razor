@@ -1,0 +1,13 @@
+@page "/life"
+@using MyCv.UI.Components.Shared
+@using MyCv.UI.Components.Shared.Content
+@inject IStringLocalizer<MyCv.UI.Resources.Shared> SharedLocalizer;
+@inject IStringLocalizer<MyCv.UI.Resources.Components.Pages.Life> Localizer;
+
+<Page>
+    <Header HeaderId="life" HeaderName="@SharedLocalizer["PersonalLife"]">
+        <MudText Typo="Typo.body1">@Localizer["Introduction"]</MudText>
+    </Header>
+    <World/>
+</Page>
+

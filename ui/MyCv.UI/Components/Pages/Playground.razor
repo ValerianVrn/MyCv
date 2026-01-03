@@ -2,6 +2,7 @@
 @using MyCv.UI.Components.Layout
 @using MyCv.UI.Components.Pages.Architecture
 @using MyCv.UI.Components.Pages.Career
+@using MyCv.UI.Components.Pages.Life
 @using MyCv.UI.Components.Shared
 @using MyCv.UI.Components.Shared.Content
 @using MyCv.UI.Dtos
@@ -11,7 +12,7 @@
 
 @if (Env.IsDevelopment())
 {
-    <Experience/>
+    <Life/>
 }
 else
 {
@@ -21,25 +22,4 @@ else
 
 
 @code {
-    private record Degree(string Name, string Institution, int Year);
-
-    private const int _minYear = 2014;
-
-    private record Item(int year);
-    private List<Menu.Section> _sectionMenuItems { get; set; } = [];
-
-    private List<string> _sectionNames { get; set; } = [
-        "CQRS",
-        "Event sourcing",
-    ];
-
-    /// <inheritdoc/>
-    protected override void OnInitialized()
-    {
-        // if (firstRender)
-        {
-            _sectionMenuItems = _sectionNames.Select(s => new Menu.Section(s, $"#{s.Replace(" ", "-").ToLower()}")).ToList();
-
-        }
-    }
 }

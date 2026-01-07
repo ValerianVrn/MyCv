@@ -120,11 +120,18 @@
   <data name="Introduction" xml:space="preserve">
     <value>A glimpse into my personal interests beyond the professional world.</value>
   </data>
+  <data name="Piano" xml:space="preserve">
+    <value>Piano</value>
+  </data>
   <data name="Travel" xml:space="preserve">
     <value>Travel</value>
   </data>
   <data name="TravelInterest" xml:space="preserve">
     <value>China, Peru, Laos, Sri Lanka, USA... I love travelling to discover different cultures, observe typical views and taste unknown specialties!
 I did a world tour for one year in 2018 (before the pandemic 😌), a 8-months trip in French Polynesia and the west coast, and I often discover new countries.</value>
+  </data>
+  <data name="PianoInterest" xml:space="preserve">
+    <value>I do love playing and listening to classical music. But not the classical era but the romantic one (Rachmaninov, Chopin, Ravel, Scriabin, Liszt and many others).
+I could give you hundreds of pieces to listen but here is a short list of music I have played.</value>
   </data>
 </root>

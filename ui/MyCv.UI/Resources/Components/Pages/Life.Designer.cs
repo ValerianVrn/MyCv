@@ -70,6 +70,25 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Piano.
+        /// </summary>
+        public static string Piano {
+            get {
+                return ResourceManager.GetString("Piano", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I do love playing and listening to classical music. But not the classical era but the romantic one (Rachmaninov, Chopin, Ravel, Scriabin, Liszt and many others).
+        ///I could give you hundreds of pieces to listen but here is a short list of music I have played..
+        /// </summary>
+        public static string PianoInterest {
+            get {
+                return ResourceManager.GetString("PianoInterest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Travel.
         /// </summary>
         public static string Travel {

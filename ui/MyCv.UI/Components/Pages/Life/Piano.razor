@@ -1,0 +1,38 @@
+@using MyCv.UI.Components.Shared
+@using MyCv.UI.Components.Shared.Content
+@inject IStringLocalizer<MyCv.UI.Resources.Components.Pages.Life> Localizer;
+
+@* TODO or not TODO: add the Youtube videos of myself playing piano *@
+
+<Section SectionId="piano" SectionName="@Localizer["Piano"]">
+    <MudText Typo="Typo.body1">@Localizer["PianoInterest"]</MudText>
+    <MudCarousel Style="height:400px;" AutoCycle="true" TData="object">
+        @foreach (var piece in PianoPieces)
+        {
+            <MudCarouselItem Class="d-flex justify-center align-center">
+                <MudStack AlignItems="AlignItems.Center"  Row>
+                    <div class="d-flex " style="height:200px">
+                        <MudImage ObjectFit="ObjectFit.Contain" Src="@piece.Image" Alt="@piece.Title" Elevation="25" Class="rounded-lg" />
+                    </div>
+                    <MudStack AlignItems="AlignItems.Start">
+                        <MudText Typo="Typo.h5">@piece.Composer</MudText>
+                        <MudText Typo="Typo.body2">@piece.Title</MudText>
+                    </MudStack>
+                </MudStack>
+            </MudCarouselItem>
+        }
+    </MudCarousel>
+</Section>
+
+@code {
+    private record PianoPiece(string Title, string Composer, string Image);
+
+    private List<PianoPiece> PianoPieces = new()
+    {
+        new PianoPiece("Piano Concerto No. 2 in C minor, Op. 18 (1st mvt)", "Sergei Rachmaninov", "images/rachmaninov.jpg"),
+        new PianoPiece("Etude in D-sharp minor, Op. 8, No. 12", "Alexander Scriabin", "images/scriabin.jpg"),
+        new PianoPiece("Waltz in C-sharp minor, Op. 64, No. 2", "Frédéric Chopin", "images/chopin.jpeg"),
+        new PianoPiece("Sonatine", "Maurice Ravel", "images/ravel.jpg"),
+        new PianoPiece("Piano Sonata No. 14 in C-sharp minor, Op. 27, No. 2 - \"Moonlight Sonata\" (3rd mvt)", "Ludwig van Beethoven", "images/beethoven.jpg")
+    };
+}

@@ -120,11 +120,18 @@
   <data name="Introduction" xml:space="preserve">
     <value>Un coup d'œil sur mes centres d'intérêt au-delà du monde professionnel.</value>
   </data>
+  <data name="Piano" xml:space="preserve">
+    <value>Piano</value>
+  </data>
   <data name="Travel" xml:space="preserve">
     <value>Voyages</value>
   </data>
   <data name="TravelInterest" xml:space="preserve">
     <value>Chine, Pérou, Laos, Sri Lanka, États-Unis... j'adore voyager pour découvrir différentes cultures, admirer des paysages typiques ou encore déguster des spécialités inconnues !
 J'ai notamment effectué un tour du monde d'un an en 2018 (avant la pandémie 😌), un séjour de 8 mois en Polynésie Française et dans l'ouest américain, et découvre régulièrement de nouvelles destinations.</value>
+  </data>
+  <data name="PianoInterest" xml:space="preserve">
+    <value>J'adore jouer et écouter du piano, et plus particulièrement de la musique classique. Mais attention : pas la période classique de la musique classique mais plutôt la romantique (Rachmaninov, Chopin, Ravel, Scriabin, Liszt et tant d'autres).
+Je pourrais vous donner des centaines de pièces à écouter mais voici une courte liste de morceaux que j'ai joués.</value>
   </data>
 </root>

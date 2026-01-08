@@ -33,7 +33,7 @@
     </MudNavMenu>
     <MudSpacer />
     <MudContainer>
-        <MudButton StartIcon="@Icons.Material.Rounded.FileDownload" Variant="Variant.Filled" Color="Color.Success" OnClick="DownloadCv">
+        <MudButton StartIcon="@Icons.Material.Rounded.FileDownload" Variant="Variant.Filled" Color="Color.Success" Href="files/CV.pdf" Target="_blank">
             @Localizer["DownloadCV"]
         </MudButton>
     </MudContainer>
@@ -82,7 +82,7 @@
                 <ThemeToggle IsDarkMode="@ThemeService.IsDarkMode" OnToggle="ThemeService.ToggleMode" />
                 <LanguageMenu />
             </MudStack>
-            <MudButton StartIcon="@Icons.Material.Rounded.FileDownload" Variant="Variant.Filled" Color="Color.Success">
+            <MudButton StartIcon="@Icons.Material.Rounded.FileDownload" Variant="Variant.Filled" Color="Color.Success" Href="files/CV.pdf" Target="_blank">
                 @Localizer["DownloadCV"]
             </MudButton>
         </MudStack>
@@ -112,9 +112,5 @@
                 new(Urls.PersonalLife, SharedLocalizer["PersonalLife"])
             })
         };
-    }
-
-    private void DownloadCv()
-    {
     }
 }

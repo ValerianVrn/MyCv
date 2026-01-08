@@ -147,6 +147,9 @@
   <data name="Fine" xml:space="preserve">
     <value>Pas de souci</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Accueil</value>
+  </data>
   <data name="JobTitle" xml:space="preserve">
     <value>Leader technique .NET et architecte</value>
   </data>

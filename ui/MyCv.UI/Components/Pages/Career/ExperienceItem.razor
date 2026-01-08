@@ -1,6 +1,6 @@
 @inject IStringLocalizer<MyCv.UI.Resources.Shared> SharedLocalizer;
 
-<MudPaper Class="pa-10 ma-2" Outlined="true" Square="true">
+<MudPaper Class="px-4 px-lg-8 py-4 py-lg-8 my-2" Outlined="true" Square="true">
     <MudStack>
         @* Title *@
         <MudStack Row AlignItems="AlignItems.Center">
@@ -29,19 +29,22 @@
                     }
                 }
             </MudStack>
-            <MudStack Row Wrap="Wrap.Wrap">
-                @foreach (var skill in project.Skills)
-                {
-                    <MudChip T="string" Color="Color.Default">@skill</MudChip>
-                }
-            </MudStack>
+            @if (project.Skills?.Any() ?? false)
+            {
+                <MudStack Row Wrap="Wrap.Wrap">
+                    @foreach (var skill in project.Skills)
+                    {
+                        <MudChip T="string" Color="Color.Default">@skill</MudChip>
+                    }
+                </MudStack>
+            }
         }
     </MudStack>
 </MudPaper>
 
 @code {
     // TODO: skills by experience instead of project (better lisibility)
-    public record Project(string Title, List<string>? Tasks, List<string> Skills);
+    public record Project(string Title, List<string>? Tasks, List<string>? Skills);
 
     [Parameter]
     public required string CompanyLogo { get; set; }

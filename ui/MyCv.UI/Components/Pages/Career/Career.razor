@@ -5,8 +5,8 @@
 @inject IStringLocalizer<MyCv.UI.Resources.Components.Pages.Career> Localizer;
 
 <Page>
-    <Header HeaderId="career" HeaderName="@SharedLocalizer["EducationAndCareer"]" Chips="@([Localizer["EngineeringSchool"]])">
-        <MudText Typo="Typo.body1">@Localizer["Introduction"]</MudText>
+    <Header HeaderId="career" HeaderName="@SharedLocalizer["EducationAndCareer"]">
+        <MudText Typo="Typo.body1" GutterBottom>@Localizer["Introduction"]</MudText>
         <MudAlert Severity="Severity.Success">@((MarkupString)Localizer["Highlights"].Value)</MudAlert>
     </Header>
     <Education/>

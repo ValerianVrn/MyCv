@@ -29,7 +29,7 @@
                     }
                 }
             </MudStack>
-            <MudStack Row>
+            <MudStack Row Wrap="Wrap.Wrap">
                 @foreach (var skill in project.Skills)
                 {
                     <MudChip T="string" Color="Color.Default">@skill</MudChip>

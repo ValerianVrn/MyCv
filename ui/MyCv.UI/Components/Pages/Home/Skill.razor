@@ -78,8 +78,8 @@
 
 
 @code {
-    public record MainSkill(Icon Icon, string Name, string Description, string Href, List<Skill> Skills);
-    public record Skill(string Name, bool Core = false);
+    public record MainSkill(Icon Icon, string Name, string Description, string Href, List<SkillItem> Skills);
+    public record SkillItem(string Name, bool Core = false);
     public class Icon(string name, string color)
     {
         public string Name { get { return name; } }

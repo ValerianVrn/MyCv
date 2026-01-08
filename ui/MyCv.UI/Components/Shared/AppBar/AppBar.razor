@@ -18,7 +18,7 @@
         {
             if (navItem.Children is null)
             {
-                <MudNavLink Href="@navItem.Href">@navItem.Label</MudNavLink>
+                <MudNavLink Href="@navItem.Href" Match="NavLinkMatch.All">@navItem.Label</MudNavLink>
             }
             else
             {
@@ -99,6 +99,7 @@
     {
         _navItems = new()
         {
+            new(Urls.Home, SharedLocalizer["Home"]),
             new(null, SharedLocalizer["Skills"], new()
             {
                 new(Urls.Architecture, SharedLocalizer["Architecture"]),

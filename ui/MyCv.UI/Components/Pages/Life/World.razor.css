@@ -1,15 +1,22 @@
+.world-map svg {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block; /* removes inline SVG whitespace */
+}
+
 .world-map svg path {
   fill: var(--mud-palette-surface);
   stroke: var(--mud-palette-divider);
   stroke-width: 0.5;
 }
 
-  .world-map svg path.visited {
-    fill: var(--mud-palette-primary);
-  }
+.world-map svg path.visited {
+  fill: var(--mud-palette-primary);
+}
 
-  .world-map svg path.visited:hover {
-    fill: var(--mud-palette-secondary);
-    cursor: pointer;
-    transition: fill 0.2s ease;
-  }
+.world-map svg path.visited:hover {
+  fill: var(--mud-palette-secondary);
+  cursor: pointer;
+  transition: fill 0.2s ease;
+}

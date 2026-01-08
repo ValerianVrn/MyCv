@@ -20,7 +20,7 @@
         @foreach (var project in Projects)
         {
             <MudStack Spacing="0">
-                <MudText Typo="Typo.body1" GutterBottom><strong>@project.Title</strong></MudText>
+                <MudText Typo="Typo.body1" GutterBottom=@(project.Tasks?.Any() ?? false)>@project.Title</MudText>
                 @if (project.Tasks?.Any() ?? false)
                 {
                     @foreach (var task in project.Tasks)
@@ -29,22 +29,21 @@
                     }
                 }
             </MudStack>
-            @if (project.Skills?.Any() ?? false)
-            {
-                <MudStack Row Wrap="Wrap.Wrap">
-                    @foreach (var skill in project.Skills)
-                    {
-                        <MudChip T="string" Color="Color.Default">@skill</MudChip>
-                    }
-                </MudStack>
-            }
+        }
+        @if (Skills?.Any() ?? false)
+        {
+            <MudStack Row Wrap="Wrap.Wrap">
+                @foreach (var skill in Skills)
+                {
+                    <MudChip T="string" Color="Color.Default">@skill</MudChip>
+                }
+            </MudStack>
         }
     </MudStack>
 </MudPaper>
 
 @code {
-    // TODO: skills by experience instead of project (better lisibility)
-    public record Project(string Title, List<string>? Tasks, List<string>? Skills);
+    public record Project(string Title, List<string>? Tasks);
 
     [Parameter]
     public required string CompanyLogo { get; set; }
@@ -66,6 +65,9 @@
 
     [Parameter]
     public required List<Project> Projects { get; set; }
+
+    [Parameter]
+    public required List<string>? Skills { get; set; }
 
     private string _duration = "";
 

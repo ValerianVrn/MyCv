@@ -12,14 +12,12 @@
                         StartDate=@(new DateTime(2022, 03, 01))
                         EndDate=@(new DateTime(2025, 12, 01))
                         Place="@Localizer["SectionExperienceXcellaPlace"]"
-                        Projects=@([
-                                                new(Localizer["SectionExperienceXcellaProjectTitle"], [
+                        Projects=@([new(Localizer["SectionExperienceXcellaProjectTitle"], [
                                                 Localizer["SectionExperienceXcellaTask1"],
                                                 Localizer["SectionExperienceXcellaTask2"],
                                                 Localizer["SectionExperienceXcellaTask3"],
-                                                Localizer["SectionExperienceXcellaTask4"]
-                                                ], ["C#/.NET", "Software architecture", "Azure DevOps", "Docker"])
-                                                ]) />
+                                                Localizer["SectionExperienceXcellaTask4"]])])
+                        Skills=@(["C#/.NET", "Software architecture", "Azure DevOps", "Docker" ]) />
         @* Syleps *@
         <ExperienceItem CompanyLogo="images/Fives_Group.png"
                         JobTitle="@Localizer["SectionExperienceSylepsJobTitle"]"
@@ -28,10 +26,10 @@
                         EndDate=@(new DateTime(2022, 02, 01))
                         Place="@Localizer["SectionExperienceSylepsPlace"]"
                         Projects=@([
-                                                new(Localizer["SectionExperienceSylepsProject1Title"], null, ["C#/.NET", "Software architecture", "Azure DevOps", "Docker"]),
-                                                new(Localizer["SectionExperienceSylepsProject2Title"], null, ["C#/.NET", "PL/SQL", "Git"]),
-                                                new(Localizer["SectionExperienceSylepsProject3Title"], null, ["C#/.NET", "API REST"])
-                                                ]) />
+                                                new(Localizer["SectionExperienceSylepsProject1Title"], null),
+                                                new(Localizer["SectionExperienceSylepsProject2Title"], null),
+                                                new(Localizer["SectionExperienceSylepsProject3Title"], null)])
+                        Skills=@(["C#/.NET", "Software architecture", "Azure DevOps", "Docker", "PL/SQL", "Git", "API REST"]) />
         @* CEA *@
         <ExperienceItem CompanyLogo="images/cea.png"
                         JobTitle="@Localizer["SectionExperienceCeaJobTitle"]"
@@ -39,7 +37,8 @@
                         StartDate=@(new DateTime(2018, 11, 01))
                         EndDate=@(new DateTime(2019, 03, 01))
                         Place="@Localizer["SectionExperienceCeaPlace"]"
-                        Projects=@([ new(Localizer["SectionExperienceCeaProjectTitle"], null, [ "C++", "Qt", "Python", "Matlab" ]) ]) />
+                        Projects=@([ new(Localizer["SectionExperienceCeaProjectTitle"], null)])
+                        Skills=@([ "C++", "Qt", "Python", "Matlab" ]) />
         @* Crédit Mutuel *@
         <ExperienceItem CompanyLogo="images/ei.jpeg"
                         JobTitle="@Localizer["SectionExperienceEiJobTitle"]"
@@ -47,7 +46,8 @@
                         StartDate=@(new DateTime(2016, 02, 01))
                         EndDate=@(new DateTime(2017, 12, 01))
                         Place="@Localizer["SectionExperienceEiPlace"]"
-                        Projects=@([ new(Localizer["SectionExperienceEiProjectTitle"], null, [ "C#/.NET", "SQL Server", "SOAP" ]) ]) />
+                        Projects=@([ new(Localizer["SectionExperienceEiProjectTitle"], null)])
+                        Skills=@([ "C#/.NET", "SQL Server", "SOAP" ]) />
         @* GE Healthcare *@
         <ExperienceItem CompanyLogo="images/ge.png"
                         JobTitle="@Localizer["SectionExperienceGeJobTitle"]"
@@ -55,7 +55,7 @@
                         StartDate=@(new DateTime(2015, 03, 01))
                         EndDate=@(new DateTime(2015, 08, 01))
                         Place="@Localizer["SectionExperienceGePlace"]"
-                        Projects=@([new(Localizer["SectionExperienceGeProjectTitle"], null, []) ]) />
+                        Projects=@([new(Localizer["SectionExperienceGeProjectTitle"], null) ]) />
         @* Inria *@
         <ExperienceItem CompanyLogo="images/inria.png"
                         JobTitle="@Localizer["SectionExperienceInriaJobTitle"]"
@@ -63,7 +63,8 @@
                         StartDate=@(new DateTime(2014, 03, 01))
                         EndDate=@(new DateTime(2014, 08, 01))
                         Place="@Localizer["SectionExperienceInriaPlace"]"
-                        Projects=@([new(Localizer["SectionExperienceInriaProjectTitle"], null, [ "C++", "Qt", "Python" ]) ]) />
+                        Projects=@([new(Localizer["SectionExperienceInriaProjectTitle"], null)])
+                        Skills=@([ "C++", "Qt", "Python" ]) />
         @* Siemens *@
         <ExperienceItem CompanyLogo="images/siemens.png"
                         JobTitle="@Localizer["SectionExperienceSiemensJobTitle"]"
@@ -71,7 +72,8 @@
                         StartDate=@(new DateTime(2013, 06, 01))
                         EndDate=@(new DateTime(2013, 08, 01))
                         Place="@Localizer["SectionExperienceSiemensPlace"]"
-                        Projects=@([new(Localizer["SectionExperienceSiemensProjectTitle"], null, [ "C++", "Matlab/Simulink" ]) ]) />
+                        Projects=@([new(Localizer["SectionExperienceSiemensProjectTitle"], null)])
+                        Skills=@([ "C++", "Matlab/Simulink" ]) />
     </MudStack>
 </Section>
 

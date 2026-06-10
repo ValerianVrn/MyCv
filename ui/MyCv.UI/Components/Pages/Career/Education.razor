@@ -15,10 +15,7 @@
                             @foreach (var degree in _degrees[year])
                             {
                                 <MudStack Row Spacing="6" AlignItems="AlignItems.Center">
-                                    @if (degree.Image != null)
-                                    {
-                                        <MudImage Src="@degree.Image" Alt="@degree.Institution" Width="48" Height="48" ObjectFit="ObjectFit.Contain" Class="rounded-lg border bg-white" />
-                                    }
+                                    <MudImage Src="@degree.Image" Alt="@degree.Institution" Width="48" Height="48" ObjectFit="ObjectFit.Contain" Class="rounded-lg border bg-white" />
                                     <MudStack Spacing="0" Class="pa-0">
                                         @if (!string.IsNullOrEmpty(degree.Institution) || !string.IsNullOrEmpty(degree.Score))
                                         {
@@ -63,7 +60,7 @@
 </Section>
 
 @code {
-    private record Degree(bool Primary, string? Image, string Name, string? SubTitle, string? Institution, string? Score);
+    private record Degree(bool Primary, string Image, string Name, string? SubTitle, string? Institution, string? Score);
     private Dictionary<int, List<Degree>> _degrees = new();
 
     protected override void OnInitialized()

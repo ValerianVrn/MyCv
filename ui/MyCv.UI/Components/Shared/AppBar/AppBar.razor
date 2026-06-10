@@ -2,6 +2,7 @@
 @inject IStringLocalizer<Resources.Components.Layout.AppBar> Localizer
 @inject IStringLocalizer<Resources.Shared> SharedLocalizer
 @inject IThemeService ThemeService
+@inject IConfiguration Configuration
 
 <!-- Drawer (sidebar for mobile) -->
 <MudDrawer @bind-Open="_drawerOpen" Variant="DrawerVariant.Temporary" Elevation="1">
@@ -46,7 +47,7 @@
 <MudAppBar Fixed="true">
     <!-- Mobile -->
     <MudHidden Breakpoint="Breakpoint.LgAndUp">
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="@(ThemeService.IsDarkMode ? Color.Inherit : Color.Dark)" Edge="Edge.Start" OnClick="() => _drawerOpen = !_drawerOpen" />
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="@(ThemeService.IsDarkMode? Color.Inherit: Color.Dark)" Edge="Edge.Start" OnClick="() => _drawerOpen = !_drawerOpen" />
         <MudSpacer />
         <Brand />
         <MudSpacer />
@@ -78,7 +79,7 @@
             }
             <MudDivider Vertical="true" FlexItem="true" />
             <MudStack Row="true" Spacing="2" AlignItems="AlignItems.Center">
-                <SocialItems/>
+                <SocialItems />
                 <ThemeToggle IsDarkMode="@ThemeService.IsDarkMode" OnToggle="ThemeService.ToggleMode" />
                 <LanguageMenu />
             </MudStack>
@@ -97,7 +98,15 @@
 
     protected override void OnInitialized()
     {
-        _navItems = new()
+        _navItems =
+        Configuration.GetValue<bool>("SinglePage") ?
+        new()
+        {
+            new(Urls.Home, SharedLocalizer["Home"]),
+            new("#skills", SharedLocalizer["Skills"]),
+            new("#career", SharedLocalizer["EducationAndCareer"]),
+            new("#life", SharedLocalizer["PersonalLife"])
+        } : new()
         {
             new(Urls.Home, SharedLocalizer["Home"]),
             new(null, SharedLocalizer["Skills"], new()

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -138,11 +138,17 @@
 • Master's degree in business administration...&lt;br /&gt;
 Come and discover my training.</value>
   </data>
+  <data name="EducationAndCareerCaptionSinglePage" xml:space="preserve">
+    <value>Beyond technical skills—explore my career journey and academic background</value>
+  </data>
   <data name="HomeHeader" xml:space="preserve">
     <value>Hi. I'm </value>
   </data>
   <data name="HomeIntroduction" xml:space="preserve">
     <value>Welcome on this resume website which is also a live demo of my skills (DDD with CQRS and event sourcing in C#/.NET, Azure deployment, etc.).</value>
+  </data>
+  <data name="HomeIntroductionSinglePage" xml:space="preserve">
+    <value>Welcome on this resume website which is also a live demo of my skills (Blazor C#/.NET, Azure deployment, etc.).</value>
   </data>
   <data name="HomeSourceCode" xml:space="preserve">
     <value>Feel free to consult the source code on</value>

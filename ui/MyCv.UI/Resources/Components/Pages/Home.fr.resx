@@ -138,11 +138,17 @@
 • Master en administration des entreprises...&lt;br /&gt;
 Venez découvrir ma formation.</value>
   </data>
+  <data name="EducationAndCareerCaptionSinglePage" xml:space="preserve">
+    <value>Au-delà des compétences techniques—explorez ma carrière professionnelle et mon parcours académique</value>
+  </data>
   <data name="HomeHeader" xml:space="preserve">
     <value>Bonjour. Moi c'est </value>
   </data>
   <data name="HomeIntroduction" xml:space="preserve">
     <value>Bienvenue sur la présentation de mon profil sous forme de démo interactive de mes compétences (DDD avec CQRS et event sourcing en C#/.NET, déploiement Azure, etc.).</value>
+  </data>
+  <data name="HomeIntroductionSinglePage" xml:space="preserve">
+    <value>Bienvenue sur la présentation de mon profil sous forme de démo interactive de mes compétences (Blazor C#/.NET, déploiement Azure, etc.).</value>
   </data>
   <data name="HomeSourceCode" xml:space="preserve">
     <value>N'hésitez pas à consulter le code source sur</value>

@@ -118,6 +118,15 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Beyond technical skills—explore my career journey and academic background.
+        /// </summary>
+        public static string EducationAndCareerCaptionSinglePage {
+            get {
+                return ResourceManager.GetString("EducationAndCareerCaptionSinglePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hi. I&apos;m .
         /// </summary>
         public static string HomeHeader {
@@ -132,6 +141,15 @@ namespace MyCv.UI.Resources.Components.Pages {
         public static string HomeIntroduction {
             get {
                 return ResourceManager.GetString("HomeIntroduction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome on this resume website which is also a live demo of my skills (Blazor C#/.NET, Azure deployment, etc.)..
+        /// </summary>
+        public static string HomeIntroductionSinglePage {
+            get {
+                return ResourceManager.GetString("HomeIntroductionSinglePage", resourceCulture);
             }
         }
         

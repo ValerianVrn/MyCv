@@ -1,6 +1,7 @@
 @using MyCv.UI.Services
 @inject IStringLocalizer<MyCv.UI.Resources.Components.Pages.Home> Localizer
 @inject IStringLocalizer<MyCv.UI.Resources.Shared> SharedLocalizer
+@inject IConfiguration Configuration
 
 <MudPaper Class="py-8" Square="true" Elevation="0" id="skills">
     @* Header *@
@@ -38,7 +39,10 @@
                                 </MudStack>
                             </CardHeaderContent>
                             <CardHeaderActions>
+                            @if (!Configuration.GetValue<bool>("SinglePage"))
+                            {
                                 <MudIconButton Icon="@Icons.Material.Filled.ArrowForward" Color="Color.Default" Href="@mainSkill.Href" />
+                            }
                             </CardHeaderActions>
                         </MudCardHeader>
                         <MudCardContent>
@@ -56,9 +60,12 @@
                                 }
                             }
                         </MudCardContent>
-                        <MudCardActions>
-                            <MudButton Variant="Variant.Text" Color="Color.Primary" Href="@mainSkill.Href">@SharedLocalizer["Explore"]</MudButton>
-                        </MudCardActions>
+                        @if (!Configuration.GetValue<bool>("SinglePage"))
+                        {
+                            <MudCardActions>
+                                <MudButton Variant="Variant.Text" Color="Color.Primary" Href="@mainSkill.Href">@SharedLocalizer["Explore"]</MudButton>
+                            </MudCardActions>
+                        }
                     </MudCard>
                 </MudItem>
             }
@@ -67,7 +74,7 @@
     @* Additional technologies *@
     <MudContainer>
         <MudText Typo="Typo.h6" Align="Align.Center" GutterBottom="true">@Localizer["AdditionalTechnologies"]</MudText>
-        <MudStack AlignItems="AlignItems.Center" Justify="Justify.Center" Row="true" Wrap="Wrap.Wrap" >
+        <MudStack AlignItems="AlignItems.Center" Justify="Justify.Center" Row="true" Wrap="Wrap.Wrap">
             @foreach (var additionalTechnology in _additionalTechnologies)
             {
                 <MudChip T="string" Color="Color.Surface">@additionalTechnology</MudChip>

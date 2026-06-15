@@ -70,11 +70,29 @@ namespace MyCv.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Career.
+        /// </summary>
+        public static string Career {
+            get {
+                return ResourceManager.GetString("Career", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date.
         /// </summary>
         public static string Date {
             get {
                 return ResourceManager.GetString("Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Degrees.
+        /// </summary>
+        public static string Degrees {
+            get {
+                return ResourceManager.GetString("Degrees", resourceCulture);
             }
         }
         

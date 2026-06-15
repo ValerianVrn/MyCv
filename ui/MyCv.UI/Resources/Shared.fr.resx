@@ -120,8 +120,14 @@
   <data name="Architecture" xml:space="preserve">
     <value>Architecture</value>
   </data>
+  <data name="Career" xml:space="preserve">
+    <value>Expériences professionnelles</value>
+  </data>
   <data name="Date" xml:space="preserve">
     <value>Date</value>
+  </data>
+  <data name="Degrees" xml:space="preserve">
+    <value>Diplômes</value>
   </data>
   <data name="DevelopmentAndTesting" xml:space="preserve">
     <value>Développement &amp; Tests</value>

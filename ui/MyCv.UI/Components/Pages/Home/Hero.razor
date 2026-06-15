@@ -1,6 +1,7 @@
 @using MyCv.UI.Components.Shared
 @using MyCv.UI.Services
 @inject IStringLocalizer<MyCv.UI.Resources.Components.Pages.Home> Localizer
+@inject IConfiguration Configuration
 
 <MudContainer Class="px-2 px-lg-20">
     <MudText Typo="Typo.h2" Align="Align.Left" Class="@Style.LargeBottomMargin">
@@ -15,7 +16,16 @@
             <MudImage Fluid="true" Src="images/portrait.jpg" Alt="Portrait" Class="rounded-lg" />
         </MudItem>
         <MudItem xs="10" lg="10">
-            <MudText Typo="Typo.body1" Align="Align.Center" GutterBottom="true">@Localizer["HomeIntroduction"]</MudText>
+            <MudText Typo="Typo.body1" Align="Align.Center" GutterBottom="true">
+                @if (Configuration.GetValue<bool>("SinglePage"))
+                {
+                    @Localizer["HomeIntroductionSinglePage"]                    
+                }
+                else
+                {
+                    @Localizer["HomeIntroduction"];
+                }
+            </MudText>
             <MudText Typo="Typo.body1" Align="Align.Center" GutterBottom="true">
                 @Localizer["HomeSourceCode"] <MudLink Href="https://github.com/ValerianVrn/MyCv.git">GitHub</MudLink>.
             </MudText>

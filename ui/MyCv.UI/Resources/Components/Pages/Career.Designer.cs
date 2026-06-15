@@ -172,7 +172,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to My journey combines many domains (enginerring, robotic surgery, business management...) and experience in both a major company and a dynamic startup environment..
+        ///   Looks up a localized string similar to My journey combines many domains (engineering, robotic surgery, business management...) and experience in both a major company and a dynamic startup environment..
         /// </summary>
         public static string Introduction {
             get {

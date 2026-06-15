@@ -1,0 +1,81 @@
+@using MyCv.UI.Services
+@inject IStringLocalizer<MyCv.UI.Resources.Shared> SharedLocalizer
+@inject IStringLocalizer<MyCv.UI.Resources.Components.Pages.Home> Localizer
+@inject IStringLocalizer<MyCv.UI.Resources.Components.Pages.Career> CareerLocalizer;
+@inject IThemeService ThemeService
+@inject IConfiguration Configuration
+
+<MudContainer Class="py-8" id="education">
+    <MudContainer Class="@Style.LargeBottomMargin">
+        <MudText Typo="Typo.h4" Align="Align.Center">@SharedLocalizer["Education"]</MudText>
+        @if (Configuration.GetValue<bool>("SinglePage"))
+        {
+            <MudText Typo="Typo.body1" Align="Align.Center">@CareerLocalizer["Introduction"]</MudText>
+        }
+    </MudContainer>
+    <MudGrid>
+        @foreach (var degree in _degrees)
+        {
+            <MudItem xs="12" md="4">
+                <MudCard Class="h-100" Outlined>
+                    <MudCardHeader Class="pb-0 position-absolute">
+                        <CardHeaderContent>
+                            <MudChip T="string" Variant="Variant.Text" Color="Color.Success">@degree.year</MudChip>
+                        </CardHeaderContent>
+                    </MudCardHeader>
+                    <MudCardContent>
+                        <MudStack AlignItems="AlignItems.Center" Justify="Justify.Center" Spacing="2">
+                            <MudImage Src="@degree.Image" Alt="@degree.Institution" Width="96" Height="96" ObjectFit="ObjectFit.Contain" Class="rounded-lg border bg-white" />
+                            <MudText Color="@Color.Primary" Typo="Typo.h5" GutterBottom="false" Class="text-center">@degree.Name</MudText>
+                            <MudText Typo="Typo.body2" Class="text-center" GutterBottom="false">@degree.Specialty</MudText>
+                            <MudText Typo="Typo.body2" Class="text-center text-uppercase" GutterBottom="false">@(new MarkupString(@degree.Institution))</MudText>
+                            <MudChip T="string" Variant="Variant.Text">@degree.Score</MudChip>
+                        </MudStack>
+                    </MudCardContent>
+                </MudCard>
+            </MudItem>
+        }
+        <MudItem xs="12">
+            <MudGrid>
+                 <MudItem md="2"></MudItem>
+                @foreach (var secondaryDegree in _secondaryDegrees)
+                {
+                    <MudItem xs="12" md="3" Class="d-flex justify-content-center align-items-center">
+                        <MudStack Justify="Justify.Center" AlignItems="AlignItems.Center" Spacing="1">
+                            <MudImage Src="@secondaryDegree.Image" Alt="@secondaryDegree.Name" Width="64" Height="64" ObjectFit="ObjectFit.Contain" Class="rounded-lg border bg-white" />
+                            <MudText Color="@Color.Primary" Typo="Typo.body2" GutterBottom="false" Class="text-center">@(new MarkupString(@secondaryDegree.Name))</MudText>
+                            <MudText Typo="Typo.body2" Class="text-center" GutterBottom="false">@secondaryDegree.year</MudText>
+                            @if (!string.IsNullOrEmpty(secondaryDegree.Detail))
+                            {
+                                <MudChip T="string" Variant="Variant.Text">@secondaryDegree.Detail</MudChip>
+                            }
+                        </MudStack>
+                    </MudItem>
+                }
+                <MudItem md="2"></MudItem>
+            </MudGrid>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+
+@code {
+    private record Degree(int year, string Image, string Name, string Specialty, string Institution, string Score);
+    private record SecondaryDegree(int year, string Image, string Name, string Detail);
+    private List<Degree> _degrees = new();
+    private List<SecondaryDegree> _secondaryDegrees = new();
+
+    protected override void OnInitialized()
+    {
+        _degrees = new() {
+            new(2014, "images/tlcom_physique_strasbourg_logo.jpg", CareerLocalizer["EducationEngineeringDegree"], CareerLocalizer["EducationEngineeringDegreeTitle"],  "Télécom Physique Strasbourg<br>" + CareerLocalizer["EducationPartnerOf", "Institut Mines-Télécom (IMT)"], CareerLocalizer["EducationRanked", "3e/79"]),
+            new(2014, "images/universite_de_strasbourg_logo.jpg", CareerLocalizer["EducationMaster"], CareerLocalizer["EducationMasterScienceTitle"],  "Université de Strasbourg", CareerLocalizer["EducationWithHighHonours"]),
+            new(2015, "images/em_strasbourg_logo.jpg", CareerLocalizer["EducationMaster"], CareerLocalizer["EducationMasterBusinessTitle"],  "EM Strasbourg Business School", CareerLocalizer["EducationWithHighHonours"])
+        };
+        _secondaryDegrees = new() {
+            new(2026, "images/microsoft_certified_fundamentals.png", "Microsoft Certified<br>Azure Fundamentals (AZ-900)", ""),
+            new(2013, "images/toeic.png", "TOEIC", CareerLocalizer["EducationScore", "880/990"]),
+            new(2025, "images/jlptsquare.png", "JLPT - N5", CareerLocalizer["EducationScore", "107"]),
+        };
+    }
+}

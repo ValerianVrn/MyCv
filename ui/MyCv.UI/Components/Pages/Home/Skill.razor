@@ -39,10 +39,10 @@
                                 </MudStack>
                             </CardHeaderContent>
                             <CardHeaderActions>
-                            @if (!Configuration.GetValue<bool>("SinglePage"))
-                            {
-                                <MudIconButton Icon="@Icons.Material.Filled.ArrowForward" Color="Color.Default" Href="@mainSkill.Href" />
-                            }
+                                @if (!Configuration.GetValue<bool>("SinglePage"))
+                                {
+                                    <MudIconButton Icon="@Icons.Material.Filled.ArrowForward" Color="Color.Default" Href="@mainSkill.Href" />
+                                }
                             </CardHeaderActions>
                         </MudCardHeader>
                         <MudCardContent>
@@ -74,15 +74,22 @@
     @* Additional technologies *@
     <MudContainer>
         <MudText Typo="Typo.h6" Align="Align.Center" GutterBottom="true">@Localizer["AdditionalTechnologies"]</MudText>
-        <MudStack AlignItems="AlignItems.Center" Justify="Justify.Center" Row="true" Wrap="Wrap.Wrap">
-            @foreach (var additionalTechnology in _additionalTechnologies)
-            {
-                <MudChip T="string" Color="Color.Surface">@additionalTechnology</MudChip>
-            }
+        <MudStack AlignItems="AlignItems.Center" Justify="Justify.Center" Row>
+            <div class="marquee">
+                <div class="marquee-content">
+                    @foreach (var additionalTechnology in _additionalTechnologies)
+                    {
+                        <MudChip T="string" Color="Color.Surface">@additionalTechnology</MudChip>
+                    }
+                    @foreach (var additionalTechnology in _additionalTechnologies)
+                    {
+                        <MudChip T="string" Color="Color.Surface">@additionalTechnology</MudChip>
+                    }
+                </div>
+            </div>
         </MudStack>
     </MudContainer>
 </MudPaper>
-
 
 @code {
     public record MainSkill(Icon Icon, string Name, string Description, string Href, List<SkillItem> Skills);

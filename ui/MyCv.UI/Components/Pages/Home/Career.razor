@@ -1,13 +1,14 @@
 @using MyCv.UI.Services
 @inject IStringLocalizer<MyCv.UI.Resources.Components.Pages.Home> Localizer
 @inject IStringLocalizer<MyCv.UI.Resources.Components.Pages.Career> CareerLocalizer;
+@inject IStringLocalizer<MyCv.UI.Resources.Shared> SharedLocalizer;
 @inject IThemeService ThemeService
 @inject IConfiguration Configuration
 
 
-<MudPaper Class="py-8" Square="true" Elevation="0" id="career">
+<MudContainer Class="py-8" id="career">
     <MudContainer Class="@Style.LargeBottomMargin">
-        <MudText Typo="Typo.h4" Align="Align.Center">@Localizer["EducationAndCareer"]</MudText>
+        <MudText Typo="Typo.h4" Align="Align.Center">@SharedLocalizer["Career"]</MudText>
         @if (Configuration.GetValue<bool>("SinglePage"))
         {
             <MudText Typo="Typo.body1" Align="Align.Center">@CareerLocalizer["Introduction"]</MudText>
@@ -88,7 +89,7 @@
                             Skills=@([ "C++", "Matlab/Simulink" ]) />
         </MudTimeline>
     </MudContainer>
-</MudPaper>
+</MudContainer>
 
 
 @code {

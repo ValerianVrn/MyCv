@@ -43,6 +43,16 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Update="Resources\Components\Pages\Education.fr.Designer.cs">
+      <DependentUpon>Education.fr.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Resources\Components\Pages\Education.Designer.cs">
+      <DependentUpon>Education.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Update="Resources\Components\Pages\Life.Designer.cs">
       <DependentUpon>Life.resx</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -113,6 +123,14 @@
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Components\Pages\Architecture.resx">
       <LastGenOutput>Architecture.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Components\Pages\Education.fr.resx">
+      <LastGenOutput>Education.fr.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Components\Pages\Education.resx">
+      <LastGenOutput>Education.Designer.cs</LastGenOutput>
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Components\Pages\Life.fr.resx">

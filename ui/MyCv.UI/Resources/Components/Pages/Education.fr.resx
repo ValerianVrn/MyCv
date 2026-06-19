@@ -118,126 +118,39 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="EducationBaccalaureate" xml:space="preserve">
-    <value>Baccalaureate</value>
+    <value>Bac Scientifique</value>
   </data>
   <data name="EngineeringSchool" xml:space="preserve">
-    <value>Engineering school</value>
-  </data>
-  <data name="Highlights" xml:space="preserve">
-    <value>The strengths of my career:&lt;br /&gt;
-- a multidisciplinary mindset for an efficient collaboration with teams&lt;br /&gt;
-- an analytic skill to solve various problems in differents contexts&lt;br /&gt;
-- a continuous learning to guarantee a quality of work and a modern tools</value>
+    <value>École d'ingénieurs</value>
   </data>
   <data name="Introduction" xml:space="preserve">
-    <value>My career combines many fields (industry, financial institution, healthcare, energy...) and experience in both a major company and a dynamic startup environment.</value>
+    <value>Les points forts de mon parcours : une approche multidisciplinaire qui permet une collaboration entre les équipes, une capacité à comprendre et résoudre les problèmes variés en phase avec les différents contextes, un apprentissage continu pour garantir un travail de qualité avec des outils modernes</value>
   </data>
   <data name="EducationScore" xml:space="preserve">
-    <value>Score: {0}</value>
+    <value>Score : {0}</value>
   </data>
   <data name="EducationEngineeringDegree" xml:space="preserve">
-    <value>Engineering degree</value>
+    <value>Diplôme d'ingénieur</value>
   </data>
   <data name="EducationEngineeringDegreeTitle" xml:space="preserve">
-    <value>System, automation and vision engineering</value>
+    <value>Ingénierie des Systèmes, Automatique et Vision</value>
   </data>
   <data name="EducationMaster" xml:space="preserve">
     <value>Master</value>
   </data>
   <data name="EducationMasterScienceTitle" xml:space="preserve">
-    <value>Imaging, medical and surgical robotics</value>
+    <value>Imagerie, Robotique Médicale et Chirurgicale</value>
   </data>
   <data name="EducationMasterBusinessTitle" xml:space="preserve">
-    <value>Business administration</value>
+    <value>Administration des entreprises</value>
   </data>
   <data name="EducationWithHighHonours" xml:space="preserve">
-    <value>With high honours</value>
+    <value>Mention bien</value>
   </data>
   <data name="EducationRanked" xml:space="preserve">
-    <value>Ranked {0}</value>
+    <value>Classé {0}</value>
   </data>
   <data name="EducationPartnerOf" xml:space="preserve">
-    <value>Partner of {0}</value>
-  </data>
-  <data name="SectionExperienceXcellaJobTitle" xml:space="preserve">
-    <value>.NET tech lead and architect</value>
-  </data>
-  <data name="SectionExperienceXcellaPlace" xml:space="preserve">
-    <value>Larmor-Plage, Brittany, France</value>
-  </data>
-  <data name="SectionExperienceXcellaProjectTitle" xml:space="preserve">
-    <value>Supervision of a fleet of robots for the management of logistic flows (AS/RS)</value>
-  </data>
-  <data name="SectionExperienceXcellaTask1" xml:space="preserve">
-    <value>Design and development of the .NET ecosystem with a microservices architecture, with CQRS/event sourcing patterns, monitoring tools integration (Grafana, Loki, Prometheus...)</value>
-  </data>
-  <data name="SectionExperienceXcellaTask2" xml:space="preserve">
-    <value>Product and technical decisions (collision avoidance, battery charging, path computation...)</value>
-  </data>
-  <data name="SectionExperienceXcellaTask3" xml:space="preserve">
-    <value>Azure DevOps administration, pipelines creation, environments setup</value>
-  </data>
-  <data name="SectionExperienceXcellaTask4" xml:space="preserve">
-    <value>Enhancement of developing process and spread of best practices in software teams</value>
-  </data>
-  <data name="SectionExperienceSylepsJobTitle" xml:space="preserve">
-    <value>.NET developer in R&amp;D</value>
-  </data>
-  <data name="SectionExperienceSylepsPlace" xml:space="preserve">
-    <value>Lorient, Brittany, France</value>
-  </data>
-  <data name="SectionExperienceSylepsProject1Title" xml:space="preserve">
-    <value>Software design and development of a solution of supervision of a fleet of robots.</value>
-  </data>
-  <data name="SectionExperienceSylepsProject2Title" xml:space="preserve">
-    <value>Development of a tool pour handling and compiling PL/SQL code.</value>
-  </data>
-  <data name="SectionExperienceSylepsProject3Title" xml:space="preserve">
-    <value>Development of a generic REST API for customer data purge.</value>
-  </data>
-  <data name="SectionExperienceCeaJobTitle" xml:space="preserve">
-    <value>Software engineer</value>
-  </data>
-  <data name="SectionExperienceCeaPlace" xml:space="preserve">
-    <value>Saclay (Paris), Île-de-France, France</value>
-  </data>
-  <data name="SectionExperienceCeaProjectTitle" xml:space="preserve">
-    <value>Development of a viewing and post-processing tool for radioactivity analysis.</value>
-  </data>
-  <data name="SectionExperienceEiJobTitle" xml:space="preserve">
-    <value>Software engineer .NET</value>
-  </data>
-  <data name="SectionExperienceEiPlace" xml:space="preserve">
-    <value>Strasbourg, Bas-Rhin, France</value>
-  </data>
-  <data name="SectionExperienceEiProjectTitle" xml:space="preserve">
-    <value>Telecom applications development and support for Crédit Mutuel, CIC, Cofidis...</value>
-  </data>
-  <data name="SectionExperienceGeJobTitle" xml:space="preserve">
-    <value>Strategic marketing (internship)</value>
-  </data>
-  <data name="SectionExperienceGePlace" xml:space="preserve">
-    <value>Vélizy-Villacoublay (Paris), Île-de-France, France</value>
-  </data>
-  <data name="SectionExperienceGeProjectTitle" xml:space="preserve">
-    <value>Growth plan for an imaging device dedicated to cardiac scintigraphy.</value>
-  </data>
-  <data name="SectionExperienceInriaJobTitle" xml:space="preserve">
-    <value>Software engineer R&amp;D (internship)</value>
-  </data>
-  <data name="SectionExperienceInriaPlace" xml:space="preserve">
-    <value>Villeneuve-d’Ascq, Nord, France</value>
-  </data>
-  <data name="SectionExperienceInriaProjectTitle" xml:space="preserve">
-    <value>Development of surgery simulation.</value>
-  </data>
-  <data name="SectionExperienceSiemensJobTitle" xml:space="preserve">
-    <value>Software engineer C++ (internship)</value>
-  </data>
-  <data name="SectionExperienceSiemensPlace" xml:space="preserve">
-    <value>Nuremberg, Allemagne</value>
-  </data>
-  <data name="SectionExperienceSiemensProjectTitle" xml:space="preserve">
-    <value>Integration of Simulink models in PLCs.</value>
+    <value>Partenaire de l’{0}</value>
   </data>
 </root>

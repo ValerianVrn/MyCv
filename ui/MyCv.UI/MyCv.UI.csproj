@@ -43,6 +43,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Update="Resources\Components\Pages\Ai.Designer.cs">
+      <DependentUpon>Ai.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Update="Resources\Components\Pages\Education.fr.Designer.cs">
       <DependentUpon>Education.fr.resx</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -123,6 +128,10 @@
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Components\Pages\Architecture.resx">
       <LastGenOutput>Architecture.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Components\Pages\Ai.resx">
+      <LastGenOutput>Ai.Designer.cs</LastGenOutput>
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Components\Pages\Education.fr.resx">

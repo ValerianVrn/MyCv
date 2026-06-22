@@ -1,0 +1,73 @@
+@using MyCv.UI.Services
+@inject IStringLocalizer<MyCv.UI.Resources.Components.Pages.Home> Localizer
+@inject IStringLocalizer<MyCv.UI.Resources.Components.Pages.Ai> AiLocalizer;
+@inject IStringLocalizer<MyCv.UI.Resources.Shared> SharedLocalizer;
+@inject IThemeService ThemeService
+@inject IConfiguration Configuration
+
+<MudContainer Class="py-8" id="ai">
+    <MudContainer Class="@Style.LargeBottomMargin">
+        <MudText Typo="Typo.h4" Align="Align.Center">@SharedLocalizer["AI"]</MudText>
+        <MudText Typo="Typo.body1" Align="Align.Center">@AiLocalizer["Introduction"]</MudText>
+    </MudContainer>
+    <MudContainer Class="@Style.LargeBottomMargin">
+        <MudGrid>
+            <MudItem xs="12" md="6" Class="d-flex justify-center align-center">
+                <MudText Typo="Typo.body1">@AiLocalizer["SoftwareEngineering"]</MudText>
+            </MudItem>
+            <MudItem xs="12" md="6">
+                <div class="ai-constellation">
+                    <div class="ai-center">
+                        <MudText Typo="Typo.h5">AI</MudText>
+                    </div>
+                    <img src="images/ai/openai.svg" class="ai-node orbit orbit-1" alt="GPT" />
+                    <img src="images/ai/claude.svg" class="ai-node orbit orbit-2" alt="Claude" />
+                    <img src="images/ai/gemini.svg" class="ai-node orbit orbit-3" alt="Gemini" />
+                    <img src="images/ai/together.svg" class="ai-node orbit orbit-4" alt="Together" />
+                    <img src="images/ai/huggingface.svg" class="ai-node orbit orbit-5" alt="HuggingFace" />
+                </div>
+            </MudItem>
+            <MudItem xs="12" md="8">
+                <MudCarousel Style="height:400px;" AutoCycle="true" TData="object">
+                    @foreach (var post in _instagramPosts)
+                    {
+                        <MudCarouselItem Class="d-flex justify-center align-center">
+                            <div class="d-flex h-100">
+                                @if (post.IsVideo)
+                                {
+                                    <video controls autoplay muted loop class="w-100 rounded-lg;">
+                                        <source src="@post.Url" type="video/mp4" />
+                                        Your browser does not support the video tag.
+                                    </video>
+                                }
+                                else
+                                {
+                                    <MudImage Src="@post.Url" Alt="Instagram Post" Elevation="25" Class="rounded-lg" />
+                                }
+                            </div>
+                        </MudCarouselItem>
+                    }
+                </MudCarousel>
+            </MudItem>
+            <MudItem xs="12" md="4" Class="d-flex justify-center align-center">
+                <MudStack>
+                    <MudImage Src="images/instagram.png" Width="50"></MudImage>
+                    <MudText Typo="Typo.body1">@AiLocalizer["Instagram"]<br /><MudLink Href="https://www.instagram.com/gourmetpastrytransformer/">@@gourmetpastrytransformer</MudLink></MudText>
+                </MudStack>
+            </MudItem>
+        </MudGrid>
+    </MudContainer>
+</MudContainer>
+
+
+@code {
+    private record InstagramPost(string Url, bool IsVideo = false);
+
+    private List<InstagramPost> _instagramPosts = new()
+    {
+        new("images/instagram/post-1.png"),
+        new("images/instagram/post-2.png"),
+        new("images/instagram/post-3.png"),
+        new("videos/instagram-post.mp4", true)
+    };
+}

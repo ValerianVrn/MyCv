@@ -61,6 +61,15 @@ namespace MyCv.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AI.
+        /// </summary>
+        public static string AI {
+            get {
+                return ResourceManager.GetString("AI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Architecture.
         /// </summary>
         public static string Architecture {

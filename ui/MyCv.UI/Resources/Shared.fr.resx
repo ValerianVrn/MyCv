@@ -160,6 +160,9 @@
   <data name="Home" xml:space="preserve">
     <value>Accueil</value>
   </data>
+  <data name="Internship" xml:space="preserve">
+    <value>Stage</value>
+  </data>
   <data name="JobTitle" xml:space="preserve">
     <value>Leader technique .NET et architecte</value>
   </data>

@@ -15,86 +15,158 @@
         }
     </MudContainer>
     <MudContainer Class="@Style.LargeBottomMargin">
+        <MudHidden Breakpoint="Breakpoint.LgAndUp">
+            <MudExpansionPanels>
+                @foreach (var experience in _experiences)
+                {
+                    <ExperienceExpansionItem CompanyLogo="@experience.CompanyLogo"
+                                             JobTitle="@experience.JobTitle"
+                                             Company="@experience.Company"
+                                             StartDate="@experience.StartDate"
+                                             EndDate="@experience.EndDate"
+                                             Place="@experience.Place"
+                                             Projects="@experience.Projects"
+                                             Skills="@experience.Skills"
+                                             IsInternship="@experience.IsInternship" />
+                }
+            </MudExpansionPanels>
+        </MudHidden>
 
-        <MudTimeline TimelinePosition="TimelinePosition.Start" Modifiers>
-
-            @* Xcella *@
-            <ExperienceItem CompanyLogo="images/Fives_Group.png"
-                            JobTitle="@CareerLocalizer["SectionExperienceXcellaJobTitle"]"
-                            Company="Fives Xcella"
-                            StartDate=@(new DateTime(2022, 03, 01))
-                            EndDate=@(new DateTime(2025, 12, 01))
-                            Place="@CareerLocalizer["SectionExperienceXcellaPlace"]"
-                            Projects=@([new(CareerLocalizer["SectionExperienceXcellaProjectTitle"], [
-                                                        CareerLocalizer["SectionExperienceXcellaTask1"],
-                                                        CareerLocalizer["SectionExperienceXcellaTask2"],
-                                                        CareerLocalizer["SectionExperienceXcellaTask3"],
-                                                        CareerLocalizer["SectionExperienceXcellaTask4"]])])
-                            Skills=@(["C#/.NET", "Software architecture", "Azure DevOps", "Docker" ]) />
-            @* Syleps *@
-            <ExperienceItem CompanyLogo="images/Fives_Group.png"
-                            JobTitle="@CareerLocalizer["SectionExperienceSylepsJobTitle"]"
-                            Company="Fives Syleps"
-                            StartDate=@(new DateTime(2019, 12, 01))
-                            EndDate=@(new DateTime(2022, 02, 01))
-                            Place="@CareerLocalizer["SectionExperienceSylepsPlace"]"
-                            Projects=@([
-                                                        new(CareerLocalizer["SectionExperienceSylepsProject1Title"], null),
-                                                        new(CareerLocalizer["SectionExperienceSylepsProject2Title"], null),
-                                                        new(CareerLocalizer["SectionExperienceSylepsProject3Title"], null)])
-                            Skills=@(["C#/.NET", "Software architecture", "Azure DevOps", "Docker", "PL/SQL", "Git", "API REST"]) />
-            @* CEA *@
-            <ExperienceItem CompanyLogo="images/cea.png"
-                            JobTitle="@CareerLocalizer["SectionExperienceCeaJobTitle"]"
-                            Company="CEA - Commissariat à l'énergie atomique et aux énergies alternatives"
-                            StartDate=@(new DateTime(2018, 11, 01))
-                            EndDate=@(new DateTime(2019, 03, 01))
-                            Place="@CareerLocalizer["SectionExperienceCeaPlace"]"
-                            Projects=@([ new(CareerLocalizer["SectionExperienceCeaProjectTitle"], null)])
-                            Skills=@([ "C++", "Qt", "Python", "Matlab" ]) />
-            @* Crédit Mutuel *@
-            <ExperienceItem CompanyLogo="images/ei.jpeg"
-                            JobTitle="@CareerLocalizer["SectionExperienceEiJobTitle"]"
-                            Company="Euro Information (Crédit Mutuel)"
-                            StartDate=@(new DateTime(2016, 02, 01))
-                            EndDate=@(new DateTime(2017, 12, 01))
-                            Place="@CareerLocalizer["SectionExperienceEiPlace"]"
-                            Projects=@([ new(CareerLocalizer["SectionExperienceEiProjectTitle"], null)])
-                            Skills=@([ "C#/.NET", "SQL Server", "SOAP" ]) />
-            @* GE Healthcare *@
-            <ExperienceItem CompanyLogo="images/ge.png"
-                            JobTitle="@CareerLocalizer["SectionExperienceGeJobTitle"]"
-                            Company="GE Healthcare"
-                            StartDate=@(new DateTime(2015, 03, 01))
-                            EndDate=@(new DateTime(2015, 08, 01))
-                            Place="@CareerLocalizer["SectionExperienceGePlace"]"
-                            Projects=@([new(CareerLocalizer["SectionExperienceGeProjectTitle"], null) ])
-                            IsInternship />
-            @* Inria *@
-            <ExperienceItem CompanyLogo="images/inria.png"
-                            JobTitle="@CareerLocalizer["SectionExperienceInriaJobTitle"]"
-                            Company="Inria"
-                            StartDate=@(new DateTime(2014, 03, 01))
-                            EndDate=@(new DateTime(2014, 08, 01))
-                            Place="@CareerLocalizer["SectionExperienceInriaPlace"]"
-                            Projects=@([new(CareerLocalizer["SectionExperienceInriaProjectTitle"], null)])
-                            Skills=@([ "C++", "Qt", "Python" ])
-                            IsInternship />
-            @* Siemens *@
-            <ExperienceItem CompanyLogo="images/siemens.png"
-                            JobTitle="@CareerLocalizer["SectionExperienceSiemensJobTitle"]"
-                            Company="Siemens"
-                            StartDate=@(new DateTime(2013, 06, 01))
-                            EndDate=@(new DateTime(2013, 08, 01))
-                            Place="@CareerLocalizer["SectionExperienceSiemensPlace"]"
-                            Projects=@([new(CareerLocalizer["SectionExperienceSiemensProjectTitle"], null)])
-                            Skills=@([ "C++", "Matlab/Simulink" ])
-                            IsInternship/>
-        </MudTimeline>
+        <MudHidden Breakpoint="Breakpoint.LgAndUp" Invert>
+            <MudTimeline TimelinePosition="TimelinePosition.Start" Modifiers>
+                @foreach (var experience in _experiences)
+                {
+                    <ExperienceTimelineItem CompanyLogo="@experience.CompanyLogo"
+                                            JobTitle="@experience.JobTitle"
+                                            Company="@experience.Company"
+                                            StartDate="@experience.StartDate"
+                                            EndDate="@experience.EndDate"
+                                            Place="@experience.Place"
+                                            Projects="@experience.Projects"
+                                            Skills="@experience.Skills"
+                                            IsInternship="@experience.IsInternship" />
+                }
+            </MudTimeline>
+        </MudHidden>
     </MudContainer>
 </MudContainer>
 
 
 @code {
 
+    public record Project(string Title, List<string>? Tasks);
+    private class Experience
+    {
+        public required string CompanyLogo { get; set; }
+        public required string JobTitle { get; set; }
+        public required string Company { get; set; }
+        public required DateTime StartDate { get; set; }
+        public required DateTime EndDate { get; set; }
+        public required string Place { get; set; }
+        public required List<ExperienceCardContent.Project> Projects { get; set; }
+        public List<string>? Skills { get; set; } = null;
+        public bool IsInternship { get; set; } = false;
+    }
+
+    private List<Experience> _experiences = new();
+
+    protected override void OnInitialized()
+    {
+        _experiences = new()
+        {
+            // Xcella
+            new ()
+            {
+                CompanyLogo="images/Fives_Group.png",
+                JobTitle=CareerLocalizer["SectionExperienceXcellaJobTitle"],
+                Company="Fives Xcella",
+                StartDate=new DateTime(2022, 03, 01),
+                EndDate=new DateTime(2025, 12, 01),
+                Place=CareerLocalizer["SectionExperienceXcellaPlace"],
+                Projects=[new(CareerLocalizer["SectionExperienceXcellaProjectTitle"], [
+                                CareerLocalizer["SectionExperienceXcellaTask1"],
+                                CareerLocalizer["SectionExperienceXcellaTask2"],
+                                CareerLocalizer["SectionExperienceXcellaTask3"],
+                                CareerLocalizer["SectionExperienceXcellaTask4"]])],
+                Skills=["C#/.NET", "Software architecture", "Azure DevOps", "Docker" ]
+            },
+            // Syleps
+             new ()
+            {
+                CompanyLogo="images/Fives_Group.png",
+                JobTitle=CareerLocalizer["SectionExperienceSylepsJobTitle"],
+                Company="Fives Syleps",
+                StartDate=new DateTime(2019, 12, 01),
+                EndDate=new DateTime(2022, 02, 01),
+                Place=CareerLocalizer["SectionExperienceSylepsPlace"],
+                Projects=[
+                                new(CareerLocalizer["SectionExperienceSylepsProject1Title"], null),
+                                new(CareerLocalizer["SectionExperienceSylepsProject2Title"], null),
+                                new(CareerLocalizer["SectionExperienceSylepsProject3Title"], null)],
+                Skills=["C#/.NET", "Software architecture", "Azure DevOps", "Docker", "PL/SQL", "Git", "API REST"]
+            },
+            // CEA
+            new ()
+            {
+                CompanyLogo="images/cea.png",
+                JobTitle=CareerLocalizer["SectionExperienceCeaJobTitle"],
+                Company="CEA - Commissariat à l'énergie atomique et aux énergies alternatives",
+                StartDate=new DateTime(2018, 11, 01),
+                EndDate=new DateTime(2019, 03, 01),
+                Place=CareerLocalizer["SectionExperienceCeaPlace"],
+                Projects=[ new(CareerLocalizer["SectionExperienceCeaProjectTitle"], null)],
+                Skills=[ "C++", "Qt", "Python", "Matlab" ]
+            },
+            // Crédit Mutuel
+            new ()
+            {
+                CompanyLogo="images/ei.jpeg",
+                JobTitle=CareerLocalizer["SectionExperienceEiJobTitle"],
+                Company="Euro Information (Crédit Mutuel)",
+                StartDate=new DateTime(2016, 02, 01),
+                EndDate=new DateTime(2017, 12, 01),
+                Place=CareerLocalizer["SectionExperienceEiPlace"],
+                Projects=[ new(CareerLocalizer["SectionExperienceEiProjectTitle"], null)],
+                Skills=[ "C#/.NET", "SQL Server", "SOAP" ]
+            },
+            // GE Healthcare
+            new ()
+            {
+                CompanyLogo="images/ge.png",
+                JobTitle=CareerLocalizer["SectionExperienceGeJobTitle"],
+                Company="GE Healthcare",
+                StartDate=new DateTime(2015, 03, 01),
+                EndDate=new DateTime(2015, 08, 01),
+                Place=CareerLocalizer["SectionExperienceGePlace"],
+                Projects=[new(CareerLocalizer["SectionExperienceGeProjectTitle"], null) ],
+                IsInternship = true
+            },
+            // Inria
+            new ()
+            {
+                CompanyLogo="images/inria.png",
+                JobTitle=CareerLocalizer["SectionExperienceInriaJobTitle"],
+                Company="Inria",
+                StartDate=new DateTime(2014, 03, 01),
+                EndDate=new DateTime(2014, 08, 01),
+                Place=CareerLocalizer["SectionExperienceInriaPlace"],
+                Projects=[new(CareerLocalizer["SectionExperienceInriaProjectTitle"], null)],
+                Skills=[ "C++", "Qt", "Python" ],
+                IsInternship = true
+            },
+            // Siemens
+            new ()
+            {
+                CompanyLogo="images/siemens.png",
+                JobTitle=CareerLocalizer["SectionExperienceSiemensJobTitle"],
+                Company="Siemens",
+                StartDate=new DateTime(2013, 06, 01),
+                EndDate=new DateTime(2013, 08, 01),
+                Place=CareerLocalizer["SectionExperienceSiemensPlace"],
+                Projects=[new(CareerLocalizer["SectionExperienceSiemensProjectTitle"], null)],
+                Skills=[ "C++", "Matlab/Simulink" ],
+                IsInternship = true
+            }
+        };
+    }
 }

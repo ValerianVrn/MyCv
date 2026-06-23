@@ -1,0 +1,48 @@
+@inject IStringLocalizer<MyCv.UI.Resources.Shared> SharedLocalizer
+
+<MudExpansionPanel>
+    <TitleContent>
+        <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+            <MudAvatar Style="background:white; border:1px solid var(--mud-palette-divider);" Size="Size.Small">
+                <MudImage Src="@CompanyLogo" Width="24" Height="24" ObjectFit="ObjectFit.Contain" />
+            </MudAvatar>
+            <MudStack Spacing="0">
+                <MudStack Row AlignItems="AlignItems.Center" Spacing="1">
+                    <MudText Typo="Typo.subtitle2"><strong>@JobTitle</strong></MudText>
+                    @if (IsInternship)
+                    {
+                        <MudChip T="string" Size="Size.Small" Color="Color.Default" Variant="Variant.Outlined">@SharedLocalizer["Internship"]</MudChip>
+                    }
+                </MudStack>
+                <MudText Typo="Typo.caption" Color="Color.Primary">
+                    @Company · @StartDate.ToString("MMM yyyy") – @EndDate.ToString("MMM yyyy")
+                </MudText>
+            </MudStack>
+        </MudStack>
+    </TitleContent>
+    <ChildContent>
+        <MudDivider Class="mb-3" />
+        <ExperienceCardContent CompanyLogo="@CompanyLogo"
+                               JobTitle="@JobTitle"
+                               Company="@Company"
+                               StartDate="@StartDate"
+                               EndDate="@EndDate"
+                               Place="@Place"
+                               Projects="@Projects"
+                               Skills="@Skills"
+                               IsInternship="@IsInternship"
+                               IsCompact />
+    </ChildContent>
+</MudExpansionPanel>
+
+@code {
+    [Parameter] public required string CompanyLogo { get; set; }
+    [Parameter] public required string JobTitle { get; set; }
+    [Parameter] public required string Company { get; set; }
+    [Parameter] public required DateTime StartDate { get; set; }
+    [Parameter] public required DateTime EndDate { get; set; }
+    [Parameter] public required string Place { get; set; }
+    [Parameter] public required List<ExperienceCardContent.Project> Projects { get; set; }
+    [Parameter] public List<string>? Skills { get; set; }
+    [Parameter] public bool IsInternship { get; set; } = false;
+}

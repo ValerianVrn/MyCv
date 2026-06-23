@@ -187,6 +187,15 @@ namespace MyCv.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Internship.
+        /// </summary>
+        public static string Internship {
+            get {
+                return ResourceManager.GetString("Internship", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to .NET tech lead and architect.
         /// </summary>
         public static string JobTitle {

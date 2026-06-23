@@ -68,7 +68,8 @@
                             StartDate=@(new DateTime(2015, 03, 01))
                             EndDate=@(new DateTime(2015, 08, 01))
                             Place="@CareerLocalizer["SectionExperienceGePlace"]"
-                            Projects=@([new(CareerLocalizer["SectionExperienceGeProjectTitle"], null) ]) />
+                            Projects=@([new(CareerLocalizer["SectionExperienceGeProjectTitle"], null) ])
+                            IsInternship />
             @* Inria *@
             <ExperienceItem CompanyLogo="images/inria.png"
                             JobTitle="@CareerLocalizer["SectionExperienceInriaJobTitle"]"
@@ -77,7 +78,8 @@
                             EndDate=@(new DateTime(2014, 08, 01))
                             Place="@CareerLocalizer["SectionExperienceInriaPlace"]"
                             Projects=@([new(CareerLocalizer["SectionExperienceInriaProjectTitle"], null)])
-                            Skills=@([ "C++", "Qt", "Python" ]) />
+                            Skills=@([ "C++", "Qt", "Python" ])
+                            IsInternship />
             @* Siemens *@
             <ExperienceItem CompanyLogo="images/siemens.png"
                             JobTitle="@CareerLocalizer["SectionExperienceSiemensJobTitle"]"
@@ -86,7 +88,8 @@
                             EndDate=@(new DateTime(2013, 08, 01))
                             Place="@CareerLocalizer["SectionExperienceSiemensPlace"]"
                             Projects=@([new(CareerLocalizer["SectionExperienceSiemensProjectTitle"], null)])
-                            Skills=@([ "C++", "Matlab/Simulink" ]) />
+                            Skills=@([ "C++", "Matlab/Simulink" ])
+                            IsInternship/>
         </MudTimeline>
     </MudContainer>
 </MudContainer>

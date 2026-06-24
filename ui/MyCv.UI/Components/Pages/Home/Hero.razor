@@ -4,19 +4,22 @@
 @inject IConfiguration Configuration
 
 <MudPaper Class="section-tinted py-8" Square="true" Elevation="0">
-    <MudContainer Class="px-2 px-lg-20">
+    <MudContainer Class="px-4 px-lg-20">
         <MudText Typo="Typo.h2" Align="Align.Left" Class="@Style.LargeBottomMargin">
             @Localizer["HomeHeader"]
             <MudText Color="Color.Primary" Typo="Typo.h2" Inline="true">Valérian</MudText>.
         </MudText>
         <MudGrid Justify="Justify.Center">
-            <MudItem xs="12" lg="9">
+            @* Terminal *@
+            <MudItem xs="12" sm="9">
                 <Terminal />
             </MudItem>
-            <MudItem xs="8" lg="3" Class="d-flex align-center">
+            @* Portrait *@
+            <MudItem xs="8" sm="3" Class="d-flex align-center">
                 <MudImage Fluid="true" Src="images/portrait.jpg" Alt="Portrait" Class="rounded-lg" />
             </MudItem>
-            <MudItem xs="10" lg="10">
+            @* Introduction *@
+            <MudItem xs="10" md="10">
                 <MudText Typo="Typo.body1" Align="Align.Center" GutterBottom="true">
                     @if (Configuration.GetValue<bool>("SinglePage"))
                     {
@@ -24,7 +27,8 @@
                     }
                     else
                     {
-                    @Localizer["HomeIntroduction"];
+                        @Localizer["HomeIntroduction"]
+                        ;
                     }
                 </MudText>
                 <MudText Typo="Typo.body1" Align="Align.Center" GutterBottom="true">

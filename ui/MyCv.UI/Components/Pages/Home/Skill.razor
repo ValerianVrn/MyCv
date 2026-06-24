@@ -125,10 +125,18 @@
         transition: transform 0.25s ease, box-shadow 0.25s ease !important;
     }
 
+        .skill-card.active {
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18), 0 0 0 2px var(--glow-color), 0 0 16px 4px var(--glow-color) !important;
+        }
+
+    /* Keep hover only for desktop */
+    @@media (hover: hover) {
         .skill-card:hover {
             transform: translateY(-6px) scale(1.01);
             box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18), 0 0 0 2px var(--glow-color), 0 0 16px 4px var(--glow-color) !important;
         }
+    }
 
     /* Light mode */
     :root {
@@ -144,10 +152,18 @@
         transition: background-color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease !important;
     }
 
-    .core-chip:hover {
-        background-color: var(--mud-palette-success) !important;
-        color: var(--mud-palette-success-text) !important;
-        box-shadow: 0 0 10px 3px rgba(var(--mud-palette-success-rgb), 0.5) !important;
+        .core-chip.active {
+            background-color: var(--mud-palette-success) !important;
+            color: var(--mud-palette-success-text) !important;
+            box-shadow: 0 0 10px 3px rgba(var(--mud-palette-success-rgb), 0.5) !important;
+        }
+
+    @@media (hover: hover) {
+        .core-chip:hover {
+            background-color: var(--mud-palette-success) !important;
+            color: var(--mud-palette-success-text) !important;
+            box-shadow: 0 0 10px 3px rgba(var(--mud-palette-success-rgb), 0.5) !important;
+        }
     }
 </style>
 

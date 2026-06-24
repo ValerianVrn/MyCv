@@ -53,28 +53,22 @@
         @* Secondary degrees *@
         <MudContainer>
             <MudText Typo="Typo.h6" Align="Align.Center" GutterBottom="true">@EducationLocalizer["Certifications"]</MudText>
-            <MudStack Row Justify="Justify.Center" AlignItems="AlignItems.Center" Wrap="Wrap.Wrap" Spacing="3">
+            <MudStack Row Justify="Justify.Center" AlignItems="AlignItems.Start" Wrap="Wrap.Wrap" Spacing="3">
                 @foreach (var certification in _secondaryDegrees)
                 {
-                    <MudTooltip Placement="Placement.Top" Arrow="true">
-                        <TooltipContent>
-                            <MudStack Spacing="0" AlignItems="AlignItems.Center">
-                                <MudText Typo="Typo.body2">@(new MarkupString(certification.Name))</MudText>
-                                <MudStack Row Spacing="1">
-                                    <MudChip T="string" Size="Size.Small" Color="Color.Info" Variant="Variant.Outlined">@certification.year</MudChip>
-                                    @if (!string.IsNullOrEmpty(certification.Detail))
-                                    {
-                                        <MudChip T="string" Size="Size.Small" Color="Color.Success" Variant="Variant.Outlined">@certification.Detail</MudChip>
-                                    }
-                                </MudStack>
-                            </MudStack>
-                        </TooltipContent>
-                        <ChildContent>
-                            <div class="cert-badge">
-                                <MudImage Src="@certification.Image" Alt="@certification.Name" Width="64" Height="64" ObjectFit="ObjectFit.Contain" />
-                            </div>
-                        </ChildContent>
-                    </MudTooltip>
+                    <MudStack AlignItems="AlignItems.Center" Spacing="1" Style="width:128px">
+                        <div class="cert-badge">
+                            <MudImage Src="@certification.Image" Alt="@certification.Name" Width="56" Height="56" ObjectFit="ObjectFit.Contain" />
+                        </div>
+                        <MudText Typo="Typo.caption" Align="Align.Center">
+                            @(new MarkupString(certification.Name))
+                        </MudText>
+                        <MudChip T="string" Size="Size.Small" Color="Color.Info" Variant="Variant.Outlined">@certification.year</MudChip>
+                        @if (!string.IsNullOrEmpty(certification.Detail))
+                        {
+                            <MudChip T="string" Size="Size.Small" Color="Color.Success" Variant="Variant.Outlined">@certification.Detail</MudChip>
+                        }
+                    </MudStack>
                 }
             </MudStack>
         </MudContainer>
@@ -86,11 +80,17 @@
         transition: transform 0.25s ease, box-shadow 0.25s ease !important;
         overflow: hidden;
     }
-
+        .edu-card.active {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.15), 0 0 0 2px var(--card-accent), 0 0 16px 4px var(--card-accent) !important;
+        }
+    /* Keep hover only for desktop */
+    @@media (hover: hover) {
         .edu-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 32px rgba(0,0,0,0.15), 0 0 0 2px var(--card-accent) !important;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.15), 0 0 0 2px var(--card-accent), 0 0 16px 4px var(--card-accent) !important;
         }
+    }
 
     .cert-badge {
         background: white;
@@ -99,10 +99,17 @@
         transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
+        .cert-badge.active {
+            transform: translateY(-4px) scale(1.08);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+    /* Keep hover only for desktop */
+    @@media (hover: hover) {
         .cert-badge:hover {
             transform: translateY(-4px) scale(1.08);
             box-shadow: 0 6px 20px rgba(0,0,0,0.15);
         }
+    }
 </style>
 
 @code {

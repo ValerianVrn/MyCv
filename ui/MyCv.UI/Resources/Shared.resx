@@ -117,11 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AI" xml:space="preserve">
+    <value>AI</value>
+  </data>
   <data name="Architecture" xml:space="preserve">
     <value>Architecture</value>
   </data>
+  <data name="Career" xml:space="preserve">
+    <value>Career</value>
+  </data>
   <data name="Date" xml:space="preserve">
     <value>Date</value>
+  </data>
+  <data name="Degrees" xml:space="preserve">
+    <value>Degrees</value>
   </data>
   <data name="DevelopmentAndTesting" xml:space="preserve">
     <value>Development &amp; Testing</value>
@@ -146,6 +155,12 @@
   </data>
   <data name="Fine" xml:space="preserve">
     <value>Fine</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Internship" xml:space="preserve">
+    <value>Internship</value>
   </data>
   <data name="JobTitle" xml:space="preserve">
     <value>.NET tech lead and architect</value>

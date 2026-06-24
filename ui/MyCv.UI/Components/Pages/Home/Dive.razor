@@ -1,0 +1,86 @@
+@using MyCv.UI.Services
+@inject IStringLocalizer<MyCv.UI.Resources.Components.Pages.Home> Localizer
+@inject IThemeService ThemeService
+
+<MudContainer Class="py-8">
+    <MudContainer Class="@Style.LargeBottomMargin">
+        <MudText Typo="Typo.h4" Align="Align.Center">@Localizer["MoreAboutMe"]</MudText>
+        <MudText Typo="Typo.body1" Align="Align.Center">@Localizer["MoreAboutMeCaption"]</MudText>
+    </MudContainer>
+    <MudContainer Class="@Style.LargeBottomMargin">
+        <MudGrid>
+            <MudItem md="2" />
+            @foreach (var exploreItem in ExploreItems)
+            {
+                <MudItem xs="12" md="4">
+                    <MudPaper Outlined="true" Height="100%" Class="align-content-center pa-4 rounded-x1 border-2" Style="@exploreItem.BackgroundStyle">
+                        <MudStack Spacing="2" AlignItems="AlignItems.Center" Justify="Justify.Center">
+                            <MudPaper Class="@exploreItem.Icon.BackgroundClass" Elevation="0">
+                                <MudIcon Icon="@exploreItem.Icon.Name" Style="@exploreItem.Icon.Style" />
+                            </MudPaper>
+                            <MudText Typo="Typo.h6" Align="Align.Center">@exploreItem.Name</MudText>
+                            <MudText Typo="Typo.subtitle1" Align="Align.Left" GutterBottom="true">@((MarkupString)exploreItem.Caption)</MudText>
+                            <MudButton EndIcon="@Icons.Material.Filled.ArrowForwardIos" Color="Color.Primary" Variant="Variant.Filled" Href="@exploreItem.Href">@Localizer["LearnMore"]</MudButton>
+                        </MudStack>
+                    </MudPaper>
+                </MudItem>
+            }
+            <MudItem md="2" />
+        </MudGrid>
+    </MudContainer>
+</MudContainer>
+
+
+@code {
+    public class ExploreItem(string iconName, string color, string name, string caption, string href, bool isDarkMode)
+    {
+        public Icon Icon { get { return new Icon(iconName, color); } }
+        public string Color { get { return color; } }
+        public string Name { get { return name; } }
+        public string Caption { get { return caption; } }
+        public string Href { get { return href; } }
+        public string BackgroundStyle
+        {
+            get
+            {
+                return isDarkMode ?
+                    $"border-color: {MyCv.UI.Services.ThemeService.Theme.PaletteDark.Primary}" :
+                    $"border-color: {MyCv.UI.Services.ThemeService.Theme.PaletteLight.Primary}";
+            }
+        }
+    }
+
+    public class Icon(string name, string color)
+    {
+        public string Name { get { return name; } }
+        public string Style { get { return "color: " + color; } }
+        public string BackgroundClass { get { return color + " pa-4 lighten-5"; } }
+    }
+
+    public List<ExploreItem> ExploreItems
+    {
+        get
+        {
+            return new()
+            {
+                new(Icons.Material.Outlined.School, "brown", Localizer["EducationAndCareer"], Localizer["EducationAndCareerCaption"], Urls.EducationAndCareer, ThemeService.IsDarkMode),
+                new(Icons.Material.Outlined.Favorite, "pink", Localizer["PersonalLife"], Localizer["PersonalLifeCaption"], Urls.PersonalLife, ThemeService.IsDarkMode)
+            };
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        ThemeService.OnThemeChanged += HandleThemeChanged;
+    }
+
+    private void HandleThemeChanged()
+    {
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        ThemeService.OnThemeChanged -= HandleThemeChanged;
+    }
+}

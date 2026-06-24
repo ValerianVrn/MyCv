@@ -61,6 +61,15 @@ namespace MyCv.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AI.
+        /// </summary>
+        public static string AI {
+            get {
+                return ResourceManager.GetString("AI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Architecture.
         /// </summary>
         public static string Architecture {
@@ -70,11 +79,29 @@ namespace MyCv.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Career.
+        /// </summary>
+        public static string Career {
+            get {
+                return ResourceManager.GetString("Career", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date.
         /// </summary>
         public static string Date {
             get {
                 return ResourceManager.GetString("Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Degrees.
+        /// </summary>
+        public static string Degrees {
+            get {
+                return ResourceManager.GetString("Degrees", resourceCulture);
             }
         }
         
@@ -147,6 +174,24 @@ namespace MyCv.UI.Resources {
         public static string Fine {
             get {
                 return ResourceManager.GetString("Fine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Internship.
+        /// </summary>
+        public static string Internship {
+            get {
+                return ResourceManager.GetString("Internship", resourceCulture);
             }
         }
         

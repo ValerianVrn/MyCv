@@ -1,0 +1,197 @@
+@using MyCv.UI.Services
+@inject IStringLocalizer<MyCv.UI.Resources.Components.Pages.Home> Localizer
+@inject IStringLocalizer<MyCv.UI.Resources.Components.Pages.Ai> AiLocalizer
+@inject IStringLocalizer<MyCv.UI.Resources.Shared> SharedLocalizer
+@inject IThemeService ThemeService
+@inject IConfiguration Configuration
+
+<MudPaper Class="ai-section-bg py-8" Square="true" Elevation="0" id="ai">
+    @* Header *@
+    <MudContainer Class="@Style.LargeBottomMargin">
+        <MudText Typo="Typo.h4" Align="Align.Center" Style="color:white">@SharedLocalizer["AI"]</MudText>
+        <MudText Typo="Typo.body1" Align="Align.Center" Style="color:rgba(255,255,255,0.75)">@AiLocalizer["Introduction"]</MudText>
+    </MudContainer>
+
+    @* Block 1 – AI Tools *@
+    <MudContainer Class="@Style.LargeBottomMargin">
+        <MudGrid>
+            <MudItem xs="12" md="6">
+                <MudPaper Class="ai-callout pa-6 rounded-lg" Elevation="0">
+                    <MudStack Spacing="3">
+                        <MudStack Row AlignItems="AlignItems.Center" Spacing="1">
+                            <MudIcon Icon="@Icons.Material.Filled.AutoAwesome" Color="Color.Warning" />
+                            <MudText Typo="Typo.overline" Style="color:rgba(255,255,255,0.5); letter-spacing:0.1em">
+                                @AiLocalizer["Usage"]
+                            </MudText>
+                        </MudStack>
+                        <MudText Typo="Typo.body1" Style="color:white">
+                            @AiLocalizer["SoftwareEngineering"]
+                        </MudText>
+                    </MudStack>
+                </MudPaper>
+            </MudItem>
+            <MudItem xs="12" md="6" Class="d-flex justify-center">
+                <div class="ai-constellation">
+                    <div class="ai-center">
+                        <MudText Typo="Typo.h5" Style="color:white">AI</MudText>
+                    </div>
+                    <img src="images/ai/openai.svg" class="ai-node orbit orbit-1" alt="GPT" />
+                    <img src="images/ai/claude.svg" class="ai-node orbit orbit-2" alt="Claude" />
+                    <img src="images/ai/gemini.svg" class="ai-node orbit orbit-3" alt="Gemini" />
+                    <img src="images/ai/together.svg" class="ai-node orbit orbit-4" alt="Together" />
+                    <img src="images/ai/huggingface.svg" class="ai-node orbit orbit-5" alt="HuggingFace" />
+                </div>
+            </MudItem>
+        </MudGrid>
+    </MudContainer>
+
+    @* Divider *@
+    <MudContainer Class="@Style.LargeBottomMargin">
+        <MudDivider Style="border-color:rgba(255,255,255,0.12)" />
+    </MudContainer>
+
+    @* Block 2 – Creative AI showcase *@
+    <MudContainer>
+        <MudGrid>
+
+            @* Carousel *@
+            <MudItem xs="12" md="8">
+                <MudPaper Class="rounded-lg overflow-hidden" Elevation="12" Style="background:#000">
+                    <MudCarousel Style="height: min(420px, 70vw);" AutoCycle="true" TData="object">
+                        @foreach (var post in _instagramPosts)
+                        {
+                            <MudCarouselItem Class="d-flex justify-center align-center">
+                                @if (post.IsVideo)
+                                {
+                                    <video controls autoplay muted loop class="h-100 w-100 object-fit-contain">
+                                        <source src="@post.Url" type="video/mp4" />
+                                    </video>
+                                }
+                                else
+                                {
+                                    <MudImage Src="@post.Url" Alt="Post" Class="h-100 w-100" ObjectFit=ObjectFit.Contain />
+                                }
+                            </MudCarouselItem>
+                        }
+                    </MudCarousel>
+                </MudPaper>
+            </MudItem>
+
+            @* Instagram badge *@
+            <MudItem xs="12" md="4">
+                <MudStack AlignItems="AlignItems.Center" Spacing="4">
+                    <div class="ig-badge">
+                        <MudImage Src="images/instagram/instagram.png" Width="52" />
+                    </div>
+                    <MudStack Spacing="1" AlignItems="AlignItems.Center">
+                        <MudText Typo="Typo.overline" Style="color:rgba(255,255,255,0.5); letter-spacing:0.1em">
+                            @AiLocalizer["Creative"]
+                        </MudText>
+                        <MudText Typo="Typo.h6" Style="color:white">
+                            <strong>Instagram</strong>
+                        </MudText>
+                        <MudLink Href="https://www.instagram.com/gourmetpastrytransformer/"
+                                 Target="_blank"
+                                 Typo="Typo.body2"
+                                 Style="background: linear-gradient(90deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); -webkit-background-clip:text; -webkit-text-fill-color:transparent; font-weight:600">
+                            @@gourmetpastrytransformer
+                        </MudLink>
+                    </MudStack>
+                    <MudText Typo="Typo.body2" Align="Align.Center" Style="color:rgba(255,255,255,0.65)">
+                        @AiLocalizer["Instagram"]
+                    </MudText>
+                </MudStack>
+            </MudItem>
+
+        </MudGrid>
+    </MudContainer>
+</MudPaper>
+
+<style>
+    /* Animated gradient background */
+    .ai-section-bg {
+        background: linear-gradient(135deg, #0f0c29, #302b63, #1a1a2e, #16213e);
+        background-size: 400% 400%;
+        animation: ai-bg-shift 12s ease infinite;
+        padding: 1px 0;
+    }
+
+    @@keyframes ai-bg-shift {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    /* Callout card */
+    .ai-callout {
+        background: rgba(255,255,255,0.07) !important;
+        border: 1px solid rgba(255,255,255,0.12) !important;
+        backdrop-filter: blur(8px);
+    }
+
+    /* Instagram logo glow */
+    .ig-badge {
+        padding: 14px;
+        border-radius: 20px;
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.12);
+        transition: transform 0.2s ease;
+    }
+
+        .ig-badge:hover {
+            transform: scale(1.08);
+        }
+
+    /* Constellation – keep your existing styles, just ensure node visibility on dark */
+    .ai-constellation {
+        position: relative;
+        width: min(400px, 90vw);
+        height: min(400px, 90vw);
+        margin: auto;
+    }
+
+    .ai-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.1);
+        border: 2px solid rgba(255,255,255,0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .ai-node {
+        position: absolute;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: white;
+        padding: 6px;
+        object-fit: contain;
+        box-shadow: 0 0 12px rgba(255,255,255,0.2);
+    }
+</style>
+
+@code {
+    private record InstagramPost(string Url, bool IsVideo = false);
+    private List<InstagramPost> _instagramPosts = new()
+    {
+        new("images/instagram/post-1.png"),
+        new("images/instagram/post-2.png"),
+        new("images/instagram/post-3.png"),
+        new("videos/instagram-post.mp4", true)
+    };
+}

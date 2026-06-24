@@ -130,7 +130,7 @@
 - un apprentissage continu pour garantir un travail de qualité avec des outils modernes</value>
   </data>
   <data name="Introduction" xml:space="preserve">
-    <value>Mon parcours combine différentes disciplines (ingénierie, robotique chirurgicale, gestion d'entreprise...) et une expérience aussi bien dans un écosystème rigoureux de grande entreprise que dans un environnement dynamique d'une startup.</value>
+    <value>Mon parcours combine différentes domaines (industrie, banque, santé, énergie...) et une expérience aussi bien dans un écosystème rigoureux de grande entreprise que dans un environnement dynamique d'une startup.</value>
   </data>
   <data name="EducationScore" xml:space="preserve">
     <value>Score : {0}</value>
@@ -214,7 +214,7 @@
     <value>Développement et support d'applications télécoms pour Crédit Mutuel, CIC, Cofidis...</value>
   </data>
   <data name="SectionExperienceGeJobTitle" xml:space="preserve">
-    <value>Marketing stratégique (stage)</value>
+    <value>Marketing stratégique</value>
   </data>
   <data name="SectionExperienceGePlace" xml:space="preserve">
     <value>Vélizy-Villacoublay (Paris), Île-de-France, France</value>
@@ -223,7 +223,7 @@
     <value>Plan de croissance pour un dispositif d'imagerie dédié à la scintigraphie cardiaque. </value>
   </data>
   <data name="SectionExperienceInriaJobTitle" xml:space="preserve">
-    <value>Ingénieur logiciel R&amp;D (stage)</value>
+    <value>Ingénieur logiciel R&amp;D</value>
   </data>
   <data name="SectionExperienceInriaPlace" xml:space="preserve">
     <value>Villeneuve-d’Ascq, Nord, France</value>
@@ -232,7 +232,7 @@
     <value>Développement d’une simulation pour la chirurgie.</value>
   </data>
   <data name="SectionExperienceSiemensJobTitle" xml:space="preserve">
-    <value>Ingénieur logiciel C++ (stage)</value>
+    <value>Ingénieur logiciel C++</value>
   </data>
   <data name="SectionExperienceSiemensPlace" xml:space="preserve">
     <value>Nuremberg, Germany</value>

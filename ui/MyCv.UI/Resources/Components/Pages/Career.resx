@@ -130,7 +130,7 @@
 - a continuous learning to guarantee a quality of work and a modern tools</value>
   </data>
   <data name="Introduction" xml:space="preserve">
-    <value>My journey combines many domains (enginerring, robotic surgery, business management...) and experience in both a major company and a dynamic startup environment.</value>
+    <value>My career combines many fields (industry, financial institution, healthcare, energy...) and experience in both a major company and a dynamic startup environment.</value>
   </data>
   <data name="EducationScore" xml:space="preserve">
     <value>Score: {0}</value>
@@ -214,7 +214,7 @@
     <value>Telecom applications development and support for Crédit Mutuel, CIC, Cofidis...</value>
   </data>
   <data name="SectionExperienceGeJobTitle" xml:space="preserve">
-    <value>Strategic marketing (internship)</value>
+    <value>Strategic marketing</value>
   </data>
   <data name="SectionExperienceGePlace" xml:space="preserve">
     <value>Vélizy-Villacoublay (Paris), Île-de-France, France</value>
@@ -223,7 +223,7 @@
     <value>Growth plan for an imaging device dedicated to cardiac scintigraphy.</value>
   </data>
   <data name="SectionExperienceInriaJobTitle" xml:space="preserve">
-    <value>Software engineer R&amp;D (internship)</value>
+    <value>Software engineer R&amp;D</value>
   </data>
   <data name="SectionExperienceInriaPlace" xml:space="preserve">
     <value>Villeneuve-d’Ascq, Nord, France</value>
@@ -232,7 +232,7 @@
     <value>Development of surgery simulation.</value>
   </data>
   <data name="SectionExperienceSiemensJobTitle" xml:space="preserve">
-    <value>Software engineer C++ (internship)</value>
+    <value>Software engineer C++</value>
   </data>
   <data name="SectionExperienceSiemensPlace" xml:space="preserve">
     <value>Nuremberg, Allemagne</value>

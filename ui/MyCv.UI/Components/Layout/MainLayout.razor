@@ -20,7 +20,7 @@
     @* Lateral menu of the page content *@
     <Menu @ref="_menu" />
     @* Page content *@
-    <MudMainContent Class="my-6" data-bs-spy="scroll" data-bs-target="#content-menu">
+    <MudMainContent data-bs-spy="scroll" data-bs-target="#content-menu">
         @* So that header and sections can call methods of this component *@
         <CascadingValue Value="_menu">
             @Body

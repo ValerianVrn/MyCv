@@ -172,7 +172,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to My journey combines many domains (enginerring, robotic surgery, business management...) and experience in both a major company and a dynamic startup environment..
+        ///   Looks up a localized string similar to My career combines many fields (industry, financial institution, healthcare, energy...) and experience in both a major company and a dynamic startup environment..
         /// </summary>
         public static string Introduction {
             get {
@@ -235,7 +235,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Strategic marketing (internship).
+        ///   Looks up a localized string similar to Strategic marketing.
         /// </summary>
         public static string SectionExperienceGeJobTitle {
             get {
@@ -262,7 +262,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Software engineer R&amp;D (internship).
+        ///   Looks up a localized string similar to Software engineer R&amp;D.
         /// </summary>
         public static string SectionExperienceInriaJobTitle {
             get {
@@ -289,7 +289,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Software engineer C++ (internship).
+        ///   Looks up a localized string similar to Software engineer C++.
         /// </summary>
         public static string SectionExperienceSiemensJobTitle {
             get {

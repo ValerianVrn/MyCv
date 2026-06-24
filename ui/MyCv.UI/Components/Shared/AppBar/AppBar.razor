@@ -19,7 +19,7 @@
         {
             if (navItem.Children is null)
             {
-                <MudNavLink Href="@navItem.Href" Match="NavLinkMatch.All" Icon="@navItem.Icon">@navItem.Label</MudNavLink>
+                <MudNavLink Href="@navItem.Href" Match="NavLinkMatch.All" Icon="@navItem.Icon" Class="@(navItem.Icon != null ? "ai-nav-link" : "")">@navItem.Label</MudNavLink>
             }
             else
             {
@@ -63,7 +63,7 @@
             {
                 if (navItem.Children is null)
                 {
-                    <MudButton Href="@navItem.Href" Variant="Variant.Text" Color="Color.Transparent" StartIcon="@navItem.Icon">
+                    <MudButton Href="@navItem.Href" Variant="Variant.Text" Color="Color.Transparent" StartIcon="@navItem.Icon" Class="@(navItem.Icon != null ? "ai-nav-btn" : "")">
                         @navItem.Label
                     </MudButton>
                 }
@@ -91,8 +91,8 @@
 </MudAppBar>
 
 <style>
-    .mud-button-icon-start .mud-icon-root,
-    .mud-nav-link .mud-icon-root {
+    .ai-nav-btn .mud-button-icon-start .mud-icon-root,
+    .ai-nav-link .mud-nav-link-icon {
         color: #a78bfa !important;
     }
 </style>

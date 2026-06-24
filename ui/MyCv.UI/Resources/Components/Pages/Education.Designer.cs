@@ -61,6 +61,15 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Certifications.
+        /// </summary>
+        public static string Certifications {
+            get {
+                return ResourceManager.GetString("Certifications", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Baccalaureate.
         /// </summary>
         public static string EducationBaccalaureate {

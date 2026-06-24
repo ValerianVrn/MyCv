@@ -153,4 +153,8 @@
   <data name="EducationPartnerOf" xml:space="preserve">
     <value>Partner of {0}</value>
   </data>
+  <data name="Certifications" xml:space="preserve">
+    <value>Certifications</value>
+    <comment>Certifications</comment>
+  </data>
 </root>

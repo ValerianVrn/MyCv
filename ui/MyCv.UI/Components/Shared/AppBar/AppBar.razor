@@ -19,7 +19,7 @@
         {
             if (navItem.Children is null)
             {
-                <MudNavLink Href="@navItem.Href" Match="NavLinkMatch.All">@navItem.Label</MudNavLink>
+                <MudNavLink Href="@navItem.Href" Match="NavLinkMatch.All" Icon="@navItem.Icon">@navItem.Label</MudNavLink>
             }
             else
             {
@@ -63,7 +63,7 @@
             {
                 if (navItem.Children is null)
                 {
-                    <MudButton Href="@navItem.Href" Variant="Variant.Text" Color="Color.Transparent">
+                    <MudButton Href="@navItem.Href" Variant="Variant.Text" Color="Color.Transparent" StartIcon="@navItem.Icon">
                         @navItem.Label
                     </MudButton>
                 }
@@ -90,8 +90,15 @@
     </MudHidden>
 </MudAppBar>
 
+<style>
+    .mud-button-icon-start .mud-icon-root,
+    .mud-nav-link .mud-icon-root {
+        color: #a78bfa !important;
+    }
+</style>
+
 @code {
-    public record NavItem(string? Href, string Label, List<NavItem>? Children = null);
+    public record NavItem(string? Href, string Label, List<NavItem>? Children = null, string? Icon = null);
 
     private bool _drawerOpen = false;
     private List<NavItem> _navItems = new();
@@ -106,7 +113,7 @@
             new("#skills", SharedLocalizer["Skills"]),
             new("#career", SharedLocalizer["Career"]),
             new("#education", SharedLocalizer["Degrees"]),
-            new("#ai", SharedLocalizer["AI"]),
+            new("#ai", SharedLocalizer["AI"], Icon: Icons.Material.Filled.AutoAwesome),
             new("#life", SharedLocalizer["PersonalLife"])
         } : new()
         {

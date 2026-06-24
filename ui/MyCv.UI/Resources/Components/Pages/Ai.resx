@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Creative" xml:space="preserve">
+    <value>Creative AI on</value>
+  </data>
   <data name="Instagram" xml:space="preserve">
     <value>I created a fully autonomous Instagram account around a fictional pastry traveler. The system generates and publishes, every day without human intervention, an image and a narrative describing its journey and discoveries. It integrates multiple APIs — including AI models, social media platforms (via the Meta/Facebook API), and GitHub-based automation pipelines — to orchestrate the full workflow from generation to publication. Have a look!</value>
   </data>
@@ -125,5 +128,8 @@
   </data>
   <data name="SoftwareEngineering" xml:space="preserve">
     <value>As a developer, tech lead, and system designer, AI has become a valuable partner throughout the software lifecycle. I use it to accelerate development, explore architectural options, improve code quality, automate repetitive tasks, and challenge design decisions. Beyond productivity gains, AI also helps me stay curious and continuously experiment with new ways of building reliable and maintainable systems.</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>How I use it</value>
   </data>
 </root>

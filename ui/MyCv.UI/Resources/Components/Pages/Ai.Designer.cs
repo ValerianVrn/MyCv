@@ -61,6 +61,15 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creative AI on.
+        /// </summary>
+        public static string Creative {
+            get {
+                return ResourceManager.GetString("Creative", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to I created a fully autonomous Instagram account around a fictional pastry traveler. The system generates and publishes, every day without human intervention, an image and a narrative describing its journey and discoveries. It integrates multiple APIs — including AI models, social media platforms (via the Meta/Facebook API), and GitHub-based automation pipelines — to orchestrate the full workflow from generation to publication. Have a look!.
         /// </summary>
         public static string Instagram {
@@ -84,6 +93,15 @@ namespace MyCv.UI.Resources.Components.Pages {
         public static string SoftwareEngineering {
             get {
                 return ResourceManager.GetString("SoftwareEngineering", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How I use it.
+        /// </summary>
+        public static string Usage {
+            get {
+                return ResourceManager.GetString("Usage", resourceCulture);
             }
         }
     }

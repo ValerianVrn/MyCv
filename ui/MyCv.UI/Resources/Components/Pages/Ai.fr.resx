@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Creative" xml:space="preserve">
+    <value>Créativité et IA sur</value>
+  </data>
   <data name="Instagram" xml:space="preserve">
     <value>J'ai créé un compte Instagram entièrement autonome autour d’un voyageur pâtissier fictif. Le système génère et publie chaque jour, sans intervention humaine, une image et un texte narratif décrivant son voyage et ses découvertes. Il intègre plusieurs APIs — notamment des modèles d’IA, des plateformes sociales (via l’API Meta/Facebook) et des pipelines d’automatisation basés sur GitHub — afin d’orchestrer l’ensemble du flux, de la génération à la publication. Jetez un œil !</value>
   </data>
@@ -125,5 +128,8 @@
   </data>
   <data name="SoftwareEngineering" xml:space="preserve">
     <value>En tant que développeur, tech lead et architecte logiciel, l’IA est devenue un partenaire précieux tout au long du cycle de vie logiciel. Je l’utilise pour accélérer le développement, explorer différentes options d’architecture, améliorer la qualité du code, automatiser les tâches répétitives et challenger les choix de conception. Au-delà du gain de productivité, l’IA m’aide également à rester curieux et à expérimenter en continu de nouvelles façons de construire des systèmes fiables et maintenables.</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>Comment j'utilise l'IA</value>
   </data>
 </root>

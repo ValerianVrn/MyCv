@@ -1,7 +1,7 @@
 .ai-constellation {
   position: relative;
   width: min(400px, 90vw);
-  height: min(400px, 90vw);
+  height: min(250px, 90vw);
   margin: auto;
 }
 
@@ -40,8 +40,8 @@
   }
 
 .orbit-1 {
-  top: 20px;
-  left: 160px;
+  top: 5px;
+  left: 130px;
   animation: float 5s ease-in-out infinite;
 }
 
@@ -52,20 +52,20 @@
 }
 
 .orbit-3 {
-  bottom: 70px;
+  bottom: 10px;
   right: 40px;
   animation: float 6s ease-in-out infinite;
 }
 
 .orbit-4 {
-  bottom: 25px;
-  left: 130px;
+  bottom: 0px;
+  left: 110px;
   animation: float 8s ease-in-out infinite;
 }
 
 .orbit-5 {
-  top: 130px;
-  left: 10px;
+  top: 100px;
+  left: 30px;
   animation: float 6.5s ease-in-out infinite;
 }
 

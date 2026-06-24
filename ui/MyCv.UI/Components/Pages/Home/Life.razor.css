@@ -6,17 +6,17 @@
 }
 
 .world-map svg path {
-  fill: var(--mud-palette-surface);
-  stroke: var(--mud-palette-divider);
+  fill: rgba(255, 255, 255, 0.08);
+  stroke: rgba(255, 255, 255, 0.15);
   stroke-width: 0.5;
 }
 
 .world-map svg path.visited {
-  fill: var(--mud-palette-primary);
+  fill: #60a5fa; /* blue matching the travel icon */
 }
 
 .world-map svg path.visited:hover {
-  fill: var(--mud-palette-secondary);
+  fill: #93c5fd;
   cursor: pointer;
   transition: fill 0.2s ease;
 }

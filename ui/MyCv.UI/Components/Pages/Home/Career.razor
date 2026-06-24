@@ -5,52 +5,52 @@
 @inject IThemeService ThemeService
 @inject IConfiguration Configuration
 
+<MudPaper Class="section-tinted py-8" Square="true" Elevation="0" id="career">
+    <MudContainer>
+        <MudContainer Class="@Style.LargeBottomMargin">
+            <MudText Typo="Typo.h4" Align="Align.Center">@SharedLocalizer["Career"]</MudText>
+            @if (Configuration.GetValue<bool>("SinglePage"))
+            {
+                <MudText Typo="Typo.body1" Align="Align.Center">@CareerLocalizer["Introduction"]</MudText>
+            }
+        </MudContainer>
+        <MudContainer>
+            <MudHidden Breakpoint="Breakpoint.LgAndUp">
+                <MudExpansionPanels>
+                    @foreach (var experience in _experiences)
+                    {
+                        <ExperienceExpansionItem CompanyLogo="@experience.CompanyLogo"
+                                                 JobTitle="@experience.JobTitle"
+                                                 Company="@experience.Company"
+                                                 StartDate="@experience.StartDate"
+                                                 EndDate="@experience.EndDate"
+                                                 Place="@experience.Place"
+                                                 Projects="@experience.Projects"
+                                                 Skills="@experience.Skills"
+                                                 IsInternship="@experience.IsInternship" />
+                    }
+                </MudExpansionPanels>
+            </MudHidden>
 
-<MudContainer Class="py-8" id="career">
-    <MudContainer Class="@Style.LargeBottomMargin">
-        <MudText Typo="Typo.h4" Align="Align.Center">@SharedLocalizer["Career"]</MudText>
-        @if (Configuration.GetValue<bool>("SinglePage"))
-        {
-            <MudText Typo="Typo.body1" Align="Align.Center">@CareerLocalizer["Introduction"]</MudText>
-        }
+            <MudHidden Breakpoint="Breakpoint.LgAndUp" Invert>
+                <MudTimeline TimelinePosition="TimelinePosition.Start" Modifiers>
+                    @foreach (var experience in _experiences)
+                    {
+                        <ExperienceTimelineItem CompanyLogo="@experience.CompanyLogo"
+                                                JobTitle="@experience.JobTitle"
+                                                Company="@experience.Company"
+                                                StartDate="@experience.StartDate"
+                                                EndDate="@experience.EndDate"
+                                                Place="@experience.Place"
+                                                Projects="@experience.Projects"
+                                                Skills="@experience.Skills"
+                                                IsInternship="@experience.IsInternship" />
+                    }
+                </MudTimeline>
+            </MudHidden>
+        </MudContainer>
     </MudContainer>
-    <MudContainer Class="@Style.LargeBottomMargin">
-        <MudHidden Breakpoint="Breakpoint.LgAndUp">
-            <MudExpansionPanels>
-                @foreach (var experience in _experiences)
-                {
-                    <ExperienceExpansionItem CompanyLogo="@experience.CompanyLogo"
-                                             JobTitle="@experience.JobTitle"
-                                             Company="@experience.Company"
-                                             StartDate="@experience.StartDate"
-                                             EndDate="@experience.EndDate"
-                                             Place="@experience.Place"
-                                             Projects="@experience.Projects"
-                                             Skills="@experience.Skills"
-                                             IsInternship="@experience.IsInternship" />
-                }
-            </MudExpansionPanels>
-        </MudHidden>
-
-        <MudHidden Breakpoint="Breakpoint.LgAndUp" Invert>
-            <MudTimeline TimelinePosition="TimelinePosition.Start" Modifiers>
-                @foreach (var experience in _experiences)
-                {
-                    <ExperienceTimelineItem CompanyLogo="@experience.CompanyLogo"
-                                            JobTitle="@experience.JobTitle"
-                                            Company="@experience.Company"
-                                            StartDate="@experience.StartDate"
-                                            EndDate="@experience.EndDate"
-                                            Place="@experience.Place"
-                                            Projects="@experience.Projects"
-                                            Skills="@experience.Skills"
-                                            IsInternship="@experience.IsInternship" />
-                }
-            </MudTimeline>
-        </MudHidden>
-    </MudContainer>
-</MudContainer>
-
+</MudPaper>
 
 @code {
 

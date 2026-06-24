@@ -1,0 +1,4 @@
+/* Light mode only — alternate section tint */
+:root:not([data-mud-theme="dark"]) .section-tinted {
+  background-color: rgba(0, 0, 0, 0.06);
+}

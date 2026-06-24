@@ -169,7 +169,7 @@ namespace MyCv.UI.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The strengths of my journey: a multidisciplinary mindset for an efficient collaboration with teams, an analytic skill to solve various problems in differents contexts, a continuous learning to guarantee a quality of work and a modern tools.
+        ///   Looks up a localized string similar to The strengths of my journey: a multidisciplinary mindset for an efficient collaboration with teams, an analytic skill to solve various problems in differents contexts and a continuous learning to guarantee a quality of work and a modern tools.
         /// </summary>
         public static string Introduction {
             get {

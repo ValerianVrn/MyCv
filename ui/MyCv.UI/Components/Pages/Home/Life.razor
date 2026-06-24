@@ -5,23 +5,23 @@
 @inject IThemeService ThemeService
 @inject IConfiguration Configuration
 
-<MudContainer Class="py-8" id="life">
+<MudPaper Class="py-8 section-tinted" id="life">
+    <MudContainer>
+        @* Header *@
+        <MudContainer Class="@Style.LargeBottomMargin">
+            <MudText Typo="Typo.h4" Align="Align.Center">@SharedLocalizer["PersonalLife"]</MudText>
+            @if (Configuration.GetValue<bool>("SinglePage"))
+            {
+                <MudText Typo="Typo.body1" Align="Align.Center">@LifeLocalizer["Introduction"]</MudText>
+            }
+        </MudContainer>
 
-    @* Header *@
-    <MudContainer Class="@Style.LargeBottomMargin">
-        <MudText Typo="Typo.h4" Align="Align.Center">@SharedLocalizer["PersonalLife"]</MudText>
-        @if (Configuration.GetValue<bool>("SinglePage"))
-        {
-            <MudText Typo="Typo.body1" Align="Align.Center">@LifeLocalizer["Introduction"]</MudText>
-        }
-    </MudContainer>
-
-    @* Panel 1 – Travel *@
-    <div class="life-panel travel-panel @Style.LargeBottomMargin">
-        <MudGrid>
-            <MudItem xs="12" md="8">
-                <div class="world-map p-2 p-lg-4">
-                                            <svg xmlns:mapsvg="http://mapsvg.com"
+        @* Panel 1 – Travel *@
+        <div class="life-panel travel-panel @Style.LargeBottomMargin">
+            <MudGrid>
+                <MudItem xs="12" md="8">
+                    <div class="world-map p-2 p-lg-4">
+                        <svg xmlns:mapsvg="http://mapsvg.com"
                              xmlns:dc="http://purl.org/dc/elements/1.1/"
                              xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                              xmlns:svg="http://www.w3.org/2000/svg"
@@ -829,80 +829,80 @@
                                   id="ZW" />
                         </svg>
 
-                </div>
-            </MudItem>
-            <MudItem xs="12" md="4">
-                <MudStack Spacing="4" Class="pa-4">
-                    <MudStack Row AlignItems="AlignItems.Center" Spacing="1">
-                        <MudIcon Icon="@Icons.Material.Filled.TravelExplore" Style="color:#60a5fa" />
-                        <MudText Typo="Typo.overline" Style="color:rgba(255,255,255,0.5); letter-spacing:0.1em">
-                            @LifeLocalizer["Travel"]
+                    </div>
+                </MudItem>
+                <MudItem xs="12" md="4">
+                    <MudStack Spacing="4" Class="pa-4">
+                        <MudStack Row AlignItems="AlignItems.Center" Spacing="1">
+                            <MudIcon Icon="@Icons.Material.Filled.TravelExplore" Style="color:#60a5fa" />
+                            <MudText Typo="Typo.overline" Style="color:rgba(255,255,255,0.5); letter-spacing:0.1em">
+                                @LifeLocalizer["Travel"]
+                            </MudText>
+                        </MudStack>
+                        <MudText Typo="Typo.body1" Style="color:white">
+                            @LifeLocalizer["TravelInterest"]
                         </MudText>
                     </MudStack>
-                    <MudText Typo="Typo.body1" Style="color:white">
-                        @LifeLocalizer["TravelInterest"]
-                    </MudText>
-                </MudStack>
-            </MudItem>
-        </MudGrid>
-    </div>
+                </MudItem>
+            </MudGrid>
+        </div>
 
-    @* Panel 2 – Piano *@
-    <div class="life-panel piano-panel">
-        <MudGrid>
-            <MudItem xs="12" md="4">
-                <MudStack Spacing="4" Class="pa-4">
-                    <MudStack Row AlignItems="AlignItems.Center" Spacing="1">
-                        <MudIcon Icon="@Icons.Material.Filled.MusicNote" Style="color:#c084fc" />
-                        <MudText Typo="Typo.overline" Style="color:rgba(255,255,255,0.5); letter-spacing:0.1em">
-                            @LifeLocalizer["Piano"]
+        @* Panel 2 – Piano *@
+        <div class="life-panel piano-panel">
+            <MudGrid>
+                <MudItem xs="12" md="4">
+                    <MudStack Spacing="4" Class="pa-4">
+                        <MudStack Row AlignItems="AlignItems.Center" Spacing="1">
+                            <MudIcon Icon="@Icons.Material.Filled.MusicNote" Style="color:#c084fc" />
+                            <MudText Typo="Typo.overline" Style="color:rgba(255,255,255,0.5); letter-spacing:0.1em">
+                                @LifeLocalizer["Piano"]
+                            </MudText>
+                        </MudStack>
+                        <MudText Typo="Typo.body1" Style="color:white">
+                            @LifeLocalizer["PianoInterest"]
                         </MudText>
                     </MudStack>
-                    <MudText Typo="Typo.body1" Style="color:white">
-                        @LifeLocalizer["PianoInterest"]
-                    </MudText>
-                </MudStack>
-            </MudItem>
-            <MudItem xs="12" md="8">
-                <MudCarousel @ref="_carousel"
-                             Style="height: min(420px, 90vw);"
-                             AutoCycle="true"
-                             ShowArrows="false"
-                             ShowBullets="false"
-                             TData="object"
-                             SelectedIndexChanged="OnSlideChanged">
-                    @foreach (var piece in PianoPieces)
-                    {
-                        <MudCarouselItem>
-                            <div class="piano-slide" style="background-image: url('@piece.Image')">
-                                <div class="piano-overlay">
-                                    <MudStack Spacing="1" Class="piano-caption">
-                                        <MudText Typo="Typo.h5" Style="color:white; font-weight:700">
-                                            @piece.Composer
-                                        </MudText>
-                                        <MudText Typo="Typo.body2" Style="color:rgba(255,255,255,0.75)">
-                                            @piece.Title
-                                        </MudText>
-                                    </MudStack>
-                                    @* Manual dots *@
-                                    <MudStack Row Justify="Justify.Center" Spacing="1" Class="piano-dots">
-                                        @for (int i = 0; i < PianoPieces.Count; i++)
-                                        {
-                                            var idx = i;
-                                            <div class="@($"piano-dot {(idx == _activeIndex ? "active" : "")}")"
-                                                 @onclick="() => _carousel!.MoveTo(idx)"></div>
-                                        }
-                                    </MudStack>
+                </MudItem>
+                <MudItem xs="12" md="8">
+                    <MudCarousel @ref="_carousel"
+                                 Style="height: min(420px, 90vw);"
+                                 AutoCycle="true"
+                                 ShowArrows="false"
+                                 ShowBullets="false"
+                                 TData="object"
+                                 SelectedIndexChanged="OnSlideChanged">
+                        @foreach (var piece in PianoPieces)
+                        {
+                            <MudCarouselItem>
+                                <div class="piano-slide" style="background-image: url('@piece.Image')">
+                                    <div class="piano-overlay">
+                                        <MudStack Spacing="1" Class="piano-caption">
+                                            <MudText Typo="Typo.h5" Style="color:white; font-weight:700">
+                                                @piece.Composer
+                                            </MudText>
+                                            <MudText Typo="Typo.body2" Style="color:rgba(255,255,255,0.75)">
+                                                @piece.Title
+                                            </MudText>
+                                        </MudStack>
+                                        @* Manual dots *@
+                                        <MudStack Row Justify="Justify.Center" Spacing="1" Class="piano-dots">
+                                            @for (int i = 0; i < PianoPieces.Count; i++)
+                                            {
+                                                var idx = i;
+                                                <div class="@($"piano-dot {(idx == _activeIndex ? "active" : "")}")"
+                                                     @onclick="() => _carousel!.MoveTo(idx)"></div>
+                                            }
+                                        </MudStack>
+                                    </div>
                                 </div>
-                            </div>
-                        </MudCarouselItem>
-                    }
-                </MudCarousel>
-            </MudItem>
-        </MudGrid>
-    </div>
-
-</MudContainer>
+                            </MudCarouselItem>
+                        }
+                    </MudCarousel>
+                </MudItem>
+            </MudGrid>
+        </div>
+    </MudContainer>
+</MudPaper>
 
 <style>
     /* Shared panel style */
@@ -917,7 +917,7 @@
         background: linear-gradient(135deg, #0f172a, #1e3a5f);
     }
 
-    
+
     /* Piano — near black with warm tint */
     .piano-panel {
         background: linear-gradient(135deg, #0c0a09, #1c1917);
@@ -974,10 +974,10 @@
         transition: background 0.2s ease, transform 0.2s ease;
     }
 
-    .piano-dot.active {
-        background: white;
-        transform: scale(1.3);
-    }
+        .piano-dot.active {
+            background: white;
+            transform: scale(1.3);
+        }
 </style>
 
 @code {

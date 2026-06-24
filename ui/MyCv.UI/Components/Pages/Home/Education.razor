@@ -6,77 +6,78 @@
 @inject IConfiguration Configuration
 
 <MudPaper Class="py-8" Square="true" Elevation="0" id="education">
-
-    @* Header *@
-    <MudContainer Class="@Style.LargeBottomMargin">
-        <MudText Typo="Typo.h4" Align="Align.Center">@SharedLocalizer["Education"]</MudText>
-        @if (Configuration.GetValue<bool>("SinglePage"))
-        {
-            <MudText Typo="Typo.body1" Align="Align.Center">@EducationLocalizer["Introduction"]</MudText>
-        }
-    </MudContainer>
-
-    @* Main degrees *@
-    <MudContainer Class="@Style.LargeBottomMargin">
-        <MudGrid>
-            @foreach (var degree in _degrees)
-            {
-                <MudItem xs="12" md="4">
-                    <MudCard Class="edu-card h-100 rounded-lg" Elevation="6" Style="@($"border-top: 4px solid {degree.AccentColor}; --card-accent: {degree.AccentColor}")">
-                        <MudCardContent Class="px-4 pt-4 pb-4">
-                            <MudStack AlignItems="AlignItems.Center" Spacing="3">
-                                <MudAvatar Style="background:white; border:1px solid var(--mud-palette-divider); width:80px; height:80px;">
-                                    <MudImage Src="@degree.Image" Alt="@degree.Institution"
-                                              Width="68" Height="68" ObjectFit="ObjectFit.Contain" />
-                                </MudAvatar>
-                                <MudStack Spacing="0" AlignItems="AlignItems.Center">
-                                    <MudText Typo="Typo.h6" Align="Align.Center" Color="Color.Primary">
-                                        <strong>@degree.Name</strong>
-                                    </MudText>
-                                    <MudText Typo="Typo.body2" Align="Align.Center">@degree.Specialty</MudText>
-                                    <MudText Typo="Typo.caption" Align="Align.Center" Class="text-uppercase mt-1">
-                                        @(new MarkupString(degree.Institution))
-                                    </MudText>
-                                </MudStack>
-                                <MudStack Row Spacing="1">
-                                    <MudChip T="string" Size="Size.Small" Color="Color.Info" Variant="Variant.Outlined">@degree.year</MudChip>
-                                    <MudChip T="string" Size="Size.Small" Color="Color.Success" Variant="Variant.Outlined">@degree.Score</MudChip>
-                                </MudStack>
-                            </MudStack>
-                        </MudCardContent>
-                    </MudCard>
-                </MudItem>
-            }
-        </MudGrid>
-    </MudContainer>
-
-    @* Secondary degrees *@
     <MudContainer>
-        <MudText Typo="Typo.h6" Align="Align.Center" GutterBottom="true">@EducationLocalizer["Certifications"]</MudText>
-        <MudStack Row Justify="Justify.Center" AlignItems="AlignItems.Center" Wrap="Wrap.Wrap" Spacing="3">
-            @foreach (var certification in _secondaryDegrees)
+        @* Header *@
+        <MudContainer Class="@Style.LargeBottomMargin">
+            <MudText Typo="Typo.h4" Align="Align.Center">@SharedLocalizer["Education"]</MudText>
+            @if (Configuration.GetValue<bool>("SinglePage"))
             {
-                <MudTooltip Placement="Placement.Top" Arrow="true">
-                    <TooltipContent>
-                        <MudStack Spacing="0" AlignItems="AlignItems.Center">
-                            <MudText Typo="Typo.body2">@(new MarkupString(certification.Name))</MudText>
-                            <MudStack Row Spacing="1">
-                                <MudChip T="string" Size="Size.Small" Color="Color.Info" Variant="Variant.Outlined">@certification.year</MudChip>
-                                @if (!string.IsNullOrEmpty(certification.Detail))
-                                {
-                                    <MudChip T="string" Size="Size.Small" Color="Color.Success" Variant="Variant.Outlined">@certification.Detail</MudChip>
-                                }
-                            </MudStack>
-                        </MudStack>
-                    </TooltipContent>
-                    <ChildContent>
-                        <div class="cert-badge">
-                            <MudImage Src="@certification.Image" Alt="@certification.Name" Width="64" Height="64" ObjectFit="ObjectFit.Contain" />
-                        </div>
-                    </ChildContent>
-                </MudTooltip>
+                <MudText Typo="Typo.body1" Align="Align.Center">@EducationLocalizer["Introduction"]</MudText>
             }
-        </MudStack>
+        </MudContainer>
+
+        @* Main degrees *@
+        <MudContainer Class="@Style.LargeBottomMargin">
+            <MudGrid>
+                @foreach (var degree in _degrees)
+                {
+                    <MudItem xs="12" md="4">
+                        <MudCard Class="edu-card h-100 rounded-lg" Elevation="6" Style="@($"border-top: 4px solid {degree.AccentColor}; --card-accent: {degree.AccentColor}")">
+                            <MudCardContent Class="px-4 pt-4 pb-4">
+                                <MudStack AlignItems="AlignItems.Center" Spacing="3">
+                                    <MudAvatar Style="background:white; border:1px solid var(--mud-palette-divider); width:80px; height:80px;">
+                                        <MudImage Src="@degree.Image" Alt="@degree.Institution"
+                                                  Width="68" Height="68" ObjectFit="ObjectFit.Contain" />
+                                    </MudAvatar>
+                                    <MudStack Spacing="0" AlignItems="AlignItems.Center">
+                                        <MudText Typo="Typo.h6" Align="Align.Center" Color="Color.Primary">
+                                            <strong>@degree.Name</strong>
+                                        </MudText>
+                                        <MudText Typo="Typo.body2" Align="Align.Center">@degree.Specialty</MudText>
+                                        <MudText Typo="Typo.caption" Align="Align.Center" Class="text-uppercase mt-1">
+                                            @(new MarkupString(degree.Institution))
+                                        </MudText>
+                                    </MudStack>
+                                    <MudStack Row Spacing="1">
+                                        <MudChip T="string" Size="Size.Small" Color="Color.Info" Variant="Variant.Outlined">@degree.year</MudChip>
+                                        <MudChip T="string" Size="Size.Small" Color="Color.Success" Variant="Variant.Outlined">@degree.Score</MudChip>
+                                    </MudStack>
+                                </MudStack>
+                            </MudCardContent>
+                        </MudCard>
+                    </MudItem>
+                }
+            </MudGrid>
+        </MudContainer>
+
+        @* Secondary degrees *@
+        <MudContainer>
+            <MudText Typo="Typo.h6" Align="Align.Center" GutterBottom="true">@EducationLocalizer["Certifications"]</MudText>
+            <MudStack Row Justify="Justify.Center" AlignItems="AlignItems.Center" Wrap="Wrap.Wrap" Spacing="3">
+                @foreach (var certification in _secondaryDegrees)
+                {
+                    <MudTooltip Placement="Placement.Top" Arrow="true">
+                        <TooltipContent>
+                            <MudStack Spacing="0" AlignItems="AlignItems.Center">
+                                <MudText Typo="Typo.body2">@(new MarkupString(certification.Name))</MudText>
+                                <MudStack Row Spacing="1">
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Info" Variant="Variant.Outlined">@certification.year</MudChip>
+                                    @if (!string.IsNullOrEmpty(certification.Detail))
+                                    {
+                                        <MudChip T="string" Size="Size.Small" Color="Color.Success" Variant="Variant.Outlined">@certification.Detail</MudChip>
+                                    }
+                                </MudStack>
+                            </MudStack>
+                        </TooltipContent>
+                        <ChildContent>
+                            <div class="cert-badge">
+                                <MudImage Src="@certification.Image" Alt="@certification.Name" Width="64" Height="64" ObjectFit="ObjectFit.Contain" />
+                            </div>
+                        </ChildContent>
+                    </MudTooltip>
+                }
+            </MudStack>
+        </MudContainer>
     </MudContainer>
 </MudPaper>
 
@@ -86,8 +87,8 @@
         overflow: hidden;
     }
 
-    .edu-card:hover {
-        transform: translateY(-5px);
+        .edu-card:hover {
+            transform: translateY(-5px);
             box-shadow: 0 12px 32px rgba(0,0,0,0.15), 0 0 0 2px var(--card-accent) !important;
         }
 

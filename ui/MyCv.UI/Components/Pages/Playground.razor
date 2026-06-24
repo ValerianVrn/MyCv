@@ -1,0 +1,25 @@
+@page "/playground"
+@using MyCv.UI.Components.Layout
+@using MyCv.UI.Components.Pages.Architecture
+@using MyCv.UI.Components.Pages.Career
+@using MyCv.UI.Components.Pages.Life
+@using MyCv.UI.Components.Shared
+@using MyCv.UI.Components.Shared.Content
+@using MyCv.UI.Dtos
+@using MyCv.UI.Services
+@* @layout MainLayout *@
+@inject IWebHostEnvironment Env
+
+@if (Env.IsDevelopment())
+{
+    <MyCv.UI.Components.Pages.Home.Life />
+}
+else
+{
+    @* Optional: redirect or show nothing *@
+    @* <RedirectToLogin /> @* or NavigationManager.NavigateTo("/") *@
+}
+
+
+@code {
+}

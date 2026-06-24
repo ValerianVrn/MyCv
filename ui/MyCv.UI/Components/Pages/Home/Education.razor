@@ -1,0 +1,136 @@
+@using MyCv.UI.Services
+@inject IStringLocalizer<MyCv.UI.Resources.Shared> SharedLocalizer
+@inject IStringLocalizer<MyCv.UI.Resources.Components.Pages.Home> Localizer
+@inject IStringLocalizer<MyCv.UI.Resources.Components.Pages.Education> EducationLocalizer
+@inject IThemeService ThemeService
+@inject IConfiguration Configuration
+
+<MudPaper Class="py-8" Square="true" Elevation="0" id="education">
+    <MudContainer>
+        @* Header *@
+        <MudContainer Class="@Style.LargeBottomMargin">
+            <MudText Typo="Typo.h4" Align="Align.Center">@SharedLocalizer["Education"]</MudText>
+            @if (Configuration.GetValue<bool>("SinglePage"))
+            {
+                <MudText Typo="Typo.body1" Align="Align.Center">@EducationLocalizer["Introduction"]</MudText>
+            }
+        </MudContainer>
+
+        @* Main degrees *@
+        <MudContainer Class="@Style.LargeBottomMargin">
+            <MudGrid>
+                @foreach (var degree in _degrees)
+                {
+                    <MudItem xs="12" md="4">
+                        <MudCard Class="edu-card h-100 rounded-lg" Elevation="6" Style="@($"border-top: 4px solid {degree.AccentColor}; --card-accent: {degree.AccentColor}")">
+                            <MudCardContent Class="px-4 pt-4 pb-4">
+                                <MudStack AlignItems="AlignItems.Center" Spacing="3">
+                                    <MudAvatar Style="background:white; border:1px solid var(--mud-palette-divider); width:80px; height:80px;">
+                                        <MudImage Src="@degree.Image" Alt="@degree.Institution"
+                                                  Width="68" Height="68" ObjectFit="ObjectFit.Contain" />
+                                    </MudAvatar>
+                                    <MudStack Spacing="0" AlignItems="AlignItems.Center">
+                                        <MudText Typo="Typo.h6" Align="Align.Center" Color="Color.Primary">
+                                            <strong>@degree.Name</strong>
+                                        </MudText>
+                                        <MudText Typo="Typo.body2" Align="Align.Center">@degree.Specialty</MudText>
+                                        <MudText Typo="Typo.caption" Align="Align.Center" Class="text-uppercase mt-1">
+                                            @(new MarkupString(degree.Institution))
+                                        </MudText>
+                                    </MudStack>
+                                    <MudStack Row Spacing="1">
+                                        <MudChip T="string" Size="Size.Small" Color="Color.Info" Variant="Variant.Outlined">@degree.year</MudChip>
+                                        <MudChip T="string" Size="Size.Small" Color="Color.Success" Variant="Variant.Outlined">@degree.Score</MudChip>
+                                    </MudStack>
+                                </MudStack>
+                            </MudCardContent>
+                        </MudCard>
+                    </MudItem>
+                }
+            </MudGrid>
+        </MudContainer>
+
+        @* Secondary degrees *@
+        <MudContainer>
+            <MudText Typo="Typo.h6" Align="Align.Center" GutterBottom="true">@EducationLocalizer["Certifications"]</MudText>
+            <MudStack Row Justify="Justify.Center" AlignItems="AlignItems.Start" Wrap="Wrap.Wrap" Spacing="3">
+                @foreach (var certification in _secondaryDegrees)
+                {
+                    <MudStack AlignItems="AlignItems.Center" Spacing="1" Style="width:128px">
+                        <div class="cert-badge">
+                            <MudImage Src="@certification.Image" Alt="@certification.Name" Width="56" Height="56" ObjectFit="ObjectFit.Contain" />
+                        </div>
+                        <MudText Typo="Typo.caption" Align="Align.Center">
+                            @(new MarkupString(certification.Name))
+                        </MudText>
+                        <MudChip T="string" Size="Size.Small" Color="Color.Info" Variant="Variant.Outlined">@certification.year</MudChip>
+                        @if (!string.IsNullOrEmpty(certification.Detail))
+                        {
+                            <MudChip T="string" Size="Size.Small" Color="Color.Success" Variant="Variant.Outlined">@certification.Detail</MudChip>
+                        }
+                    </MudStack>
+                }
+            </MudStack>
+        </MudContainer>
+    </MudContainer>
+</MudPaper>
+
+<style>
+    .edu-card {
+        transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+        overflow: hidden;
+    }
+        .edu-card.active {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.15), 0 0 0 2px var(--card-accent), 0 0 16px 4px var(--card-accent) !important;
+        }
+    /* Keep hover only for desktop */
+    @@media (hover: hover) {
+        .edu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.15), 0 0 0 2px var(--card-accent), 0 0 16px 4px var(--card-accent) !important;
+        }
+    }
+
+    .cert-badge {
+        background: white;
+        border-radius: 12px;
+        padding: 10px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+        .cert-badge.active {
+            transform: translateY(-4px) scale(1.08);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+    /* Keep hover only for desktop */
+    @@media (hover: hover) {
+        .cert-badge:hover {
+            transform: translateY(-4px) scale(1.08);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+    }
+</style>
+
+@code {
+    private record Degree(int year, string Image, string Name, string Specialty, string Institution, string Score, string AccentColor);
+    private record SecondaryDegree(int year, string Image, string Name, string Detail);
+    private List<Degree> _degrees = new();
+    private List<SecondaryDegree> _secondaryDegrees = new();
+
+    protected override void OnInitialized()
+    {
+        _degrees = new()
+        {
+            new(2014, "images/degrees/tlcom_physique_strasbourg_logo.jpg", EducationLocalizer["EducationEngineeringDegree"], EducationLocalizer["EducationEngineeringDegreeTitle"], "Télécom Physique Strasbourg<br>" + EducationLocalizer["EducationPartnerOf", "Institut Mines-Télécom (IMT)"], EducationLocalizer["EducationRanked", "3e/79"], "#1976D2"),
+            new(2014, "images/degrees/universite_de_strasbourg_logo.jpg", EducationLocalizer["EducationMaster"], EducationLocalizer["EducationMasterScienceTitle"], "Université de Strasbourg", EducationLocalizer["EducationWithHighHonours"], "#00897B"),
+            new(2015, "images/degrees/em_strasbourg_logo.jpg", EducationLocalizer["EducationMaster"], EducationLocalizer["EducationMasterBusinessTitle"], "EM Strasbourg Business School", EducationLocalizer["EducationWithHighHonours"], "#F9A825")
+        };
+        _secondaryDegrees = new()
+        {
+            new(2026, "images/certifications/az-900.png", "Microsoft Certified<br>Azure Fundamentals (AZ-900)", ""),
+            new(2013, "images/certifications/toeic.png", "TOEIC", EducationLocalizer["EducationScore", "880/990"]),
+            new(2025, "images/certifications/jlpt.png", "JLPT - N5", EducationLocalizer["EducationScore", "107"]),
+        };
+    }
+}

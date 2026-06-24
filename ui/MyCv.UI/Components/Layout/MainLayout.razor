@@ -1,8 +1,11 @@
+@using MyCv.UI.Components.Shared
+@using MyCv.UI.Components.Shared.AppBar
+@using MyCv.UI.Components.Shared.Content
 @inherits LayoutComponentBase
-@inject IStringLocalizer<Resource> Localizer
+@inject IJSRuntime JS
 
 @* Required *@
-<MudThemeProvider />
+<ThemeProvider />
 <MudPopoverProvider />
 
 @* Needed for dialogs *@
@@ -13,37 +16,26 @@
 
 <MudLayout>
     @* Top bar *@
-    <MudAppBar Color="Color.Primary" Fixed="true">
-        <MudSpacer />
-        <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Href="https://github.com/ValerianVrn/MyCv" />
-        <MudIconButton Icon="@Icons.Custom.Brands.LinkedIn" Color="Color.Inherit" Href="https://www.linkedin.com/in/val%C3%A9rian-verona-a46969a5/" />
-        <MudIconButton Href="https://www.malt.fr/profile/valerianverona/">
-            <MudImage Src="images/malt-logo-red.svg" Alt="Malt" />
-        </MudIconButton>
-    </MudAppBar>
-    @* Left pane *@
-    <MudDrawer Open="true" Variant="DrawerVariant.Persistent" Elevation="8">
-        <MudDrawerHeader Class="mud-theme-tertiary">
-            <MudStack>
-                <MudStack Row="true">
-                    <MudAvatar Size="Size.Large">
-                        <MudImage Src="images/portrait.jpg" Alt="Avatar" />
-                    </MudAvatar>
-                    <MudText Typo="Typo.h6">Valérian Verona</MudText>
-                </MudStack>
-                <MudText Typo="Typo.subtitle1">@Localizer["JobTitle"]</MudText>
-            </MudStack>
-        </MudDrawerHeader>
-        @* Required for not scrolling in drawer header *@
-        <MudContainer Class="py-2" Style="overflow-y:scroll; max-height:stretch;">
-            <NavMenu />
-        </MudContainer>
-    </MudDrawer>
+    <AppBar />
+    @* Lateral menu of the page content *@
+    <Menu @ref="_menu" />
     @* Page content *@
-    <MudMainContent>
-        <MudContainer MaxWidth="MaxWidth.Medium" Class="my-6">
+    <MudMainContent data-bs-spy="scroll" data-bs-target="#content-menu">
+        @* So that header and sections can call methods of this component *@
+        <CascadingValue Value="_menu">
             @Body
-        </MudContainer>
+        </CascadingValue>
     </MudMainContent>
+    <MudDivider />
+    <Footer />
 </MudLayout>
 
+@code {
+    private Menu? _menu;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        // Use scroll spy for activating menu items when scrolling.
+        await JS.InvokeVoidAsync("eval", "new bootstrap.ScrollSpy(document.querySelector('[data-bs-spy=\"scroll\"]'))");
+    }
+}

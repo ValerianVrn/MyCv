@@ -1,8 +1,4 @@
-.mud-typography {
-  margin-bottom: 1.25rem !important;
-}
-
-.mud-alert {
-  margin-top: 0.75rem !important;
-  margin-bottom: 0.75rem !important;
+/* Light mode only — alternate section tint */
+:root:not([data-mud-theme="dark"]) .section-tinted {
+  background-color: rgba(0, 0, 0, 0.06);
 }

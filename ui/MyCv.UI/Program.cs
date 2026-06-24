@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Localization;
 using MudBlazor.Services;
 using MyCv.UI.Components;
 using MyCv.UI.Services;
@@ -6,14 +5,20 @@ using MyCv.UI.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorComponents()
+builder.Services
+    .AddRazorComponents()
     .AddInteractiveServerComponents();
 
-builder.Services.AddLocalization();
+builder.Services
+    .AddLocalization()
+    .AddControllers();
 builder.Services.AddMudServices();
-builder.Services.AddScoped<IRatingService, FakeRatingService>();
-builder.Services.AddScoped<IInsightService, FakeInsightService>();
-builder.Services.AddScoped<IVisitorService, VisitorService>();
+builder.Services
+    .AddScoped<IRatingService, FakeRatingService>()
+    .AddScoped<IInsightService, FakeInsightService>()
+    .AddScoped<IVisitorService, VisitorService>()
+    .AddScoped<IThemeService, ThemeService>()
+    .AddScoped<ILocalizationService, LocalizationService>();
 
 var app = builder.Build();
 
@@ -25,21 +30,25 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.MapControllers();
+
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 app.UseAntiforgery();
 
-app.MapRazorComponents<App>()
-    .AddInteractiveServerRenderMode();
 
 // Localization
-var supportedCultures = new[] { "en", "fr" };
+var supportedCultures = new[] { LocalizationService.English.Name, LocalizationService.French.Name };
 var localizationOptions = new RequestLocalizationOptions()
     .SetDefaultCulture(supportedCultures[1])
     .AddSupportedCultures(supportedCultures)
     .AddSupportedUICultures(supportedCultures);
 
-localizationOptions.RequestCultureProviders.Insert(0, new AcceptLanguageHeaderRequestCultureProvider());
+//localizationOptions.RequestCultureProviders.Insert(0, new AcceptLanguageHeaderRequestCultureProvider());
+app.UseRequestLocalization(localizationOptions);
+
+app.MapRazorComponents<App>()
+    .AddInteractiveServerRenderMode();
 
 app.Run();

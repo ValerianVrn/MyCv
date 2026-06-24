@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AdditionalTechnologies" xml:space="preserve">
+    <value>Technologies additionnelles</value>
+  </data>
   <data name="Architecture" xml:space="preserve">
     <value>Architecture</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="ArchitectureReference2" xml:space="preserve">
     <value>(Microsoft) ou encore des articles tels que ceux de</value>
+  </data>
+  <data name="CICDAndMonitoring" xml:space="preserve">
+    <value>CI/CD &amp; monitoring</value>
   </data>
   <data name="CommandCommandStep" xml:space="preserve">
     <value>Création de la commande</value>
@@ -183,8 +189,17 @@
   <data name="Conclusion" xml:space="preserve">
     <value>Conclusion</value>
   </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
   <data name="Content" xml:space="preserve">
     <value>Contenu</value>
+  </data>
+  <data name="CoreExpertise" xml:space="preserve">
+    <value>Expertise principale</value>
+  </data>
+  <data name="CoreTechnologyExpertise" xml:space="preserve">
+    <value>Expertise en technologies</value>
   </data>
   <data name="CQRSBenefits" xml:space="preserve">
     <value>Ce concept simple a plusieurs avantages : maintenabilité (séparation des responsabilités), scalabilité des couches de lecture et d'écriture indépendante, performance des opérations de lecture, validation des commandes et respect des règles métier...</value>
@@ -206,6 +221,27 @@
   </data>
   <data name="Degrees" xml:space="preserve">
     <value>Diplômes</value>
+  </data>
+  <data name="DevelopmentAndTesting" xml:space="preserve">
+    <value>Développement &amp; Tests</value>
+  </data>
+  <data name="DevOps" xml:space="preserve">
+    <value>DevOps</value>
+  </data>
+  <data name="DotNetExpertise" xml:space="preserve">
+    <value>Expertise .NET</value>
+  </data>
+  <data name="DownloadCV" xml:space="preserve">
+    <value>Télécharger le CV</value>
+  </data>
+  <data name="EducationAndCareer" xml:space="preserve">
+    <value>Études et carrière</value>
+  </data>
+  <data name="EducationAndCareerCaption" xml:space="preserve">
+    <value>• Diplôme d'ingénieur,&lt;br /&gt;
+• Master en robotique chirurgicale,&lt;br /&gt;
+• Master en administration des entreprises...&lt;br /&gt;
+Venez découvrir ma formation.</value>
   </data>
   <data name="EventSourcingBenefits" xml:space="preserve">
     <value>Il offre un historique complet, facilite le débogage et les requêtes temporelles, et permet de reconstruire l’état ou créer plusieurs vues.</value>
@@ -246,14 +282,20 @@
   <data name="Experiences" xml:space="preserve">
     <value>Expériences</value>
   </data>
+  <data name="Explore" xml:space="preserve">
+    <value>Explorer</value>
+  </data>
+  <data name="FooterAbout" xml:space="preserve">
+    <value>Réalisé avec MudBlazor &amp; le souci du détail.</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Accueil</value>
   </data>
   <data name="HomeHeader" xml:space="preserve">
-    <value>Bonjour. Moi c'est Valérian.</value>
+    <value>Bonjour. Moi c'est </value>
   </data>
   <data name="HomeIntroduction" xml:space="preserve">
-    <value>Bienvenue sur mon CV interactif et minimaliste qui applique le DDD avec CQRS et event sourcing en C#/.NET.</value>
+    <value>Bienvenue sur la présentation de mon profil sous forme de démo interactive de mes compétences (DDD avec CQRS et event sourcing en C#/.NET, déploiement Azure, etc.).</value>
   </data>
   <data name="HomeSourceCode" xml:space="preserve">
     <value>N'hésitez pas à consulter le code source sur</value>
@@ -342,6 +384,12 @@
   <data name="Languages" xml:space="preserve">
     <value>Langue</value>
   </data>
+  <data name="Leadership" xml:space="preserve">
+    <value>Leadership</value>
+  </data>
+  <data name="LearnMore" xml:space="preserve">
+    <value>Découvrir</value>
+  </data>
   <data name="Microservice" xml:space="preserve">
     <value>Microservice</value>
   </data>
@@ -372,11 +420,20 @@
   <data name="MicroserviceReference" xml:space="preserve">
     <value>Mes développements sont largement inspirés de ce guide Microsoft qui m'a permis de comprendre et implémenter des applications microservices :</value>
   </data>
+  <data name="MoreAboutMe" xml:space="preserve">
+    <value>En savoir davantage sur moi</value>
+  </data>
+  <data name="MoreAboutMeCaption" xml:space="preserve">
+    <value>Au-delà des compétences techniques—explorez ma carrière professionnelle, mon parcours académique et mes centres d'intérêt</value>
+  </data>
   <data name="No" xml:space="preserve">
     <value>Non</value>
   </data>
   <data name="PersonalLife" xml:space="preserve">
     <value>Vie personnelle</value>
+  </data>
+  <data name="PersonalLifeCaption" xml:space="preserve">
+    <value>Au-delà du code...</value>
   </data>
   <data name="Priority" xml:space="preserve">
     <value>Priorité</value>
@@ -393,8 +450,26 @@
   <data name="RequiredAnswer" xml:space="preserve">
     <value>Réponse requise</value>
   </data>
+  <data name="ScalableSystemDesign" xml:space="preserve">
+    <value>Conception de systèmes scalables</value>
+  </data>
+  <data name="Skills" xml:space="preserve">
+    <value>Compétences</value>
+  </data>
+  <data name="SkillsAndExpertise" xml:space="preserve">
+    <value>Compétences et Expertise</value>
+  </data>
+  <data name="SkillsCaption" xml:space="preserve">
+    <value>Compétences techniques complètes et expérience en leadership dans le développement de logiciels modernes</value>
+  </data>
+  <data name="TeamManagement" xml:space="preserve">
+    <value>Gestion d'équipe</value>
+  </data>
   <data name="Testing" xml:space="preserve">
     <value>Test</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Leader technique .NET et architecte.</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Type</value>

@@ -1,0 +1,14 @@
+@page "/career"
+@using MyCv.UI.Components.Shared
+@using MyCv.UI.Components.Shared.Content
+@inject IStringLocalizer<MyCv.UI.Resources.Shared> SharedLocalizer;
+@inject IStringLocalizer<MyCv.UI.Resources.Components.Pages.Career> Localizer;
+
+<Page>
+    <Header HeaderId="career" HeaderName="@SharedLocalizer["EducationAndCareer"]">
+        <MudText Typo="Typo.body1" GutterBottom>@Localizer["Introduction"]</MudText>
+        <MudAlert Severity="Severity.Success">@((MarkupString)Localizer["Highlights"].Value)</MudAlert>
+    </Header>
+    <Education/>
+    <Experience/>
+</Page>

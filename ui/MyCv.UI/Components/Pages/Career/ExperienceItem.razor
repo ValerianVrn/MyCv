@@ -1,0 +1,103 @@
+@inject IStringLocalizer<MyCv.UI.Resources.Shared> SharedLocalizer;
+
+<MudPaper Class="px-4 px-lg-8 py-4 py-lg-8 my-2" Outlined="true" Square="true">
+    <MudStack>
+        @* Title *@
+        <MudStack Row AlignItems="AlignItems.Center">
+            <MudImage Src="@CompanyLogo" Alt="company-logo" Width="48" Height="48" ObjectFit="ObjectFit.Contain" Class="rounded-lg border bg-white" />
+            <MudStack Spacing="0">
+                <MudText Typo="Typo.h5"><strong>@JobTitle</strong></MudText>
+                <MudText Typo="Typo.h6">@Company</MudText>
+            </MudStack>
+        </MudStack>
+        @* Date and location *@
+        <MudStack>
+            <MudText Typo="Typo.body1"><MudIcon Icon="@Icons.Material.Filled.DateRange" /> @StartDate.ToString("MMM yyyy") - @EndDate.ToString("MMM yyyy") (@_duration)</MudText>
+            <MudText Typo="Typo.body1"><MudIcon Icon="@Icons.Material.Filled.Place" /> @Place</MudText>
+            @* TODO:  add Google Maps link *@
+        </MudStack>
+        @* Projects *@
+        @foreach (var project in Projects)
+        {
+            <MudStack Spacing="0">
+                <MudText Typo="Typo.body1" GutterBottom=@(project.Tasks?.Any() ?? false)>@project.Title</MudText>
+                @if (project.Tasks?.Any() ?? false)
+                {
+                    @foreach (var task in project.Tasks)
+                    {
+                        <MudText Typo="Typo.body1">‣ @task</MudText>
+                    }
+                }
+            </MudStack>
+        }
+        @if (Skills?.Any() ?? false)
+        {
+            <MudStack Row Wrap="Wrap.Wrap">
+                @foreach (var skill in Skills)
+                {
+                    <MudChip T="string" Color="Color.Default">@skill</MudChip>
+                }
+            </MudStack>
+        }
+    </MudStack>
+</MudPaper>
+
+@code {
+    public record Project(string Title, List<string>? Tasks);
+
+    [Parameter]
+    public required string CompanyLogo { get; set; }
+
+    [Parameter]
+    public required string JobTitle { get; set; }
+
+    [Parameter]
+    public required string Company { get; set; }
+
+    [Parameter]
+    public required DateTime StartDate { get; set; }
+
+    [Parameter]
+    public required DateTime EndDate { get; set; }
+
+    [Parameter]
+    public required string Place { get; set; }
+
+    [Parameter]
+    public required List<Project> Projects { get; set; }
+
+    [Parameter]
+    public required List<string>? Skills { get; set; }
+
+    private string _duration = "";
+
+    protected override void OnParametersSet()
+    {
+        _duration = ComputeDurationString(StartDate, EndDate);
+    }
+
+    private string ComputeDurationString(DateTime start, DateTime end)
+    {
+        // Ensure chronological order
+        if (end < start)
+            (start, end) = (end, start);
+
+        // Total months difference (approximate months, adjusts for day-of-month)
+        var totalMonths = (end.Year - start.Year) * 12 + (end.Month - start.Month) + 1;
+        if (end.Day < start.Day)
+            totalMonths--;
+
+        if (totalMonths <= 0)
+            return "";
+
+        var years = totalMonths / 12;
+        var months = totalMonths % 12;
+
+        string YearPart() => years > 0 ? $"{years} {(years > 1 ? SharedLocalizer["Years"] : SharedLocalizer["Year"])}" : "";
+        string MonthPart() => months > 0 ? $"{months} {(months > 1 ? SharedLocalizer["Months"] : SharedLocalizer["Month"])}" : "";
+
+        return years > 0
+            ? (months > 0 ? $"{YearPart()} {MonthPart()}" : YearPart())
+            : MonthPart();
+    }
+}

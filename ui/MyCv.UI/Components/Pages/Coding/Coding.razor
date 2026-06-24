@@ -1,0 +1,19 @@
+@page "/coding"
+@using MyCv.UI.Components.Shared
+@using MyCv.UI.Components.Shared.Content
+
+<Page>
+    <Header HeaderId="introduction" HeaderName="Introduction" Chips="@(["Clean code", "Best practices", "Git flow", "Testing"])">
+        <MudText Typo="Typo.body1">Appliquer les bonnes pratiques permet d'assurer la maintenabilité du code, l'homogénéisation des développements...</MudText>
+        <MudAlert Severity="Severity.Success">
+            En tant que tech lead :<br />
+            - je m'assure que les meilleures pratiques sont appliquées (documentation, code review, transmission orale...)<br />
+            - je garantis une couverture de code élevée avec des tests unitaires systématiques<br />
+        </MudAlert>
+    </Header>
+    <BestPractices></BestPractices>
+    <Git></Git>
+    <DesignPatterns></DesignPatterns>
+    <UnitTests></UnitTests>
+    <FunctionalTests></FunctionalTests>
+</Page>

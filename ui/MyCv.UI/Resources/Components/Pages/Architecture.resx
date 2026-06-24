@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ArchitectureIntroduction" xml:space="preserve">
+    <value>Here is the architecture of the website you're browsing on.</value>
+  </data>
+  <data name="ArchitectureMe1" xml:space="preserve">
+    <value>What I can offer:</value>
+  </data>
+  <data name="ArchitectureMe2" xml:space="preserve">
+    <value>- a design based on popular sources in accordance with the project's constraints</value>
+  </data>
+  <data name="ArchitectureMe3" xml:space="preserve">
+    <value>- a CQRS &amp; event sourcing expertise</value>
+  </data>
+  <data name="ArchitectureMicroservice" xml:space="preserve">
+    <value>This is an app based on microservices where two domain-driven design (DDD) patterns are implemented: Command and Query Responsibility Segregation (CQRS) et event sourcing.</value>
+  </data>
+  <data name="ArchitectureReference1" xml:space="preserve">
+    <value>The code is inspired from many references like</value>
+  </data>
+  <data name="ArchitectureReference2" xml:space="preserve">
+    <value>(Microsoft) or blogs like those from</value>
+  </data>
+  <data name="CommandCommandStep" xml:space="preserve">
+    <value>Creation of the command</value>
+  </data>
+  <data name="CommandCommandStepValidation" xml:space="preserve">
+    <value>Simple rules validation: mark value between 0 and 5.</value>
+  </data>
+  <data name="CommandDomainStep" xml:space="preserve">
+    <value>Creation of the aggregate</value>
+  </data>
+  <data name="CommandDomainStepValidation" xml:space="preserve">
+    <value>Business rules validation: the profile is recommended but the mark is below 3.</value>
+  </data>
+  <data name="Commands" xml:space="preserve">
+    <value>Commands</value>
+  </data>
+  <data name="CommandSaveStep" xml:space="preserve">
+    <value>Aggregate saving</value>
+  </data>
+  <data name="CommandSaveStepValidation" xml:space="preserve">
+    <value>Let's see the queries now!</value>
+  </data>
+  <data name="CommandsDescription" xml:space="preserve">
+    <value>This sequence diagram is a simplification of the writing process.</value>
+  </data>
+  <data name="CommandSendStep" xml:space="preserve">
+    <value>POST request sending</value>
+  </data>
+  <data name="CommandSendStepValidation" xml:space="preserve">
+    <value>Front-end validation of the form: required recommendation's field.</value>
+  </data>
+  <data name="CommandsExample" xml:space="preserve">
+    <value>Let's start by creating a command to add a rate about the website:</value>
+  </data>
+  <data name="CommandsRecommendation" xml:space="preserve">
+    <value>Would you recommend my profile?</value>
+  </data>
+  <data name="CommandsSatisfaction" xml:space="preserve">
+    <value>How much are you satisfied?</value>
+  </data>
+  <data name="CQRSBenefits" xml:space="preserve">
+    <value>This concept has many advantages: maintenance (responsibility segregation), scalability of read and write, performance of read operations, command validation and business rules respect...</value>
+  </data>
+  <data name="CQRSDefinition" xml:space="preserve">
+    <value>CQRS is an architecture pattern where queries ("read") and commands ("write") are separated.</value>
+  </data>
+  <data name="CQRSDiagram" xml:space="preserve">
+    <value>This sequence diagram is a simplification of the write process then the read process triggered by REST queries.</value>
+  </data>
+  <data name="CQRSExample" xml:space="preserve">
+    <value>What's better than a practical example? Here we go!</value>
+  </data>
+  <data name="CQRSService" xml:space="preserve">
+    <value>Here, the "Rating" service applies CQRS to handle the scores of the visitors of this website.</value>
+  </data>
+  <data name="EventSourcingBenefits" xml:space="preserve">
+    <value>It gives a complete history, ease the debugging and temporal requests, and can rebuild the state of the system.</value>
+  </data>
+  <data name="EventSourcingDefinition1" xml:space="preserve">
+    <value>Event sourcing is a pattern where state changes are saved like a sequence of immutable events rather than changing the current state directly. A very concrete example is a </value>
+  </data>
+  <data name="EventSourcingDefinition2" xml:space="preserve">
+    <value> where the current state would be the result of all the moves of the players (events).</value>
+  </data>
+  <data name="EventSourcingDefinitionLink" xml:space="preserve">
+    <value>chess game</value>
+  </data>
+  <data name="EventSourcingReadResult" xml:space="preserve">
+    <value>The read database is updated on each event to compute the 3 top reasons which make you read this:</value>
+  </data>
+  <data name="EventSourcingService" xml:space="preserve">
+    <value>Here, the "Insight" service applies CQRS + event sourcing to handle what you expect from my profile and why you are on this website.</value>
+  </data>
+  <data name="EventSourcingWrite" xml:space="preserve">
+    <value>Every event is store in an append-only database.</value>
+  </data>
+  <data name="EventSourcingWriteBenefits" xml:space="preserve">
+    <value>Why it's great? Because the current state is known but you can also replay all the events or get the state at a specific moment.</value>
+  </data>
+  <data name="EventSourcingWriteExample" xml:space="preserve">
+    <value>Let's see what it means with this example:</value>
+  </data>
+  <data name="EventSourcingWriteExampleInstructions" xml:space="preserve">
+    <value>Please choose one or more reasons that lead you here, drop them in the zone and order them by pertinence:</value>
+  </data>
+  <data name="EventSourcingWriteExampleResult" xml:space="preserve">
+    <value>This is the result in the event store:</value>
+  </data>
+  <data name="EventSourcingWriteIllustration" xml:space="preserve">
+    <value>This is useful whatever the field is: what were the treatments of a patient? How where the state of the drones before they crashed? What did the player when the bug happened?...</value>
+  </data>
+  <data name="Intent" xml:space="preserve">
+    <value>Intent</value>
+  </data>
+  <data name="IntentBoredom" xml:space="preserve">
+    <value>Getting bored</value>
+  </data>
+  <data name="IntentBoredomDescription" xml:space="preserve">
+    <value>Killing time (no offense!)</value>
+  </data>
+  <data name="IntentBrowsing" xml:space="preserve">
+    <value>Browsing</value>
+  </data>
+  <data name="IntentBrowsingDescription" xml:space="preserve">
+    <value>Browsing tech portfolios</value>
+  </data>
+  <data name="IntentCollaboration" xml:space="preserve">
+    <value>Collaboration</value>
+  </data>
+  <data name="IntentCollaborationDescription" xml:space="preserve">
+    <value>Looking for collaboration</value>
+  </data>
+  <data name="IntentCurious" xml:space="preserve">
+    <value>Curious</value>
+  </data>
+  <data name="IntentCuriousDescription" xml:space="preserve">
+    <value>Curious about your work</value>
+  </data>
+  <data name="IntentFreelance" xml:space="preserve">
+    <value>Freelance hunting</value>
+  </data>
+  <data name="IntentFreelanceDescription" xml:space="preserve">
+    <value>Looking for contractors/freelancers</value>
+  </data>
+  <data name="IntentHelping" xml:space="preserve">
+    <value>Helping</value>
+  </data>
+  <data name="IntentHelpingDescription" xml:space="preserve">
+    <value>Helping Valérian for free because I'm nice</value>
+  </data>
+  <data name="IntentMisclick" xml:space="preserve">
+    <value>Misclick</value>
+  </data>
+  <data name="IntentMisclickDescription" xml:space="preserve">
+    <value>I misclicked!</value>
+  </data>
+  <data name="IntentNetworking" xml:space="preserve">
+    <value>Networking</value>
+  </data>
+  <data name="IntentNetworkingDescription" xml:space="preserve">
+    <value>Networking</value>
+  </data>
+  <data name="IntentPost" xml:space="preserve">
+    <value>Following up</value>
+  </data>
+  <data name="IntentPostDescription" xml:space="preserve">
+    <value>Following up after a talk/post</value>
+  </data>
+  <data name="IntentRecruiting" xml:space="preserve">
+    <value>Recruiting</value>
+  </data>
+  <data name="IntentRecruitingDescription" xml:space="preserve">
+    <value>Recruiting / Hiring</value>
+  </data>
+  <data name="IntentReputation" xml:space="preserve">
+    <value>Reputation</value>
+  </data>
+  <data name="IntentReputationDescription" xml:space="preserve">
+    <value>Heard about you</value>
+  </data>
+  <data name="IntentReviewing" xml:space="preserve">
+    <value>Reviewing</value>
+  </data>
+  <data name="IntentReviewingDescription" xml:space="preserve">
+    <value>Reviewing your resume</value>
+  </data>
+  <data name="Microservice" xml:space="preserve">
+    <value>Microservice</value>
+  </data>
+  <data name="MicroserviceAPI" xml:space="preserve">
+    <value>A gateway (YARP) to avoid a direct access and coupling the services with the interface.</value>
+  </data>
+  <data name="MicroserviceAPIContent" xml:space="preserve">
+    <value>This avoids coupling the services with the interface and also secure the app with a single entrypoint.</value>
+  </data>
+  <data name="MicroserviceBackend" xml:space="preserve">
+    <value>Two microservices which communicate with RabbitMQ and use their own databases (EventStoreDB, MongoDB).</value>
+  </data>
+  <data name="MicroserviceBackendContent" xml:space="preserve">
+    <value>Two microservices which communicate with RabbitMQ and use their own databases (EventStoreDB, MongoDB).</value>
+  </data>
+  <data name="MicroserviceDescription" xml:space="preserve">
+    <value>Here is a short description of the architecture of this project:</value>
+  </data>
+  <data name="MicroserviceDocker" xml:space="preserve">
+    <value>The apps are containerized with Docker and launched through Docker Compose.</value>
+  </data>
+  <data name="MicroserviceFrontend" xml:space="preserve">
+    <value>A user interface developed with Blazor Server and MudBlazor.</value>
+  </data>
+  <data name="MicroserviceFrontendContent" xml:space="preserve">
+    <value>I'm also comfortable with Bootstrap and I've done a ReactJS website.</value>
+  </data>
+  <data name="MicroserviceReference" xml:space="preserve">
+    <value>My developments are widely inspired from this Microsoft guide which helped me to understand and implement microservices apps:</value>
+  </data>
+  <data name="QueriesExample" xml:space="preserve">
+    <value>Let's see now the last scores:</value>
+  </data>
+</root>

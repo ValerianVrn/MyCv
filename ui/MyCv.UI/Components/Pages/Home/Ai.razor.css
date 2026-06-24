@@ -1,0 +1,92 @@
+.ai-constellation {
+  position: relative;
+  width: min(400px, 90vw);
+  height: min(250px, 90vw);
+  margin: auto;
+}
+
+.ai-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  transform: translate(-50%,-50%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(255,255,255,.15), 0 0 80px rgba(255,255,255,.1);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.ai-node {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  padding: 10px;
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 10px rgba(255,255,255,.10);
+  transition: all .3s;
+}
+
+  .ai-node:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 25px rgba(255,255,255,.25);
+  }
+
+.orbit-1 {
+  top: 5px;
+  left: 130px;
+  animation: float 5s ease-in-out infinite;
+}
+
+.orbit-2 {
+  top: 90px;
+  right: 20px;
+  animation: float 7s ease-in-out infinite;
+}
+
+.orbit-3 {
+  bottom: 10px;
+  right: 40px;
+  animation: float 6s ease-in-out infinite;
+}
+
+.orbit-4 {
+  bottom: 0px;
+  left: 110px;
+  animation: float 8s ease-in-out infinite;
+}
+
+.orbit-5 {
+  top: 100px;
+  left: 30px;
+  animation: float 6.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+  0%,100% {
+    transform: translate(-50%,-50%) scale(1);
+  }
+
+  50% {
+    transform: translate(-50%,-50%) scale(1.05);
+  }
+}
+
+@keyframes float {
+
+  0%,100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}

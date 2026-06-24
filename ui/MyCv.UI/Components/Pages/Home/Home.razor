@@ -1,0 +1,22 @@
+@page "/"
+@using MyCv.UI.Components.Shared
+@using MyCv.UI.Components.Shared.Content
+
+<Hero />
+<Skill />
+<Career />
+<Education />
+<Ai />
+<Life />
+<SpotlightObserver Selectors='[".skill-card", ".edu-card"]' />
+
+@code {
+
+    [CascadingParameter]
+    public required Menu Menu { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Menu.Close();
+    }
+}

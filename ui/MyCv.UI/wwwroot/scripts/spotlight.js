@@ -34,7 +34,7 @@ window.spotlight = {
       chips.forEach(function (c) {
         c.classList.toggle('active', entries[0].isIntersecting);
       });
-    }, { rootMargin: '-50% 0px -50% 0px', threshold: 0 });
+    }, { rootMargin: '-10% 0px -90% 0px', threshold: 0 });
     obs.observe(section);
   }
 };

@@ -33,7 +33,7 @@
             <MudItem xs="12" md="6" Class="d-flex justify-center">
                 <div class="ai-constellation">
                     <div class="ai-center">
-                        <MudText Typo="Typo.h5" Style="color:white">AI</MudText>
+                        <MudText Typo="Typo.h5" Style="color:white">@SharedLocalizer["AI"]</MudText>
                     </div>
                     <img src="images/ai/openai.svg" class="ai-node orbit orbit-1" alt="GPT" />
                     <img src="images/ai/claude.svg" class="ai-node orbit orbit-2" alt="Claude" />
@@ -47,7 +47,7 @@
 
     @* Divider *@
     <MudContainer Class="@Style.LargeBottomMargin">
-        <MudDivider Style="border-color:rgba(255,255,255,0.12)" />
+        <MudDivider Style="border-color:rgba(255,255,255,0.5)" />
     </MudContainer>
 
     @* Block 2 – Creative AI showcase *@
@@ -174,9 +174,9 @@
     private record InstagramPost(string Url, bool IsVideo = false);
     private List<InstagramPost> _instagramPosts = new()
     {
-        new("images/instagram/post-1.png"),
-        new("images/instagram/post-2.png"),
-        new("images/instagram/post-3.png"),
+        new("images/instagram/post-1.jpg"),
+        new("images/instagram/post-2.jpg"),
+        new("images/instagram/post-3.jpg"),
         new("videos/instagram-post.mp4", true)
     };
 }

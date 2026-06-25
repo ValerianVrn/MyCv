@@ -35,22 +35,31 @@
         <MudDivider />
     }
     @* Projects *@
-    @foreach (var project in Projects)
-    {
-        <MudStack Spacing="1">
-            <MudText Typo="Typo.subtitle2"><strong>@project.Title</strong></MudText>
-            @foreach (var task in project.Tasks ?? [])
-            {
-                <MudStack Row AlignItems="AlignItems.Start" Spacing="1">
-                    <MudIcon Icon="@Icons.Material.Filled.ChevronRight" Size="Size.Small"
-                             Color="@(IsInternship ? Color.Default : Color.Info)"
-                             Style="margin-top:2px" />
-                    <MudText Typo="Typo.body2">@task</MudText>
-                </MudStack>
-            }
-        </MudStack>
-    }
-
+    <MudContainer Gutters=false>
+        @foreach (var project in Projects)
+        {
+            <MudStack Spacing="1">
+                @if (project.Tasks?.Any() ?? false)
+                {
+                    <MudText Typo="Typo.subtitle2"><strong>@project.Title</strong></MudText>
+                    @foreach (var task in project.Tasks ?? [])
+                    {
+                        <MudStack Row AlignItems="AlignItems.Start" Spacing="1">
+                            <MudIcon Icon="@Icons.Material.Filled.ChevronRight" Size="Size.Small" Color="Color.Info" Style="margin-top:2px" />
+                            <MudText Typo="Typo.body2">@task</MudText>
+                        </MudStack>
+                    }
+                }
+                else
+                {
+                    <MudStack Row AlignItems="AlignItems.Start" Spacing="1">
+                        <MudIcon Icon="@Icons.Material.Filled.ChevronRight" Size="Size.Small" Color="Color.Info" Style="margin-top:2px" />
+                        <MudText Typo="Typo.subtitle2">@project.Title</MudText>
+                    </MudStack>
+                }
+            </MudStack>
+        }
+    </MudContainer>
     @* Skills *@
     @if (Skills?.Any() ?? false)
     {

@@ -59,10 +59,9 @@
             @foreach (var skill in Skills)
             {
                 <MudChip T="string"
-                         Color="@(IsInternship ? Color.Default : Color.Info)"
+                         Color="Color.Info"
                          Variant="Variant.Outlined"
-                         Size="Size.Small"
-                         Class="@(IsInternship ? "" : "core-chip")">
+                         Size="Size.Small">
                     @skill
                 </MudChip>
             }

@@ -1,0 +1,16 @@
+@using MyCv.UI.Wasm.Shared
+@inherits LayoutComponentBase
+
+@* Required *@
+<ThemeProvider />
+<MudPopoverProvider />
+
+@* Needed for dialogs *@
+<MudDialogProvider />
+
+@* Needed for snackbars *@
+<MudSnackbarProvider />
+
+<MudLayout>
+    @Body
+</MudLayout>

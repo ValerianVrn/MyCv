@@ -1,0 +1,21 @@
+@* Main content of the page *@
+<MudContainer MaxWidth="MaxWidth.ExtraExtraLarge">
+    <MudStack Spacing="10" Justify="Justify.Center">
+        <CascadingValue Value="Menu">
+            @ChildContent
+        </CascadingValue>
+    </MudStack>
+</MudContainer>
+
+@code {
+    [CascadingParameter]
+    public required Menu Menu { get; set; }
+
+    [Parameter]
+    public required RenderFragment ChildContent { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        Menu.ClearSections();
+    }
+}

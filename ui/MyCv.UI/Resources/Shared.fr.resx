@@ -118,8 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="AI" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="AI" xml:space="preserve">
+    <value>IA</value>
   </data>
   <data name="Architecture" xml:space="preserve">
     <value>Architecture</value>

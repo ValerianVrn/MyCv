@@ -1,0 +1,45 @@
+@using MyCv.UI.Wasm.Layout
+@using MyCv.UI.Wasm.Services
+@inject IDialogService DialogService
+@inject ILocalizationService LocalizationService
+
+<MudMenu Icon="@Icons.Material.Filled.Language">
+    @foreach (var language in _languages)
+    {
+        <MudMenuItem OnClick="@(()=>SetLanguage(language.CultureInfo))">
+            <span class=@language.IconClass></span> @language.Name
+        </MudMenuItem>
+    }
+</MudMenu>
+
+@code {
+
+    private record Language(CultureInfo CultureInfo, string IconClass, string Name);
+
+    private List<Language> _languages = new()
+    {
+        new(MyCv.UI.Wasm.Services.LocalizationService.English, "fi fi-gb", "English"),
+        new(MyCv.UI.Wasm.Services.LocalizationService.French, "fi fi-fr", "Français"),
+        new(MyCv.UI.Wasm.Services.LocalizationService.Japanese, "fi fi-jp", "日本語")
+    };
+
+    private void SetLanguage(CultureInfo cultureInfo)
+    {
+        if (cultureInfo == MyCv.UI.Wasm.Services.LocalizationService.Japanese)
+        {
+            var options = new DialogOptions { CloseOnEscapeKey = true };
+
+            DialogService.ShowAsync<JapaneseDialog>(null, options);
+        }
+        else
+        {
+            LocalizationService.SetCulture(cultureInfo);
+            LocalizationService.ApplySelectedCultureAsync();
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        LocalizationService.SetCulture(CultureInfo.CurrentCulture);
+    }
+}

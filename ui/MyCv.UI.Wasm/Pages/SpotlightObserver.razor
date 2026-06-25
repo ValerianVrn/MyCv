@@ -1,0 +1,16 @@
+@inject IJSRuntime JS
+
+@code {
+    [Parameter]
+    public string[] Selectors { get; set; } = [];
+
+    [Parameter]
+    public string RootMargin { get; set; } = "-20% 0px -60% 0px";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender) return;
+        await JS.InvokeVoidAsync("spotlight.init", Selectors, RootMargin);
+        await JS.InvokeVoidAsync("spotlight.highlightAll", "#skills", ".core-chip");
+    }
+}

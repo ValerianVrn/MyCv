@@ -1,0 +1,41 @@
+@using MyCv.UI.Wasm.Shared
+@using MyCv.UI.Wasm.Shared.AppBar
+@using MyCv.UI.Wasm.Shared.Content
+@inherits LayoutComponentBase
+@inject IJSRuntime JS
+
+@* Required *@
+<ThemeProvider />
+<MudPopoverProvider />
+
+@* Needed for dialogs *@
+<MudDialogProvider />
+
+@* Needed for snackbars *@
+<MudSnackbarProvider />
+
+<MudLayout>
+    @* Top bar *@
+    <AppBar />
+    @* Lateral menu of the page content *@
+    <Menu @ref="_menu" />
+    @* Page content *@
+    <MudMainContent data-bs-spy="scroll" data-bs-target="#content-menu">
+        @* So that header and sections can call methods of this component *@
+        <CascadingValue Value="_menu">
+            @Body
+        </CascadingValue>
+    </MudMainContent>
+    <MudDivider />
+    <Footer />
+</MudLayout>
+
+@code {
+    private Menu? _menu;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        // Use scroll spy for activating menu items when scrolling.
+        await JS.InvokeVoidAsync("eval", "new bootstrap.ScrollSpy(document.querySelector('[data-bs-spy=\"scroll\"]'))");
+    }
+}

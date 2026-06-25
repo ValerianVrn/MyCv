@@ -17,7 +17,6 @@
   align-items: center;
   justify-content: center;
   background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(10px);
   box-shadow: 0 0 20px rgba(255,255,255,.15), 0 0 80px rgba(255,255,255,.1);
   animation: pulse 4s ease-in-out infinite;
 }
@@ -29,7 +28,6 @@
   border-radius: 50%;
   padding: 10px;
   background: rgba(255,255,255,0.04);
-  backdrop-filter: blur(10px);
   box-shadow: 0 0 10px rgba(255,255,255,.10);
   transition: all .3s;
 }

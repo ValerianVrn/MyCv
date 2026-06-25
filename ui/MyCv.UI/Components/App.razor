@@ -24,6 +24,14 @@
 <body>
     <Routes @rendermode="InteractiveServer" />
     <script src="_framework/blazor.web.js"></script>
+    @* Prevent the "Attempting to reconnect to the server" message to be displayed (Blazor Server/SignalR issue) *@
+    <script>
+        Blazor.start({
+            reconnectionHandler: {
+                onConnectionDown: () => window.location.reload()
+            }
+        });
+    </script>
     <script src="_content/MudBlazor/MudBlazor.min.js"></script>
     <script src="scripts/visitoridstorage.js"></script>
     <script src="scripts/spotlight.js"></script>

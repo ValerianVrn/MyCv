@@ -61,33 +61,31 @@
 }
 
 .loader-bar {
-  width: clamp(180px, 40vw, 280px);
+  position: relative;
+  width: 260px;
   height: 2px;
   background: rgba(255,255,255,0.08);
   border-radius: 2px;
   overflow: hidden;
-  margin-top: 20px;
-  position: relative;
+  background: rgba(255,255,255,.08);
 }
 
 .loader-bar-fill {
-  position: absolute;
-  left: -50%;
-  top: 0;
+  width: 100px;
   height: 100%;
-  width: 50%;
-  background: linear-gradient(90deg, transparent, #5b8fff, #9b5cff, transparent);
-  border-radius: 2px;
-  animation: shimmer 1.6s ease-in-out infinite;
+  background: linear-gradient( 90deg, transparent, #4f8cff, #9b5cff, transparent);
+  transform: translate3d(-160px,0,0);
+  animation: shimmer 1.5s linear infinite;
+  will-change: transform;
 }
 
 @keyframes shimmer {
-  0% {
-    left: -50%;
+  from {
+        transform: translate3d(-160px,0,0);
   }
 
-  100% {
-    left: 100%;
+    to {
+        transform: translate3d(320px,0,0);
   }
 }
 

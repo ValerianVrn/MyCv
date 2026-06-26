@@ -61,34 +61,30 @@
 }
 
 .loader-bar {
-  width: clamp(180px, 40vw, 280px);
-  height: 2px;
-  background: rgba(255,255,255,0.08);
-  border-radius: 2px;
-  overflow: hidden;
-  margin-top: 20px;
   position: relative;
+  width: 260px;
+  height: 2px;
+  overflow: hidden;
+  background: rgba(255,255,255,.08);
 }
 
 .loader-bar-fill {
-  position: absolute;
-  left: -50%;
-  top: 0;
+  width: 100px;
   height: 100%;
-  width: 50%;
-  background: linear-gradient(90deg, transparent, #5b8fff, #9b5cff, transparent);
-  border-radius: 2px;
-  animation: shimmer 1.6s ease-in-out infinite;
+  background: linear-gradient( 90deg, transparent, #4f8cff, #9b5cff, transparent);
+  transform: translate3d(-160px,0,0);
+  animation: shimmer 1.5s linear infinite;
+  will-change: transform;
 }
 
 @keyframes shimmer {
-  0% {
-    left: -50%;
-  }
+  from {
+        transform: translate3d(-160px,0,0);
+    }
 
-  100% {
-    left: 100%;
-  }
+    to {
+        transform: translate3d(320px,0,0);
+    }
 }
 
 .loader-text {
@@ -96,4 +92,62 @@
   letter-spacing: 1px;
   color: rgba(255,255,255,0.3);
   margin-top: 6px;
+}
+
+.loader-bubble {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+.b1 {
+  width: 12px;
+  height: 12px;
+  background: rgba(120, 160, 255, 0.5);
+  top: calc(50% + 30px);
+  left: calc(55% + 50px);
+  animation: bubble-float 4s ease-in-out infinite;
+}
+
+.b2 {
+  width: 8px;
+  height: 8px;
+  background: rgba(140, 100, 255, 0.4);
+  top: calc(50% + 60px);
+  left: calc(30% - 50px);
+  animation: bubble-float 5.5s ease-in-out infinite;
+  animation-delay: -1.5s;
+}
+
+.b3 {
+  width: 10px;
+  height: 10px;
+  background: rgba(80, 140, 255, 0.45);
+  top: calc(50% - 80px);
+  left: calc(80% - 50px);
+  animation: bubble-float 5s ease-in-out infinite;
+  animation-delay: -2.5s;
+}
+
+.b4 {
+  width: 8px;
+  height: 8px;
+  background: rgba(100, 120, 255, 0.4);
+  top: calc(50% + 80px);
+  left: calc(68% - 30px);
+  animation: bubble-float 6s ease-in-out infinite;
+  animation-delay: -0.8s;
+}
+
+@keyframes bubble-float {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: translate3d(0, -56px, 0);
+    opacity: 0.8;
+  }
 }

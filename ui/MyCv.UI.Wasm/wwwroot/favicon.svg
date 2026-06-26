@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#5b8fff"/>
+      <stop offset="100%" stop-color="#9b5cff"/>
+    </linearGradient>
+    <!-- Dark circle background matching loader -->
+    <radialGradient id="bg" cx="40%" cy="40%">
+      <stop offset="0%"   stop-color="#0d1b3e"/>
+      <stop offset="100%" stop-color="#050810"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+
+  <!-- Single bold initial -->
+  <text x="50%" y="55%"
+        dominant-baseline="middle"
+        text-anchor="middle"
+        font-family="system-ui, sans-serif"
+        font-weight="700"
+        font-size="42"
+        fill="url(#g)">V</text>
+</svg>

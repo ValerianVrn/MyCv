@@ -1,0 +1,74 @@
+@page "/playground"
+@using Microsoft.AspNetCore.Components.WebAssembly.Hosting
+@inject IWebAssemblyHostEnvironment Env
+
+@if (Env.IsDevelopment())
+{
+
+
+    <div id="app">
+        <div id="loader">
+            <svg class="loader-shapes" xmlns="http://www.w3.org/2000/svg"
+                 viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice">
+
+                <path fill="none" stroke="rgba(80,130,255,0.18)" stroke-width="1.5"
+                      d="M-100 400 C 150 200, 350 500, 600 300 S 900 100, 1100 350">
+                    <animateTransform attributeName="transform" type="translate"
+                                      values="0,0; 0,-20; 0,0" dur="8s" repeatCount="indefinite" />
+                </path>
+                <path fill="none" stroke="rgba(100,110,255,0.10)" stroke-width="1"
+                      d="M-100 420 C 150 220, 350 520, 600 320 S 900 120, 1100 370">
+                    <animateTransform attributeName="transform" type="translate"
+                                      values="0,0; 0,-20; 0,0" dur="8s" begin="0.3s" repeatCount="indefinite" />
+                </path>
+
+                <path fill="none" stroke="rgba(120,80,255,0.15)" stroke-width="1.5"
+                      d="M-100 500 C 100 300, 400 600, 650 350 S 950 150, 1100 450">
+                    <animateTransform attributeName="transform" type="translate"
+                                      values="0,0; 0,20; 0,0" dur="10s" repeatCount="indefinite" />
+                </path>
+                <path fill="none" stroke="rgba(140,80,255,0.08)" stroke-width="1"
+                      d="M-100 520 C 100 320, 400 620, 650 370 S 950 170, 1100 470">
+                    <animateTransform attributeName="transform" type="translate"
+                                      values="0,0; 0,20; 0,0" dur="10s" begin="0.4s" repeatCount="indefinite" />
+                </path>
+
+                <path fill="none" stroke="rgba(70,150,255,0.12)" stroke-width="1.5"
+                      d="M 200 -50 C 100 200, 500 100, 550 400 S 400 600, 700 650">
+                    <animateTransform attributeName="transform" type="translate"
+                                      values="0,0; 0,-15; 0,0" dur="9s" repeatCount="indefinite" />
+                </path>
+
+                <path fill="none" stroke="rgba(100,100,255,0.10)" stroke-width="1"
+                      d="M 700 -50 C 900 100, 800 350, 950 400 S 1050 550, 850 680">
+                    <animateTransform attributeName="transform" type="translate"
+                                      values="0,0; 0,15; 0,0" dur="11s" repeatCount="indefinite" />
+                </path>
+
+                <circle cx="550" cy="300" r="3" fill="rgba(120,160,255,0.4)" />
+                <circle cx="300" cy="420" r="2" fill="rgba(140,100,255,0.3)" />
+                <circle cx="800" cy="200" r="2.5" fill="rgba(80,140,255,0.35)" />
+                <circle cx="680" cy="490" r="2" fill="rgba(100,120,255,0.3)" />
+            </svg>
+
+            <div class="loader-content">
+                <div class="loader-monogram">GD</div>
+                <div class="loader-name">Guillaume Deslandes</div>
+                <div class="loader-subtitle">SOFTWARE ENGINEER · CLOUD · AI</div>
+                <div class="loader-bar">
+                    <div class="loader-bar-fill"></div>
+                </div>
+                <div class="loader-text">Loading portfolio...</div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    @* Optional: redirect or show nothing *@
+    @* <RedirectToLogin /> @* or NavigationManager.NavigateTo("/") *@
+}
+
+
+@code {
+}

@@ -1,0 +1,27 @@
+<MudContainer Gutters="false">
+    <MudText Typo="Typo.h2" Align="Align.Left" id="@HeaderId">
+        @HeaderName
+        @if (Chips?.Any() ?? false)
+        {
+            foreach(var chip in Chips)
+            {
+                <MudChip T="string" Color="Color.Default">@chip</MudChip>
+            }
+        }
+    </MudText>
+    @ChildContent
+</MudContainer>
+
+@code {
+    [Parameter]
+    public required string HeaderId { get; set; }
+
+    [Parameter]
+    public required string HeaderName { get; set; }
+
+    [Parameter]
+    public List<string>? Chips { get; set; }
+
+    [Parameter]
+    public required RenderFragment ChildContent { get; set; }
+}

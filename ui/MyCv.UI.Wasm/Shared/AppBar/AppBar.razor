@@ -1,0 +1,119 @@
+@using MyCv.UI.Wasm.Services
+@inject IStringLocalizer<Resources.Components.Layout.AppBar> Localizer
+@inject IStringLocalizer<Resources.Shared> SharedLocalizer
+@inject IThemeService ThemeService
+@inject IConfiguration Configuration
+
+<!-- Drawer (sidebar for mobile) -->
+<MudDrawer @bind-Open="_drawerOpen" Variant="DrawerVariant.Temporary" Elevation="1">
+    @* Tool bar *@
+    <MudToolBar Dense="true">
+        <MudIconButton Icon="@Icons.Material.Rounded.Close" OnClick="() => _drawerOpen = !_drawerOpen" />
+        <MudSpacer />
+        <LanguageMenu />
+    </MudToolBar>
+    @* Navigation menu *@
+    <MudNavMenu>
+        <MudDivider />
+        @foreach (var navItem in _navItems)
+        {
+            if (navItem.Children is null)
+            {
+                <MudNavLink Href="@navItem.Href" Match="NavLinkMatch.All" Icon="@navItem.Icon" Class="@(navItem.Icon != null ? "ai-nav-link" : "")">@navItem.Label</MudNavLink>
+            }
+            else
+            {
+                <MudNavGroup Title="@navItem.Label" Expanded="true">
+                    @foreach (var child in navItem.Children)
+                    {
+                        <MudNavLink Href="@child.Href">@child.Label</MudNavLink>
+                    }
+                </MudNavGroup>
+            }
+        }
+    </MudNavMenu>
+    <MudSpacer />
+    <MudContainer>
+        <MudButton StartIcon="@Icons.Material.Rounded.FileDownload" Variant="Variant.Filled" Color="Color.Success" Href="files/CV.pdf" Target="_blank">
+            @Localizer["DownloadCV"]
+        </MudButton>
+    </MudContainer>
+    <MudSpacer />
+    @* Icon items *@
+    <MudStack Row="true" AlignItems="AlignItems.Center" Justify="Justify.Center">
+        <SocialItems />
+    </MudStack>
+</MudDrawer>
+<MudAppBar Fixed="true">
+    <!-- Mobile -->
+    <MudHidden Breakpoint="Breakpoint.LgAndUp">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="@(ThemeService.IsDarkMode? Color.Inherit: Color.Dark)" Edge="Edge.Start" OnClick="() => _drawerOpen = !_drawerOpen" />
+        <MudSpacer />
+        <Brand />
+        <MudSpacer />
+        <ThemeToggle IsDarkMode="@ThemeService.IsDarkMode" OnToggle="ThemeService.ToggleMode" />
+    </MudHidden>
+    <!-- Desktop -->
+    <MudHidden Breakpoint="Breakpoint.LgAndUp" Invert="true">
+        <Brand />
+        <MudSpacer />
+        <MudStack Row="true" Spacing="5" AlignItems="AlignItems.Center">
+            @* Navigation items *@
+            @foreach (var navItem in _navItems)
+            {
+                if (navItem.Children is null)
+                {
+                    <MudButton Href="@navItem.Href" Variant="Variant.Text" Color="Color.Transparent" StartIcon="@navItem.Icon" Class="@(navItem.Icon != null ? "ai-nav-btn" : "")">
+                        @navItem.Label
+                    </MudButton>
+                }
+                else
+                {
+                    <MudMenu Label="@navItem.Label" Variant="Variant.Text" Color="Color.Transparent" EndIcon="@Icons.Material.Filled.KeyboardArrowDown">
+                        @foreach (var child in navItem.Children)
+                        {
+                            <MudMenuItem Href="@child.Href" Label="@child.Label" />
+                        }
+                    </MudMenu>
+                }
+            }
+            <MudDivider Vertical="true" FlexItem="true" />
+            <MudStack Row="true" Spacing="2" AlignItems="AlignItems.Center">
+                <SocialItems />
+                <ThemeToggle IsDarkMode="@ThemeService.IsDarkMode" OnToggle="ThemeService.ToggleMode" />
+                <LanguageMenu />
+            </MudStack>
+            <MudButton StartIcon="@Icons.Material.Rounded.FileDownload" Variant="Variant.Filled" Color="Color.Success" Href="files/CV.pdf" Target="_blank">
+                @Localizer["DownloadCV"]
+            </MudButton>
+        </MudStack>
+    </MudHidden>
+</MudAppBar>
+
+<style>
+    .ai-nav-btn .mud-button-icon-start .mud-icon-root,
+    .ai-nav-link .mud-nav-link-icon {
+        color: #a78bfa !important;
+    }
+</style>
+
+@code {
+    public record NavItem(string? Href, string Label, List<NavItem>? Children = null, string? Icon = null);
+
+    private bool _drawerOpen = false;
+    private List<NavItem> _navItems = new();
+
+    protected override void OnInitialized()
+    {
+        _navItems =
+        new()
+        {
+            new(Urls.Home, SharedLocalizer["Home"]),
+            new("#skills", SharedLocalizer["Skills"]),
+            new("#career", SharedLocalizer["Career"]),
+            new("#education", SharedLocalizer["Degrees"]),
+            new("#ai", SharedLocalizer["AI"], Icon: Icons.Material.Filled.AutoAwesome),
+            new("#life", SharedLocalizer["PersonalLife"])
+        };
+    }
+}

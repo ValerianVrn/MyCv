@@ -1,0 +1,102 @@
+@inject IStringLocalizer<MyCv.UI.Wasm.Resources.Shared> SharedLocalizer
+
+<MudTimelineItem Size="@(IsInternship? Size.Small: Size.Medium)" Color="@(IsInternship? Color.Default: Color.Info)">
+    @if (IsInternship)
+    {
+        @* Compact collapsed mini-card *@
+        <MudCard Class="timeline-card-mini rounded-lg mb-2" Elevation="2">
+            <MudCardContent Class="py-2 px-4">
+                <MudStack Row AlignItems="AlignItems.Center" Spacing="3">
+                    <MudAvatar Style="background:white; border:1px solid var(--mud-palette-divider);" Size="Size.Medium">
+                        <MudImage Src="@CompanyLogo" Width="32" Height="32" ObjectFit="ObjectFit.Contain" />
+                    </MudAvatar>
+                    <MudStack Spacing="0" Style="flex:1">
+                        <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                            <MudText Typo="Typo.subtitle2"><strong>@JobTitle</strong></MudText>
+                            <MudText Typo="Typo.caption" Color="Color.Primary">@Company</MudText>
+                        </MudStack>
+                        <MudText Typo="Typo.caption">@StartDate.ToString("MMM yyyy") – @EndDate.ToString("MMM yyyy") · @Place</MudText>
+                    </MudStack>
+                    @if (IsInternship)
+                    {
+                        <MudChip T="string" Size="Size.Small" Color="Color.Default" Variant="Variant.Outlined">@SharedLocalizer["Internship"]</MudChip>
+                    }
+                    <MudIconButton Icon="@(_expanded? Icons.Material.Filled.ExpandLess : Icons.Material.Filled.ExpandMore)"
+                                   Size="Size.Small" OnClick="@(() => _expanded = !_expanded)" />
+                </MudStack>
+            </MudCardContent>
+            <MudCollapse Expanded="_expanded">
+                <MudCardContent Class="px-4 pt-0 pb-3">
+                    <MudDivider Class="mb-3" />
+                    <ExperienceCardContent IsInternship="true"
+                                           CompanyLogo="@CompanyLogo"
+                                           JobTitle="@JobTitle"
+                                           Company="@Company"
+                                           StartDate="@StartDate"
+                                           EndDate="@EndDate"
+                                           Place="@Place"
+                                           Projects="@Projects"
+                                           Skills="@Skills"
+                                           IsCompact />
+                </MudCardContent>
+            </MudCollapse>
+        </MudCard>
+    }
+    else
+    {
+        @* Full card *@
+        <MudCard Class="timeline-card rounded-lg mb-4" Elevation="6">
+            <div class="timeline-accent"></div>
+            <MudCardContent Class="px-4 px-lg-8 py-4">
+                <ExperienceCardContent CompanyLogo="@CompanyLogo"
+                                       JobTitle="@JobTitle"
+                                       Company="@Company"
+                                       StartDate="@StartDate"
+                                       EndDate="@EndDate"
+                                       Place="@Place"
+                                       Projects="@Projects"
+                                       Skills="@Skills" />
+            </MudCardContent>
+        </MudCard>
+    }
+</MudTimelineItem>
+
+<style>
+    .timeline-card {
+        transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+        overflow: hidden;
+    }
+
+    .timeline-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(0,0,0,0.15), 0 0 0 2px rgba(var(--mud-palette-info-rgb), 0.3) !important;
+    }
+
+    .timeline-accent {
+        height: 4px;
+        background: linear-gradient(90deg, var(--mud-palette-info), var(--mud-palette-primary));
+    }
+
+    .timeline-card-mini {
+        transition: box-shadow 0.2s ease !important;
+        overflow: hidden;
+    }
+
+    .timeline-card-mini:hover {
+        box-shadow: 0 4px 16px rgba(0,0,0,0.10) !important;
+    }
+</style>
+
+@code {
+    [Parameter] public required string CompanyLogo { get; set; }
+    [Parameter] public required string JobTitle { get; set; }
+    [Parameter] public required string Company { get; set; }
+    [Parameter] public required DateTime StartDate { get; set; }
+    [Parameter] public required DateTime EndDate { get; set; }
+    [Parameter] public required string Place { get; set; }
+    [Parameter] public required List<ExperienceCardContent.Project> Projects { get; set; }
+    [Parameter] public List<string>? Skills { get; set; }
+    [Parameter] public bool IsInternship { get; set; } = false;
+
+    private bool _expanded = false;
+}

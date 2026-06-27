@@ -1,0 +1,24 @@
+<MudContainer Gutters="false">
+    <MudText Typo="Typo.h4" Align="Align.Left" id="@SectionId">@SectionName</MudText>
+    @ChildContent
+</MudContainer>
+
+@code {
+    [CascadingParameter]
+    public required Menu Menu { get; set; }
+
+    [Parameter]
+    public required string SectionId { get; set; }
+
+    [Parameter]
+    public required string SectionName { get; set; }
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    /// <inheritdoc/>
+    protected override void OnParametersSet()
+    {
+        Menu.RegisterSection(SectionId, SectionName);
+    }
+}

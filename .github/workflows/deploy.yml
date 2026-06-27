@@ -44,7 +44,7 @@ jobs:
         run: dotnet build .\MyCv.sln --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish .\ui\MyCv.UI\MyCv.UI.csproj -c Release -o "${{env.DOTNET_ROOT}}/myapp"
+        run: dotnet publish .\ui\MyCv.UI.Wasm\MyCv.UI.Wasm.csproj -c Release -o "${{env.DOTNET_ROOT}}/myapp"
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4

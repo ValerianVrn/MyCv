@@ -24,6 +24,13 @@ jobs:
           lfs: false
       - name: Install OIDC Client from Core Package
         run: npm install @actions/core@1.6.0 @actions/http-client
+      - name: Set build info
+        run: |
+          DATE=$(date +'%Y-%m-%d')
+          REF="${{ github.ref_name }}"
+          VERSION=$([[ "$REF" == v* ]] && echo "$REF" || echo "dev")
+          sed -i "s/BuildDate = \".*\"/BuildDate = \"$DATE\"/" ./ui/MyCv.UI.Wasm/BuildInfo.cs
+          sed -i "s/Version = \".*\"/Version = \"$VERSION\"/" ./ui/MyCv.UI.Wasm/BuildInfo.cs
       - name: Get Id Token
         uses: actions/github-script@v6
         id: idtoken

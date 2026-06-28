@@ -2,10 +2,18 @@
 <html lang="en">
 
 <head>
+  <title>Valérian Verona - Tech Lead C#/.NET</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Valérian Verona</title>
+  <meta name="description" content="Valérian Verona – Tech Lead C#/.NET · Vannes, Bretagne" />
+  <meta name="author" content="Valérian Verona" />
+  <!-- Open Graph — for LinkedIn/social sharing too -->
+  <meta property="og:title" content="Valérian Verona – Tech Lead C#/.NET" />
+  <meta property="og:description" content="Valérian Verona – Tech Lead C#/.NET · Vannes, Bretagne" />
+  <meta property="og:url" content="https://www.valerian-verona.fr" />
+  <meta property="og:type" content="website" />
   <base href="/" />
+  <!--CSS-->
   <link rel="stylesheet" href="css/app.css" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -14,15 +22,25 @@
   <link href="css/site.css" rel="stylesheet" />
   <link href="css/frosted-glass.css" rel="stylesheet" />
   <link href="css/loader.css" rel="stylesheet" />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <!--Icon-->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="manifest" href="/site.webmanifest">
 </head>
 
 <body>
+  <!-- Hidden content for Google only -->
+  <div style="display:none" aria-hidden="true">
+    <h1>Valérian Verona</h1>
+    <p>Tech Lead C#/.NET · Vannes, Bretagne, France</p>
+  </div>
   <div id="app">
-    <div id="loader">
+    <!--data-nosnippet is a Google-specific attribute that explicitly tells the crawler to ignore that element's content when generating the search snippet-->
+    <div id="loader" aria-hidden="true" data-nosnippet>
       <div id="loader-svg">
         <svg class="loader-shapes" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice">
-
           <path fill="none" stroke="rgba(80,130,255,0.18)" stroke-width="1.5" d="M-100 400 C 150 200, 350 500, 600 300 S 900 100, 1100 350"></path>
           <path fill="none" stroke="rgba(100,110,255,0.10)" stroke-width="1" d="M-100 420 C 150 220, 350 520, 600 320 S 900 120, 1100 370"></path>
           <path fill="none" stroke="rgba(120,80,255,0.15)" stroke-width="1.5" d="M-100 500 C 100 300, 400 600, 650 350 S 950 150, 1100 450"></path>
@@ -46,13 +64,9 @@
       </div>
     </div>
   </div>
-  <div id="blazor-error-ui">
-    An unhandled error has occurred.
-    <a href="" class="reload">Reload</a>
-    <a class="dismiss">🗙</a>
-  </div>
   <script src="_framework/blazor.webassembly.js"></script>
   <script src="_content/MudBlazor/MudBlazor.min.js"></script>
+  <script src="scripts/error.js"></script>
   <script src="scripts/visitoridstorage.js"></script>
   <script src="scripts/spotlight.js"></script>
   <script src="scripts/culture.js"></script>

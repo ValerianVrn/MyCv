@@ -9,6 +9,9 @@
             <MudText Typo="Typo.caption" Align="Align.Center" Class="mud-text-secondary">
                 @Localizer["FooterAbout"]
             </MudText>
+            <MudText Typo="Typo.caption" Align="Align.Center" Class="mud-text-secondary">
+                @(BuildInfo.Version) · @(BuildInfo.BuildDate)
+            </MudText>
         </MudStack>
         <MudStack Row="true" Justify="Justify.Center">
             <SocialItems />

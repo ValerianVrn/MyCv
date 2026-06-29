@@ -63,8 +63,8 @@
                             <MudCarouselItem Class="d-flex justify-center align-center">
                                 @if (post.IsVideo)
                                 {
-                                    <video controls autoplay muted loop class="h-100 w-100 object-fit-contain">
-                                        <source src="@post.Url" type="video/mp4" />
+                                    <video autoplay muted loop playsinline class="h-100 w-100 object-fit-contain">
+                                        <source src="@post.Url" type="video/webm" />
                                     </video>
                                 }
                                 else
@@ -176,6 +176,6 @@
         new("images/instagram/post-1.jpg"),
         new("images/instagram/post-2.jpg"),
         new("images/instagram/post-3.jpg"),
-        new("videos/instagram-post.mp4", true)
+        new("videos/instagram-post.webm", true)
     };
 }

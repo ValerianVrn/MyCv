@@ -28,11 +28,11 @@ var host = builder.Build();
 
 var js = host.Services.GetRequiredService<IJSRuntime>();
 var result = await js.InvokeAsync<string>("blazorCulture.get");
-var culture = CultureInfo.GetCultureInfo(result ?? LocalizationService.English.Name);
+var culture = CultureInfo.GetCultureInfo(result ?? LocalizationService.French.Name);
 
 if (result == null)
 {
-    await js.InvokeVoidAsync("blazorCulture.set", LocalizationService.English.Name);
+    await js.InvokeVoidAsync("blazorCulture.set", LocalizationService.French.Name);
 }
 
 CultureInfo.DefaultThreadCurrentCulture = culture;

@@ -1,15 +1,22 @@
 @using MyCv.UI.Wasm.Services
-@using MyCv.UI.Wasm.Services
 @using MyCv.UI.Wasm.Shared
 @inject IStringLocalizer<MyCv.UI.Wasm.Resources.Components.Pages.Home> Localizer
 @inject IConfiguration Configuration
 
 <MudPaper Class="section-tinted py-8" Square="true" Elevation="0">
     <MudContainer Class="px-4 px-lg-20">
-        <MudText Typo="Typo.h2" Align="Align.Left" Class="@Style.LargeBottomMargin">
-            @Localizer["HomeHeader"]
-            <MudText Color="Color.Primary" Typo="Typo.h2" Inline="true">Valérian</MudText>.
-        </MudText>
+        <div class="d-flex d-md-none">
+            <MudText Typo="Typo.h5" Align="Align.Left" Class="@Style.LargeBottomMargin">
+                @Localizer["HomeHeader"]
+                <MudText Color="Color.Primary" Typo="Typo.h5" Inline="true">Valérian</MudText>.
+            </MudText>
+        </div>
+        <div class="d-none d-md-flex">
+            <MudText Typo="Typo.h2" Align="Align.Left" Class="@Style.LargeBottomMargin">
+                @Localizer["HomeHeader"]
+                <MudText Color="Color.Primary" Typo="Typo.h2" Inline="true">Valérian</MudText>.
+            </MudText>
+        </div>
         <MudGrid Justify="Justify.Center">
             @* Terminal *@
             <MudItem xs="12" sm="9">

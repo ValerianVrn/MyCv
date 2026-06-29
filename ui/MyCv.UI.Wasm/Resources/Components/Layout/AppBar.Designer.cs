@@ -61,6 +61,24 @@ namespace MyCv.UI.Wasm.Resources.Components.Layout {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Career.
+        /// </summary>
+        public static string Career {
+            get {
+                return ResourceManager.GetString("Career", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CV.
+        /// </summary>
+        public static string CV {
+            get {
+                return ResourceManager.GetString("CV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Download CV.
         /// </summary>
         public static string DownloadCV {

@@ -31,6 +31,10 @@ jobs:
           VERSION=$([[ "$REF" == v* ]] && echo "$REF" || echo "dev")
           sed -i "s/BuildDate = \".*\"/BuildDate = \"$DATE\"/" ./ui/MyCv.UI.Wasm/BuildInfo.cs
           sed -i "s/Version = \".*\"/Version = \"$VERSION\"/" ./ui/MyCv.UI.Wasm/BuildInfo.cs
+      - name: Set sitemap lastmod
+        run: |
+          DATE=$(date +'%Y-%m-%d')
+          sed -i "s/<lastmod>.*<\/lastmod>/<lastmod>$DATE<\/lastmod>/" ./ui/MyCv.UI.Wasm/wwwroot/sitemap.xml
       - name: Get Id Token
         uses: actions/github-script@v6
         id: idtoken

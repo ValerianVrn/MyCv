@@ -1,6 +1,7 @@
 window.spotlight = {
   init: function (selectors, rootMargin) {
-    if (window.matchMedia('(hover: hover)').matches) return;
+    if (window.matchMedia('(hover: hover)').matches) return; // Only on phones
+    if (window.matchMedia('(min-width: 960px)').matches) return; // Until md screen
 
     function spotlightOne(selector) {
       var cards = document.querySelectorAll(selector);
@@ -26,7 +27,8 @@ window.spotlight = {
   },
 
   highlightAll: function (sectionSelector, chipSelector) {
-    if (window.matchMedia('(hover: hover)').matches) return;
+    if (window.matchMedia('(hover: hover)').matches) return; // Only on phones
+    if (window.matchMedia('(min-width: 960px)').matches) return; // Until md screen
     var section = document.querySelector(sectionSelector);
     if (!section) return;
     var obs = new IntersectionObserver(function (entries) {

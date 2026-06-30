@@ -35,7 +35,7 @@ namespace MyCv.UI.Wasm.Services
         public event Action OnThemeChanged;
 
         /// <inheritdoc/>
-        public bool IsDarkMode { get; private set; }
+        public bool IsDarkMode { get; private set; } = true;
 
         /// <inheritdoc/>
         public void SetDarkMode()

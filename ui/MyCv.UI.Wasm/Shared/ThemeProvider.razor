@@ -36,8 +36,8 @@
     {
         if (firstRender)
         {
-            // Get whether the system is using dark mode.
-            IsDarkMode = await _mudThemeProvider.GetSystemPreference();
+            // Use dark mode by default.
+            IsDarkMode = true;
         }
     }
 

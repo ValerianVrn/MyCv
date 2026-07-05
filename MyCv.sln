@@ -48,6 +48,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCv.UI", "ui\MyCv.UI\MyCv.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCv.UI.Wasm", "ui\MyCv.UI.Wasm\MyCv.UI.Wasm.csproj", "{E5AEBC12-85BC-B11F-99D7-F84E4AC94694}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCv.Tailor.Api", "tailor\MyCv.Tailor.Api\MyCv.Tailor.Api.csproj", "{EA3E67AC-8628-4837-B526-A14C8B97E82E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -118,6 +120,10 @@ Global
 		{E5AEBC12-85BC-B11F-99D7-F84E4AC94694}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5AEBC12-85BC-B11F-99D7-F84E4AC94694}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5AEBC12-85BC-B11F-99D7-F84E4AC94694}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA3E67AC-8628-4837-B526-A14C8B97E82E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA3E67AC-8628-4837-B526-A14C8B97E82E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA3E67AC-8628-4837-B526-A14C8B97E82E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA3E67AC-8628-4837-B526-A14C8B97E82E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -138,6 +144,7 @@ Global
 		{CFAEF3C2-C274-4CBA-AA17-6BBDC760DBCE} = {6B2F1267-30CA-478B-A768-05E5F93FD2EB}
 		{92767FD5-304B-4558-BE88-6905295D7EE6} = {FF5D0416-CF25-42E6-97C0-D211F1478700}
 		{E5AEBC12-85BC-B11F-99D7-F84E4AC94694} = {FF5D0416-CF25-42E6-97C0-D211F1478700}
+		{EA3E67AC-8628-4837-B526-A14C8B97E82E} = {FF5D0416-CF25-42E6-97C0-D211F1478700}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {562A1F09-2773-4CCC-9B82-E06FD02A17E2}

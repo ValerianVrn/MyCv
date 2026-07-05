@@ -16,7 +16,13 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Services
     .AddScoped<IVisitorService, VisitorService>()
     .AddScoped<IThemeService, ThemeService>()
-    .AddScoped<ILocalizationService, LocalizationService>();
+    .AddScoped<ILocalizationService, LocalizationService>()
+#if DEBUG
+    .AddScoped<ITailorService, FakeTailorService>()
+#else
+    .AddScoped<ITailorService, TailorService>()
+#endif
+;
 
 // MudBlazor services
 builder.Services.AddMudServices();

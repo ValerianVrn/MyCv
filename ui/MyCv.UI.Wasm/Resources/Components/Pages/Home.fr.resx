@@ -174,6 +174,15 @@ Venez découvrir ma formation.</value>
   <data name="SkillsCaption" xml:space="preserve">
     <value>Compétences techniques complètes et expérience en leadership dans le développement de logiciels modernes</value>
   </data>
+  <data name="TailorHint" xml:space="preserve">
+    <value>Essayez "Azure tech lead pour une startup de la fintech" ou "Node.js team lead"</value>
+  </data>
+  <data name="TailorLoading" xml:space="preserve">
+    <value>J'analyse vos besoins...</value>
+  </data>
+  <data name="TailorPlaceholder" xml:space="preserve">
+    <value>Copiez une annonce de poste ou le titre — Je vous retourne le CV sur-mesure</value>
+  </data>
   <data name="TeamManagement" xml:space="preserve">
     <value>Gestion d'équipe</value>
   </data>

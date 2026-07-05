@@ -226,6 +226,33 @@ namespace MyCv.UI.Wasm.Resources.Components.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Try &quot;Azure tech lead for a fintech startup&quot; or &quot;Node.js team lead&quot;.
+        /// </summary>
+        public static string TailorHint {
+            get {
+                return ResourceManager.GetString("TailorHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Analysing your needs....
+        /// </summary>
+        public static string TailorLoading {
+            get {
+                return ResourceManager.GetString("TailorLoading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paste a job title or description — I&apos;ll tailor this CV for you.
+        /// </summary>
+        public static string TailorPlaceholder {
+            get {
+                return ResourceManager.GetString("TailorPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Team management.
         /// </summary>
         public static string TeamManagement {

@@ -174,6 +174,15 @@ Come and discover my training.</value>
   <data name="SkillsCaption" xml:space="preserve">
     <value>Comprehensive technical skills and leadership experience in modern software development</value>
   </data>
+  <data name="TailorHint" xml:space="preserve">
+    <value>Try "Azure tech lead for a fintech startup" or "Node.js team lead"</value>
+  </data>
+  <data name="TailorLoading" xml:space="preserve">
+    <value>Analysing your needs...</value>
+  </data>
+  <data name="TailorPlaceholder" xml:space="preserve">
+    <value>Paste a job title or description — I'll tailor this CV for you</value>
+  </data>
   <data name="TeamManagement" xml:space="preserve">
     <value>Team management</value>
   </data>

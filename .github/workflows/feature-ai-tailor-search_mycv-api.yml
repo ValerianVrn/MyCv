@@ -9,7 +9,7 @@ on:
       - feature/ai-tailor-search
       - main
     paths:
-    - 'ui/tailor/MyCv.Tailor.Api/**'
+    - 'tailor/MyCv.Tailor.Api/**'
   workflow_dispatch:
 
 env:

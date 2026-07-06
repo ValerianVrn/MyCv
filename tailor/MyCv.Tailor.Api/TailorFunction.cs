@@ -1,82 +1,60 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
+using Microsoft.Extensions.Logging;
 using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json;
 
-namespace MyCv.Tailor.Api
+namespace MyCv.Tailor.Api;
+
+public class TailorFunction(IHttpClientFactory httpClientFactory, ILogger<TailorFunction> logger)
 {
-    /// <summary>
-    /// Azure Function that tailors Valérian Verona's CV to a given job description or tech stack using Gemini API.
-    /// </summary>
-    /// <param name="httpClientFactory"></param>
-    public class TailorFunction(IHttpClientFactory httpClientFactory)
+    private const string BaseUrl = "https://generativelanguage.googleapis.com/v1beta/models/";
+    private const string Model = "gemini-2.5-flash";
+
+    private const string SystemPrompt = """
+    You are an AI assistant embedded in Valérian Verona's CV website.
+    A recruiter has typed a job title, description or tech stack.
+    Your job is to analyze how well Valérian matches and return a structured JSON response.
+
+    ## Rules
+    - case 1 = not relevant at all
+    - case 2 = partial match
+    - case 3 = strong match
+    - stars: 0-5
+    - return ONLY valid JSON
+    """;
+
+    public record TailorRequest(string Input);
+
+    public record TailorResult(
+        int Case,
+        int Stars,
+        string MatchLabel,
+        string Humor,
+        List<string> WhyMatch,
+        List<SkillBridge> SkillBridges,
+        List<string> BonusSkills,
+        string Pitch,
+        string ContactCopy
+    );
+
+    public record SkillBridge(
+        string Asked,
+        string Have
+    );
+
+    public record GeminiResponse(List<GeminiCandidate> Candidates);
+    public record GeminiCandidate(GeminiContent Content);
+    public record GeminiContent(List<GeminiPart> Parts);
+    public record GeminiPart(string Text);
+
+    [Function("tailor")]
+    public async Task<HttpResponseData> Run(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "post", "options")] HttpRequestData req)
     {
-        private const string GeminiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=";
-
-        private const string SystemPrompt = """
-        You are an AI assistant embedded in Valérian Verona's CV website.
-        A recruiter has typed a job title, description or tech stack.
-        Your job is to analyze how well Valérian matches and return a structured JSON response.
-
-        Here is Valérian's full profile:
-
-        ## Identity
-        Valérian Verona, Tech Lead C#/.NET, based in Vannes, Bretagne, France.
-
-        ## Core skills
-        C#/.NET, Tech Lead, CQRS/ES, Microservices, System Design, Azure, ASP.NET Core,
-        Entity Framework, SQL Server, MSTest, Event Sourcing, Docker, Azure DevOps,
-        Git Flow, Grafana, Loki, Prometheus, Agile/Scrum, Code Reviews, Mentoring,
-        OpenAI, Claude, Gemini, HuggingFace, Together AI, Blazor, SignalR
-
-        ## Experience
-        - Fives Xcella: Tech Lead C#/.NET, microservices, Azure, CQRS, Event Sourcing
-        - Previous roles: various .NET development and architecture positions
-        - 10+ years experience in .NET ecosystem
-
-        ## Education
-        - Engineering degree: Télécom Physique Strasbourg (Institut Mines-Télécom), 2014, ranked 3rd/79
-        - Master of Science: Université de Strasbourg, 2014, with high honours
-        - Master of Business: EM Strasbourg Business School, 2015, with high honours
-        - Azure Fundamentals AZ-900, 2026
-
-        ## Personality
-        Fast learner, has pivoted tech stacks before, strong architectural thinking,
-        both technical and business mindset (dual engineering + MBA background).
-
-        ## Rules
-        - case 1 = not relevant at all (e.g. plumber, chef, unrelated field)
-        - case 2 = partial match (some skills missing but transferable)
-        - case 3 = strong match (most skills align)
-        - stars: 0 for case 1, 1-3 for case 2, 4-5 for case 3
-        - humor must be warm, slightly self-deprecating, never arrogant
-        - bonusSkills: skills Valérian has that the recruiter didn't mention but could be valuable
-        - skillBridges: skills asked that Valérian doesn't have but has a close equivalent
-        - answer in the same language as the input (French or English)
-        - pitch must be 1-2 sentences max, punchy and specific
-        - contactCopy: short line inviting contact, adapted to the case tone
-
-        Return ONLY valid JSON, no markdown, no explanation:
+        try
         {
-          "case": 1 | 2 | 3,
-          "stars": 0-5,
-          "matchLabel": "string",
-          "humor": "string",
-          "whyMatch": ["skill1", "skill2"],
-          "skillBridges": [{ "asked": "string", "have": "string" }],
-          "bonusSkills": ["skill1", "skill2"],
-          "pitch": "string",
-          "contactCopy": "string"
-        }
-        """;
-
-        public record TailorRequest(string Input);
-
-        [Function("tailor")]
-        public async Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Anonymous, "post", "options")] HttpRequestData req)
-        {
-            // Handle CORS preflight
             if (req.Method.Equals("OPTIONS", StringComparison.OrdinalIgnoreCase))
             {
                 var preflight = req.CreateResponse(HttpStatusCode.OK);
@@ -85,11 +63,11 @@ namespace MyCv.Tailor.Api
             }
 
             var apiKey = Environment.GetEnvironmentVariable("GEMINI_API_KEY");
-            if (string.IsNullOrEmpty(apiKey))
+            if (string.IsNullOrWhiteSpace(apiKey))
             {
                 var error = req.CreateResponse(HttpStatusCode.InternalServerError);
                 AddCorsHeaders(error);
-                await error.WriteStringAsync("API key not configured");
+                await error.WriteStringAsync("Missing GEMINI_API_KEY");
                 return error;
             }
 
@@ -103,11 +81,18 @@ namespace MyCv.Tailor.Api
 
             var geminiRequest = new
             {
-                system_instruction = new { parts = new[] { new { text = SystemPrompt } } },
+                system_instruction = new
+                {
+                    parts = new[] { new { text = SystemPrompt } }
+                },
                 contents = new[]
                 {
-                new { role = "user", parts = new[] { new { text = body.Input } } }
-            },
+                    new
+                    {
+                        role = "user",
+                        parts = new[] { new { text = body.Input } }
+                    }
+                },
                 generationConfig = new
                 {
                     maxOutputTokens = 1024,
@@ -117,29 +102,83 @@ namespace MyCv.Tailor.Api
             };
 
             var httpClient = httpClientFactory.CreateClient();
-            var geminiResponse = await httpClient.PostAsJsonAsync(GeminiUrl + apiKey, geminiRequest);
+
+            var geminiResponse = await httpClient.PostAsJsonAsync(
+                $"{BaseUrl}{Model}:generateContent?key={apiKey}",
+                geminiRequest);
+
             var geminiJson = await geminiResponse.Content.ReadAsStringAsync();
 
-            using var doc = JsonDocument.Parse(geminiJson);
-            var text = doc.RootElement
-                .GetProperty("candidates")[0]
-                .GetProperty("content")
-                .GetProperty("parts")[0]
-                .GetProperty("text")
-                .GetString() ?? "{}";
+            logger.LogInformation("Gemini status: {Status}", geminiResponse.StatusCode);
+            logger.LogDebug("Gemini raw response: {Response}", geminiJson);
+
+            if (!geminiResponse.IsSuccessStatusCode)
+            {
+                var errorResponse = req.CreateResponse(geminiResponse.StatusCode);
+                AddCorsHeaders(errorResponse);
+                await errorResponse.WriteStringAsync(geminiJson);
+                return errorResponse;
+            }
+
+            // Parse Gemini response safely
+            var gemini = JsonSerializer.Deserialize<GeminiResponse>(geminiJson);
+
+            if (gemini?.Candidates == null || gemini.Candidates.Count == 0)
+            {
+                throw new InvalidOperationException($"No candidates returned: {geminiJson}");
+            }
+
+            var text = gemini?.Candidates?
+                .FirstOrDefault()?
+                .Content?
+                .Parts?
+                .FirstOrDefault()?
+                .Text;
+
+            if (string.IsNullOrWhiteSpace(text))
+            {
+                throw new InvalidOperationException("Gemini returned empty content");
+            }
+
+            // Clean markdown fences if any
+            text = text.Trim();
+            if (text.StartsWith("```"))
+            {
+                text = text
+                    .Replace("```json", "")
+                    .Replace("```", "")
+                    .Trim();
+            }
+
+            // Deserialize strongly typed result
+            var result = JsonSerializer.Deserialize<TailorResult>(text) ?? throw new InvalidOperationException($"Invalid Tailor JSON: {text}");
 
             var response = req.CreateResponse(HttpStatusCode.OK);
             AddCorsHeaders(response);
-            response.Headers.Add("Content-Type", "application/json");
-            await response.WriteStringAsync(text);
+            await response.WriteAsJsonAsync(result);
             return response;
         }
-
-        private static void AddCorsHeaders(HttpResponseData response)
+        catch (Exception ex)
         {
-            response.Headers.Add("Access-Control-Allow-Origin", "*");
-            response.Headers.Add("Access-Control-Allow-Methods", "POST, OPTIONS");
-            response.Headers.Add("Access-Control-Allow-Headers", "Content-Type");
+            logger.LogError(ex, "Tailor function failed");
+
+            var response = req.CreateResponse(HttpStatusCode.InternalServerError);
+            AddCorsHeaders(response);
+
+#if DEBUG
+            await response.WriteStringAsync(ex.ToString());
+#else
+            await response.WriteStringAsync("Unexpected server error");
+#endif
+
+            return response;
         }
+    }
+
+    private static void AddCorsHeaders(HttpResponseData response)
+    {
+        response.Headers.Add("Access-Control-Allow-Origin", "*");
+        response.Headers.Add("Access-Control-Allow-Methods", "POST, OPTIONS");
+        response.Headers.Add("Access-Control-Allow-Headers", "Content-Type");
     }
 }

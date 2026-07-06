@@ -66,6 +66,7 @@ The following application settings must be set in the Azure Portal:
 
 **CORS**
 `https://www.valerian-verona.fr` must be added to the Function App's allowed origins.
+`https://localhost:7064` is also added for local testing purpose (HTTPS profile in `launchsettings.json`).
 
 ## Domain
 

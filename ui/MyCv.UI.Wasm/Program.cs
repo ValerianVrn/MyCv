@@ -16,13 +16,11 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Services
     .AddScoped<IVisitorService, VisitorService>()
     .AddScoped<IThemeService, ThemeService>()
-    .AddScoped<ILocalizationService, LocalizationService>()
-#if DEBUG
-    .AddScoped<ITailorService, FakeTailorService>()
-#else
-    .AddScoped<ITailorService, TailorService>()
-#endif
-;
+    .AddScoped<ILocalizationService, LocalizationService>();
+
+_ = builder.Configuration.GetValue<bool>("TailorApi:UseFake")
+    ? builder.Services.AddScoped<ITailorService, FakeTailorService>()
+    : builder.Services.AddScoped<ITailorService, TailorService>();
 
 // MudBlazor services
 builder.Services.AddMudServices();

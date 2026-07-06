@@ -12,7 +12,7 @@ namespace MyCv.Tailor.Api
     /// <param name="httpClientFactory"></param>
     public class TailorFunction(IHttpClientFactory httpClientFactory)
     {
-        private const string GeminiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=";
+        private const string GeminiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=";
 
         private const string SystemPrompt = """
         You are an AI assistant embedded in Valérian Verona's CV website.
@@ -70,6 +70,8 @@ namespace MyCv.Tailor.Api
           "contactCopy": "string"
         }
         """;
+
+        public record TailorRequest(string Input);
 
         [Function("tailor")]
         public async Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Anonymous, "post", "options")] HttpRequestData req)
@@ -140,6 +142,4 @@ namespace MyCv.Tailor.Api
             response.Headers.Add("Access-Control-Allow-Headers", "Content-Type");
         }
     }
-
-    public record TailorRequest(string Input);
 }

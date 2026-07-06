@@ -7,6 +7,9 @@ on:
   push:
     branches:
       - feature/ai-tailor-search
+      - main
+    paths:
+    - 'ui/MyCv.Tailor.Api/**'
   workflow_dispatch:
 
 env:
@@ -33,7 +36,7 @@ jobs:
         shell: bash
         run: |
           pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
-          dotnet build --configuration Release --output ./output
+          dotnet build ui/MyCv.Tailor.Api --configuration Release --output ./output
           popd
       
       - name: Login to Azure

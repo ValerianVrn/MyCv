@@ -6,6 +6,10 @@ using System.Text.Json;
 
 namespace MyCv.Tailor.Api
 {
+    /// <summary>
+    /// Azure Function that tailors Valérian Verona's CV to a given job description or tech stack using Gemini API.
+    /// </summary>
+    /// <param name="httpClientFactory"></param>
     public class TailorFunction(IHttpClientFactory httpClientFactory)
     {
         private const string GeminiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=";

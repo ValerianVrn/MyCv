@@ -34,9 +34,13 @@ namespace MyCv.Tailor.Api.Services
                     },
                 generationConfig = new
                 {
-                    maxOutputTokens = 1024,
+                    maxOutputTokens = 2048,
                     temperature = 0.7,
-                    responseMimeType = "application/json"
+                    responseMimeType = "application/json",
+                    thinkingConfig = new
+                    {
+                        thinkingBudget = 512
+                    }
                 }
             };
 

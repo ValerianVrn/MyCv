@@ -253,6 +253,15 @@ namespace MyCv.UI.Wasm.Resources.Components.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The AI service is temporarily unavailable. Please try again in a few seconds 🙏.
+        /// </summary>
+        public static string TailorUnavailable {
+            get {
+                return ResourceManager.GetString("TailorUnavailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Team management.
         /// </summary>
         public static string TeamManagement {

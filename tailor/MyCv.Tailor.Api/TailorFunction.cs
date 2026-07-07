@@ -40,10 +40,17 @@ namespace MyCv.Tailor.Api
 
                 return response;
             }
+            catch (InvalidOperationException ex) when (ex.Message.Contains("503") || ex.Message.Contains("unavailable"))
+            {
+                Log.Unavailable(logger);
+                var response = req.CreateResponse(HttpStatusCode.ServiceUnavailable);
+                AddCorsHeaders(response);
+                await response.WriteAsJsonAsync(new { error = "gemini_unavailable" });
+                return response;
+            }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Tailor function failed");
-
+                Log.Error(logger, ex);
                 var response = req.CreateResponse(HttpStatusCode.InternalServerError);
                 AddCorsHeaders(response);
 
@@ -63,5 +70,13 @@ namespace MyCv.Tailor.Api
             response.Headers.Add("Access-Control-Allow-Methods", "POST, OPTIONS");
             response.Headers.Add("Access-Control-Allow-Headers", "Content-Type");
         }
+    }
+    public static partial class Log
+    {
+        [LoggerMessage(Level = LogLevel.Warning, Message = "Gemini unavailable")]
+        public static partial void Unavailable(ILogger logger);
+
+        [LoggerMessage(Level = LogLevel.Error, Message = "Tailor function failed")]
+        public static partial void Error(ILogger logger, Exception ex);
     }
 }

@@ -14,6 +14,7 @@ namespace MyCv.Tailor.Api.Services
         private const string BaseUrl = "https://generativelanguage.googleapis.com/v1beta/models/";
         private const string Model = "gemini-2.5-flash";
         public const string GEMINIAPIKEY = "GEMINI_API_KEY";
+        public const string HttpClientName = "gemini";
 
         public async Task<TailorResult> GenerateAsync(string input)
         {
@@ -46,7 +47,7 @@ namespace MyCv.Tailor.Api.Services
                 throw new InvalidOperationException($"Missing {GEMINIAPIKEY}");
             }
 
-            var httpClient = httpClientFactory.CreateClient();
+            var httpClient = httpClientFactory.CreateClient(HttpClientName);
             var geminiResponse = await httpClient.PostAsJsonAsync($"{BaseUrl}{Model}:generateContent?key={apiKey}", geminiRequest);
             var geminiJson = await geminiResponse.Content.ReadAsStringAsync();
 

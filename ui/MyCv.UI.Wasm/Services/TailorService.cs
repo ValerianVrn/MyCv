@@ -1,3 +1,4 @@
+using MyCv.UI.Wasm.Exceptions;
 using System.Net.Http.Json;
 
 namespace MyCv.UI.Wasm.Services
@@ -8,10 +9,17 @@ namespace MyCv.UI.Wasm.Services
         /// <inheritdoc/>
         public async Task<TailorResult?> TailorAsync(string input, CancellationToken ct = default)
         {
-            var apiUrl = configuration["TailorApi:Url"] ?? "http://localhost:7071/api/tailor";
-            var response = await httpclient.PostAsJsonAsync(apiUrl, new { input }, ct);
-            _ = response.EnsureSuccessStatusCode();
-            return await response.Content.ReadFromJsonAsync<TailorResult>(cancellationToken: ct);
+            try
+            {
+                var apiUrl = configuration["TailorApi:Url"] ?? "http://localhost:7071/api/tailor";
+                var response = await httpclient.PostAsJsonAsync(apiUrl, new { input }, ct);
+                _ = response.EnsureSuccessStatusCode();
+                return await response.Content.ReadFromJsonAsync<TailorResult>(cancellationToken: ct);
+            }
+            catch (HttpRequestException)
+            {
+                throw new TailorUnavailableException();
+            }
         }
     }
 }

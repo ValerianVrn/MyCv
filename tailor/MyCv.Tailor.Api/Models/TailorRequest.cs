@@ -1,3 +1,4 @@
-namespace MyCv.Tailor.Api.Models;
-
-public record TailorRequest(string Input);
+namespace MyCv.Tailor.Api.Models
+{
+    public record TailorRequest(string Input);
+}

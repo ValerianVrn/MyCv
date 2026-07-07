@@ -6,61 +6,62 @@ using MyCv.Tailor.Api.Services;
 using System.Net;
 using System.Net.Http.Json;
 
-namespace MyCv.Tailor.Api;
-
-internal class TailorFunction(ITailorService tailorService, ILogger<TailorFunction> logger)
+namespace MyCv.Tailor.Api
 {
-    [Function("tailor")]
-    public async Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Anonymous, "post", "options")] HttpRequestData req)
+    internal class TailorFunction(ITailorService tailorService, ILogger<TailorFunction> logger)
     {
-        try
+        [Function("tailor")]
+        public async Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Anonymous, "post", "options")] HttpRequestData req)
         {
-            if (req.Method.Equals("OPTIONS", StringComparison.OrdinalIgnoreCase))
+            try
             {
-                var preflight = req.CreateResponse(HttpStatusCode.OK);
-                AddCorsHeaders(preflight);
-                return preflight;
-            }
+                if (req.Method.Equals("OPTIONS", StringComparison.OrdinalIgnoreCase))
+                {
+                    var preflight = req.CreateResponse(HttpStatusCode.OK);
+                    AddCorsHeaders(preflight);
+                    return preflight;
+                }
 
-            var body = await req.ReadFromJsonAsync<TailorRequest>();
-            if (body is null || string.IsNullOrWhiteSpace(body.Input))
+                var body = await req.ReadFromJsonAsync<TailorRequest>();
+                if (body is null || string.IsNullOrWhiteSpace(body.Input))
+                {
+                    var bad = req.CreateResponse(HttpStatusCode.BadRequest);
+                    AddCorsHeaders(bad);
+                    return bad;
+                }
+
+                var result = await tailorService.TailorAsync(body.Input);
+
+                var response = req.CreateResponse(HttpStatusCode.OK);
+
+                AddCorsHeaders(response);
+
+                await response.WriteAsJsonAsync(result);
+
+                return response;
+            }
+            catch (Exception ex)
             {
-                var bad = req.CreateResponse(HttpStatusCode.BadRequest);
-                AddCorsHeaders(bad);
-                return bad;
-            }
+                logger.LogError(ex, "Tailor function failed");
 
-            var result = await tailorService.TailorAsync(body.Input);
-
-            var response = req.CreateResponse(HttpStatusCode.OK);
-
-            AddCorsHeaders(response);
-
-            await response.WriteAsJsonAsync(result);
-
-            return response;
-        }
-        catch (Exception ex)
-        {
-            logger.LogError(ex, "Tailor function failed");
-
-            var response = req.CreateResponse(HttpStatusCode.InternalServerError);
-            AddCorsHeaders(response);
+                var response = req.CreateResponse(HttpStatusCode.InternalServerError);
+                AddCorsHeaders(response);
 
 #if DEBUG
-            await response.WriteStringAsync(ex.ToString());
+                await response.WriteStringAsync(ex.ToString());
 #else
-            await response.WriteStringAsync("Unexpected server error");
+                await response.WriteStringAsync("Unexpected server error");
 #endif
 
-            return response;
+                return response;
+            }
         }
-    }
 
-    private static void AddCorsHeaders(HttpResponseData response)
-    {
-        response.Headers.Add("Access-Control-Allow-Origin", "*");
-        response.Headers.Add("Access-Control-Allow-Methods", "POST, OPTIONS");
-        response.Headers.Add("Access-Control-Allow-Headers", "Content-Type");
+        private static void AddCorsHeaders(HttpResponseData response)
+        {
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Headers.Add("Access-Control-Allow-Methods", "POST, OPTIONS");
+            response.Headers.Add("Access-Control-Allow-Headers", "Content-Type");
+        }
     }
 }

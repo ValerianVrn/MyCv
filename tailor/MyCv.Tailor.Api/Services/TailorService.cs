@@ -1,13 +1,14 @@
 using MyCv.Tailor.Api.Models;
 
-namespace MyCv.Tailor.Api.Services;
-
-internal class TailorService(IGeminiClient geminiClient) : ITailorService
+namespace MyCv.Tailor.Api.Services
 {
-    private readonly IGeminiClient _geminiClient = geminiClient;
-
-    public Task<TailorResult> TailorAsync(string input)
+    internal class TailorService(IGeminiClient geminiClient) : ITailorService
     {
-        return _geminiClient.GenerateAsync(input);
+        private readonly IGeminiClient _geminiClient = geminiClient;
+
+        public Task<TailorResult> TailorAsync(string input)
+        {
+            return _geminiClient.GenerateAsync(input);
+        }
     }
 }

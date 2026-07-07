@@ -9,15 +9,17 @@ using System.Text.Json;
 
 namespace MyCv.Tailor.Api.Services
 {
-    public class GeminiClient(ILogger<GeminiClient> logger, IHttpClientFactory httpClientFactory) : IGeminiClient
+    public class GeminiClient(ILoggerFactory loggerFactory, IHttpClientFactory httpClientFactory) : IGeminiClient
     {
         private const string BaseUrl = "https://generativelanguage.googleapis.com/v1beta/models/";
         private const string Model = "gemini-2.5-flash";
         public const string GEMINIAPIKEY = "GEMINI_API_KEY";
         public const string HttpClientName = "gemini";
+        private readonly ILogger _logger = loggerFactory.CreateLogger("MyCv.Tailor.Api.Services.GeminiClient");
 
         public async Task<TailorResult> GenerateAsync(string input)
         {
+            _logger.LogInformation("GeminiClient.GenerateAsync called with input length {Length}", input.Length);
             var geminiRequest = new
             {
                 system_instruction = new
@@ -54,11 +56,14 @@ namespace MyCv.Tailor.Api.Services
             var httpClient = httpClientFactory.CreateClient(HttpClientName);
 
             var geminiResponse = await httpClient.PostAsJsonAsync($"{BaseUrl}{Model}:generateContent?key={apiKey}", geminiRequest);
-            Log.StatusCode(logger, geminiResponse.StatusCode);
+            Log.StatusCode(_logger, geminiResponse.StatusCode);
+
+            // Force buffer the entire response before reading
+            await geminiResponse.Content.LoadIntoBufferAsync();
 
             var geminiJson = await geminiResponse.Content.ReadAsStringAsync();
-            Log.Response(logger, geminiJson);
-            Log.RawLength(logger, geminiJson.Length);
+            Log.Response(_logger, geminiJson);
+            Log.RawLength(_logger, geminiJson.Length);
 
             if (!geminiResponse.IsSuccessStatusCode)
             {

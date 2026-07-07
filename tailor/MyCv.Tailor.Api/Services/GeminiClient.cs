@@ -48,11 +48,13 @@ namespace MyCv.Tailor.Api.Services
             }
 
             var httpClient = httpClientFactory.CreateClient(HttpClientName);
-            var geminiResponse = await httpClient.PostAsJsonAsync($"{BaseUrl}{Model}:generateContent?key={apiKey}", geminiRequest);
-            var geminiJson = await geminiResponse.Content.ReadAsStringAsync();
 
+            var geminiResponse = await httpClient.PostAsJsonAsync($"{BaseUrl}{Model}:generateContent?key={apiKey}", geminiRequest);
             Log.StatusCode(logger, geminiResponse.StatusCode);
+
+            var geminiJson = await geminiResponse.Content.ReadAsStringAsync();
             Log.Response(logger, geminiJson);
+            Log.RawLength(logger, geminiJson.Length);
 
             if (!geminiResponse.IsSuccessStatusCode)
             {
@@ -105,5 +107,8 @@ namespace MyCv.Tailor.Api.Services
 
         [LoggerMessage(Level = LogLevel.Debug, Message = "Gemini raw response: {Response}")]
         public static partial void Response(ILogger logger, string? response);
+
+        [LoggerMessage(Level = LogLevel.Debug, Message = "Gemini raw response length: {Length}")]
+        public static partial void RawLength(ILogger logger, int length);
     }
 }

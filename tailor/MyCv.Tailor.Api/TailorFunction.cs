@@ -71,6 +71,7 @@ namespace MyCv.Tailor.Api
             response.Headers.Add("Access-Control-Allow-Headers", "Content-Type");
         }
     }
+
     public static partial class Log
     {
         [LoggerMessage(Level = LogLevel.Warning, Message = "Gemini unavailable")]

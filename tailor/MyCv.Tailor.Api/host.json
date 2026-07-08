@@ -3,7 +3,8 @@
   "logging": {
     "logLevel": {
       "default": "Information",
-      "MyCv.Tailor.Api": "Debug"
+      "MyCv.Tailor.Api": "Debug",
+      "MyCv.Tailor.Api.GeminiClient": "Information"
     },
     "applicationInsights": {
       "samplingSettings": {
@@ -12,7 +13,8 @@
       },
       "logLevel": {
         "default": "Information",
-        "MyCv.Tailor.Api": "Debug"
+        "MyCv.Tailor.Api": "Debug",
+        "MyCv.Tailor.Api.GeminiClient": "Information"
       },
       "enableLiveMetricsFilters": true
     }

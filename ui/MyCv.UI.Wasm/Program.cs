@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.JSInterop;
+using MudBlazor.Services;
 using MyCv.UI.Wasm;
 using MyCv.UI.Wasm.Services;
 using System.Globalization;
-using MudBlazor.Services;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -17,6 +17,11 @@ builder.Services
     .AddScoped<IVisitorService, VisitorService>()
     .AddScoped<IThemeService, ThemeService>()
     .AddScoped<ILocalizationService, LocalizationService>();
+
+// Configuration.
+_ = builder.Configuration.GetValue<bool>("TailorApi:UseFake")
+    ? builder.Services.AddScoped<ITailorService, FakeTailorService>()
+    : builder.Services.AddScoped<ITailorService, TailorService>();
 
 // MudBlazor services
 builder.Services.AddMudServices();

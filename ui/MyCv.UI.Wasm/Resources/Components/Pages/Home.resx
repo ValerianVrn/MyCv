@@ -175,18 +175,30 @@ Come and discover my training.</value>
     <value>Comprehensive technical skills and leadership experience in modern software development</value>
   </data>
   <data name="TailorHint" xml:space="preserve">
-    <value>Try "Azure tech lead for a fintech startup" or "Node.js team lead"</value>
+    <value>Paste a full job offer or describe your ideal candidate</value>
   </data>
   <data name="TailorLoading" xml:space="preserve">
     <value>Analysing your needs...</value>
   </data>
   <data name="TailorPlaceholder" xml:space="preserve">
-    <value>Paste a job title or description — I'll tailor this CV for you</value>
+    <value>Paste a job offer — I'll tailor this CV for you</value>
+  </data>
+  <data name="TailorJobOffer" xml:space="preserve">
+    <value>Job offer</value>
   </data>
   <data name="TailorUnavailable" xml:space="preserve">
     <value>The AI service is temporarily unavailable. Please try again in a few seconds 🙏</value>
   </data>
   <data name="TeamManagement" xml:space="preserve">
     <value>Team management</value>
+  </data>
+  <data name="TailorTitle" xml:space="preserve">
+    <value>Tailor-made CV</value>
+  </data>
+  <data name="TailorAnalyse" xml:space="preserve">
+    <value>Analyse ✨</value>
+  </data>
+  <data name="TailorAnalysing" xml:space="preserve">
+    <value>Analysing...</value>
   </data>
 </root>

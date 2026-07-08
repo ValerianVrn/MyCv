@@ -3,36 +3,40 @@
 @inject IStringLocalizer<MyCv.UI.Wasm.Resources.Components.Pages.Home> Localizer;
 
 @* Search bar *@
-<MudStack Spacing="2">
-    <MudTextField @bind-Value="_input"
-                  Placeholder="@Localizer["TailorPlaceholder"]"
-                  Variant="Variant.Outlined"
-                  Adornment="Adornment.End"
-                  AdornmentIcon="@Icons.Material.Filled.AutoAwesome"
-                  AdornmentColor="Color.Primary"
-                  OnAdornmentClick="Submit"
-                  OnKeyDown="OnKeyDown"
-                  Disabled="_loading"
-                  FullWidth="true"
-                  Class="tailor-search" />
-    <MudText Typo="Typo.caption" Align="Align.Center" Color="Color.Secondary">
-        @Localizer["TailorHint"]
-    </MudText>
-</MudStack>
-
-@* Result card — slides in below *@
-@if (_loading)
-{
-    <MudCard Class="tailor-card mt-4" Elevation="4">
-        <MudCardContent>
-            <MudStack AlignItems="AlignItems.Center" Spacing="2">
-                <MudProgressCircular Indeterminate="true" Color="Color.Primary" Size="Size.Small" />
-                <MudText Typo="Typo.caption" Color="Color.Secondary">@Localizer["TailorLoading"]</MudText>
-            </MudStack>
-        </MudCardContent>
-    </MudCard>
-}
-
+<MudPaper Class="tailor-wrap pa-4 mt-6" Elevation="0">
+    <MudStack Spacing="2" AlignItems="AlignItems.Center">
+        <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+            <MudIcon Icon="@Icons.Material.Filled.AutoAwesome" Color="Color.Warning" />
+            <MudText Typo="Typo.h6" Color="Color.Primary">
+                @Localizer["TailorTitle"]
+            </MudText>
+        </MudStack>
+        <MudTextField @bind-Value="_input"
+                      Immediate
+                      Label="@Localizer["TailorJobOffer"]"
+                      Variant="Variant.Outlined"
+                      MaxLines="8"
+                      AutoGrow
+                      FullWidth="true"
+                      Disabled="_loading"
+                      HelperText="@Localizer["TailorHint"]" />
+        <MudButton Variant="Variant.Filled"
+                   Color="Color.Primary"
+                   OnClick="Submit"
+                   Disabled="@(string.IsNullOrWhiteSpace(_input) || _loading)">
+            @if (_loading)
+            {
+                <MudProgressCircular Class="me-2" Indeterminate Color="Color.Primary" Size="Size.Small" />
+                @Localizer["TailorAnalysing"]
+            }
+            else
+            {
+                @Localizer["TailorAnalyse"]
+            }
+        </MudButton>
+    </MudStack>
+</MudPaper>
+@* Result *@
 @if (_result is not null && !_loading)
 {
     <MudCard Class="tailor-card mt-4" Elevation="4">
@@ -143,15 +147,44 @@
 }
 
 <style>
-    .tailor-search .mud-input-outlined { border-radius: 12px !important; }
-    .tailor-card { border-radius: 12px !important; overflow: hidden; animation: slide-up 0.4s ease; }
-    .tailor-accent { height: 4px; }
-    .tailor-accent.match-strong { background: linear-gradient(90deg, var(--mud-palette-success), var(--mud-palette-primary)); }
-    .tailor-accent.match-partial { background: linear-gradient(90deg, var(--mud-palette-warning), var(--mud-palette-info)); }
-    .tailor-accent.match-none    { background: linear-gradient(90deg, var(--mud-palette-error), var(--mud-palette-dark)); }
+    .tailor-wrap {
+        border: 1px solid var(--mud-palette-primary);
+        border-radius: 12px !important;
+        background: var(--mud-palette-primary-hover) !important;
+    }
+
+    .tailor-card {
+        border-radius: 12px !important;
+        overflow: hidden;
+        animation: slide-up 0.4s ease;
+    }
+
+    .tailor-accent {
+        height: 4px;
+    }
+
+        .tailor-accent.match-strong {
+            background: linear-gradient(90deg, var(--mud-palette-success), var(--mud-palette-primary));
+        }
+
+        .tailor-accent.match-partial {
+            background: linear-gradient(90deg, var(--mud-palette-warning), var(--mud-palette-info));
+        }
+
+        .tailor-accent.match-none {
+            background: linear-gradient(90deg, var(--mud-palette-error), var(--mud-palette-dark));
+        }
+
     @@keyframes slide-up {
-        from { opacity: 0; transform: translateY(16px); }
-        to   { opacity: 1; transform: translateY(0); }
+        from {
+            opacity: 0;
+            transform: translateY(16px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 </style>
 
@@ -161,7 +194,6 @@
     private TailorResult? _result = null;
     private CancellationTokenSource _cts = new();
     private bool _unavailable = false;
-
     private string CaseAccentClass => _result?.Case switch
     {
         3 => "match-strong",
@@ -194,11 +226,6 @@
             _loading = false;
             StateHasChanged();
         }
-    }
-
-    private async Task OnKeyDown(KeyboardEventArgs e)
-    {
-        if (e.Key == "Enter") await Submit();
     }
 
     private void Reset()

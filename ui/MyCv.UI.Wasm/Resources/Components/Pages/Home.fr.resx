@@ -175,18 +175,30 @@ Venez découvrir ma formation.</value>
     <value>Compétences techniques complètes et expérience en leadership dans le développement de logiciels modernes</value>
   </data>
   <data name="TailorHint" xml:space="preserve">
-    <value>Essayez "Azure tech lead pour une startup de la fintech" ou "Node.js team lead"</value>
+    <value>Copiez une offre d'emploi en entier ou décrivez votre candidat idéal</value>
   </data>
   <data name="TailorLoading" xml:space="preserve">
     <value>J'analyse vos besoins...</value>
   </data>
   <data name="TailorPlaceholder" xml:space="preserve">
-    <value>Copiez une annonce de poste ou le titre — Je vous retourne le CV sur-mesure</value>
+    <value>Copiez une annonce de poste  — Je vous retourne le CV sur-mesure</value>
+  </data>
+  <data name="TailorJobOffer" xml:space="preserve">
+    <value>Offre d'emploi</value>
   </data>
   <data name="TailorUnavailable" xml:space="preserve">
     <value>L'IA est temporairement indisponible. Merci de réessayer dans quelques secondes 🙏</value>
   </data>
   <data name="TeamManagement" xml:space="preserve">
     <value>Gestion d'équipe</value>
+  </data>
+  <data name="TailorTitle" xml:space="preserve">
+    <value>CV sur mesure</value>
+  </data>
+  <data name="TailorAnalyse" xml:space="preserve">
+    <value>Analyser ✨</value>
+  </data>
+  <data name="TailorAnalysing" xml:space="preserve">
+    <value>Analyse en cours...</value>
   </data>
 </root>

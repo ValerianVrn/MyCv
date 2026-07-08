@@ -74,10 +74,10 @@ namespace MyCv.Tailor.Api
 
     public static partial class Log
     {
-        [LoggerMessage(Level = LogLevel.Warning, Message = "Gemini unavailable")]
+        [LoggerMessage(EventId = 1, Level = LogLevel.Warning, Message = "Gemini unavailable")]
         public static partial void Unavailable(ILogger logger);
 
-        [LoggerMessage(Level = LogLevel.Error, Message = "Tailor function failed")]
+        [LoggerMessage(EventId = 2, Level = LogLevel.Error, Message = "Tailor function failed")]
         public static partial void Error(ILogger logger, Exception ex);
     }
 }

@@ -55,7 +55,9 @@ namespace MyCv.Tailor.Api.Services
 
             var geminiResponse = await httpClient.PostAsJsonAsync($"{BaseUrl}{Model}:generateContent?key={apiKey}", geminiRequest);
             Log.StatusCode(logger, geminiResponse.StatusCode);
-            logger.LogWarning("Gemini status: {Status}", geminiResponse.StatusCode);
+            logger.LogDebug("DEB Gemini status: {Status}", geminiResponse.StatusCode);
+            logger.LogInformation("INFO Gemini status: {Status}", geminiResponse.StatusCode);
+            logger.LogWarning("WARNING Gemini status: {Status}", geminiResponse.StatusCode);
             // Force buffer the entire response before reading
             await geminiResponse.Content.LoadIntoBufferAsync();
 
@@ -109,13 +111,13 @@ namespace MyCv.Tailor.Api.Services
 
     public static partial class Log
     {
-        [LoggerMessage(Level = LogLevel.Information, Message = "Gemini status: {Status}")]
+        [LoggerMessage(EventId = 1, Level = LogLevel.Information, Message = "Gemini status: {Status}")]
         public static partial void StatusCode(ILogger logger, HttpStatusCode status);
 
-        [LoggerMessage(Level = LogLevel.Debug, Message = "Gemini raw response: {Response}")]
+        [LoggerMessage(EventId = 2, Level = LogLevel.Debug, Message = "Gemini raw response: {Response}")]
         public static partial void Response(ILogger logger, string? response);
 
-        [LoggerMessage(Level = LogLevel.Debug, Message = "Gemini raw response length: {Length}")]
+        [LoggerMessage(EventId = 3, Level = LogLevel.Debug, Message = "Gemini raw response length: {Length}")]
         public static partial void RawLength(ILogger logger, int length);
     }
 }

@@ -4,7 +4,10 @@
     "logLevel": {
       "default": "Information",
       "MyCv.Tailor.Api": "Debug",
-      "MyCv.Tailor.Api.GeminiClient": "Information"
+      "MyCv.Tailor.Api.GeminiClient": "Information",
+      "Function": "Information",
+      "Function.tailor": "Information",
+      "Function.tailor.User": "Information"
     },
     "applicationInsights": {
       "samplingSettings": {
@@ -14,7 +17,10 @@
       "logLevel": {
         "default": "Information",
         "MyCv.Tailor.Api": "Debug",
-        "MyCv.Tailor.Api.GeminiClient": "Information"
+        "MyCv.Tailor.Api.GeminiClient": "Information",
+        "Function": "Information",
+        "Function.tailor": "Information",
+        "Function.tailor.User": "Information"
       },
       "enableLiveMetricsFilters": true
     }

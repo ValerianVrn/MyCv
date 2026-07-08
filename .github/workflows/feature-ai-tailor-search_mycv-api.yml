@@ -5,7 +5,7 @@ name: Build and deploy dotnet core project to Azure Function App - mycv-api
 
 on:
   push:
-    branches: [ main, feature/ai-tailor-search ]
+    branches: [ main ]
     paths:
     - 'tailor/MyCv.Tailor.Api/**'
   workflow_dispatch:

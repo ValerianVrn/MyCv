@@ -55,7 +55,7 @@ namespace MyCv.Tailor.Api.Services
 
             var geminiResponse = await httpClient.PostAsJsonAsync($"{BaseUrl}{Model}:generateContent?key={apiKey}", geminiRequest);
             Log.StatusCode(logger, geminiResponse.StatusCode);
-
+            logger.LogInformation("Gemini status: {Status}", geminiResponse.StatusCode);
             // Force buffer the entire response before reading
             await geminiResponse.Content.LoadIntoBufferAsync();
 

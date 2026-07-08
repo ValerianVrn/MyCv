@@ -4,7 +4,6 @@ using Microsoft.JSInterop;
 using MyCv.UI.Wasm;
 using MyCv.UI.Wasm.Services;
 using System.Globalization;
-using MudBlazor.Services;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -18,6 +17,7 @@ builder.Services
     .AddScoped<IThemeService, ThemeService>()
     .AddScoped<ILocalizationService, LocalizationService>();
 
+// Configuration.
 _ = builder.Configuration.GetValue<bool>("TailorApi:UseFake")
     ? builder.Services.AddScoped<ITailorService, FakeTailorService>()
     : builder.Services.AddScoped<ITailorService, TailorService>();

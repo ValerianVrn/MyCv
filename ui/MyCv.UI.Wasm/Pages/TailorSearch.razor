@@ -1,4 +1,5 @@
 @using MyCv.UI.Wasm.Exceptions
+@using MyCv.UI.Wasm.Shared.AppBar
 @inject ITailorService TailorService
 @inject IStringLocalizer<MyCv.UI.Wasm.Resources.Components.Pages.Home> Localizer;
 
@@ -36,41 +37,41 @@
         </MudButton>
     </MudStack>
 </MudPaper>
+
 @* Result *@
 @if (_result is not null && !_loading)
 {
-    <MudCard Class="tailor-card mt-4" Elevation="4">
+    <MudCard Class="tailor-card mt-4" Elevation="4" Outlined>
 
-        @* Gradient accent bar matching case *@
+        @* Accent bar matching case *@
         <div class="tailor-accent @CaseAccentClass"></div>
 
-        <MudCardContent Class="pa-4">
+        @* Content *@
+        <MudCardContent Class="pa-4 position-relative">
+
+            @* Close/reset button *@
+            <MudIconButton Icon="@Icons.Material.Filled.Close"
+                           Size="Size.Small"
+                           OnClick="Reset"
+                           Class="position-absolute top-0 end-0 mt-2 me-2" />
+
             <MudStack Spacing="3">
 
                 @* Header *@
-                <MudStack Row AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween">
-                    <MudStack Row AlignItems="AlignItems.Center" Spacing="1">
-                        <MudIcon Icon="@Icons.Material.Filled.AutoAwesome" Size="Size.Small" Color="Color.Warning" />
-                        <MudText Typo="Typo.caption" Color="Color.Secondary" Style="letter-spacing:0.08em; text-transform:uppercase">
-                            Tailored for you
-                        </MudText>
+                <MudStack AlignItems="AlignItems.Center" Justify="Justify.Center" Spacing="2">
+                    <MudStack Row Spacing="0">
+                        @* Label *@
+                        <MudText Typo="Typo.h6">@_result.MatchLabel</MudText>
                     </MudStack>
-                    <MudIconButton Icon="@Icons.Material.Filled.Close"
-                                   Size="Size.Small"
-                                   OnClick="Reset" />
-                </MudStack>
-
-                @* Stars + label *@
-                <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                    @* Stars *@
                     <MudRating ReadOnly="true"
                                SelectedValue="_result.Stars"
                                MaxValue="5"
                                Color="Color.Warning" />
-                    <MudText Typo="Typo.subtitle2">@_result.MatchLabel</MudText>
                 </MudStack>
 
                 @* Humor *@
-                <MudAlert Severity="Severity.Info" Variant="Variant.Outlined" Dense="true" Icon="@Icons.Material.Filled.EmojiEmotions">
+                <MudAlert Severity="@SeverityResult" Variant="Variant.Outlined" Dense="true" Icon="@IconResult">
                     @_result.Humor
                 </MudAlert>
 
@@ -78,11 +79,14 @@
                 @if (_result.WhyMatch.Any())
                 {
                     <MudStack Spacing="1">
-                        <MudText Typo="Typo.overline" Color="Color.Secondary">Why he matches</MudText>
-                        <MudStack Row Wrap="Wrap.Wrap" Spacing="1">
+                        <MudText Typo="Typo.h6" Color="Color.Primary"><strong>@Localizer["TailorWhyMatch"]</strong></MudText>
+                        <MudStack Spacing="1">
                             @foreach (var s in _result.WhyMatch)
                             {
-                                <MudChip T="string" Color="Color.Primary" Variant="Variant.Outlined" Size="Size.Small">@s</MudChip>
+                                <MudStack Row AlignItems="AlignItems.Start" Spacing="1">
+                                    <MudIcon Icon="@Icons.Material.Filled.ChevronRight" Size="Size.Small" Color="Color.Primary" />
+                                    <MudText Typo="Typo.body2">@s</MudText>
+                                </MudStack>
                             }
                         </MudStack>
                     </MudStack>
@@ -92,10 +96,11 @@
                 @if (_result.SkillBridges.Any())
                 {
                     <MudStack Spacing="1">
-                        <MudText Typo="Typo.overline" Color="Color.Secondary">What transfers</MudText>
+                        <MudText Typo="Typo.h6" Color="Color.Secondary"><strong>@Localizer["TailorSkillBridge"]</strong></MudText>
                         @foreach (var b in _result.SkillBridges)
                         {
                             <MudStack Row AlignItems="AlignItems.Center" Spacing="1">
+                                <MudIcon Icon="@Icons.Material.Filled.ChevronRight" Size="Size.Small" Color="Color.Secondary" />
                                 <MudText Typo="Typo.body2" Style="text-decoration:line-through; opacity:0.5">@b.Asked</MudText>
                                 <MudIcon Icon="@Icons.Material.Filled.ArrowForward" Size="Size.Small" Color="Color.Secondary" />
                                 <MudText Typo="Typo.body2"><strong>@b.Have</strong></MudText>
@@ -108,20 +113,21 @@
                 @if (_result.BonusSkills.Any())
                 {
                     <MudStack Spacing="1">
-                        <MudText Typo="Typo.overline" Color="Color.Secondary">Bonus — you might not have thought of</MudText>
-                        <MudStack Row Wrap="Wrap.Wrap" Spacing="1">
-                            @foreach (var s in _result.BonusSkills)
-                            {
-                                <MudChip T="string" Color="Color.Success" Variant="Variant.Outlined" Size="Size.Small">@s</MudChip>
-                            }
-                        </MudStack>
+                        <MudText Typo="Typo.h6" Color="Color.Success"><strong>@Localizer["TailorBonus"]</strong></MudText>
+                        @foreach (var s in _result.BonusSkills)
+                        {
+                            <MudStack Row AlignItems="AlignItems.Start" Spacing="1">
+                                <MudIcon Icon="@Icons.Material.Filled.ChevronRight" Size="Size.Small" Color="Color.Success" />
+                                <MudText Typo="Typo.body2">@s</MudText>
+                            </MudStack>
+                        }
                     </MudStack>
                 }
 
                 @* Pitch *@
                 @if (!string.IsNullOrEmpty(_result.Pitch))
                 {
-                    <MudPaper Class="pa-3 rounded-lg" Elevation="0" Style="background:var(--mud-palette-background-grey)">
+                    <MudPaper Class="pa-3 rounded-lg" Elevation="0" Style="background:var(--mud-palette-background-gray)">
                         <MudText Typo="Typo.body2" Style="font-style:italic">@_result.Pitch</MudText>
                     </MudPaper>
                 }
@@ -131,7 +137,9 @@
                 @* Contact *@
                 <MudStack Spacing="1" AlignItems="AlignItems.Center">
                     <MudText Typo="Typo.caption" Color="Color.Secondary">@_result.ContactCopy</MudText>
-                    <SocialItems />
+                    <MudStack Row Spacing="1" AlignItems="AlignItems.Center">
+                        <SocialItems />
+                    </MudStack>
                 </MudStack>
 
             </MudStack>
@@ -154,25 +162,24 @@
     }
 
     .tailor-card {
-        border-radius: 12px !important;
         overflow: hidden;
-        animation: slide-up 0.4s ease;
+        animation: slide-up 0.6s ease;
     }
 
     .tailor-accent {
-        height: 4px;
+        height: 6px;
     }
 
         .tailor-accent.match-strong {
-            background: linear-gradient(90deg, var(--mud-palette-success), var(--mud-palette-primary));
+            background: var(--mud-palette-success);
         }
 
         .tailor-accent.match-partial {
-            background: linear-gradient(90deg, var(--mud-palette-warning), var(--mud-palette-info));
+            background: var(--mud-palette-warning);
         }
 
         .tailor-accent.match-none {
-            background: linear-gradient(90deg, var(--mud-palette-error), var(--mud-palette-dark));
+            background: var(--mud-palette-error);
         }
 
     @@keyframes slide-up {
@@ -199,6 +206,18 @@
         3 => "match-strong",
         2 => "match-partial",
         _ => "match-none"
+    };
+    private Severity SeverityResult => _result?.Case switch
+    {
+        3 => Severity.Success,
+        2 => Severity.Warning,
+        _ => Severity.Error
+    };
+    private string? IconResult => _result?.Case switch
+    {
+        3 => Icons.Material.Filled.SentimentVerySatisfied,
+        2 => Icons.Material.Filled.SentimentSatisfiedAlt,
+        _ => Icons.Material.Filled.SentimentDissatisfied
     };
 
     private async Task Submit()

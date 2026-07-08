@@ -201,4 +201,13 @@ Venez découvrir ma formation.</value>
   <data name="TailorAnalysing" xml:space="preserve">
     <value>Analyse en cours...</value>
   </data>
+  <data name="TailorWhyMatch" xml:space="preserve">
+    <value>Ce pour quoi il correpond</value>
+  </data>
+  <data name="TailorSkillBridge" xml:space="preserve">
+    <value>Ce qui s'en approche</value>
+  </data>
+  <data name="TailorBonus" xml:space="preserve">
+    <value>Bonus — vous pourriez ne pas y avoir pensé</value>
+  </data>
 </root>

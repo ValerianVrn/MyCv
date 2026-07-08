@@ -244,6 +244,15 @@ namespace MyCv.UI.Wasm.Resources.Components.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bonus — you might not have thought of.
+        /// </summary>
+        public static string TailorBonus {
+            get {
+                return ResourceManager.GetString("TailorBonus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Paste a full job offer or describe your ideal candidate.
         /// </summary>
         public static string TailorHint {
@@ -280,6 +289,15 @@ namespace MyCv.UI.Wasm.Resources.Components.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to What transfers.
+        /// </summary>
+        public static string TailorSkillBridge {
+            get {
+                return ResourceManager.GetString("TailorSkillBridge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tailor-made CV.
         /// </summary>
         public static string TailorTitle {
@@ -294,6 +312,15 @@ namespace MyCv.UI.Wasm.Resources.Components.Pages {
         public static string TailorUnavailable {
             get {
                 return ResourceManager.GetString("TailorUnavailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Why he matches.
+        /// </summary>
+        public static string TailorWhyMatch {
+            get {
+                return ResourceManager.GetString("TailorWhyMatch", resourceCulture);
             }
         }
         

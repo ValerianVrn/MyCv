@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.JSInterop;
+using MudBlazor.Services;
 using MyCv.UI.Wasm;
 using MyCv.UI.Wasm.Services;
 using System.Globalization;

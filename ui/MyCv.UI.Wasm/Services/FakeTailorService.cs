@@ -1,3 +1,5 @@
+using MyCv.UI.Wasm.Exceptions;
+
 namespace MyCv.UI.Wasm.Services
 {
     /// <inheritdoc/>
@@ -7,32 +9,32 @@ namespace MyCv.UI.Wasm.Services
         {
             await Task.Delay(1500, ct); // simulate network latency
 
-            if (input.Contains("plumb", StringComparison.OrdinalIgnoreCase))
-                return new TailorResult
-                {
-                    Case = 1,
-                    Stars = 0,
-                    MatchLabel = "Not a match",
-                    Humor = "Honestly? Pipes aren't really Valérian's thing — unless it's data pipelines.",
-                    Pitch = "This one's outside his territory.",
-                    ContactCopy = "Curiosity beats a perfect CV sometimes."
-                };
+            if (input.Contains("error", StringComparison.OrdinalIgnoreCase))
+            {
+                throw new TailorUnavailableException();
+            }
 
-            if (input.Contains("aws", StringComparison.OrdinalIgnoreCase))
-                return new TailorResult
-                {
-                    Case = 2,
-                    Stars = 3,
-                    MatchLabel = "Partial match",
-                    Humor = "Not a perfect match on paper — but Valérian has pivoted tech stacks before.",
-                    WhyMatch = ["Cloud architecture", "Tech Lead", "Microservices"],
-                    SkillBridges = [new() { Asked = "AWS Lambda", Have = "Azure Functions" }],
-                    BonusSkills = ["Event Sourcing", "AI integration"],
-                    Pitch = "Different cloud, same architecture principles.",
-                    ContactCopy = "Worth a conversation?"
-                };
-
-            return new TailorResult
+            return input.Contains("plumb", StringComparison.OrdinalIgnoreCase) ? new TailorResult
+            {
+                Case = 1,
+                Stars = 0,
+                MatchLabel = "Not a match",
+                Humor = "Honestly? Pipes aren't really Valérian's thing — unless it's data pipelines.",
+                Pitch = "This one's outside his territory.",
+                ContactCopy = "Curiosity beats a perfect CV sometimes."
+            } :
+            input.Contains("aws", StringComparison.OrdinalIgnoreCase) ? new TailorResult
+            {
+                Case = 2,
+                Stars = 3,
+                MatchLabel = "Partial match",
+                Humor = "Not a perfect match on paper — but Valérian has pivoted tech stacks before.",
+                WhyMatch = ["Cloud architecture", "Tech Lead", "Microservices"],
+                SkillBridges = [new() { Asked = "AWS Lambda", Have = "Azure Functions" }],
+                BonusSkills = ["Event Sourcing", "AI integration"],
+                Pitch = "Different cloud, same architecture principles.",
+                ContactCopy = "Worth a conversation?"
+            } : new TailorResult
             {
                 Case = 3,
                 Stars = 5,

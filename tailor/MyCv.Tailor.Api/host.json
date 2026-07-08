@@ -1,28 +1,14 @@
 {
-    "version": "2.0",
+  "version": "2.0",
   "logging": {
     "logLevel": {
       "default": "Information",
-      "MyCv.Tailor.Api": "Debug",
-      "MyCv.Tailor.Api.GeminiClient": "Information",
-      "Function": "Information",
-      "Function.tailor": "Information",
-      "Function.tailor.User": "Information"
+      "MyCv.Tailor.Api": "Information"
     },
     "applicationInsights": {
       "samplingSettings": {
-        "isEnabled": false,
-        "excludedTypes": "Request"
-      },
-      "logLevel": {
-        "default": "Information",
-        "MyCv.Tailor.Api": "Debug",
-        "MyCv.Tailor.Api.GeminiClient": "Information",
-        "Function": "Information",
-        "Function.tailor": "Information",
-        "Function.tailor.User": "Information"
-      },
-      "enableLiveMetricsFilters": true
+        "isEnabled": false
+      }
     }
   }
 }

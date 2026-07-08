@@ -26,7 +26,7 @@ builder.Services
 builder.Logging.SetMinimumLevel(LogLevel.Information);
 
 builder.Logging.AddFilter<ApplicationInsightsLoggerProvider>(
-    category: "",
+    category: "MyCv.Tailor.Api",
     level: LogLevel.Information);
 
 builder.Build().Run();

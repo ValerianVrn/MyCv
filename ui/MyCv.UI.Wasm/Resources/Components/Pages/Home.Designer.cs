@@ -226,6 +226,105 @@ namespace MyCv.UI.Wasm.Resources.Components.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Analyse ✨.
+        /// </summary>
+        public static string TailorAnalyse {
+            get {
+                return ResourceManager.GetString("TailorAnalyse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Analysing....
+        /// </summary>
+        public static string TailorAnalysing {
+            get {
+                return ResourceManager.GetString("TailorAnalysing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bonus — you might not have thought of.
+        /// </summary>
+        public static string TailorBonus {
+            get {
+                return ResourceManager.GetString("TailorBonus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paste a full job offer or describe your ideal candidate.
+        /// </summary>
+        public static string TailorHint {
+            get {
+                return ResourceManager.GetString("TailorHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job offer.
+        /// </summary>
+        public static string TailorJobOffer {
+            get {
+                return ResourceManager.GetString("TailorJobOffer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Analysing your needs....
+        /// </summary>
+        public static string TailorLoading {
+            get {
+                return ResourceManager.GetString("TailorLoading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paste a job offer — I&apos;ll tailor this CV for you.
+        /// </summary>
+        public static string TailorPlaceholder {
+            get {
+                return ResourceManager.GetString("TailorPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to What transfers.
+        /// </summary>
+        public static string TailorSkillBridge {
+            get {
+                return ResourceManager.GetString("TailorSkillBridge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tailor-made CV.
+        /// </summary>
+        public static string TailorTitle {
+            get {
+                return ResourceManager.GetString("TailorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The AI service is temporarily unavailable. Please try again in a few seconds 🙏.
+        /// </summary>
+        public static string TailorUnavailable {
+            get {
+                return ResourceManager.GetString("TailorUnavailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Why he matches.
+        /// </summary>
+        public static string TailorWhyMatch {
+            get {
+                return ResourceManager.GetString("TailorWhyMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Team management.
         /// </summary>
         public static string TeamManagement {

@@ -1,0 +1,14 @@
+{
+  "version": "2.0",
+  "logging": {
+    "logLevel": {
+      "default": "Information",
+      "MyCv.Tailor.Api": "Information"
+    },
+    "applicationInsights": {
+      "samplingSettings": {
+        "isEnabled": false
+      }
+    }
+  }
+}

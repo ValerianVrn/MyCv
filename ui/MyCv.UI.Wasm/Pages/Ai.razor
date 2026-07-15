@@ -80,7 +80,7 @@
             @* Instagram badge *@
             <MudItem xs="12" md="4" Class="order-first order-md-last">
                 <MudStack AlignItems="AlignItems.Center" Spacing="4">
-                    <MudImage Src="images/instagram/instagram.png" Width="52" />
+                    <MudImage Src="images/instagram/instagram.webp" Width="52" />
                     <MudStack Spacing="1" AlignItems="AlignItems.Center">
                         <MudText Typo="Typo.overline" Style="color:rgba(255,255,255,0.5); letter-spacing:0.1em">
                             @AiLocalizer["Creative"]
@@ -173,9 +173,9 @@
     private record InstagramPost(string Url, bool IsVideo = false);
     private List<InstagramPost> _instagramPosts = new()
     {
-        new("images/instagram/post-1.jpg"),
-        new("images/instagram/post-2.jpg"),
-        new("images/instagram/post-3.jpg"),
+        new("images/instagram/post-1.webp"),
+        new("images/instagram/post-2.webp"),
+        new("images/instagram/post-3.webp"),
         new("videos/instagram-post.webm", true)
     };
 }

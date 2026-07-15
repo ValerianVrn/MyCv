@@ -124,7 +124,7 @@
     <value>École d'ingénieurs</value>
   </data>
   <data name="Introduction" xml:space="preserve">
-    <value>Les points forts de mon parcours : une approche multidisciplinaire qui permet une collaboration entre les équipes, une capacité à comprendre et résoudre les problèmes variés en phase avec les différents contextes, un apprentissage continu pour garantir un travail de qualité avec des outils modernes</value>
+    <value>Les points forts de mon parcours : une approche pluridisciplinaire qui permet une collaboration entre les équipes, une capacité à résoudre les problèmes variés en phase avec les différents contextes et un apprentissage continu pour garantir un travail de qualité avec des outils modernes</value>
   </data>
   <data name="EducationScore" xml:space="preserve">
     <value>Score : {0}</value>
@@ -156,5 +156,4 @@
   <data name="Certifications" xml:space="preserve">
     <value>Certifications</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
 </root>

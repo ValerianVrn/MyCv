@@ -145,7 +145,7 @@ Come and discover my training.</value>
     <value>Hi. I'm </value>
   </data>
   <data name="HomeIntroduction" xml:space="preserve">
-    <value>Welcome on this resume website which is also a live demo of my skills (Blazor C#/.NET, Azure deployment, etc.).</value>
+    <value>Welcome to my profile — built with the same tools I use every day.</value>
   </data>
   <data name="HomeSourceCode" xml:space="preserve">
     <value>Feel free to consult the source code on</value>
@@ -209,5 +209,8 @@ Come and discover my training.</value>
   </data>
   <data name="TailorBonus" xml:space="preserve">
     <value>Bonus — you might not have thought of</value>
+  </data>
+  <data name="HomeIntroductionCode" xml:space="preserve">
+    <value>This website was realized by applying some of the skills presented (Blazor, Azure...).</value>
   </data>
 </root>

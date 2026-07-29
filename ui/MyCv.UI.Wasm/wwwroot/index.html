@@ -57,7 +57,7 @@
       <div class="loader-content">
         <div class="loader-monogram">VV</div>
         <div class="loader-name">Valérian Verona</div>
-        <div class="loader-subtitle">SOFTWARE ENGINEER · CLOUD · AI</div>
+        <div class="loader-subtitle">TECH LEAD C#/.NET & ARCHITECT</div>
         <div class="loader-bar">
           <div class="loader-bar-fill"></div>
         </div>
@@ -65,12 +65,26 @@
       </div>
     </div>
   </div>
+  <script>
+    // Detect browser language before Blazor loads
+    const lang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+    const fr = lang.startsWith('fr');
+
+    document.querySelector('.loader-name').textContent = 'Valérian Verona';
+    document.querySelector('.loader-subtitle').textContent = fr
+      ? 'LEADER TECHNIQUE C#/.NET & ARCHITECTE'
+      : 'TECH LEAD C#/.NET & ARCHITECT';
+    document.querySelector('.loader-text').textContent = fr
+      ? 'Chargement du portfolio...'
+      : 'Loading portfolio...';
+  </script>
   <script src="_framework/blazor.webassembly.js"></script>
   <script src="_content/MudBlazor/MudBlazor.min.js"></script>
   <script src="scripts/error.js"></script>
   <script src="scripts/visitoridstorage.js"></script>
   <script src="scripts/spotlight.js"></script>
   <script src="scripts/culture.js"></script>
+  <script src="scripts/map.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 

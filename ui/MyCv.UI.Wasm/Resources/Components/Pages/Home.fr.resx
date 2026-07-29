@@ -145,7 +145,7 @@ Venez découvrir ma formation.</value>
     <value>Bonjour. Moi c'est </value>
   </data>
   <data name="HomeIntroduction" xml:space="preserve">
-    <value>Bienvenue sur la présentation de mon profil sous forme de démo interactive de mes compétences (Blazor C#/.NET, déploiement Azure, etc.).</value>
+    <value>Bienvenue sur mon profil — conçu avec les mêmes outils que j'utilise au quotidien.</value>
   </data>
   <data name="HomeSourceCode" xml:space="preserve">
     <value>N'hésitez pas à consulter le code source sur</value>
@@ -209,5 +209,8 @@ Venez découvrir ma formation.</value>
   </data>
   <data name="TailorBonus" xml:space="preserve">
     <value>Bonus — vous pourriez ne pas y avoir pensé</value>
+  </data>
+  <data name="HomeIntroductionCode" xml:space="preserve">
+    <value>Ce site a été réalisé en appliquant directement quelques unes des compétences mises en avant (Blazor, Azure...).</value>
   </data>
 </root>

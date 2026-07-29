@@ -99,7 +99,7 @@ namespace MyCv.UI.Wasm.Resources.Components.Pages {
         
         /// <summary>
         ///   Looks up a localized string similar to China, Peru, Laos, Sri Lanka, USA... I love travelling to discover different cultures, observe typical views and taste unknown specialties!
-        ///I did a world tour for one year in 2018 (before the pandemic 😌), a 8-months trip in French Polynesia and the west coast, and I often discover new countries..
+        ///I did a world tour, a trip in French Polynesia and the west coast, and I often discover new countries..
         /// </summary>
         public static string TravelInterest {
             get {

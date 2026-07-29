@@ -136,11 +136,20 @@ namespace MyCv.UI.Wasm.Resources.Components.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Welcome on this resume website which is also a live demo of my skills (Blazor C#/.NET, Azure deployment, etc.)..
+        ///   Looks up a localized string similar to Welcome to my profile — built with the same tools I use every day..
         /// </summary>
         public static string HomeIntroduction {
             get {
                 return ResourceManager.GetString("HomeIntroduction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This website was realized by applying some of the skills presented (Blazor, Azure...)..
+        /// </summary>
+        public static string HomeIntroductionCode {
+            get {
+                return ResourceManager.GetString("HomeIntroductionCode", resourceCulture);
             }
         }
         

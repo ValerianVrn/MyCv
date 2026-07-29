@@ -55,7 +55,16 @@
                 {
                     <MudStack AlignItems="AlignItems.Center" Spacing="1" Style="width:128px">
                         <div class="cert-badge">
-                            <MudImage Src="@certification.Image" Alt="@certification.Name" Width="56" Height="56" ObjectFit="ObjectFit.Contain" />
+                            @if (!string.IsNullOrEmpty(certification.Url))
+                            {
+                                <MudLink Href="@certification.Url" Target="_blank">
+                                    <MudImage Src="@certification.Image" Alt="@certification.Name" Width="56" Height="56" ObjectFit="ObjectFit.Contain" />
+                                </MudLink>
+                            }
+                            else
+                            {
+                                <MudImage Src="@certification.Image" Alt="@certification.Name" Width="56" Height="56" ObjectFit="ObjectFit.Contain" />
+                            }
                         </div>
                         <MudText Typo="Typo.caption" Align="Align.Center">
                             @(new MarkupString(certification.Name))
@@ -112,7 +121,7 @@
 
 @code {
     private record Degree(int year, string Image, string Name, string Specialty, string Institution, string Score, string AccentColor);
-    private record SecondaryDegree(int year, string Image, string Name, string Detail);
+    private record SecondaryDegree(int year, string Image, string Name, string Detail, string Url = "");
     private List<Degree> _degrees = new();
     private List<SecondaryDegree> _secondaryDegrees = new();
 
@@ -126,7 +135,7 @@
         };
         _secondaryDegrees = new()
         {
-            new(2026, "images/certifications/az-900.png", "Microsoft Certified<br>Azure Fundamentals (AZ-900)", ""),
+            new(2026, "images/certifications/az-900.png", "Microsoft Certified<br>Azure Fundamentals (AZ-900)", "", "https://learn.microsoft.com/api/credentials/share/en-us/ValrianVerona-3413/839FE6E06DE2BDAE?sharingId=BF7E5DC00880FEE2"),
             new(2013, "images/certifications/toeic.png", "TOEIC", EducationLocalizer["EducationScore", "880/990"]),
             new(2025, "images/certifications/jlpt.png", "JLPT - N5", EducationLocalizer["EducationScore", "107"]),
         };

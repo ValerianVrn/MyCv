@@ -3,6 +3,10 @@ window.initMapTooltips = function () {
   tooltip.className = 'map-tooltip';
   document.body.appendChild(tooltip);
 
+  const hideTooltip = () => {
+    tooltip.style.display = 'none';
+  };
+
   document.querySelectorAll('.world-map path.visited').forEach(path => {
     path.addEventListener('mouseenter', e => {
       tooltip.textContent = path.getAttribute('title');
@@ -13,7 +17,11 @@ window.initMapTooltips = function () {
       tooltip.style.top = (e.clientY + 12) + 'px';
     });
     path.addEventListener('mouseleave', () => {
-      tooltip.style.display = 'none';
+      hideTooltip();
     });
+    path.addEventListener('touchstart', hideTooltip, { passive: true });
+    path.addEventListener('touchmove', hideTooltip, { passive: true });
   });
+
+  window.addEventListener('scroll', hideTooltip, { passive: true });
 };

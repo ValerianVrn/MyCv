@@ -36,7 +36,7 @@
                                         </MudText>
                                     </MudStack>
                                     <MudStack Row Spacing="1">
-                                        <MudChip T="string" Size="Size.Small" Color="Color.Info" Variant="Variant.Outlined">@degree.year</MudChip>
+                                        <MudChip T="string" Size="Size.Small" Color="Color.Info" Variant="Variant.Outlined">@degree.Year</MudChip>
                                         <MudChip T="string" Size="Size.Small" Color="Color.Success" Variant="Variant.Outlined">@degree.Score</MudChip>
                                     </MudStack>
                                 </MudStack>
@@ -47,36 +47,72 @@
             </MudGrid>
         </MudContainer>
 
-        @* Secondary degrees *@
+        @* Certifications *@
         <MudContainer>
-            <MudText Typo="Typo.h6" Align="Align.Center" GutterBottom="true">@EducationLocalizer["Certifications"]</MudText>
-            <MudStack Row Justify="Justify.Center" AlignItems="AlignItems.Start" Wrap="Wrap.Wrap" Spacing="3">
-                @foreach (var certification in _secondaryDegrees)
-                {
-                    <MudStack AlignItems="AlignItems.Center" Spacing="1" Style="width:128px">
-                        <div class="cert-badge">
-                            @if (!string.IsNullOrEmpty(certification.Url))
+            <MudGrid>
+                @* Microsoft *@
+                <MudItem xs="12" md="6">
+                    <MudPaper Elevation="2" Square Class="pa-4" Style="border-left:2px solid #00A4EF; background-color: #00A4EF15">
+                        @* Header *@
+                        <MudStack Row AlignItems="AlignItems.Center" Spacing="2" Class="mb-4">
+                            <MudIcon Icon="@Icons.Custom.Brands.Microsoft" Color="Color.Primary" />
+                            <MudText Typo="Typo.subtitle1"><strong>@SharedLocalizer["Microsoft"]</strong></MudText>
+                        </MudStack>
+                        @* Certifications *@
+                        <MudGrid>
+                            @foreach (var certification in _microsoftCertifications)
                             {
-                                <MudLink Href="@certification.Url" Target="_blank">
-                                    <MudImage Src="@certification.Image" Alt="@certification.Name" Width="56" Height="56" ObjectFit="ObjectFit.Contain" />
-                                </MudLink>
+                                <MudItem xs="12" md="6">
+                                    <MudStack AlignItems="AlignItems.Center" Spacing="1">
+                                        <div class="cert-badge">
+                                            <MudLink Href="@certification.Url" Target="_blank">
+                                                <MudImage Src="@certification.Image" Alt="@certification.Title" Width="56" Height="56" ObjectFit="ObjectFit.Contain" />
+                                            </MudLink>
+                                        </div>
+                                        <MudText Typo="Typo.body2" Align="Align.Center"><strong>@(new MarkupString(certification.CertificationId))</strong></MudText>
+                                        <MudText Typo="Typo.caption" Align="Align.Center">@(new MarkupString(certification.Title))</MudText>
+                                        <MudChip T="string" Size="Size.Small" Color="Color.Info" Variant="Variant.Outlined">@certification.Year</MudChip>
+                                    </MudStack>
+                                </MudItem>
                             }
-                            else
+                        </MudGrid>
+                    </MudPaper>
+                </MudItem>
+                @* Language *@
+                <MudItem xs="12" md="6">
+                    <MudContainer>
+                        @* Header *@
+                        <MudStack Row AlignItems="AlignItems.Center" Spacing="2" Class="mb-2">
+                            <MudIcon Icon="@Icons.Material.Filled.Translate" />
+                            <MudText Typo="Typo.subtitle1"><strong>@SharedLocalizer["Languages"]</strong></MudText>
+                        </MudStack>
+                        <MudDivider Style="@(ThemeService.IsDarkMode? "border-color:rgba(255, 255, 255, 0.5)" : "border-color:rgba(0, 0, 0, 0.5)")" Class="mb-2" />
+                        @* Certifications *@
+                        <MudStack Spacing="1">
+                            @foreach (var certification in _languageCertifications)
                             {
-                                <MudImage Src="@certification.Image" Alt="@certification.Name" Width="56" Height="56" ObjectFit="ObjectFit.Contain" />
+                                <MudPaper Elevation="0" Class="h-100 pa-2">
+                                    <MudStack Spacing="1">
+                                        <MudText><strong>@certification.Language</strong></MudText>
+                                        <MudStack Row AlignItems="AlignItems.Center" Spacing="3">
+                                            <div class="cert-badge">
+                                                <MudImage Src="@certification.Image" Alt="@certification.Name" Width="56" Height="56" ObjectFit="ObjectFit.Contain" />
+                                            </div>
+                                            <MudStack Spacing="1" Class="flex-grow-1" Style="min-width:0">
+                                                <MudText Typo="Typo.body2">@certification.Name</MudText>
+                                                <MudStack Row Wrap="Wrap.Wrap" Spacing="1">
+                                                    <MudChip T="string" Size="Size.Small" Color="Color.Info" Variant="Variant.Outlined">@certification.Year</MudChip>
+                                                    <MudChip T="string" Size="Size.Small" Color="Color.Success" Variant="Variant.Outlined">@certification.Score</MudChip>
+                                                </MudStack>
+                                            </MudStack>
+                                        </MudStack>
+                                    </MudStack>
+                                </MudPaper>
                             }
-                        </div>
-                        <MudText Typo="Typo.caption" Align="Align.Center">
-                            @(new MarkupString(certification.Name))
-                        </MudText>
-                        <MudChip T="string" Size="Size.Small" Color="Color.Info" Variant="Variant.Outlined">@certification.year</MudChip>
-                        @if (!string.IsNullOrEmpty(certification.Detail))
-                        {
-                            <MudChip T="string" Size="Size.Small" Color="Color.Success" Variant="Variant.Outlined">@certification.Detail</MudChip>
-                        }
-                    </MudStack>
-                }
-            </MudStack>
+                        </MudStack>
+                    </MudContainer>
+                </MudItem>
+            </MudGrid>
         </MudContainer>
     </MudContainer>
 </MudPaper>
@@ -86,6 +122,7 @@
         transition: transform 0.25s ease, box-shadow 0.25s ease !important;
         overflow: hidden;
     }
+
         .edu-card.active {
             transform: translateY(-5px);
             box-shadow: 0 12px 32px rgba(0,0,0,0.15), 0 0 0 2px var(--card-accent), 0 0 16px 4px var(--card-accent) !important;
@@ -100,44 +137,82 @@
 
     .cert-badge {
         background: white;
-        border-radius: 12px;
-        border: 2px solid #78909C;
+        border-radius: 6px;
         padding: 10px;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-        .cert-badge.active {
-            transform: translateY(-7px) scale(1.125);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15), 0 0 0 2px #78909C, 0 0 12px 4px #78909C !important;
-        }
-    /* Keep hover only for desktop */
-    @@media (hover: hover) {
-        .cert-badge:hover {
-            transform: translateY(-7px) scale(1.125);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15), 0 0 0 2px #78909C, 0 0 12px 4px #78909C !important;
-        }
     }
 </style>
 
 @code {
-    private record Degree(int year, string Image, string Name, string Specialty, string Institution, string Score, string AccentColor);
-    private record SecondaryDegree(int year, string Image, string Name, string Detail, string Url = "");
+    private record Degree(int Year, string Image, string Name, string Specialty, string Institution, string Score, string AccentColor);
+    private record LanguageCertification(string Language, int Year, string Image, string Name, string Score);
+    private record MicrosoftCertification(int Year, string Image, string CertificationId, string Title, string Url);
     private List<Degree> _degrees = new();
-    private List<SecondaryDegree> _secondaryDegrees = new();
+    private List<LanguageCertification> _languageCertifications = new();
+    private List<MicrosoftCertification> _microsoftCertifications = new();
 
     protected override void OnInitialized()
     {
         _degrees = new()
         {
-            new(2014, "images/degrees/tlcom_physique_strasbourg_logo.webp", EducationLocalizer["EducationEngineeringDegree"], EducationLocalizer["EducationEngineeringDegreeTitle"], "Télécom Physique Strasbourg<br>" + EducationLocalizer["EducationPartnerOf", "Institut Mines-Télécom (IMT)"], EducationLocalizer["EducationRanked", "3e/79"], "#1976D2"),
-            new(2014, "images/degrees/universite_de_strasbourg_logo.webp", EducationLocalizer["EducationMaster"], EducationLocalizer["EducationMasterScienceTitle"], "Université de Strasbourg", EducationLocalizer["EducationWithHighHonours"], "#00897B"),
-            new(2015, "images/degrees/em_strasbourg_logo.webp", EducationLocalizer["EducationMaster"], EducationLocalizer["EducationMasterBusinessTitle"], "EM Strasbourg Business School", EducationLocalizer["EducationWithHighHonours"], "#F9A825")
+            new(Year: 2014,
+                Image: "images/degrees/tlcom_physique_strasbourg_logo.webp",
+                Name: EducationLocalizer["EducationEngineeringDegree"],
+                Specialty: EducationLocalizer["EducationEngineeringDegreeTitle"],
+                Institution: "Télécom Physique Strasbourg<br>" + EducationLocalizer["EducationPartnerOf", "Institut Mines-Télécom (IMT)"],
+                Score: EducationLocalizer["EducationRanked", "3e/79"],
+                AccentColor: "#1976D2"),
+            new(Year: 2014,
+                Image: "images/degrees/universite_de_strasbourg_logo.webp",
+                Name: EducationLocalizer["EducationMaster"],
+                Specialty: EducationLocalizer["EducationMasterScienceTitle"],
+                Institution: "Université de Strasbourg",
+                Score: EducationLocalizer["EducationWithHighHonours"],
+                AccentColor: "#00897B"),
+            new(Year: 2015,
+                Image: "images/degrees/em_strasbourg_logo.webp",
+                Name: EducationLocalizer["EducationMaster"],
+                Specialty: EducationLocalizer["EducationMasterBusinessTitle"],
+                Institution: "EM Strasbourg Business School",
+                Score: EducationLocalizer["EducationWithHighHonours"],
+                AccentColor: "#F9A825")
         };
-        _secondaryDegrees = new()
+        _languageCertifications = new()
         {
-            new(2026, "images/certifications/az-900.webp", "Microsoft Certified<br>Azure Fundamentals (AZ-900)", "", "https://learn.microsoft.com/api/credentials/share/en-us/ValrianVerona-3413/839FE6E06DE2BDAE?sharingId=BF7E5DC00880FEE2"),
-            new(2013, "images/certifications/toeic.webp", "TOEIC", EducationLocalizer["EducationScore", "880/990"]),
-            new(2025, "images/certifications/jlpt.webp", "JLPT - N5", EducationLocalizer["EducationScore", "107"]),
+            new(Language: SharedLocalizer["English"],
+                Year: 2013,
+                Image: "images/certifications/toeic.webp",
+                Name: "TOEIC",
+                Score: EducationLocalizer["EducationScore", "880/990"]),
+            new(Language: SharedLocalizer["Japanese"],
+                Year: 2025,
+                Image: "images/certifications/jlpt.webp",
+                Name: "JLPT - N5",
+                Score: EducationLocalizer["EducationScore", "107"]),
         };
+        _microsoftCertifications = new()
+        {
+            new(Year: 2026,
+                Image: "images/certifications/ai-200.svg",
+                CertificationId:  "AI-200",
+                Title: "Azure AI Cloud Developer Associate<br>(ex AZ-204)",
+                Url: "https://learn.microsoft.com/api/credentials/share/en-us/ValrianVerona-3413/DDF7823793B99F1D?sharingId=BF7E5DC00880FEE2"),
+            new(Year:2026,
+                Image: "images/certifications/az-900.svg",
+                CertificationId: "AZ-900",
+                Title: "Azure Fundamentals",
+                Url: "https://learn.microsoft.com/api/credentials/share/en-us/ValrianVerona-3413/839FE6E06DE2BDAE?sharingId=BF7E5DC00880FEE2"),
+        };
+
+        ThemeService.OnThemeChanged += HandleThemeChanged;
+    }
+
+    private void HandleThemeChanged()
+    {
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        ThemeService.OnThemeChanged -= HandleThemeChanged;
     }
 }

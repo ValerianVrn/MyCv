@@ -56,7 +56,7 @@
                                  Style="height: min(420px, 90vw);"
                                  AutoCycle
                                  ShowArrows="false"
-                                 ShowBullets
+                                 ShowBullets="false"
                                  TData="object"
                                  SelectedIndexChanged="OnSlideChanged">
                         @foreach (var piece in PianoPieces)
@@ -139,7 +139,7 @@
             transform: translateY(0);
         }
     }
-</style>b
+</style>
 
 @code {
     private record PianoPiece(string Title, string Composer, string Image);

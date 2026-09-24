@@ -13,7 +13,7 @@
         </MudContainer>
         <MudContainer>
             <MudHidden Breakpoint="Breakpoint.LgAndUp">
-                <MudExpansionPanels>
+                <MudExpansionPanels MultiExpansion>
                     @foreach (var experience in _experiences)
                     {
                         <ExperienceExpansionItem CompanyLogo="@experience.CompanyLogo"

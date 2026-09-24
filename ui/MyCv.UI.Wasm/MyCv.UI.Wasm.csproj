@@ -157,4 +157,6 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ProjectExtensions><VisualStudio><UserProperties wwwroot_4site_1webmanifest__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
 </Project>

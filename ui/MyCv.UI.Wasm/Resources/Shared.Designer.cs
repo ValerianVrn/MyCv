@@ -160,6 +160,15 @@ namespace MyCv.UI.Wasm.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to English.
+        /// </summary>
+        public static string English {
+            get {
+                return ResourceManager.GetString("English", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Experiences.
         /// </summary>
         public static string Experiences {
@@ -205,6 +214,15 @@ namespace MyCv.UI.Wasm.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Japanese.
+        /// </summary>
+        public static string Japanese {
+            get {
+                return ResourceManager.GetString("Japanese", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to .NET tech lead and architect.
         /// </summary>
         public static string JobTitle {
@@ -214,11 +232,29 @@ namespace MyCv.UI.Wasm.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Languages.
+        /// </summary>
+        public static string Languages {
+            get {
+                return ResourceManager.GetString("Languages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Leadership.
         /// </summary>
         public static string Leadership {
             get {
                 return ResourceManager.GetString("Leadership", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Microsoft.
+        /// </summary>
+        public static string Microsoft {
+            get {
+                return ResourceManager.GetString("Microsoft", resourceCulture);
             }
         }
         

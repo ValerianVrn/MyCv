@@ -1,11 +1,32 @@
 .marquee {
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   width: 100%;
+  touch-action: pan-x;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+}
+
+.marquee.is-dragging {
+  cursor: grabbing;
+}
+
+.marquee.is-dragging .marquee-content {
+  animation-play-state: paused;
+}
+
+.marquee::-webkit-scrollbar {
+  display: none;
 }
 
 .marquee-content {
   display: flex;
   width: max-content;
+  min-width: max-content;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
   animation: marquee 30s linear infinite;
 }
 

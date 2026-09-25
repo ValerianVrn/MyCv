@@ -8,17 +8,14 @@ window.spotlight = {
       if (!cards.length) return;
       var current = null;
       var obs = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) {
-            if (current && current !== e.target)
-              current.classList.remove('active');
-            e.target.classList.add('active');
-            current = e.target;
-          } else {
-            e.target.classList.remove('active');
-            if (current === e.target) current = null;
-          }
-        });
+        var visible = entries
+          .filter(function (e) { return e.isIntersecting; })
+          .sort(function (a, b) { return b.intersectionRatio - a.intersectionRatio; });
+        if (!visible.length || visible[0].target === current) return;
+
+        if (current) current.classList.remove('active');
+        visible[0].target.classList.add('active');
+        current = visible[0].target;
       }, { rootMargin: rootMargin, threshold: 0 });
       cards.forEach(function (c) { obs.observe(c); });
     }

@@ -24,7 +24,10 @@
             </MudItem>
             @* Portrait *@
             <MudItem xs="8" sm="3" Class="d-flex align-center">
-                <MudImage Fluid="true" Src="images/portrait.jpeg" Alt="Portrait" Class="rounded-lg" />
+                <div class="portrait-badge-wrapper">
+                    <MudImage Fluid="true" Src="images/portrait.webp" Alt="Portrait" Class="rounded-lg" />
+                    <MudImage Src="images/badges/microsoft-certified-associate-badge.svg" Alt="Microsoft Certified badge" Class="microsoft-certified-badge" />
+                </div>
             </MudItem>
             @* Introduction *@
             <MudItem xs="12" md="12">
@@ -42,3 +45,28 @@
         </MudGrid>
     </MudContainer>
 </MudPaper>
+
+<style>
+    .portrait-badge-wrapper {
+        position: relative;
+        width: 100%;
+    }
+
+    .microsoft-certified-badge {
+        position: absolute;
+        left: -28px;
+        bottom: -28px;
+        width: clamp(56px, 7vw, 92px);
+        height: auto;
+        z-index: 1;
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.85))
+            drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+    }
+
+    @@media (max-width: 599.98px) {
+        .microsoft-certified-badge {
+            left: -10px;
+            bottom: -10px;
+        }
+    }
+</style>

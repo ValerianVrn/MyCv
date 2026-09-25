@@ -56,7 +56,7 @@
                                  Style="height: min(420px, 90vw);"
                                  AutoCycle
                                  ShowArrows="false"
-                                 ShowBullets
+                                 ShowBullets="false"
                                  TData="object"
                                  SelectedIndexChanged="OnSlideChanged">
                         @foreach (var piece in PianoPieces)
@@ -139,7 +139,7 @@
             transform: translateY(0);
         }
     }
-</style>b
+</style>
 
 @code {
     private record PianoPiece(string Title, string Composer, string Image);
@@ -151,10 +151,10 @@
 
     private List<PianoPiece> PianoPieces = new()
     {
-        new("Piano Concerto No. 2 in C minor, Op. 18 (1st mvt)", "Sergei Rachmaninov", "images/rachmaninov.jpg"),
-        new("Etude in D-sharp minor, Op. 8, No. 12", "Alexander Scriabin", "images/scriabin.jpg"),
-        new("Waltz in C-sharp minor, Op. 64, No. 2", "Frédéric Chopin", "images/chopin.jpeg"),
-        new("Sonatine", "Maurice Ravel", "images/ravel.jpg"),
-        new("Piano Sonata No. 14 in C-sharp minor, Op. 27, No. 2 - \"Moonlight Sonata\" (3rd mvt)", "Ludwig van Beethoven", "images/beethoven.jpg")
+        new("Piano Concerto No. 2 in C minor, Op. 18 (1st mvt)", "Sergei Rachmaninov", "images/rachmaninov.webp"),
+        new("Etude in D-sharp minor, Op. 8, No. 12", "Alexander Scriabin", "images/scriabin.webp"),
+        new("Waltz in C-sharp minor, Op. 64, No. 2", "Frédéric Chopin", "images/chopin.webp"),
+        new("Sonatine", "Maurice Ravel", "images/ravel.webp"),
+        new("Piano Sonata No. 14 in C-sharp minor, Op. 27, No. 2 - \"Moonlight Sonata\" (3rd mvt)", "Ludwig van Beethoven", "images/beethoven.webp")
     };
 }

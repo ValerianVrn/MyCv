@@ -287,11 +287,6 @@
   }
 }
 
-/* Hover effect */
-.terminal-line:hover .terminal-output {
-  opacity: 1 !important;
-}
-
 /* Responsive */
 @media (max-width: 640px) {
   .terminal-body {

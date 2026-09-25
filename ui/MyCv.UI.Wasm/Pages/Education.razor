@@ -70,7 +70,7 @@
                                             </MudLink>
                                         </div>
                                         <MudText Typo="Typo.body2" Align="Align.Center"><strong>@(new MarkupString(certification.CertificationId))</strong></MudText>
-                                        <MudText Typo="Typo.caption" Align="Align.Center">@(new MarkupString(certification.Title))</MudText>
+                                        <MudText Typo="Typo.caption"  Align="Align.Center">@(new MarkupString(certification.Title))</MudText>
                                         <MudChip T="string" Size="Size.Small" Color="Color.Info" Variant="Variant.Outlined">@certification.Year</MudChip>
                                     </MudStack>
                                 </MudItem>
@@ -86,12 +86,12 @@
                             <MudIcon Icon="@Icons.Material.Filled.Translate" />
                             <MudText Typo="Typo.subtitle1"><strong>@SharedLocalizer["Languages"]</strong></MudText>
                         </MudStack>
-                        <MudDivider Style="@(ThemeService.IsDarkMode? "border-color:rgba(255, 255, 255, 0.5)" : "border-color:rgba(0, 0, 0, 0.5)")" Class="mb-2" />
+                        <MudDivider Style="@(ThemeService.IsDarkMode ? "border-color:rgba(255, 255, 255, 0.5)" : "border-color:rgba(0, 0, 0, 0.5)")" Class="mb-2" />
                         @* Certifications *@
                         <MudStack Spacing="1">
                             @foreach (var certification in _languageCertifications)
                             {
-                                <MudPaper Elevation="0" Class="h-100 pa-2">
+                                <MudPaper Elevation="0" Class="pa-2">
                                     <MudStack Spacing="1">
                                         <MudText><strong>@certification.Language</strong></MudText>
                                         <MudStack Row AlignItems="AlignItems.Center" Spacing="3">

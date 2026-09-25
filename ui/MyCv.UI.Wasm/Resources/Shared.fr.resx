@@ -150,6 +150,9 @@
   <data name="EducationAndCareer" xml:space="preserve">
     <value>Études et carrière</value>
   </data>
+  <data name="English" xml:space="preserve">
+    <value>Anglais</value>
+  </data>
   <data name="Experiences" xml:space="preserve">
     <value>Expériences</value>
   </data>
@@ -165,11 +168,20 @@
   <data name="Internship" xml:space="preserve">
     <value>Stage</value>
   </data>
+  <data name="Japanese" xml:space="preserve">
+    <value>Japonais</value>
+  </data>
   <data name="JobTitle" xml:space="preserve">
     <value>Leader technique .NET et architecte</value>
   </data>
+  <data name="Languages" xml:space="preserve">
+    <value>Langues</value>
+  </data>
   <data name="Leadership" xml:space="preserve">
     <value>Leadership</value>
+  </data>
+  <data name="Microsoft" xml:space="preserve">
+    <value>Microsoft</value>
   </data>
   <data name="Month" xml:space="preserve">
     <value>mois</value>

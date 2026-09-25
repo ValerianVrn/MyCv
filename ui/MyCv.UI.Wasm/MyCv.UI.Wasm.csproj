@@ -157,6 +157,10 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\badges\" />
+  </ItemGroup>
+
   <ProjectExtensions><VisualStudio><UserProperties wwwroot_4site_1webmanifest__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

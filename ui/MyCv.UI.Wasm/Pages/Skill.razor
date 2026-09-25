@@ -1,8 +1,8 @@
 @using MyCv.UI.Wasm.Services
-@using MyCv.UI.Wasm.Services
 @inject IStringLocalizer<MyCv.UI.Wasm.Resources.Components.Pages.Home> Localizer
 @inject IStringLocalizer<MyCv.UI.Wasm.Resources.Shared> SharedLocalizer
 @inject IConfiguration Configuration
+@inject IThemeService ThemeService
 
 <MudPaper Class="py-8" Square="true" Elevation="0" id="skills">
     @* Header *@
@@ -50,7 +50,7 @@
                                 }
                                 else
                                 {
-                                    <MudChip T="string" Color="Color.Surface">
+                                    <MudChip T="string" Variant="@(ThemeService.IsDarkMode? Variant.Filled: Variant.Outlined)">
                                         <AvatarContent>
                                             @if (!string.IsNullOrEmpty(@skill.Icon))
                                             {
@@ -77,7 +77,7 @@
                 <div class="marquee-content">
                     @foreach (var additionalTechnology in _additionalTechnologies)
                     {
-                        <MudChip T="string" Color="Color.Surface">
+                        <MudChip T="string" Variant="@(ThemeService.IsDarkMode? Variant.Filled: Variant.Outlined)">
                             <AvatarContent>
                                 @if (!string.IsNullOrEmpty(@additionalTechnology.Icon))
                                 {
@@ -96,7 +96,7 @@
                     }
                     @foreach (var additionalTechnology in _additionalTechnologies)
                     {
-                        <MudChip T="string" Color="Color.Surface">
+                        <MudChip T="string" Variant="@(ThemeService.IsDarkMode? Variant.Filled: Variant.Outlined)">
                             <AvatarContent>
                                 @if (!string.IsNullOrEmpty(@additionalTechnology.Icon))
                                 {
@@ -241,6 +241,24 @@
         new("Git", "images/technology/git.webp"),
         new("API Gateway"),
         new("REST"),
-        new("PL/SQL", "images/technology/oracle.webp")
+        new("PL/SQL", "images/technology/oracle.webp"),
+        new("Python", "images/technology/python.webp"),
+        new("OpenTelemetry", "images/technology/opentelemetry.webp")
     };
+
+
+    protected override void OnInitialized()
+    {
+        ThemeService.OnThemeChanged += HandleThemeChanged;
+    }
+
+    private void HandleThemeChanged()
+    {
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        ThemeService.OnThemeChanged -= HandleThemeChanged;
+    }
 }

@@ -1,14 +1,15 @@
 @using MyCv.UI.Wasm.Exceptions
 @using MyCv.UI.Wasm.Shared.AppBar
 @inject ITailorService TailorService
-@inject IStringLocalizer<MyCv.UI.Wasm.Resources.Components.Pages.Home> Localizer;
+@inject IStringLocalizer<MyCv.UI.Wasm.Resources.Components.Pages.Home> Localizer
+@inject IThemeService ThemeService
 
 @* Search bar *@
-<MudPaper Class="tailor-wrap pa-4 mt-6" Elevation="0">
+<MudPaper Class="@(ThemeService.IsDarkMode ? "tailor-wrap-dark pa-4 mt-6" : "tailor-wrap-light pa-4 mt-6")" Elevation="0">
     <MudStack Spacing="2" AlignItems="AlignItems.Center">
         <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
             <MudIcon Icon="@Icons.Material.Filled.AutoAwesome" Color="Color.Warning" />
-            <MudText Typo="Typo.h6" Color="Color.Primary">
+            <MudText Typo="Typo.h6">
                 @Localizer["TailorTitle"]
             </MudText>
         </MudStack>
@@ -155,10 +156,16 @@
 }
 
 <style>
-    .tailor-wrap {
-        border: 1px solid var(--mud-palette-primary);
+    .tailor-wrap-dark {
+        border: 1px solid white;        
         border-radius: 12px !important;
-        background: var(--mud-palette-primary-hover) !important;
+        background-color: #302b63;
+    }
+
+    .tailor-wrap-light {
+        border: 1px solid #302b63;
+        border-radius: 12px !important;
+        background-color: color-mix(in srgb, #302b63 15%, white);
     }
 
     .tailor-card {
@@ -247,12 +254,26 @@
         }
     }
 
+    protected override void OnInitialized()
+    {
+        ThemeService.OnThemeChanged += HandleThemeChanged;
+    }
+
+    private void HandleThemeChanged()
+    {
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        ThemeService.OnThemeChanged -= HandleThemeChanged;
+        _cts.Cancel();
+    }
+
     private void Reset()
     {
         _result = null;
         _input = "";
         _cts.Cancel();
     }
-
-    public void Dispose() => _cts.Cancel();
 }

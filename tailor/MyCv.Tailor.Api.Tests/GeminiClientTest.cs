@@ -9,6 +9,7 @@ using System.Net;
 namespace MyCv.Tailor.Api.Tests
 {
     [TestClass]
+    [DoNotParallelize] // Tests share the process-wide GEMINI_API_KEY environment variable.
     public sealed class GeminiClientTest
     {
         private const string InvalidGeminiResponse = /*lang=json,strict*/ """
@@ -117,6 +118,48 @@ namespace MyCv.Tailor.Api.Tests
             Assert.IsFalse(string.IsNullOrEmpty(geminiResponse.Humor));
             Assert.IsFalse(string.IsNullOrEmpty(geminiResponse.Pitch));
             Assert.IsFalse(string.IsNullOrEmpty(geminiResponse.ContactCopy));
+        }
+    
+
+        [TestMethod]
+        [DataRow(HttpStatusCode.ServiceUnavailable)]
+        [DataRow(HttpStatusCode.TooManyRequests)]
+        public async Task UnavailableStatusGenerateAsyncThrowsGeminiUnavailableException(HttpStatusCode statusCode)
+        {
+            Environment.SetEnvironmentVariable(GeminiClient.GEMINIAPIKEY, "fake");
+            var httpClientFactoryMock = CreateFactory(new HttpResponseMessage { StatusCode = statusCode, Content = new StringContent("") }, out _);
+            var geminiClient = new GeminiClient(new Mock<ILogger<GeminiClient>>().Object, httpClientFactoryMock.Object);
+
+            var ex = await Assert.ThrowsExceptionAsync<Exceptions.GeminiUnavailableException>(async () => await geminiClient.GenerateAsync("job"));
+            Assert.AreEqual(statusCode, ex.StatusCode);
+        }
+
+        [TestMethod]
+        public async Task GenerateAsyncSendsApiKeyInHeaderNotQueryString()
+        {
+            Environment.SetEnvironmentVariable(GeminiClient.GEMINIAPIKEY, "secret-key");
+            var httpClientFactoryMock = CreateFactory(new HttpResponseMessage { StatusCode = HttpStatusCode.OK, Content = new StringContent(ValidGeminiResponse) }, out var requests);
+            var geminiClient = new GeminiClient(new Mock<ILogger<GeminiClient>>().Object, httpClientFactoryMock.Object);
+
+            _ = await geminiClient.GenerateAsync("job");
+
+            var request = requests.Single();
+            Assert.IsFalse(request.RequestUri!.Query.Contains("secret-key", StringComparison.Ordinal));
+            Assert.AreEqual("secret-key", request.Headers.GetValues("x-goog-api-key").Single());
+        }
+
+        private static Mock<IHttpClientFactory> CreateFactory(HttpResponseMessage response, out List<HttpRequestMessage> requests)
+        {
+            var captured = new List<HttpRequestMessage>();
+            requests = captured;
+            var handler = new Mock<HttpMessageHandler>();
+            _ = handler.Protected()
+                .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
+                .Callback<HttpRequestMessage, CancellationToken>((r, _) => captured.Add(r))
+                .ReturnsAsync(response);
+            var factory = new Mock<IHttpClientFactory>();
+            _ = factory.Setup(x => x.CreateClient(It.IsAny<string>())).Returns(new HttpClient(handler.Object));
+            return factory;
         }
     }
 }

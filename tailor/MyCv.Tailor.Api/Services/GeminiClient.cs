@@ -1,5 +1,6 @@
 using FluentValidation;
 using Microsoft.Extensions.Logging;
+using MyCv.Tailor.Api.Exceptions;
 using MyCv.Tailor.Api.Models;
 using MyCv.Tailor.Api.Prompt;
 using MyCv.Tailor.Api.Validators;
@@ -53,7 +54,14 @@ namespace MyCv.Tailor.Api.Services
 
             var httpClient = httpClientFactory.CreateClient(HttpClientName);
 
-            var geminiResponse = await httpClient.PostAsJsonAsync($"{BaseUrl}{Model}:generateContent?key={apiKey}", geminiRequest);
+            // API key sent as header (not query string) so it never appears in logged URLs.
+            using var request = new HttpRequestMessage(HttpMethod.Post, $"{BaseUrl}{Model}:generateContent")
+            {
+                Content = JsonContent.Create(geminiRequest)
+            };
+            request.Headers.Add("x-goog-api-key", apiKey);
+
+            var geminiResponse = await httpClient.SendAsync(request);
             Log.StatusCode(logger, geminiResponse.StatusCode);
 
             // Force buffer the entire response before reading
@@ -62,6 +70,11 @@ namespace MyCv.Tailor.Api.Services
             var geminiJson = await geminiResponse.Content.ReadAsStringAsync();
             Log.Response(logger, geminiJson);
             Log.RawLength(logger, geminiJson.Length);
+
+            if (geminiResponse.StatusCode is HttpStatusCode.ServiceUnavailable or HttpStatusCode.TooManyRequests)
+            {
+                throw new GeminiUnavailableException(geminiResponse.StatusCode);
+            }
 
             if (!geminiResponse.IsSuccessStatusCode)
             {

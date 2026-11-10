@@ -1,6 +1,8 @@
+@implements IDisposable
 @using MyCv.UI.Wasm.Exceptions
 @using MyCv.UI.Wasm.Shared.AppBar
-@inject ITailorService TailorService
+@inject ITailorService TailorApi
+@inject ILogger<TailorSearch> Logger
 @inject IStringLocalizer<MyCv.UI.Wasm.Resources.Components.Pages.Home> Localizer
 @inject IThemeService ThemeService
 
@@ -21,6 +23,8 @@
                       AutoGrow
                       FullWidth="true"
                       Disabled="_loading"
+                      MaxLength="@TailorService.MaxInputLength"
+                      Counter="@TailorService.MaxInputLength"
                       HelperText="@Localizer["TailorHint"]" />
         <MudButton Variant="Variant.Filled"
                    Color="Color.Primary"
@@ -36,6 +40,9 @@
                 @Localizer["TailorAnalyse"]
             }
         </MudButton>
+        <MudText Typo="Typo.caption" Class="mud-text-secondary" Align="Align.Center">
+            @Localizer["TailorPrivacy"]
+        </MudText>
     </MudStack>
 </MudPaper>
 
@@ -148,10 +155,10 @@
     </MudCard>
 }
 
-@if (_unavailable)
+@if (_error is not null)
 {
     <MudAlert Severity="Severity.Warning" Variant="Variant.Outlined" Class="mt-4">
-        @Localizer["TailorUnavailable"]
+        @_error
     </MudAlert>
 }
 
@@ -207,7 +214,12 @@
     private bool _loading = false;
     private TailorResult? _result = null;
     private CancellationTokenSource _cts = new();
-    private bool _unavailable = false;
+    private string? _error = null;
+
+    /// <summary>
+    /// Covers Function cold start + Gemini latency + server-side retries.
+    /// </summary>
+    private static readonly TimeSpan RequestTimeout = TimeSpan.FromSeconds(45);
     private string CaseAccentClass => _result?.Case switch
     {
         3 => "match-strong",
@@ -229,24 +241,49 @@
 
     private async Task Submit()
     {
-        _unavailable = false;
+        _error = null;
 
         if (string.IsNullOrWhiteSpace(_input) || _loading) return;
         _cts.Cancel();
+        _cts.Dispose();
         _cts = new CancellationTokenSource();
         _result = null;
         _loading = true;
         StateHasChanged();
         try
         {
-            _result = await TailorService.TailorAsync(_input.Trim(), _cts.Token);
+            using var timeout = CancellationTokenSource.CreateLinkedTokenSource(_cts.Token);
+            timeout.CancelAfter(RequestTimeout);
+            _result = await TailorApi.TailorAsync(_input.Trim(), timeout.Token);
+            if (_result is null)
+            {
+                _error = Localizer["TailorUnavailable"];
+            }
         }
-        catch (TailorUnavailableException)
+        catch (TailorRateLimitedException)
         {
-            _unavailable = true;
+            _error = Localizer["TailorRateLimited"];
         }
-        catch (OperationCanceledException) { }
-        catch { _result = null; }
+        catch (TailorUnavailableException ex)
+        {
+            Logger.LogWarning(ex, "Tailor unavailable");
+            _error = Localizer["TailorUnavailable"];
+        }
+        catch (OperationCanceledException) when (_cts.IsCancellationRequested)
+        {
+            // Cancelled by the visitor (reset) or component disposal: nothing to show.
+        }
+        catch (OperationCanceledException)
+        {
+            // Client-side timeout.
+            _error = Localizer["TailorUnavailable"];
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Unexpected Tailor error");
+            _result = null;
+            _error = Localizer["TailorUnavailable"];
+        }
         finally
         {
             _loading = false;
@@ -268,11 +305,13 @@
     {
         ThemeService.OnThemeChanged -= HandleThemeChanged;
         _cts.Cancel();
+        _cts.Dispose();
     }
 
     private void Reset()
     {
         _result = null;
+        _error = null;
         _input = "";
         _cts.Cancel();
     }

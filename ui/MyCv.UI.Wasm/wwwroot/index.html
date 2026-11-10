@@ -65,10 +65,15 @@
       </div>
     </div>
   </div>
+  <div id="blazor-error-ui">
+    <span>An unhandled error has occurred. / Une erreur est survenue.</span>
+    <a href="" class="reload">Reload / Recharger</a>
+    <a class="dismiss">🗙</a>
+  </div>
+  <script src="scripts/culture.js"></script>
   <script>
-    // Detect browser language before Blazor loads
-    const lang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
-    const fr = lang.startsWith('fr');
+    // Same culture rule as the app (stored choice, else browser language) so loader and app match.
+    const fr = window.blazorCulture.current().toLowerCase().startsWith('fr');
 
     document.querySelector('.loader-name').textContent = 'Valérian Verona';
     document.querySelector('.loader-subtitle').textContent = fr
@@ -83,10 +88,10 @@
   <script src="scripts/error.js"></script>
   <script src="scripts/visitoridstorage.js"></script>
   <script src="scripts/spotlight.js"></script>
-  <script src="scripts/culture.js"></script>
   <script src="scripts/map.js"></script>
   <script src="scripts/marquee.js"></script>
   <script src="scripts/ai-carousel.js"></script>
+  <script src="scripts/scrollspy.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 

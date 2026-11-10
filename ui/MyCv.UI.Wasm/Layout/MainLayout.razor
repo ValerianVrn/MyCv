@@ -35,7 +35,8 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        // Use scroll spy for activating menu items when scrolling.
-        await JS.InvokeVoidAsync("eval", "new bootstrap.ScrollSpy(document.querySelector('[data-bs-spy=\"scroll\"]'))");
+        // Scroll spy activates menu items when scrolling. Reuses a single instance and refreshes
+        // its targets, since menu sections can be registered after the first render.
+        await JS.InvokeVoidAsync("refreshScrollSpy");
     }
 }

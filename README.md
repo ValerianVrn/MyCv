@@ -2,19 +2,34 @@
 
 Welcome on this website which has two goals: show my professional assets and demonstrate some of my skills.
 
+Live: https://www.valerian-verona.fr
+
+> Contributors / AI assistants: start with [CLAUDE.md](CLAUDE.md). More docs in [docs/](docs/):
+> [roadmap](docs/ROADMAP.md) · [updating content](docs/CONTENT.md) · [AI Tailor](docs/TAILOR.md)
+
+# Repository layout
+
+| Path | Status | Description |
+|------|--------|-------------|
+| `ui/MyCv.UI.Wasm` | **Live** | Blazor WebAssembly front-end (.NET 10, MudBlazor), FR/EN |
+| `tailor/MyCv.Tailor.Api` | **Live** | Azure Function backing the AI CV Tailor (Gemini) |
+| `tailor/MyCv.Tailor.Api.Tests` | **Live** | Unit tests of the Function |
+| `ui/MyCv.UI` | Legacy | Previous Blazor Server version of the site |
+| `rating/*`, `common/*`, `docker-compose*` | Legacy | CQRS / event-sourcing rating microservices (showcase, not deployed) |
+
 # Architecture
 
 ```
 ┌─────────────────────────────────┐     ┌──────────────────────────────┐
 │   Azure Static Web App          │     │   Azure Function App         │
-│   Blazor WASM (.NET 8)          │────▶│   MyCv.Api (consumption)     │
+│   Blazor WASM (.NET 10)         │────▶│   MyCv.Tailor.Api (consump.) │
 │   MudBlazor UI                  │     │   /api/tailor                │
 └─────────────────────────────────┘     └──────────────┬───────────────┘
                                                         │
                                                         ▼
                                             ┌───────────────────────┐
                                             │   Google Gemini API   │
-                                            │   gemini-1.5-flash    │
+                                            │   gemini-2.5-flash    │
                                             └───────────────────────┘
 ```
 
@@ -31,7 +46,8 @@ The result is analyzed by Gemini and returns a structured response in 3 cases:
 | 3 | Strong match — pitch, matching skills, bonus skills the recruiter didn't think of | 4–5 ★ |
 
 The service is fully decoupled from the rest of the page — no Blazor cascading, no DOM coupling.
-For local development a `FakeTailorService` is used (see [Local development](#local-development)).
+For local development a `FakeTailorService` can be used (see [Local development](#local-development)).
+Request/response contract, error codes and limits: see [docs/TAILOR.md](docs/TAILOR.md).
 
 # Hosting
 
@@ -55,7 +71,7 @@ The website is deployed on Azure as Static Web App for two environments:
 The AI Tailor feature is backed by a separate Azure Function App (consumption plan, free tier).
 
 **Endpoints**
-- `POST /api/tailor` — accepts `{ "input": "job description" }`, returns structured JSON
+- `POST /api/tailor` — accepts `{ "input": "job description" }` (max 4000 characters), returns structured JSON
 
 **Configuration**
 The following application settings must be set in the Azure Portal:
@@ -63,10 +79,15 @@ The following application settings must be set in the Azure Portal:
 | Setting | Description |
 |---------|-------------|
 | `GEMINI_API_KEY` | Google Gemini API key from [aistudio.google.com](https://aistudio.google.com) |
+| `ALLOWED_ORIGINS` | Optional. Comma-separated CORS origins echoed by the function. Default: `https://www.valerian-verona.fr` |
+
+**Runtime**
+The Function App stack must be **.NET 10 (isolated worker)** (Azure Portal → Function App → Configuration → General settings).
 
 **CORS**
 `https://www.valerian-verona.fr` must be added to the Function App's allowed origins.
 `https://localhost:7064` is also added for local testing purpose (HTTPS profile in `launchsettings.json`).
+When platform CORS is configured on the Function App, it takes precedence over the headers set in code.
 
 ## Domain
 
@@ -78,7 +99,7 @@ Added to custom domains of the `MyCv-prod` Static Web App using CName (see "DNS 
 # Local Development
 
 ## Prerequisites
-- .NET 8 SDK
+- .NET 10 SDK
 - [Azure Functions Core Tools v4](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local)
   ```bash
   npm install -g azure-functions-core-tools@4
@@ -91,26 +112,31 @@ cd ui/MyCv.UI.Wasm
 dotnet watch run
 ```
 
-The app runs on `https://localhost:5001`.
-In `DEBUG` mode, `FakeTailorService` is used automatically — no API key or Function App needed.
+The app URL is printed by `dotnet watch` (see `Properties/launchSettings.json`).
+
+The Tailor backend is selected by `TailorApi:UseFake` in `wwwroot/appsettings.Development.json`:
+- `true` → `FakeTailorService` (no API key or Function App needed)
+- `false` → real HTTP call to `TailorApi:Url`. It is **not** overridden in development, so it points to the
+  production Function from `wwwroot/appsettings.json` unless you set it (see step 3 below)
 
 ## Run the Function App locally (optional, for real AI testing)
 
-1. Set your Gemini API key in `ui/MyCv.Api/local.settings.json`:
+1. Set your Gemini API key in `tailor/MyCv.Tailor.Api/local.settings.json` (gitignored — never commit it):
 ```json
 {
   "IsEncrypted": false,
   "Values": {
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
     "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
-    "GEMINI_API_KEY": "YOUR_KEY_HERE"
+    "GEMINI_API_KEY": "YOUR_KEY_HERE",
+    "ALLOWED_ORIGINS": "https://localhost:7064"
   }
 }
 ```
 
 2. Start the Function App:
 ```bash
-cd ui/MyCv.Api
+cd tailor/MyCv.Tailor.Api
 func start
 ```
 
@@ -124,13 +150,32 @@ func start
 }
 ```
 
+# Tests
+
+```bash
+dotnet test MyCv.sln
+```
+
 # CI/CD
 
 Deployments are handled by GitHub Actions (`.github/workflows/`).
 
-| Trigger | Environment | Version |
-|---------|-------------|---------|
-| Push to `main` or PR | Development | `dev` |
-| Tag `v*` (e.g. `v1.2.0`) | Production | tag name |
+| Trigger | Workflow | Deploys |
+|---------|----------|---------|
+| Push / PR to `develop` | `azure-static-web-apps-salmon-sand-05c416103.yml` | Front-end → **Development** SWA, version `dev` |
+| PR to `main` | `azure-static-web-apps-icy-grass-0f365a003.yml` | Front-end → PR preview environment of the production SWA |
+| Tag `v*` (e.g. `v1.2.0`) | `azure-static-web-apps-icy-grass-0f365a003.yml` | Front-end → **Production** SWA, version = tag name |
+| Push to `main` touching `tailor/MyCv.Tailor.Api/**` | `feature-ai-tailor-search_mycv-api.yml` | Function App `mycv-api` |
+| Push / PR to `main` or `develop` | `dotnet-main-dev.yml` → `dotnet.yml` | Build + tests only |
 
-Build info (`Version`, `BuildDate`) is injected at build time via `sed` into `BuildInfo.cs` and `sitemap.xml`.
+The front-end is built with `dotnet publish` in the workflow and uploaded pre-built (`skip_app_build: true`).
+Build info (`Version`, `BuildDate`) is injected at build time via `sed` into `BuildInfo.cs`, and `<lastmod>` into `sitemap.xml`.
+
+## Release
+
+Git flow (details in [CLAUDE.md](CLAUDE.md#git-flow)): `feature/*` / `fix/*` branches → PR to `develop` → release.
+
+1. Create `release/vX.Y.Z` from `develop` and open a PR to `main` (check the PR preview environment).
+2. Merge the PR (this also deploys the Function App if `tailor/MyCv.Tailor.Api/**` changed).
+3. Tag the merge commit on `main` and push: `git tag vX.Y.Z && git push origin vX.Y.Z`.
+4. The production workflow deploys the front-end; the footer shows the tag and build date.

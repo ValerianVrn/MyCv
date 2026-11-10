@@ -23,18 +23,18 @@
         new(MyCv.UI.Wasm.Services.LocalizationService.Japanese, "fi fi-jp mr-2", "日本語")
     };
 
-    private void SetLanguage(CultureInfo cultureInfo)
+    private async Task SetLanguage(CultureInfo cultureInfo)
     {
         if (cultureInfo == MyCv.UI.Wasm.Services.LocalizationService.Japanese)
         {
             var options = new DialogOptions { CloseOnEscapeKey = true };
 
-            DialogService.ShowAsync<JapaneseDialog>(null, options);
+            _ = await DialogService.ShowAsync<JapaneseDialog>(null, options);
         }
         else
         {
             LocalizationService.SetCulture(cultureInfo);
-            LocalizationService.ApplySelectedCultureAsync();
+            await LocalizationService.ApplySelectedCultureAsync();
         }
     }
 

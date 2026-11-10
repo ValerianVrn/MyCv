@@ -32,12 +32,16 @@ builder.Services.AddLocalization();
 var host = builder.Build();
 
 var js = host.Services.GetRequiredService<IJSRuntime>();
-var result = await js.InvokeAsync<string>("blazorCulture.get");
-var culture = CultureInfo.GetCultureInfo(result ?? LocalizationService.French.Name);
-
-if (result == null)
+// Stored choice, else browser language (see wwwroot/scripts/culture.js).
+var cultureName = await js.InvokeAsync<string>("blazorCulture.current");
+CultureInfo culture;
+try
 {
-    await js.InvokeVoidAsync("blazorCulture.set", LocalizationService.French.Name);
+    culture = CultureInfo.GetCultureInfo(cultureName);
+}
+catch (CultureNotFoundException)
+{
+    culture = LocalizationService.English;
 }
 
 CultureInfo.DefaultThreadCurrentCulture = culture;

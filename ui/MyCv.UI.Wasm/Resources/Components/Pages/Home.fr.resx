@@ -213,4 +213,10 @@ Venez découvrir ma formation.</value>
   <data name="HomeIntroductionCode" xml:space="preserve">
     <value>Ce site a été réalisé en appliquant directement quelques unes des compétences mises en avant (Blazor, Azure...).</value>
   </data>
+  <data name="TailorRateLimited" xml:space="preserve">
+    <value>Vous avez beaucoup utilisé l'analyse IA en peu de temps. Merci de réessayer dans quelques minutes ⏳</value>
+  </data>
+  <data name="TailorPrivacy" xml:space="preserve">
+    <value>Votre texte est envoyé à Google Gemini pour analyse et n'est pas conservé par ce site.</value>
+  </data>
 </root>

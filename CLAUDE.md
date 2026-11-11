@@ -97,7 +97,9 @@ Other deploy triggers / notes:
 
 `GEMINI_API_KEY` lives only in the Function App settings and in `tailor/MyCv.Tailor.Api/local.settings.json`
 (gitignored). Never commit it or put it in the WASM app — everything under `ui/MyCv.UI.Wasm/wwwroot` is public.
-`ALLOWED_ORIGINS` (optional, comma-separated) controls the CORS origins echoed by the Function.
+CORS for the Function is managed by **platform CORS** in Azure (`az functionapp cors show -g MyCV -n mycv-api`), the
+source of truth; to allow a new site, add it there. `ALLOWED_ORIGINS` (code-level) only applies when platform CORS is off
+(for example under `func start`). Never allow `*`.
 
 ## Gotchas
 

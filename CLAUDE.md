@@ -60,6 +60,9 @@ Whenever career, skills, certifications or availability change on the site, also
 1. `tailor/MyCv.Tailor.Api/Prompt/TailorPrompt.cs`
 2. `ui/MyCv.UI.Wasm/wwwroot/files/CV.pdf`
 3. The terminal lines in `ui/MyCv.UI.Wasm/Shared/Terminal.razor` if relevant
+4. The static SEO copy in `ui/MyCv.UI.Wasm/wwwroot/index.html` (French on purpose): `<title>`/description/OG tags,
+   the JSON-LD `Person` block and the `<noscript>` summary. Also `<PageTitle>` in `App.razor` and
+   `wwwroot/images/og-image.jpg` (1200×630) if the title or certifications change
 
 See `docs/CONTENT.md` for the step-by-step checklist.
 

@@ -78,15 +78,29 @@ The following application settings must be set in the Azure Portal:
 | Setting | Description |
 |---------|-------------|
 | `GEMINI_API_KEY` | Google Gemini API key from [aistudio.google.com](https://aistudio.google.com) |
-| `ALLOWED_ORIGINS` | Optional. Comma-separated CORS origins echoed by the function. Default: `https://www.valerian-verona.fr` |
+| `ALLOWED_ORIGINS` | Optional, comma-separated. Code-level CORS fallback, **only used when platform CORS is off** (e.g. `func start`). Default: `https://www.valerian-verona.fr` |
 
 **Runtime**
 The Function App stack must be **.NET 10 (isolated worker)** (Azure Portal → Function App → Configuration → General settings).
 
 **CORS**
-`https://www.valerian-verona.fr` must be added to the Function App's allowed origins.
-`https://localhost:7064` is also added for local testing purpose (HTTPS profile in `launchsettings.json`).
-When platform CORS is configured on the Function App, it takes precedence over the headers set in code.
+**Platform CORS** (Function App → API → CORS) is the source of truth. It answers preflights before the code runs and
+takes precedence over the headers set in code. Allowed origins:
+
+| Origin | Why |
+|--------|-----|
+| `https://www.valerian-verona.fr` | Production site |
+| `https://salmon-sand-05c416103.7.azurestaticapps.net` | Development site (`develop`) |
+| `https://localhost:7064` | Local front-end (HTTPS profile in `launchSettings.json`) |
+| `https://portal.azure.com` | Testing from the Azure Portal |
+
+Never add `*`. PR preview environments (`…-<number>.westeurope…`) change URL for every PR, so they are not listed
+and the Tailor doesn't work on them. Dev also calls the **production** Function, because the Function only deploys from `main`.
+
+```bash
+az functionapp cors show -g MyCV -n mycv-api
+az functionapp cors add  -g MyCV -n mycv-api --allowed-origins https://example.com
+```
 
 ## Domain
 

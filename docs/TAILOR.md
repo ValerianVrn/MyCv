@@ -61,8 +61,9 @@ For a hard cap, also set a budget / quota on the Gemini API key in Google AI Stu
 
 - The API key is read from the `GEMINI_API_KEY` app setting and sent in the `x-goog-api-key` header,
   not in the query string.
-- CORS: the function echoes `Access-Control-Allow-Origin` only for origins listed in `ALLOWED_ORIGINS`
-  (default `https://www.valerian-verona.fr`). If platform CORS is configured on the Function App, it takes precedence.
+- CORS: **platform CORS on the Function App is the source of truth** (prod site, dev site, `localhost:7064`, Azure Portal;
+  see the README). The code-level CORS (`ALLOWED_ORIGINS`, default `https://www.valerian-verona.fr`) is only a fallback
+  for when platform CORS is off, for example under `func start`. PR previews are not allowed origins.
 - Prompt injection: the system prompt tells the model to treat the recruiter text as data only.
   Output is rendered as text by Blazor, never as HTML.
 - Privacy: the UI tells visitors that their text is sent to Google Gemini. The function does not store the input.

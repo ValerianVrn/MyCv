@@ -58,7 +58,9 @@ Tick items as they ship. Last review: 2026-11-10.
 ## Phase 5 — Repo hygiene
 
 - [ ] Remove or move to `/legacy`: `ui/MyCv.UI`, `rating/*`, `common/*`, `docker-compose*`, `launchSettings.json`, `azurepipelines-coverage.yml`
-- [ ] Consolidate the 9 workflows (dead `deploy*.yml` for the old Web Apps, duplicated `dotnet*.yml`) → CI, SWA deploy, Function deploy
+- [x] Delete the dead `deploy.yml` / `deploy-dev.yml` / `deploy-prod.yml` (old Web Apps no longer exist) and the matching `deploy` job of `ai-codegen.yml`
+- [ ] Remove the `CanNotDelete` lock on the `MyCV` resource group, or scope it to the Function/SWA resources only: it blocks the SWA "close" job from deleting PR preview environments (Free tier max 3), so PR checks fail
+- [ ] Rename the remaining workflows to readable names (CI, SWA deploy dev/prod, Function deploy)
 - [ ] Delete `VisitorService` + `visitoridstorage.js` (registered, never used, logs the ID as an error)
 - [ ] Delete or gate `Playground.razor` (renders an empty page in production)
 - [ ] Gemini model name as a configuration setting

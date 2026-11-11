@@ -62,9 +62,8 @@ The website is deployed on Azure as Static Web App for two environments:
 **Development**
 - https://salmon-sand-05c416103.7.azurestaticapps.net
 
-> The website was previously a Blazor server app and deployed as Azure Web App
-> - Production: https://valerianverona-degvfed0djcrcfen.francecentral-01.azurewebsites.net
-> - Development: https://valerianverona-dev-fmd7cvg2b8dscrdf.francecentral-01.azurewebsites.net
+> The website was previously a Blazor Server app (`ui/MyCv.UI`) deployed as Azure Web Apps.
+> Those Web Apps and their deploy workflows have been decommissioned.
 
 ## Azure Function App
 

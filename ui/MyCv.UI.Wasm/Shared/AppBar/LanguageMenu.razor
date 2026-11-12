@@ -2,8 +2,9 @@
 @using MyCv.UI.Wasm.Services
 @inject IDialogService DialogService
 @inject ILocalizationService LocalizationService
+@inject IStringLocalizer<MyCv.UI.Wasm.Resources.Components.Layout.AppBar> Localizer
 
-<MudMenu Icon="@Icons.Material.Filled.Language">
+<MudMenu Icon="@Icons.Material.Filled.Language" AriaLabel="@Localizer["Language"]">
     @foreach (var language in _languages)
     {
         var isActive = IsActive(language.CultureInfo);

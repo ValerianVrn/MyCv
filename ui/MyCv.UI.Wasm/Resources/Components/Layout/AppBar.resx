@@ -126,4 +126,19 @@
   <data name="DownloadCV" xml:space="preserve">
     <value>Download CV</value>
   </data>
+  <data name="OpenMenu" xml:space="preserve">
+    <value>Open menu</value>
+  </data>
+  <data name="CloseMenu" xml:space="preserve">
+    <value>Close menu</value>
+  </data>
+  <data name="SwitchToLight" xml:space="preserve">
+    <value>Switch to light mode</value>
+  </data>
+  <data name="SwitchToDark" xml:space="preserve">
+    <value>Switch to dark mode</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
 </root>

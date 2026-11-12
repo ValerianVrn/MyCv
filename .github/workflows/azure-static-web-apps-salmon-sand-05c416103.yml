@@ -72,4 +72,6 @@ jobs:
         id: closepullrequest
         uses: Azure/static-web-apps-deploy@v1
         with:
+          # Required: without the token Azure rejects the close and the PR preview is never deleted.
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_SALMON_SAND_05C416103 }}
           action: "close"

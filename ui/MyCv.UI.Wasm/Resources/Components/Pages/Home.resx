@@ -213,4 +213,22 @@ Come and discover my training.</value>
   <data name="HomeIntroductionCode" xml:space="preserve">
     <value>This website was realized by applying some of the skills presented (Blazor, Azure...).</value>
   </data>
+  <data name="TailorRateLimited" xml:space="preserve">
+    <value>You have used the AI analysis a lot in a short time. Please try again in a few minutes ⏳</value>
+  </data>
+  <data name="TailorPrivacy" xml:space="preserve">
+    <value>Your text is sent to Google Gemini for analysis and is not stored by this website.</value>
+  </data>
+  <data name="TailorExamples" xml:space="preserve">
+    <value>Try:</value>
+  </data>
+  <data name="TailorExample1" xml:space="preserve">
+    <value>Senior .NET developer – Azure, microservices</value>
+  </data>
+  <data name="TailorExample2" xml:space="preserve">
+    <value>Tech lead .NET for an industrial software team</value>
+  </data>
+  <data name="TailorExample3" xml:space="preserve">
+    <value>Cloud architect – AWS, Kubernetes</value>
+  </data>
 </root>

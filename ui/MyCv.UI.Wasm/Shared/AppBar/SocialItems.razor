@@ -2,11 +2,11 @@
 {
     if (iconItem.Icon is not null)
     {
-        <MudIconButton Icon="@iconItem.Icon" Href="@iconItem.Href" Title="@iconItem.Title" />
+        <MudIconButton Icon="@iconItem.Icon" Href="@iconItem.Href" title="@iconItem.Title" aria-label="@iconItem.Title" />
     }
     else
     {
-        <MudIconButton Href="@iconItem.Href" Title="@iconItem.Title">
+        <MudIconButton Href="@iconItem.Href" title="@iconItem.Title" aria-label="@iconItem.Title">
             <MudImage Src="@iconItem.Image" Alt="@iconItem.Title" Style="width: 24px;height: 24px;object-fit: contain;" />
         </MudIconButton>
     }
@@ -23,7 +23,7 @@
         {
             new(Icons.Custom.Brands.GitHub, "https://github.com/ValerianVrn/MyCv", "GitHub"),
             new(Icons.Custom.Brands.LinkedIn, "https://www.linkedin.com/in/val%C3%A9rian-verona-a46969a5/", "LinkedIn"),
-            new(Icons.Custom.Brands.Gmail, "mailto:contact@valerian-verona.fr", "Mail"),
+            new(Icons.Material.Filled.Email, "mailto:contact@valerian-verona.fr", "Mail"),
         };
     }
 }

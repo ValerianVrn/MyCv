@@ -11,7 +11,9 @@ var builder = FunctionsApplication.CreateBuilder(args);
 
 builder.Services
     .AddScoped<IGeminiClient, GeminiClient>()
-    .AddScoped<ITailorService, TailorService>();
+    .AddScoped<ITailorService, TailorService>()
+    .AddSingleton(TimeProvider.System)
+    .AddSingleton<IRateLimiter, RateLimiter>(sp => new RateLimiter(sp.GetRequiredService<TimeProvider>()));
 
 builder.ConfigureFunctionsWebApplication();
 

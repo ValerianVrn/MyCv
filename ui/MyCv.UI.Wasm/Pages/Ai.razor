@@ -63,7 +63,8 @@
                             <MudCarouselItem @key="post.Url" Class="d-flex justify-center align-center">
                                 @if (post.IsVideo)
                                 {
-                                    <video autoplay muted loop playsinline preload="metadata" class="ai-carousel-video">
+                                    @* No autoplay / preload: scripts/ai-carousel.js starts it only when visible, so the video is not downloaded on first load. *@
+                                    <video muted loop playsinline preload="none" class="ai-carousel-video">
                                         <source src="@post.Url" type="video/webm" />
                                     </video>
                                 }

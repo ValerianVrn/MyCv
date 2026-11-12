@@ -1,3 +1,4 @@
+@implements IDisposable
 @using MyCv.UI.Wasm.Services
 @inject IThemeService ThemeService
 
@@ -30,15 +31,6 @@
     {
         // Subscribe to theme changes
         ThemeService.OnThemeChanged += HandleThemeChanged;
-    }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            // Use dark mode by default.
-            IsDarkMode = true;
-        }
     }
 
     private void HandleThemeChanged()

@@ -8,7 +8,7 @@
 <MudDrawer @bind-Open="_drawerOpen" Variant="DrawerVariant.Temporary" Elevation="1">
     @* Tool bar *@
     <MudToolBar Dense="true">
-        <MudIconButton Icon="@Icons.Material.Rounded.Close" OnClick="() => _drawerOpen = !_drawerOpen" />
+        <MudIconButton Icon="@Icons.Material.Rounded.Close" OnClick="() => _drawerOpen = !_drawerOpen" aria-label="@AppBarLocalizer["CloseMenu"]" />
         <MudSpacer />
         <LanguageMenu />
     </MudToolBar>
@@ -49,7 +49,7 @@
 <MudAppBar Fixed="true">
     <!-- Mobile -->
     <MudHidden Breakpoint="Breakpoint.LgAndUp">
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="@(ThemeService.IsDarkMode? Color.Inherit: Color.Dark)" Edge="Edge.Start" OnClick="() => _drawerOpen = !_drawerOpen" />
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="@(ThemeService.IsDarkMode? Color.Inherit: Color.Dark)" Edge="Edge.Start" OnClick="() => _drawerOpen = !_drawerOpen" aria-label="@AppBarLocalizer["OpenMenu"]" />
         <MudSpacer />
         <Brand />
         <MudSpacer />

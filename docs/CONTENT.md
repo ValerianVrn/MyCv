@@ -31,6 +31,20 @@ and the visible text lives in `.resx` files: `X.resx` is English (the default) a
 
 Replace `wwwroot/files/CV.pdf` (keep the same file name: the AppBar buttons link to it).
 
+## AI section: project cards
+
+`Pages/Ai.razor` → "Built with AI". Texts are in `Resources/Components/Pages/Ai.resx` / `Ai.fr.resx`
+(`QuadlinkDescription`, `QuadlinkProof`, `Instagram`…).
+
+- **Numbers** in `QuadlinkProof` (days, pull requests, commits) come from the Quadlink GitHub history. Keep the
+  "part-time" wording, and update them if you mention a newer version.
+- **Screenshots** `wwwroot/images/projects/quadlink-en.webp` / `quadlink-fr.webp` (390×670): the quadlink.fr home
+  screen at phone size, one per language. The card picks the visitor's language.
+- **Stack chips**: `QuadlinkStack` in the `@code` block.
+- **New project**: copy the Quadlink `MudPaper` card. Keep the small tag that says *which* AI (Claude Code for
+  AI-assisted development, generative AI for automated content).
+- Also update the Tailor prompt ("Side projects") and the `<noscript>` "Projets" list in `index.html`.
+
 ## Mark a country as visited
 
 The world map is a static file: `wwwroot/images/world-map.svg`. Each country is a `<path id="FR" title="France" …>`;

@@ -133,34 +133,10 @@
     <value>Comment j'utilise l'IA</value>
   </data>
   <data name="BuildWithAI" xml:space="preserve">
-    <value>Comment je développe avec l'IA</value>
+    <value>Piloter un agent IA comme un membre de l'équipe</value>
   </data>
   <data name="ClaudeCodeIntro" xml:space="preserve">
-    <value>Claude Code est mon binôme au quotidien, mais je reste le tech lead.</value>
-  </data>
-  <data name="StepFrame" xml:space="preserve">
-    <value>Cadrer</value>
-  </data>
-  <data name="StepFrameText" xml:space="preserve">
-    <value>un CLAUDE.md par projet : architecture, conventions, git flow</value>
-  </data>
-  <data name="StepPlan" xml:space="preserve">
-    <value>Planifier d'abord</value>
-  </data>
-  <data name="StepPlanText" xml:space="preserve">
-    <value>je relis et corrige le plan avant toute ligne de code</value>
-  </data>
-  <data name="StepSmall" xml:space="preserve">
-    <value>Avancer par petits pas</value>
-  </data>
-  <data name="StepSmallText" xml:space="preserve">
-    <value>une branche par tâche, des tests avant chaque commit, une pull request</value>
-  </data>
-  <data name="StepDecide" xml:space="preserve">
-    <value>Décider</value>
-  </data>
-  <data name="StepDecideText" xml:space="preserve">
-    <value>je relis et j'approuve chaque merge et chaque mise en production</value>
+    <value>Claude Code agit avec mes propres accès : je l'encadre comme j'intégrerais un nouveau développeur.</value>
   </data>
   <data name="BuiltWithAI" xml:space="preserve">
     <value>Créé avec l'IA</value>
@@ -179,5 +155,23 @@
   </data>
   <data name="GenerativeAI" xml:space="preserve">
     <value>IA générative</value>
+  </data>
+  <data name="StepGuardrails" xml:space="preserve">
+    <value>Des garde-fous, pas de la confiance</value>
+  </data>
+  <data name="StepGuardrailsText" xml:space="preserve">
+    <value>branches protégées même pour les admins, chaque commande tracée par un hook d'audit, aucun merge, déploiement ou changement cloud sans mon accord</value>
+  </data>
+  <data name="StepKnowledge" xml:space="preserve">
+    <value>La connaissance dans le code</value>
+  </data>
+  <data name="StepKnowledgeText" xml:space="preserve">
+    <value>design, règles et contraintes légales vivent dans le dépôt : l'agent les lit avant d'agir et consigne chaque piège découvert</value>
+  </data>
+  <data name="StepRole" xml:space="preserve">
+    <value>Mon rôle évolue</value>
+  </data>
+  <data name="StepRoleText" xml:space="preserve">
+    <value>moins de frappe, plus de spécification, de revue et de décision : une personne qui livre au rythme d'une équipe</value>
   </data>
 </root>

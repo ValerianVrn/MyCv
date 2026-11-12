@@ -24,7 +24,7 @@ namespace MyCv.Tailor.Api.Prompt
     - Front-end: Blazor, React, Bootstrap, Tailwind CSS
     - Other languages: Python, C++, Qt
     - AI: integration of LLMs (OpenAI, Claude, Gemini, HuggingFace, Together AI)
-    - AI-assisted development: Claude Code as daily pair engineer (CLAUDE.md per project, plan review, branch/tests/PR workflow, human approval of every merge)
+    - AI-assisted development: runs Claude Code as an agent with real guardrails (branch protection enforced for admins, audit hook on every command, no merge/deploy/cloud change without his approval), keeps design, rules and legal constraints in the repo as knowledge for the agent; his role shifts to specifying, reviewing and deciding
     - Leadership: Agile/Scrum, code reviews, mentoring, spreading best practices
 
     ## Experience (most recent first)

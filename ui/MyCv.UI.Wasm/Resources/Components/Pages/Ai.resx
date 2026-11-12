@@ -133,34 +133,10 @@
     <value>How I use it</value>
   </data>
   <data name="BuildWithAI" xml:space="preserve">
-    <value>How I build with AI</value>
+    <value>Running an AI agent like a team member</value>
   </data>
   <data name="ClaudeCodeIntro" xml:space="preserve">
-    <value>Claude Code is my everyday pair engineer, but I stay the tech lead.</value>
-  </data>
-  <data name="StepFrame" xml:space="preserve">
-    <value>Frame</value>
-  </data>
-  <data name="StepFrameText" xml:space="preserve">
-    <value>a CLAUDE.md per project: architecture, conventions, git workflow</value>
-  </data>
-  <data name="StepPlan" xml:space="preserve">
-    <value>Plan first</value>
-  </data>
-  <data name="StepPlanText" xml:space="preserve">
-    <value>I review and correct the plan before any code is written</value>
-  </data>
-  <data name="StepSmall" xml:space="preserve">
-    <value>Small steps</value>
-  </data>
-  <data name="StepSmallText" xml:space="preserve">
-    <value>a branch per task, tests before every commit, a pull request</value>
-  </data>
-  <data name="StepDecide" xml:space="preserve">
-    <value>Decide</value>
-  </data>
-  <data name="StepDecideText" xml:space="preserve">
-    <value>I review and approve every merge and every release</value>
+    <value>Claude Code works with my own credentials, so I govern it the way I would onboard a new developer.</value>
   </data>
   <data name="BuiltWithAI" xml:space="preserve">
     <value>Built with AI</value>
@@ -179,5 +155,23 @@
   </data>
   <data name="GenerativeAI" xml:space="preserve">
     <value>Generative AI</value>
+  </data>
+  <data name="StepGuardrails" xml:space="preserve">
+    <value>Guardrails, not trust</value>
+  </data>
+  <data name="StepGuardrailsText" xml:space="preserve">
+    <value>protected branches enforced even for admins, every command logged by an audit hook, no merge, deployment or cloud change without my approval</value>
+  </data>
+  <data name="StepKnowledge" xml:space="preserve">
+    <value>Knowledge as code</value>
+  </data>
+  <data name="StepKnowledgeText" xml:space="preserve">
+    <value>design, rules and legal constraints live in the repository; the agent reads them before working and records every pitfall it discovers</value>
+  </data>
+  <data name="StepRole" xml:space="preserve">
+    <value>My role shifts</value>
+  </data>
+  <data name="StepRoleText" xml:space="preserve">
+    <value>less typing, more specifying, reviewing and deciding: one person shipping at a team's pace</value>
   </data>
 </root>

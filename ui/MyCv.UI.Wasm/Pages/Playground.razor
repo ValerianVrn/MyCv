@@ -1,17 +1,20 @@
 @page "/playground"
 @using Microsoft.AspNetCore.Components.WebAssembly.Hosting
 @inject IWebAssemblyHostEnvironment Env
+@inject NavigationManager NavigationManager
 
+@* Development-only page for UI experiments. In production, visitors are sent to the home page. *@
 @if (Env.IsDevelopment())
 {
-    <Skill   />
+    <Skill />
 }
-else
-{
-    @* Optional: redirect or show nothing *@
-    @* <RedirectToLogin /> @* or NavigationManager.NavigateTo("/") *@
-}
-
 
 @code {
+    protected override void OnInitialized()
+    {
+        if (!Env.IsDevelopment())
+        {
+            NavigationManager.NavigateTo("/", replace: true);
+        }
+    }
 }

@@ -1,10 +1,35 @@
+using Microsoft.JSInterop;
 using MudBlazor;
 
 namespace MyCv.UI.Wasm.Services
 {
     /// <inheritdoc/>
-    internal class ThemeService : IThemeService
+    internal sealed class ThemeService : IThemeService
     {
+        private const string Dark = "dark";
+        private const string Light = "light";
+
+        private readonly IJSRuntime _js;
+
+        public ThemeService(IJSRuntime js)
+        {
+            _js = js;
+
+            // Read the visitor's saved choice synchronously (WASM in-process runtime) so the very first render
+            // already uses the right theme. Dark stays the default when nothing was chosen.
+            if (js is IJSInProcessRuntime inProcess)
+            {
+                try
+                {
+                    IsDarkMode = inProcess.Invoke<string?>("themePreference.get") != Light;
+                }
+                catch (JSException)
+                {
+                    IsDarkMode = true;
+                }
+            }
+        }
+
         public static readonly MudTheme Theme = new()
         {
             PaletteLight = new PaletteLight()
@@ -32,7 +57,7 @@ namespace MyCv.UI.Wasm.Services
         };
 
         /// <inheritdoc/>
-        public event Action OnThemeChanged;
+        public event Action OnThemeChanged = delegate { };
 
         /// <inheritdoc/>
         public bool IsDarkMode { get; private set; } = true;
@@ -56,6 +81,9 @@ namespace MyCv.UI.Wasm.Services
         {
             IsDarkMode = !IsDarkMode;
             OnThemeChanged?.Invoke();
+
+            // Only an explicit toggle by the visitor is remembered.
+            _ = _js.InvokeVoidAsync("themePreference.set", IsDarkMode ? Dark : Light).AsTask();
         }
     }
 }

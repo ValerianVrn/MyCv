@@ -12,32 +12,38 @@
         <MudText Typo="Typo.body1" Align="Align.Center" Style="color:rgba(255,255,255,0.75)">@AiLocalizer["Introduction"]</MudText>
     </MudContainer>
 
-    @* Block 1 – AI Tools *@
+    @* Block 1: how I build with AI (Claude Code) *@
     <MudContainer Class="@Style.LargeBottomMargin">
-        <MudGrid>
-            <MudItem xs="12" md="6">
+        <MudGrid Class="align-center">
+            <MudItem xs="12" md="7">
                 <MudPaper Class="ai-callout pa-6 rounded-lg" Elevation="0">
                     <MudStack Spacing="3">
                         <MudStack Row AlignItems="AlignItems.Center" Spacing="1">
                             <MudIcon Icon="@Icons.Material.Filled.AutoAwesome" Color="Color.Warning" />
                             <MudText Typo="Typo.overline" Style="color:rgba(255,255,255,0.5); letter-spacing:0.1em">
-                                @AiLocalizer["Usage"]
+                                @AiLocalizer["BuildWithAI"]
                             </MudText>
                         </MudStack>
-                        <MudText Typo="Typo.body1" Style="color:white">
-                            @AiLocalizer["SoftwareEngineering"]
-                        </MudText>
+                        <MudText Typo="Typo.h6" Style="color:white">@AiLocalizer["ClaudeCodeIntro"]</MudText>
+                        @foreach (var step in _steps)
+                        {
+                            <MudStack Row AlignItems="AlignItems.Start" Spacing="3">
+                                <MudIcon Icon="@step.Icon" Style="color:#a78bfa" Class="mt-1" />
+                                <MudText Typo="Typo.body1" Style="color:rgba(255,255,255,0.85)">
+                                    <strong style="color:white">@AiLocalizer[step.TitleKey]</strong> · @AiLocalizer[step.TextKey]
+                                </MudText>
+                            </MudStack>
+                        }
                     </MudStack>
                 </MudPaper>
             </MudItem>
-            <MudItem xs="12" md="6" Class="d-flex justify-center">
+            <MudItem xs="12" md="5" Class="d-flex justify-center">
                 <div class="ai-constellation">
-                    <div class="ai-center">
-                        <MudText Typo="Typo.h5" Style="color:white">@SharedLocalizer["AI"]</MudText>
+                    <div class="ai-center" title="Claude Code">
+                        <img src="images/ai/claude.svg" alt="Claude" class="ai-center-logo" />
                     </div>
                     <img src="images/ai/openai.svg" class="ai-node orbit orbit-1" alt="GPT" />
-                    <img src="images/ai/claude.svg" class="ai-node orbit orbit-2" alt="Claude" />
-                    <img src="images/ai/gemini.svg" class="ai-node orbit orbit-3" alt="Gemini" />
+                    <img src="images/ai/gemini.svg" class="ai-node orbit orbit-2" alt="Gemini" />
                     <img src="images/ai/together.svg" class="ai-node orbit orbit-4" alt="Together" />
                     <img src="images/ai/huggingface.svg" class="ai-node orbit orbit-5" alt="HuggingFace" />
                 </div>
@@ -45,64 +51,86 @@
         </MudGrid>
     </MudContainer>
 
-    @* Divider *@
+    @* Block 2: built with AI *@
     <MudContainer Class="@Style.LargeBottomMargin">
-        <MudDivider Style="border-color:rgba(255,255,255,0.5)" />
-    </MudContainer>
+        <MudText Typo="Typo.h5" Align="Align.Center" Class="mb-6" Style="color:white">@AiLocalizer["BuiltWithAI"]</MudText>
 
-    @* Block 2 – Creative AI showcase *@
-    <MudContainer>
-        <MudGrid>
+        @* Quadlink (AI-assisted development) *@
+        <MudPaper Class="ai-callout pa-4 pa-md-6 rounded-lg mb-6" Elevation="0">
+            <MudGrid Class="align-center">
+                <MudItem xs="12" md="4" Class="d-flex justify-center">
+                    <img src="@QuadlinkImage" alt="@AiLocalizer["QuadlinkAlt"]" class="ai-phone" width="390" height="670" loading="lazy" />
+                </MudItem>
+                <MudItem xs="12" md="8">
+                    <MudStack Spacing="3">
+                        <MudStack Row AlignItems="AlignItems.Center" Spacing="2" Wrap="Wrap.Wrap">
+                            <MudText Typo="Typo.h5" Style="color:white"><strong>Quadlink</strong></MudText>
+                            <MudChip T="string" Size="Size.Small" Variant="Variant.Outlined" Style="color:#a78bfa; border-color:#a78bfa">Claude Code</MudChip>
+                        </MudStack>
+                        <MudText Typo="Typo.body1" Style="color:rgba(255,255,255,0.85)">@AiLocalizer["QuadlinkDescription"]</MudText>
+                        <div class="ai-proof">
+                            <MudText Typo="Typo.body2" Style="color:white">@AiLocalizer["QuadlinkProof"]</MudText>
+                        </div>
+                        <MudStack Row Spacing="1" Wrap="Wrap.Wrap">
+                            @foreach (var tech in QuadlinkStack)
+                            {
+                                <MudChip T="string" Size="Size.Small" Variant="Variant.Outlined" Style="color:rgba(255,255,255,0.8); border-color:rgba(255,255,255,0.3)">@tech</MudChip>
+                            }
+                        </MudStack>
+                        <div>
+                            <MudButton Href="https://quadlink.fr" Target="_blank" rel="noopener" Variant="Variant.Filled" Color="Color.Primary" EndIcon="@Icons.Material.Filled.OpenInNew">
+                                @AiLocalizer["QuadlinkPlay"]
+                            </MudButton>
+                        </div>
+                    </MudStack>
+                </MudItem>
+            </MudGrid>
+        </MudPaper>
 
-            @* Carousel *@
-            <MudItem xs="12" md="8" Class="order-last order-md-first">
-                <MudPaper Class="rounded-lg overflow-hidden" Elevation="12" Style="background:#000">
-                    <MudCarousel Class="ai-carousel" AutoCycle="true" TData="object">
-                        @foreach (var post in _instagramPosts)
-                        {
-                            <MudCarouselItem @key="post.Url" Class="d-flex justify-center align-center">
-                                @if (post.IsVideo)
-                                {
-                                    @* No autoplay / preload: scripts/ai-carousel.js starts it only when visible, so the video is not downloaded on first load. *@
-                                    <video muted loop playsinline preload="none" class="ai-carousel-video">
-                                        <source src="@post.Url" type="video/webm" />
-                                    </video>
-                                }
-                                else
-                                {
-                                    <MudImage Src="@post.Url" Alt="Post" Class="h-100 w-100" ObjectFit=ObjectFit.Contain loading="lazy" />
-                                }
-                            </MudCarouselItem>
-                        }
-                    </MudCarousel>
-                </MudPaper>
-            </MudItem>
-
-            @* Instagram badge *@
-            <MudItem xs="12" md="4" Class="order-first order-md-last">
-                <MudStack AlignItems="AlignItems.Center" Spacing="4">
-                    <MudImage Src="images/instagram/instagram.webp" Width="52" />
-                    <MudStack Spacing="1" AlignItems="AlignItems.Center">
-                        <MudText Typo="Typo.overline" Style="color:rgba(255,255,255,0.5); letter-spacing:0.1em">
-                            @AiLocalizer["Creative"]
-                        </MudText>
-                        <MudText Typo="Typo.h6" Style="color:white">
-                            <strong>Instagram</strong>
-                        </MudText>
+        @* Instagram (generative AI, fully automated) *@
+        <MudPaper Class="ai-callout pa-4 pa-md-6 rounded-lg" Elevation="0">
+            <MudGrid Class="align-center">
+                <MudItem xs="12" md="5">
+                    <MudStack Spacing="3">
+                        <MudStack Row AlignItems="AlignItems.Center" Spacing="2" Wrap="Wrap.Wrap">
+                            <MudImage Src="images/instagram/instagram.webp" Width="36" Alt="Instagram" />
+                            <MudText Typo="Typo.h5" Style="color:white"><strong>Instagram</strong></MudText>
+                            <MudChip T="string" Size="Size.Small" Variant="Variant.Outlined" Style="color:#f09433; border-color:#f09433">@AiLocalizer["GenerativeAI"]</MudChip>
+                        </MudStack>
+                        <MudText Typo="Typo.body1" Style="color:rgba(255,255,255,0.85)">@AiLocalizer["Instagram"]</MudText>
                         <MudLink Href="https://www.instagram.com/gourmetpastrytransformer/"
                                  Target="_blank"
+                                 rel="noopener"
                                  Typo="Typo.body2"
                                  Style="background: linear-gradient(90deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); -webkit-background-clip:text; -webkit-text-fill-color:transparent; font-weight:600">
                             @@gourmetpastrytransformer
                         </MudLink>
                     </MudStack>
-                    <MudText Typo="Typo.body2" Align="Align.Center" Style="color:rgba(255,255,255,0.65)">
-                        @AiLocalizer["Instagram"]
-                    </MudText>
-                </MudStack>
-            </MudItem>
-
-        </MudGrid>
+                </MudItem>
+                <MudItem xs="12" md="7">
+                    <MudPaper Class="rounded-lg overflow-hidden" Elevation="12" Style="background:#000">
+                        <MudCarousel Class="ai-carousel" AutoCycle="true" TData="object">
+                            @foreach (var post in _instagramPosts)
+                            {
+                                <MudCarouselItem @key="post.Url" Class="d-flex justify-center align-center">
+                                    @if (post.IsVideo)
+                                    {
+                                        @* No autoplay / preload: scripts/ai-carousel.js starts it only when visible, so the video is not downloaded on first load. *@
+                                        <video muted loop playsinline preload="none" class="ai-carousel-video">
+                                            <source src="@post.Url" type="video/webm" />
+                                        </video>
+                                    }
+                                    else
+                                    {
+                                        <MudImage Src="@post.Url" Alt="Post" Class="h-100 w-100" ObjectFit=ObjectFit.Contain loading="lazy" />
+                                    }
+                                </MudCarouselItem>
+                            }
+                        </MudCarousel>
+                    </MudPaper>
+                </MudItem>
+            </MudGrid>
+        </MudPaper>
     </MudContainer>
 </MudPaper>
 
@@ -153,6 +181,30 @@
             object-fit: contain;
         }
 
+    /* Claude logo in the center of the constellation */
+    .ai-center-logo {
+        width: 56px;
+        height: 56px;
+        object-fit: contain;
+    }
+
+    /* Phone-sized screenshot of a project */
+    .ai-phone {
+        width: min(240px, 70vw);
+        height: auto;
+        border-radius: 24px;
+        border: 6px solid #1f2937;
+        box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+    }
+
+    /* Highlighted proof line (numbers) */
+    .ai-proof {
+        border-left: 3px solid #a78bfa;
+        padding: 8px 12px;
+        background: rgba(167,139,250,0.10);
+        border-radius: 0 8px 8px 0;
+    }
+
     /* Constellation – keep your existing styles, just ensure node visibility on dark */
     .ai-constellation {
         position: relative;
@@ -189,6 +241,22 @@
 </style>
 
 @code {
+    private record Step(string Icon, string TitleKey, string TextKey);
+
+    private static readonly List<Step> _steps =
+    [
+        new(Icons.Material.Filled.Shield, "StepGuardrails", "StepGuardrailsText"),
+        new(Icons.Material.Filled.MenuBook, "StepKnowledge", "StepKnowledgeText"),
+        new(Icons.Material.Filled.TrendingUp, "StepRole", "StepRoleText")
+    ];
+
+    private static readonly string[] QuadlinkStack = ["TypeScript", "Expo", "WebSocket", "Azure"];
+
+    // Screenshot in the visitor's language (the game itself is FR/EN).
+    private static string QuadlinkImage => CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "fr"
+        ? "images/projects/quadlink-fr.webp"
+        : "images/projects/quadlink-en.webp";
+
     private record InstagramPost(string Url, bool IsVideo = false);
     private List<InstagramPost> _instagramPosts = new()
     {

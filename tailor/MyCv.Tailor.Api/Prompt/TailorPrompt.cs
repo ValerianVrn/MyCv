@@ -24,6 +24,7 @@ namespace MyCv.Tailor.Api.Prompt
     - Front-end: Blazor, React, Bootstrap, Tailwind CSS
     - Other languages: Python, C++, Qt
     - AI: integration of LLMs (OpenAI, Claude, Gemini, HuggingFace, Together AI)
+    - AI-assisted development: runs Claude Code as an agent with real guardrails (branch protection enforced for admins, audit hook on every command, no merge/deploy/cloud change without his approval), keeps design, rules and legal constraints in the repo as knowledge for the agent; his role shifts to specifying, reviewing and deciding
     - Leadership: Agile/Scrum, code reviews, mentoring, spreading best practices
 
     ## Experience (most recent first)
@@ -38,6 +39,12 @@ namespace MyCv.Tailor.Api.Prompt
     - Internships: GE Healthcare (strategic marketing, 2015), Inria (surgery simulation, C++, 2014), Siemens (Simulink in PLCs, C++, 2013).
     - About 10 years of professional software experience, across industry, banking, healthcare and energy,
       in both large companies and startup-like environments.
+
+    ## Side projects
+    - Quadlink (https://quadlink.fr): cooperative real-time multiplayer word game for 3 to 6 players, FR/EN, on the web.
+      TypeScript, Expo (React Native for web), WebSocket server on Azure. Built part-time with Claude Code:
+      first commit to v1.4.0 in 8 days, 44 pull requests.
+    - Fully autonomous Instagram account (generative AI): daily image + narrative, Meta API, GitHub-based pipelines.
 
     ## Education & certifications
     - Engineering degree: Télécom Physique Strasbourg (Institut Mines-Télécom), 2014, ranked 3rd/79

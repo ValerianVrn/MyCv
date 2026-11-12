@@ -132,4 +132,46 @@
   <data name="Usage" xml:space="preserve">
     <value>How I use it</value>
   </data>
+  <data name="BuildWithAI" xml:space="preserve">
+    <value>Running an AI agent like a team member</value>
+  </data>
+  <data name="ClaudeCodeIntro" xml:space="preserve">
+    <value>Claude Code works with my own credentials, so I govern it the way I would onboard a new developer.</value>
+  </data>
+  <data name="BuiltWithAI" xml:space="preserve">
+    <value>Built with AI</value>
+  </data>
+  <data name="QuadlinkDescription" xml:space="preserve">
+    <value>A cooperative real-time word game for 3 to 6 players: link word pairs with one-word clues, then rotate the tiles to rebuild each other's boards. In English and French, on any phone or computer, with nothing to install.</value>
+  </data>
+  <data name="QuadlinkProof" xml:space="preserve">
+    <value>Side project built part-time with Claude Code: from first commit to v1.4.0 in 8 days · 44 pull requests · 83 commits, all co-written with Claude.</value>
+  </data>
+  <data name="QuadlinkPlay" xml:space="preserve">
+    <value>Play</value>
+  </data>
+  <data name="QuadlinkAlt" xml:space="preserve">
+    <value>Quadlink home screen</value>
+  </data>
+  <data name="GenerativeAI" xml:space="preserve">
+    <value>Generative AI</value>
+  </data>
+  <data name="StepGuardrails" xml:space="preserve">
+    <value>Guardrails, not trust</value>
+  </data>
+  <data name="StepGuardrailsText" xml:space="preserve">
+    <value>protected branches enforced even for admins, every command logged by an audit hook, no merge, deployment or cloud change without my approval</value>
+  </data>
+  <data name="StepKnowledge" xml:space="preserve">
+    <value>Knowledge as code</value>
+  </data>
+  <data name="StepKnowledgeText" xml:space="preserve">
+    <value>design, rules and legal constraints live in the repository; the agent reads them before working and records every pitfall it discovers</value>
+  </data>
+  <data name="StepRole" xml:space="preserve">
+    <value>My role shifts</value>
+  </data>
+  <data name="StepRoleText" xml:space="preserve">
+    <value>less typing, more specifying, reviewing and deciding: one person shipping at a team's pace</value>
+  </data>
 </root>

@@ -6,7 +6,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <PropertyGroup>
-    <BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
+    <!-- Ship only the ICU shard for en/fr/es/it/de (the app's cultures are en-US and fr-FR) instead of all locales.
+         Japanese text still renders: ICU is only needed for culture formatting, and ja is never set as the culture. -->
+    <BlazorWebAssemblyLoadAllGlobalizationData>false</BlazorWebAssemblyLoadAllGlobalizationData>
+    <BlazorIcuDataFileName>icudt_EFIGS.dat</BlazorIcuDataFileName>
   </PropertyGroup>
 
   <ItemGroup>

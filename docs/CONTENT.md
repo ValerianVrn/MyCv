@@ -31,6 +31,11 @@ and the visible text lives in `.resx` files: `X.resx` is English (the default) a
 
 Replace `wwwroot/files/CV.pdf` (keep the same file name: the AppBar buttons link to it).
 
+## Mark a country as visited
+
+The world map is a static file: `wwwroot/images/world-map.svg`. Each country is a `<path id="FR" title="France" …>`;
+add `class="visited"` to it (the tooltip shows its `title`). Styles live in `Pages/WorldMap.razor`.
+
 ## Change the hero terminal
 
 `Shared/Terminal.razor` → default `TerminalCommands` (whoami / stack / status).

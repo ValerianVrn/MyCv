@@ -41,12 +41,19 @@ Tick items as they ship. Last review: 2026-11-10.
 
 ## Phase 3 — Performance
 
-- [ ] `BlazorWebAssemblyLoadAllGlobalizationData=true` ships ICU data for every culture → `HybridGlobalization` or sharded ICU for fr/en/ja
-- [ ] Drop Bootstrap (CSS + JS loaded on top of MudBlazor only for ScrollSpy and some utilities that overlap MudBlazor's)
-- [ ] Pin + SRI the `flag-icons` CDN stylesheet (unversioned), or inline the 3 flags
-- [ ] Long-term caching for fingerprinted `_framework/*` files (.NET 10 fingerprints them); check Brotli size
-- [ ] Lazy-load the `WorldMap` (860-line inline SVG) and the AI video
-- [ ] Roboto: `preconnect` + only the weights actually used
+Measured on a Release publish (2026-11-12): `_framework` Brotli **3.38 MB → 2.86 MB**; uncompressed first load in headless
+Chrome **13.8 MB → 10.4 MB**.
+
+- [x] World map: 1.2 MB of SVG paths were compiled into the app assembly (405 KB → 63 KB Brotli). Now
+      `wwwroot/images/world-map.svg`, fetched only when the Life section approaches (`loadWorldMap` in `scripts/map.js`)
+- [x] ICU: all locales → `icudt_EFIGS.dat` shard (322 KB → 140 KB Brotli). Checked with fr-FR, en-US and ja-JP browsers
+- [x] AI video: no autoplay/preload, started by `ai-carousel.js` only when visible
+- [x] `flag-icons` pinned to 7.6.0 with SRI
+- [x] Roboto: `preconnect` + only weights 300–700 and 400 italic
+- [ ] Drop Bootstrap (CSS + JS loaded on top of MudBlazor only for ScrollSpy and a few utilities: `me-2`, `end-0`, `top-0`,
+      `d-md-*`…). Needs a visual before/after check, because Bootstrap and MudBlazor breakpoints differ (768 vs 960 px)
+- [ ] Long-term caching for fingerprinted `_framework/*` files (.NET 10 fingerprints them)
+- [ ] Reduce `dotnet.native.wasm` (953 KB Brotli): check `InvariantTimezone`, trimming options
 
 ## Phase 4 — UX & accessibility
 

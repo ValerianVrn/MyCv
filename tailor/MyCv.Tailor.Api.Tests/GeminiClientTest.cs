@@ -148,6 +148,29 @@ namespace MyCv.Tailor.Api.Tests
             Assert.AreEqual("secret-key", request.Headers.GetValues("x-goog-api-key").Single());
         }
 
+        [TestMethod]
+        [DataRow(null, GeminiClient.DefaultModel)]
+        [DataRow("", GeminiClient.DefaultModel)]
+        [DataRow("gemini-x", "gemini-x")]
+        public async Task GenerateAsyncUsesConfiguredModel(string? configured, string expected)
+        {
+            Environment.SetEnvironmentVariable(GeminiClient.GEMINIAPIKEY, "fake");
+            Environment.SetEnvironmentVariable(GeminiClient.GEMINIMODEL, configured);
+            try
+            {
+                var httpClientFactoryMock = CreateFactory(new HttpResponseMessage { StatusCode = HttpStatusCode.OK, Content = new StringContent(ValidGeminiResponse) }, out var requests);
+                var geminiClient = new GeminiClient(new Mock<ILogger<GeminiClient>>().Object, httpClientFactoryMock.Object);
+
+                _ = await geminiClient.GenerateAsync("job");
+
+                Assert.AreEqual($"/v1beta/models/{expected}:generateContent", requests.Single().RequestUri!.AbsolutePath);
+            }
+            finally
+            {
+                Environment.SetEnvironmentVariable(GeminiClient.GEMINIMODEL, null);
+            }
+        }
+
         private static Mock<IHttpClientFactory> CreateFactory(HttpResponseMessage response, out List<HttpRequestMessage> requests)
         {
             var captured = new List<HttpRequestMessage>();

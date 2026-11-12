@@ -13,8 +13,17 @@ namespace MyCv.Tailor.Api.Services
     public class GeminiClient(ILogger<GeminiClient> logger, IHttpClientFactory httpClientFactory) : IGeminiClient
     {
         private const string BaseUrl = "https://generativelanguage.googleapis.com/v1beta/models/";
-        private const string Model = "gemini-2.5-flash";
         public const string GEMINIAPIKEY = "GEMINI_API_KEY";
+
+        /// <summary>
+        /// Optional app setting to change the Gemini model without redeploying.
+        /// </summary>
+        public const string GEMINIMODEL = "GEMINI_MODEL";
+
+        /// <summary>
+        /// Model used when <see cref="GEMINIMODEL"/> is not set.
+        /// </summary>
+        public const string DefaultModel = "gemini-2.5-flash";
         public const string HttpClientName = "gemini";
 
         public async Task<TailorResult> GenerateAsync(string input)
@@ -55,7 +64,13 @@ namespace MyCv.Tailor.Api.Services
             var httpClient = httpClientFactory.CreateClient(HttpClientName);
 
             // API key sent as header (not query string) so it never appears in logged URLs.
-            using var request = new HttpRequestMessage(HttpMethod.Post, $"{BaseUrl}{Model}:generateContent")
+            var model = Environment.GetEnvironmentVariable(GEMINIMODEL);
+            if (string.IsNullOrWhiteSpace(model))
+            {
+                model = DefaultModel;
+            }
+
+            using var request = new HttpRequestMessage(HttpMethod.Post, $"{BaseUrl}{model.Trim()}:generateContent")
             {
                 Content = JsonContent.Create(geminiRequest)
             };

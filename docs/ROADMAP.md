@@ -76,10 +76,8 @@ the fixed cost of the .NET WebAssembly runtime (download + CPU startup). The nex
 - [x] Delete the dead `deploy.yml` / `deploy-dev.yml` / `deploy-prod.yml` (old Web Apps no longer exist) and the matching `deploy` job of `ai-codegen.yml`
 - [x] Stale PR preview environments deleted (2026-11-11)
 - [x] Dev site allowed in the Function's platform CORS (the Tailor works on dev); platform CORS documented as the source of truth
-- [x] PR previews piled up (Free tier max 3) because the SWA "Close Pull Request Job" had no `azure_static_web_apps_api_token`
-      and always failed. The token was added in both SWA workflows
-- [ ] Confirm on the next merged PR that the close job succeeds despite the `MyCv-delete` lock on the resource group
-      (if it fails with a lock error, move the lock to the individual resources)
+- [ ] The `MyCv-delete` CanNotDelete lock is at **resource-group** scope: it blocks the SWA "close" job, so PR previews will pile up
+      again (Free tier max 3). Move the lock to the individual resources instead, or delete previews by hand after each PR
 - [ ] Dev Function App (`mycv-api-dev`, Flex Consumption) deployed from `develop`, so API changes can be tested on dev before a
       release and dev traffic doesn't share the prod Gemini quota
 - [ ] Rename the remaining workflows to readable names (CI, SWA deploy dev/prod, Function deploy)

@@ -26,6 +26,16 @@
                       MaxLength="@TailorService.MaxInputLength"
                       Counter="@TailorService.MaxInputLength"
                       HelperText="@Localizer["TailorHint"]" />
+        @* Examples: fill the field (no auto-submit) so recruiters see what to type. *@
+        <MudStack Row Wrap="Wrap.Wrap" AlignItems="AlignItems.Center" Justify="Justify.Center" Spacing="1">
+            <MudText Typo="Typo.caption" Class="mud-text-secondary">@Localizer["TailorExamples"]</MudText>
+            @foreach (var key in ExampleKeys)
+            {
+                var example = Localizer[key].Value;
+                <MudChip T="string" Size="Size.Small" Variant="Variant.Outlined" Color="Color.Primary"
+                         Disabled="_loading" OnClick="@(() => _input = example)">@example</MudChip>
+            }
+        </MudStack>
         <MudButton Variant="Variant.Filled"
                    Color="Color.Primary"
                    OnClick="Submit"
@@ -215,6 +225,7 @@
     private TailorResult? _result = null;
     private CancellationTokenSource _cts = new();
     private string? _error = null;
+    private static readonly string[] ExampleKeys = ["TailorExample1", "TailorExample2", "TailorExample3"];
 
     /// <summary>
     /// Covers Function cold start + Gemini latency + server-side retries.

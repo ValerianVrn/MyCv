@@ -219,4 +219,16 @@ Venez découvrir ma formation.</value>
   <data name="TailorPrivacy" xml:space="preserve">
     <value>Votre texte est envoyé à Google Gemini pour analyse et n'est pas conservé par ce site.</value>
   </data>
+  <data name="TailorExamples" xml:space="preserve">
+    <value>Exemples :</value>
+  </data>
+  <data name="TailorExample1" xml:space="preserve">
+    <value>Développeur .NET senior – Azure, microservices</value>
+  </data>
+  <data name="TailorExample2" xml:space="preserve">
+    <value>Tech lead .NET pour une équipe logicielle industrielle</value>
+  </data>
+  <data name="TailorExample3" xml:space="preserve">
+    <value>Architecte cloud – AWS, Kubernetes</value>
+  </data>
 </root>

@@ -43,6 +43,10 @@ Tick items as they ship. Last review: 2026-11-10.
 
 Measured on a Release publish (2026-11-12): `_framework` Brotli **3.38 MB → 2.86 MB**; uncompressed first load in headless
 Chrome **13.8 MB → 10.4 MB**.
+Real load, headless Chrome with a 4× CPU slowdown, prod v2.1.0 vs dev after #154 (time until the app is visible):
+4G **14.6 s → 13.3 s**, slow 4G **30.5 s → 26.6 s**, transferred 3.79 → 3.39 MB. A moderate gain: most of the time is now
+the fixed cost of the .NET WebAssembly runtime (download + CPU startup). The next big lever would be architectural
+(prerendering / a static shell), not more trimming.
 
 - [x] World map: 1.2 MB of SVG paths were compiled into the app assembly (405 KB → 63 KB Brotli). Now
       `wwwroot/images/world-map.svg`, fetched only when the Life section approaches (`loadWorldMap` in `scripts/map.js`)
@@ -57,12 +61,14 @@ Chrome **13.8 MB → 10.4 MB**.
 
 ## Phase 4 — UX & accessibility
 
-- [ ] Theme: respect `prefers-color-scheme` and save the choice (dark is currently forced on first render)
-- [ ] Language menu: show the active language
-- [ ] `AppBar.razor`: nav markup repeated 3× (mobile/desktop/monitor) with inconsistent labels (`CV` vs `DownloadCV`) → one component
-- [ ] Mail icon uses the Gmail brand logo for a custom-domain address → generic email icon
-- [ ] Tailor: example prompts / chips
-- [ ] Lighthouse + axe pass: contrast of the light-mode tailor box, keyboard access to the marquee, `prefers-reduced-motion`
+- [x] Theme: the visitor's choice is remembered (`scripts/theme.js`); dark stays the default, as decided by the owner
+- [x] Language menu: check mark + `aria-current` on the active language
+- [x] Mail icon: generic email icon instead of the Gmail brand logo
+- [x] Tailor: 3 localized example chips that fill the field
+- [x] `aria-label` on icon-only buttons (menu, theme, language); `prefers-reduced-motion` support in `app.css`
+- [ ] `AppBar.razor`: nav markup repeated 3× (mobile/desktop/monitor) → one component. Low priority. The `CV` vs
+      `Download CV` labels are deliberate (the long one only on very wide screens)
+- [ ] Lighthouse + axe pass: contrast of the light-mode tailor box, keyboard access to the marquee
 
 ## Phase 5 — Repo hygiene
 

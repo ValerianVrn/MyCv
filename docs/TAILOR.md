@@ -59,6 +59,8 @@ For a hard cap, also set a budget / quota on the Gemini API key in Google AI Stu
 
 ## Security
 
+- The model comes from the optional `GEMINI_MODEL` app setting (default `gemini-2.5-flash`), so it can be changed
+  in the Function App settings without redeploying.
 - The API key is read from the `GEMINI_API_KEY` app setting and sent in the `x-goog-api-key` header,
   not in the query string.
 - CORS: **platform CORS on the Function App is the source of truth** (prod site, dev site, `localhost:7064`, Azure Portal;
@@ -84,6 +86,7 @@ see [CONTENT.md](CONTENT.md#tailor-prompt-sync-checklist).
        "AzureWebJobsStorage": "UseDevelopmentStorage=true",
        "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
        "GEMINI_API_KEY": "YOUR_KEY_HERE",
+       "GEMINI_MODEL": "gemini-2.5-flash",
        "ALLOWED_ORIGINS": "https://localhost:7064"
      }
    }

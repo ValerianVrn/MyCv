@@ -78,6 +78,7 @@ The following application settings must be set in the Azure Portal:
 | Setting | Description |
 |---------|-------------|
 | `GEMINI_API_KEY` | Google Gemini API key from [aistudio.google.com](https://aistudio.google.com) |
+| `GEMINI_MODEL` | Optional. Gemini model name, default `gemini-2.5-flash`. Lets you switch models without redeploying |
 | `ALLOWED_ORIGINS` | Optional, comma-separated. Code-level CORS fallback, **only used when platform CORS is off** (e.g. `func start`). Default: `https://www.valerian-verona.fr` |
 
 **Runtime**
@@ -142,6 +143,7 @@ The Tailor backend is selected by `TailorApi:UseFake` in `wwwroot/appsettings.De
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
     "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
     "GEMINI_API_KEY": "YOUR_KEY_HERE",
+    "GEMINI_MODEL": "gemini-2.5-flash",
     "ALLOWED_ORIGINS": "https://localhost:7064"
   }
 }

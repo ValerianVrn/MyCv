@@ -109,7 +109,7 @@ source of truth; to allow a new site, add it there. `ALLOWED_ORIGINS` (code-leve
 - In the isolated Function, `HttpResponseData.WriteAsJsonAsync` **resets the status code to 200** — for error
   responses write the JSON with `WriteStringAsync` (see `TailorFunction.CreateErrorAsync`).
 - `TailorFunction.MaxInputLength` and the UI's `TailorService.MaxInputLength` must stay equal.
-- Tailor tests share the process-wide `GEMINI_API_KEY` env var → keep `[DoNotParallelize]` on `GeminiClientTest`.
+- Tailor tests share the process-wide `GEMINI_API_KEY` / `GEMINI_MODEL` env vars → keep `[DoNotParallelize]` on `GeminiClientTest`.
 - `wwwroot/staticwebapp.config.json` holds SPA fallback + security headers. The CSP is still **Report-Only**:
   if you add an external script/style/font/API origin, add it there too.
 

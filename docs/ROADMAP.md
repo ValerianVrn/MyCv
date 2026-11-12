@@ -81,7 +81,7 @@ the fixed cost of the .NET WebAssembly runtime (download + CPU startup). The nex
 - [ ] Dev Function App (`mycv-api-dev`, Flex Consumption) deployed from `develop`, so API changes can be tested on dev before a
       release and dev traffic doesn't share the prod Gemini quota
 - [ ] Rename the remaining workflows to readable names (CI, SWA deploy dev/prod, Function deploy)
-- [ ] Delete `VisitorService` + `visitoridstorage.js` (registered, never used, logs the ID as an error)
-- [ ] Delete or gate `Playground.razor` (renders an empty page in production)
-- [ ] Gemini model name as a configuration setting
+- [x] Delete `VisitorService` + `visitoridstorage.js` (registered, never used, logged the ID as an error)
+- [x] `Playground.razor`: development only, redirects to `/` in production
+- [x] Gemini model name as a configuration setting (`GEMINI_MODEL`, default `gemini-2.5-flash`)
 - [ ] bUnit tests for `TailorSearch` states; function-level tests for CORS / 400 / 429

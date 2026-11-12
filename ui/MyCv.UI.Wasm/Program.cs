@@ -14,7 +14,6 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 
 // Custom services
 builder.Services
-    .AddScoped<IVisitorService, VisitorService>()
     .AddScoped<IThemeService, ThemeService>()
     .AddScoped<ILocalizationService, LocalizationService>();
 

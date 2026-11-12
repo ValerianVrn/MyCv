@@ -132,4 +132,52 @@
   <data name="Usage" xml:space="preserve">
     <value>Comment j'utilise l'IA</value>
   </data>
+  <data name="BuildWithAI" xml:space="preserve">
+    <value>Comment je développe avec l'IA</value>
+  </data>
+  <data name="ClaudeCodeIntro" xml:space="preserve">
+    <value>Claude Code est mon binôme au quotidien, mais je reste le tech lead.</value>
+  </data>
+  <data name="StepFrame" xml:space="preserve">
+    <value>Cadrer</value>
+  </data>
+  <data name="StepFrameText" xml:space="preserve">
+    <value>un CLAUDE.md par projet : architecture, conventions, git flow</value>
+  </data>
+  <data name="StepPlan" xml:space="preserve">
+    <value>Planifier d'abord</value>
+  </data>
+  <data name="StepPlanText" xml:space="preserve">
+    <value>je relis et corrige le plan avant toute ligne de code</value>
+  </data>
+  <data name="StepSmall" xml:space="preserve">
+    <value>Avancer par petits pas</value>
+  </data>
+  <data name="StepSmallText" xml:space="preserve">
+    <value>une branche par tâche, des tests avant chaque commit, une pull request</value>
+  </data>
+  <data name="StepDecide" xml:space="preserve">
+    <value>Décider</value>
+  </data>
+  <data name="StepDecideText" xml:space="preserve">
+    <value>je relis et j'approuve chaque merge et chaque mise en production</value>
+  </data>
+  <data name="BuiltWithAI" xml:space="preserve">
+    <value>Créé avec l'IA</value>
+  </data>
+  <data name="QuadlinkDescription" xml:space="preserve">
+    <value>Un jeu de mots coopératif en temps réel, de 3 à 6 joueurs : relier des paires de mots avec un indice d'un seul mot, puis tourner les tuiles pour reconstruire la grille des autres. En français et en anglais, sur téléphone ou ordinateur, sans rien installer.</value>
+  </data>
+  <data name="QuadlinkProof" xml:space="preserve">
+    <value>Projet personnel réalisé à temps partiel avec Claude Code : du premier commit à la v1.4.0 en 8 jours · 44 pull requests · 83 commits, tous co-écrits avec Claude.</value>
+  </data>
+  <data name="QuadlinkPlay" xml:space="preserve">
+    <value>Jouer</value>
+  </data>
+  <data name="QuadlinkAlt" xml:space="preserve">
+    <value>Écran d'accueil de Quadlink</value>
+  </data>
+  <data name="GenerativeAI" xml:space="preserve">
+    <value>IA générative</value>
+  </data>
 </root>

@@ -31,11 +31,13 @@ Tick items as they ship. Last review: 2026-11-10.
 
 ## Phase 2 — SEO & sharing
 
-- [ ] Prerender the home page at build time (WASM serves an almost empty HTML page to crawlers and link previews)
-- [ ] Replace the hidden `display:none` `<h1>` in `index.html` with a real `<noscript>` / fallback summary
-- [ ] `og:image` (1200×630), `twitter:card`, `<link rel="canonical">`, `og:locale` + alternate
-- [ ] JSON-LD `Person` structured data (name, jobTitle, address, sameAs LinkedIn/GitHub)
-- [ ] Portrait `Alt="Portrait"` → "Valérian Verona"
+- [x] Hidden `display:none` `<h1>` replaced by a real `<noscript>` summary (French)
+- [x] French title + description, canonical, Open Graph (`og:image` 1200×630, `og:locale` fr_FR + en_US), Twitter card
+- [x] JSON-LD `Person` (jobTitle, address, alumniOf, knowsAbout, sameAs LinkedIn/GitHub)
+- [x] Portrait alt text; `<PageTitle>` aligned with the static title
+- [ ] After the release: validate with Google Rich Results Test + LinkedIn Post Inspector, submit the sitemap in Search Console
+- [ ] Prerender the home page at build time. Deferred: `Program.cs` calls JS interop (`blazorCulture`) before `RunAsync`,
+      which build-time prerenderers can't run. Google renders the app itself, and link previews now use the static tags
 
 ## Phase 3 — Performance
 

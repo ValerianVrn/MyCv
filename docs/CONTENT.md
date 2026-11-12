@@ -46,6 +46,10 @@ The AI Tailor does not read the site. It uses a copy of the profile in
 - [ ] **Experience**: companies, titles, dates, key projects from `Career.razor` / `Career.resx`
 - [ ] **Education & certifications**: same as `Education.razor`
 - [ ] `CV.pdf` tells the same story
+- [ ] **SEO copy** in `wwwroot/index.html` (French): title, description, OG/Twitter tags, JSON-LD `Person`
+      (jobTitle, knowsAbout, alumniOf) and the `<noscript>` summary (experience list)
+- [ ] **Share image** `wwwroot/images/og-image.jpg` (1200×630) if the title or certifications change.
+      Check the preview with LinkedIn Post Inspector (https://www.linkedin.com/post-inspector/), which also refreshes LinkedIn's cache
 
 The Function redeploys automatically when the change is merged to `main` (the workflow triggers on `tailor/MyCv.Tailor.Api/**`).
 

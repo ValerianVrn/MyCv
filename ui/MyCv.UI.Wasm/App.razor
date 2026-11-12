@@ -1,6 +1,7 @@
 <Router AppAssembly="@typeof(App).Assembly">
     <Found Context="routeData">
-        <PageTitle>Valérian Verona</PageTitle>
+        @* Same as the static <title> in wwwroot/index.html (Google renders the app and reads this one). *@
+        <PageTitle>Valérian Verona – Tech Lead C#/.NET · Vannes, Bretagne</PageTitle>
         <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
         <FocusOnNavigate RouteData="@routeData" Selector="h1" />
     </Found>

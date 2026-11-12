@@ -6,8 +6,13 @@
 <MudMenu Icon="@Icons.Material.Filled.Language">
     @foreach (var language in _languages)
     {
-        <MudMenuItem OnClick="@(()=>SetLanguage(language.CultureInfo))">
+        var isActive = IsActive(language.CultureInfo);
+        <MudMenuItem OnClick="@(()=>SetLanguage(language.CultureInfo))" aria-current="@(isActive ? "true" : null)">
             <span class=@language.IconClass></span> @language.Name
+            @if (isActive)
+            {
+                <MudIcon Icon="@Icons.Material.Filled.Check" Size="Size.Small" Color="Color.Primary" Class="ml-2" Style="vertical-align: middle" />
+            }
         </MudMenuItem>
     }
 </MudMenu>
@@ -36,6 +41,11 @@
             LocalizationService.SetCulture(cultureInfo);
             await LocalizationService.ApplySelectedCultureAsync();
         }
+    }
+
+    private static bool IsActive(CultureInfo cultureInfo)
+    {
+        return string.Equals(CultureInfo.CurrentUICulture.Name, cultureInfo.Name, StringComparison.OrdinalIgnoreCase);
     }
 
     protected override void OnInitialized()
